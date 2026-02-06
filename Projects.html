@@ -1,0 +1,657 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Archive | WebResolv Studio</title>
+  <meta name="description" content="A curated archive of digital products and brands." />
+  <!-- Favicon - Multiple sizes for better display -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.svg" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-color: #050505;
+      --accent: #f97316;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background-color: var(--bg-color);
+      color: #ffffff;
+      overflow-x: hidden;
+      cursor: none;
+      /* Custom cursor */
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    .font-display {
+      font-family: "Space Grotesk", sans-serif;
+    }
+
+    /* --- FX --- */
+    .noise-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 50;
+      opacity: 0.05;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
+    .spotlight {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      background: radial-gradient(600px circle at var(--x) var(--y),
+          rgba(249, 115, 22, 0.15),
+          transparent 40%);
+    }
+
+    .cursor-dot,
+    .cursor-outline {
+      position: fixed;
+      top: 0;
+      left: 0;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      z-index: 9999;
+      pointer-events: none;
+    }
+
+    .cursor-dot {
+      width: 8px;
+      height: 8px;
+      background: white;
+    }
+
+    .cursor-outline {
+      width: 40px;
+      height: 40px;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      transition:
+        width 0.2s,
+        height 0.2s;
+    }
+
+    body:hover .cursor-outline {
+      width: 40px;
+      height: 40px;
+    }
+
+    a:hover~.cursor-outline,
+    div[onclick]:hover~.cursor-outline {
+      width: 60px;
+      height: 60px;
+      background: rgba(255, 255, 255, 0.1);
+      border-color: transparent;
+    }
+
+    /* --- UI --- */
+    .glass {
+      background: rgba(20, 20, 20, 0.6);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .glass:hover {
+      background: rgba(30, 30, 30, 0.8);
+      border-color: rgba(249, 115, 22, 0.3);
+      transform: translateY(-5px) scale(1.01);
+      box-shadow: 0 20px 40px -10px rgba(249, 115, 22, 0.1);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 1s cubic-bezier(0.5, 0, 0, 1);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body class="antialiased">
+  <div class="noise-overlay"></div>
+  <div class="spotlight" id="spotlight"></div>
+  <div class="cursor-dot hidden md:block" id="cursor-dot"></div>
+  <div class="cursor-outline hidden md:block" id="cursor-outline"></div>
+
+  <nav class="fixed top-0 w-full z-40 px-6 py-6 flex justify-between items-center mix-blend-difference text-white">
+    <a href="index.html"
+      class="font-display font-bold text-xl tracking-tighter hover:text-orange-400 transition-colors">WebResolv<span
+        class="text-orange-500">.</span></a>
+    <a href="mailto:hello@webresolv.com"
+      class="hidden md:block glass px-6 py-2 rounded-full text-xs font-bold hover:bg-white hover:text-black hover:border-white transition-all">START
+      PROJECT</a>
+  </nav>
+
+  <nav class="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 w-[90%] max-w-sm">
+    <div
+      class="glass rounded-full p-2 flex items-center justify-between shadow-2xl bg-black/90 border border-white/10 backdrop-blur-xl">
+      <a href="index.html"
+        class="px-4 py-2 text-[10px] uppercase font-bold text-gray-400 hover:text-white transition-all">Home</a>
+      <a href="#websites"
+        class="px-4 py-2 text-[10px] uppercase font-bold text-orange-400 hover:text-white transition-all bg-white/5 rounded-full">Work</a>
+      <a href="#branding"
+        class="px-4 py-2 text-[10px] uppercase font-bold text-gray-400 hover:text-white transition-all">Brands</a>
+      <a href="index.html#contact"
+        class="px-4 py-2 text-[10px] uppercase font-bold text-gray-400 hover:text-white transition-all">Call</a>
+    </div>
+  </nav>
+
+  <header class="relative pt-40 pb-20 px-6 flex flex-col justify-center items-center text-center">
+    <div
+      class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none">
+    </div>
+
+    <div
+      class="reveal inline-flex items-center gap-2 px-3 py-1 rounded-full border border-orange-500/20 bg-orange-500/5 text-[10px] font-bold text-orange-400 mb-6 uppercase tracking-wider">
+      The Archive
+    </div>
+    <h1 class="reveal text-5xl md:text-8xl font-black tracking-tighter text-white mb-6">
+      SELECTED
+      <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-purple-500">WORKS.</span>
+    </h1>
+    <p class="reveal text-gray-400 max-w-xl mx-auto text-lg leading-relaxed">
+      A curated collection of high-performance websites and distinct brand
+      identities engineered for ambitious clients.
+    </p>
+  </header>
+
+  <section id="websites" class="py-20 px-6 max-w-7xl mx-auto">
+    <div class="flex items-end gap-4 mb-12 border-b border-white/10 pb-6 reveal">
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight">
+        Website Development
+      </h2>
+      <span class="text-gray-500 text-sm mb-1 pb-1 font-mono uppercase tracking-widest hidden md:inline-block">/
+        Performance & Scale</span>
+    </div>
+    <!-- webiste Projects  -->
+    <div class="grid md:grid-cols-2 gap-8 reveal">
+
+
+      <!-- Aura Estate Project -->
+      <div class="group relative block h-[450px] w-full rounded-3xl overflow-hidden glass p-0 border-0">
+        <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all z-10"></div>
+        <img src="assets/projects/aura-estate/Aura Estate.png"
+          class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+          alt="Aura Estate luxury real estate website" />
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-8 flex flex-col justify-end z-20">
+          <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+            <div class="flex gap-2 mb-2">
+              <span
+                class="px-2 py-1 bg-white/10 backdrop-blur-md rounded text-[10px] uppercase font-bold text-white">Real
+                Estate</span>
+            </div>
+            <h3 class="text-3xl font-bold text-white mb-1">Aura Estate</h3>
+            <p
+              class="text-gray-400 text-sm mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+              Luxury real estate platform with virtual tours and smart search.
+            </p>
+            <div class="flex gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+              <a href="case-study.html?id=aura-estate"
+                class="inline-flex items-center gap-2 px-4 py-2 bg-amber-600 hover:bg-amber-700 rounded-full text-xs font-bold uppercase tracking-wider transition-all">
+                <i data-lucide="book-open" class="w-3 h-3"></i>
+                Case Study
+              </a>
+              <!-- ✏️ UPDATE THIS URL -->
+              <a href="https://adiraushan.github.io/Aura-Estate-/" target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/40 rounded-full text-xs font-bold uppercase tracking-wider transition-all">
+                <i data-lucide="external-link" class="w-3 h-3"></i>
+                Visit Site
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Get Them Project -->
+      <div class="group relative block h-[450px] w-full rounded-3xl overflow-hidden glass p-0 border-0">
+        <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all z-10"></div>
+        <img content="Agency Development" alt="Get Them" title="Get Them" loading="lazy"
+          src="assets/projects/getthemall/Getthem.png"
+          class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+          alt="Get Them website showcase" />
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-8 flex flex-col justify-end z-20">
+          <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+            <div class="flex gap-2 mb-2">
+              <span
+                class="px-2 py-1 bg-white/10 backdrop-blur-md rounded text-[10px] uppercase font-bold text-white">Shopify</span>
+            </div>
+            <h3 class="text-3xl font-bold text-white mb-1">Get Them</h3>
+            <p
+              class="text-gray-400 text-sm mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+              Agency overhaul achieving +140% sales growth.
+            </p>
+            <!-- ✏️ Action Buttons - Update website URL below -->
+            <div class="flex gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+              <a href="case-study.html?id=getthemall"
+                class="inline-flex items-center gap-2 px-4 py-2 bg-orange-500 hover:bg-orange-600 rounded-full text-xs font-bold uppercase tracking-wider transition-all">
+                <i data-lucide="book-open" class="w-3 h-3"></i>
+                Case Study
+              </a>
+              <!-- UPDATE THIS URL -->
+              <a href="https://getthem-agency.vercel.app/" target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/40 rounded-full text-xs font-bold uppercase tracking-wider transition-all">
+                <i data-lucide="external-link" class="w-3 h-3"></i>
+                Visit Site
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vista Project -->
+      <div class="group relative block h-[450px] w-full rounded-3xl overflow-hidden glass p-0 border-0">
+        <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all z-10"></div>
+        <img src="assets/projects/bella-vista/la bella vista.png"
+          class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+          alt="La Bella Vista cafe website" />
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-8 flex flex-col justify-end z-20">
+          <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+            <div class="flex gap-2 mb-2">
+              <span
+                class="px-2 py-1 bg-white/10 backdrop-blur-md rounded text-[10px] uppercase font-bold text-white">Corporate</span>
+            </div>
+            <h3 class="text-3xl font-bold text-white mb-1">La Bella Vista</h3>
+            <p
+              class="text-gray-400 text-sm mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+              Modernizing corporate recruitment with high-end UI.
+            </p>
+            <div class="flex gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+              <a href="case-study.html?id=vista"
+                class="inline-flex items-center gap-2 px-4 py-2 bg-purple-500 hover:bg-purple-600 rounded-full text-xs font-bold uppercase tracking-wider transition-all">
+                <i data-lucide="book-open" class="w-3 h-3"></i>
+                Case Study
+              </a>
+              <!-- ✏️ UPDATE THIS URL -->
+              <a href="https://la-bella-vita-ten.vercel.app/" onclick="return true;" target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/40 rounded-full text-xs font-bold uppercase tracking-wider transition-all">
+                <i data-lucide="external-link" class="w-3 h-3"></i>
+                Visit Site
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EvaraStaffing Project -->
+      <div class="group relative block h-[450px] w-full rounded-3xl overflow-hidden glass p-0 border-0">
+        <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all z-10"></div>
+        <img src="assets/projects/evara/Evara1.png"
+          class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+          alt="EvaraStaffing landing page" />
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-8 flex flex-col justify-end z-20">
+          <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+            <div class="flex gap-2 mb-2">
+              <span
+                class="px-2 py-1 bg-white/10 backdrop-blur-md rounded text-[10px] uppercase font-bold text-white">Landing
+                Page</span>
+            </div>
+            <h3 class="text-3xl font-bold text-white mb-1">Evarastaffing</h3>
+            <p
+              class="text-gray-400 text-sm mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+              High-speed landing page design for local staffing company.
+            </p>
+            <div class="flex gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+              <a href="case-study.html?id=evarastaffing"
+                class="inline-flex items-center gap-2 px-4 py-2 bg-green-500 hover:bg-green-600 rounded-full text-xs font-bold uppercase tracking-wider transition-all">
+                <i data-lucide="book-open" class="w-3 h-3"></i>
+                Case Study
+              </a>
+              <!-- ✏️ UPDATE THIS URL -->
+              <a href="https://evarastaffing.com/" onclick="return true; " target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/40 rounded-full text-xs font-bold uppercase tracking-wider transition-all">
+                <i data-lucide="external-link" class="w-3 h-3"></i>
+                Visit Site
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pawier Project -->
+      <div class="group relative block h-[450px] w-full rounded-3xl overflow-hidden glass p-0 border-0">
+        <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all z-10"></div>
+        <img src="assets/projects/pawier/pawier.png"
+          class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+          alt="Pawier pet shop website" />
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-8 flex flex-col justify-end z-20">
+          <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+            <div class="flex gap-2 mb-2">
+              <span
+                class="px-2 py-1 bg-white/10 backdrop-blur-md rounded text-[10px] uppercase font-bold text-white">Pet
+                Shop</span>
+            </div>
+            <h3 class="text-3xl font-bold text-white mb-1">Pawier</h3>
+            <p
+              class="text-gray-400 text-sm mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+              Automated booking system & portfolio. Clean, modern design.
+            </p>
+            <div class="flex gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+              <a href="case-study.html?id=pawier"
+                class="inline-flex items-center gap-2 px-4 py-2 bg-pink-500 hover:bg-pink-600 rounded-full text-xs font-bold uppercase tracking-wider transition-all">
+                <i data-lucide="book-open" class="w-3 h-3"></i>
+                Case Study
+              </a>
+              <!-- ✏️ UPDATE THIS URL -->
+              <a href="https://pawier.vercel.app/" onclick="return true; " target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/40 rounded-full text-xs font-bold uppercase tracking-wider transition-all">
+                <i data-lucide="external-link" class="w-3 h-3"></i>
+                Visit Site
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <!-- Athlynx Project -->
+      <div class="group relative block h-[450px] w-full rounded-3xl overflow-hidden glass p-0 border-0">
+        <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all z-10"></div>
+        <img src="assets/projects/athlynx/Athlynx.png"
+          class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+          alt="Athlynx gym fitness website" />
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-8 flex flex-col justify-end z-20">
+          <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+            <div class="flex gap-2 mb-2">
+              <span
+                class="px-2 py-1 bg-white/10 backdrop-blur-md rounded text-[10px] uppercase font-bold text-white">Fitness</span>
+            </div>
+            <h3 class="text-3xl font-bold text-white mb-1">Athlynx Gym</h3>
+            <p
+              class="text-gray-400 text-sm mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+              Dynamic fitness platform with real-time class booking.
+            </p>
+            <div class="flex gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+              <a href="case-study.html?id=athlynx"
+                class="inline-flex items-center gap-2 px-4 py-2 bg-red-600 hover:bg-red-700 rounded-full text-xs font-bold uppercase tracking-wider transition-all">
+                <i data-lucide="book-open" class="w-3 h-3"></i>
+                Case Study
+              </a>
+              <!-- ✏️ UPDATE THIS URL -->
+              <a href="#" onclick="return false;"
+                class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/40 rounded-full text-xs font-bold uppercase tracking-wider transition-all opacity-50 cursor-not-allowed">
+                <i data-lucide="external-link" class="w-3 h-3"></i>
+                Visit Site
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dr Smith Project -->
+      <div class="group relative block h-[450px] w-full rounded-3xl overflow-hidden glass p-0 border-0">
+        <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all z-10"></div>
+        <img src="assets/projects/dr-smith/Dr Smith.png"
+          class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+          alt="Dr Smith dental clinic website" />
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-8 flex flex-col justify-end z-20">
+          <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+            <div class="flex gap-2 mb-2">
+              <span
+                class="px-2 py-1 bg-white/10 backdrop-blur-md rounded text-[10px] uppercase font-bold text-white">Healthcare</span>
+            </div>
+            <h3 class="text-3xl font-bold text-white mb-1">Dr. Smith Dental</h3>
+            <p
+              class="text-gray-400 text-sm mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+              Modern dental practice website with online booking system.
+            </p>
+            <div class="flex gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+              <a href="case-study.html?id=dr-smith"
+                class="inline-flex items-center gap-2 px-4 py-2 bg-cyan-600 hover:bg-cyan-700 rounded-full text-xs font-bold uppercase tracking-wider transition-all">
+                <i data-lucide="book-open" class="w-3 h-3"></i>
+                Case Study
+              </a>
+              <!-- ✏️ UPDATE THIS URL -->
+              <a href="https://dental-xi-henna.vercel.app/" target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/40 rounded-full text-xs font-bold uppercase tracking-wider transition-all">
+                <i data-lucide="external-link" class="w-3 h-3"></i>
+                Visit Site
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Peak & Pine Project -->
+      <div class="group relative block h-[450px] w-full rounded-3xl overflow-hidden glass p-0 border-0">
+        <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all z-10"></div>
+        <img src="assets/projects/peak-pine/Peak & Pine.png"
+          class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+          alt="Peak and Pine coffee ecommerce website" />
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-8 flex flex-col justify-end z-20">
+          <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+            <div class="flex gap-2 mb-2">
+              <span
+                class="px-2 py-1 bg-white/10 backdrop-blur-md rounded text-[10px] uppercase font-bold text-white">E-Commerce</span>
+            </div>
+            <h3 class="text-3xl font-bold text-white mb-1">Peak & Pine Coffee</h3>
+            <p
+              class="text-gray-400 text-sm mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+              Artisan coffee e-commerce with subscription management.
+            </p>
+            <div class="flex gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+              <a href="case-study.html?id=peak-pine"
+                class="inline-flex items-center gap-2 px-4 py-2 bg-amber-700 hover:bg-amber-800 rounded-full text-xs font-bold uppercase tracking-wider transition-all">
+                <i data-lucide="book-open" class="w-3 h-3"></i>
+                Case Study
+              </a>
+              <!-- ✏️ UPDATE THIS URL -->
+              <a href="https://athlynx-gym.vercel.app/" target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/40 rounded-full text-xs font-bold uppercase tracking-wider transition-all">
+                <i data-lucide="external-link" class="w-3 h-3"></i>
+                Visit Site
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- brand Identity -->
+  <!--  <section id="branding" class="py-20 px-6 max-w-7xl mx-auto mb-24">
+    <div class="flex items-end gap-4 mb-12 border-b border-white/10 pb-6 reveal">
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight">
+        Brand Identity
+      </h2>
+      <span class="text-gray-500 text-sm mb-1 pb-1 font-mono uppercase tracking-widest hidden md:inline-block">/
+        Strategy & Design</span>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
+      <div class="glass p-8 rounded-3xl group hover:bg-white/5 cursor-pointer flex flex-col h-full"
+        onclick="window.location.href = 'case-study.html?id=kuro'">
+        <div
+          class="w-14 h-14 bg-gray-100 rounded-2xl flex items-center justify-center mb-8 text-black shadow-lg group-hover:scale-110 transition-transform">
+          <i data-lucide="shirt" class="w-7 h-7"></i>
+        </div>
+        <div class="mt-auto">
+          <h3 class="text-2xl font-bold mb-2">Kuro Wear</h3>
+          <p class="text-gray-500 text-xs leading-relaxed mb-4">
+            Japanese luxury streetwear branding and packaging design.
+          </p>
+          <span class="text-xs font-bold text-blue-400 flex items-center gap-1 group-hover:gap-2 transition-all">View
+            Project <i data-lucide="arrow-right" class="w-3 h-3"></i></span>
+        </div>
+      </div>
+
+      <div class="glass p-8 rounded-3xl group hover:bg-white/5 cursor-pointer flex flex-col h-full"
+        onclick="window.location.href = 'case-study.html?id=aura'">
+        <div
+          class="w-14 h-14 bg-green-500 rounded-2xl flex items-center justify-center mb-8 text-black shadow-lg shadow-green-500/20 group-hover:scale-110 transition-transform">
+          <i data-lucide="leaf" class="w-7 h-7"></i>
+        </div>
+        <div class="mt-auto">
+          <h3 class="text-2xl font-bold mb-2">Aura Vitality</h3>
+          <p class="text-gray-500 text-xs leading-relaxed mb-4">
+            Organic wellness packaging and art direction.
+          </p>
+          <span class="text-xs font-bold text-green-400 flex items-center gap-1 group-hover:gap-2 transition-all">View
+            Project <i data-lucide="arrow-right" class="w-3 h-3"></i></span>
+        </div>
+      </div>
+
+      <div class="glass p-8 rounded-3xl group hover:bg-white/5 cursor-pointer flex flex-col h-full"
+        onclick="window.location.href = 'case-study.html?id=flux'">
+        <div
+          class="w-14 h-14 bg-purple-600 rounded-2xl flex items-center justify-center mb-8 text-white shadow-lg shadow-purple-500/20 group-hover:scale-110 transition-transform">
+          <i data-lucide="zap" class="w-7 h-7"></i>
+        </div>
+        <div class="mt-auto">
+          <h3 class="text-2xl font-bold mb-2">Flux AI</h3>
+          <p class="text-gray-500 text-xs leading-relaxed mb-4">
+            SaaS Identity Kit and futuristic UI design system.
+          </p>
+          <span class="text-xs font-bold text-purple-400 flex items-center gap-1 group-hover:gap-2 transition-all">View
+            Project <i data-lucide="arrow-right" class="w-3 h-3"></i></span>
+        </div>
+      </div>
+
+      <div class="glass p-8 rounded-3xl group hover:bg-white/5 cursor-pointer flex flex-col h-full"
+        onclick="window.location.href = 'case-study.html?id=artzen'">
+        <div
+          class="w-14 h-14 bg-blue-600 rounded-2xl flex items-center justify-center mb-8 text-white shadow-lg shadow-blue-500/20 group-hover:scale-110 transition-transform">
+          <i data-lucide="hexagon" class="w-7 h-7"></i>
+        </div>
+        <div class="mt-auto">
+          <h3 class="text-2xl font-bold mb-2">Artzen</h3>
+          <p class="text-gray-500 text-xs leading-relaxed mb-4">
+            Geometric interior design brand guidelines.
+          </p>
+          <span class="text-xs font-bold text-blue-400 flex items-center gap-1 group-hover:gap-2 transition-all">View
+            Project <i data-lucide="arrow-right" class="w-3 h-3"></i></span>
+        </div>
+      </div>
+
+      <div class="glass p-8 rounded-3xl group hover:bg-white/5 cursor-pointer flex flex-col h-full"
+        onclick="window.location.href = 'case-study.html?id=flow'">
+        <div
+          class="w-14 h-14 bg-pink-600 rounded-2xl flex items-center justify-center mb-8 text-white shadow-lg shadow-pink-500/20 group-hover:scale-110 transition-transform">
+          <i data-lucide="instagram" class="w-7 h-7"></i>
+        </div>
+        <div class="mt-auto">
+          <h3 class="text-2xl font-bold mb-2">Flow Socials</h3>
+          <p class="text-gray-500 text-xs leading-relaxed mb-4">
+            Instagram strategy, grid layout, and templates.
+          </p>
+          <span class="text-xs font-bold text-pink-400 flex items-center gap-1 group-hover:gap-2 transition-all">View
+            Project <i data-lucide="arrow-right" class="w-3 h-3"></i></span>
+        </div>
+      </div>
+
+      <div class="glass p-8 rounded-3xl group hover:bg-white/5 cursor-pointer flex flex-col h-full"
+        onclick="window.location.href = 'case-study.html?id=evara-rebrand'">
+        <div
+          class="w-14 h-14 bg-yellow-500 rounded-2xl flex items-center justify-center mb-8 text-white shadow-lg shadow-yellow-500/20 group-hover:scale-110 transition-transform">
+          <i data-lucide="pen-tool" class="w-7 h-7"></i>
+        </div>
+        <div class="mt-auto">
+          <h3 class="text-2xl font-bold mb-2">Evara Rebrand</h3>
+          <p class="text-gray-500 text-xs leading-relaxed mb-4">
+            Complete corporate modernization strategy.
+          </p>
+          <span class="text-xs font-bold text-yellow-400 flex items-center gap-1 group-hover:gap-2 transition-all">View
+            Project <i data-lucide="arrow-right" class="w-3 h-3"></i></span>
+        </div>
+      </div>
+
+      <div class="glass p-8 rounded-3xl group hover:bg-white/5 cursor-pointer flex flex-col h-full"
+        onclick="window.location.href = 'case-study.html?id=techdeck'">
+        <div
+          class="w-14 h-14 bg-cyan-600 rounded-2xl flex items-center justify-center mb-8 text-white shadow-lg shadow-cyan-500/20 group-hover:scale-110 transition-transform">
+          <i data-lucide="layers" class="w-7 h-7"></i>
+        </div>
+        <div class="mt-auto">
+          <h3 class="text-2xl font-bold mb-2">Tech Deck</h3>
+          <p class="text-gray-500 text-xs leading-relaxed mb-4">
+            Investor pitch deck and data visualization.
+          </p>
+          <span class="text-xs font-bold text-cyan-400 flex items-center gap-1 group-hover:gap-2 transition-all">View
+            Project <i data-lucide="arrow-right" class="w-3 h-3"></i></span>
+        </div>
+      </div>
+    </div>
+  </section> -->
+  <!-- End of Website Projects -->
+
+  <footer class="bg-black py-12 text-center border-t border-white/10 text-gray-600 text-sm">
+    <p class="mb-4">
+      Ready to build something legendary?
+      <a href="mailto:hello@webresolv.com" class="text-white underline">Contact Us</a>
+    </p>
+    © 2025 WebResolv Studio.
+  </footer>
+
+  <script>
+    lucide.createIcons();
+    // Spotlight & Cursor Logic
+    const spotlight = document.getElementById("spotlight");
+    const cursorDot = document.getElementById("cursor-dot");
+    const cursorOutline = document.getElementById("cursor-outline");
+
+    window.addEventListener("mousemove", (e) => {
+      const x = e.clientX;
+      const y = e.clientY;
+      spotlight.style.setProperty("--x", `${x}px`);
+      spotlight.style.setProperty("--y", `${y}px`);
+      cursorDot.style.left = `${x}px`;
+      cursorDot.style.top = `${y}px`;
+      cursorOutline.animate(
+        { left: `${x}px`, top: `${y}px` },
+        { duration: 500, fill: "forwards" },
+      );
+    });
+
+    // Reveal on scroll
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+          }
+        });
+      },
+      { threshold: 0.1 },
+    );
+    document
+      .querySelectorAll(".reveal")
+      .forEach((el) => observer.observe(el));
+  </script>
+</body>
+
+</html>

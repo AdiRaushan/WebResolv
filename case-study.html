@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Detail | WebResolv Studio</title>
+  <meta name="description" content="Deep dive into our design and development process." />
+  <!-- Favicon - Multiple sizes for better display -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.svg" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-color: #050505;
+      --accent: #f97316;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background-color: var(--bg-color);
+      color: #ffffff;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    .font-display {
+      font-family: "Space Grotesk", sans-serif;
+    }
+
+    /* FX */
+    .noise-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 50;
+      opacity: 0.05;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
+    .spotlight {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      background: radial-gradient(600px circle at var(--x) var(--y),
+          rgba(249, 115, 22, 0.15),
+          transparent 40%);
+    }
+
+    .cursor-dot,
+    .cursor-outline {
+      position: fixed;
+      top: 0;
+      left: 0;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      z-index: 9999;
+      pointer-events: none;
+    }
+
+    .cursor-dot {
+      width: 8px;
+      height: 8px;
+      background: white;
+    }
+
+    .cursor-outline {
+      width: 40px;
+      height: 40px;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      transition: width 0.2s, height 0.2s;
+    }
+
+    body:hover .cursor-outline {
+      width: 40px;
+      height: 40px;
+    }
+
+    a:hover~.cursor-outline,
+    button:hover~.cursor-outline {
+      width: 60px;
+      height: 60px;
+      background: rgba(255, 255, 255, 0.1);
+      border-color: transparent;
+    }
+
+    /* UI */
+    .glass {
+      background: rgba(20, 20, 20, 0.6);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 1s cubic-bezier(0.5, 0, 0, 1);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body class="antialiased selection:bg-orange-500 selection:text-white">
+  <div class="noise-overlay"></div>
+  <div class="spotlight" id="spotlight"></div>
+  <div class="cursor-dot hidden md:block" id="cursor-dot"></div>
+  <div class="cursor-outline hidden md:block" id="cursor-outline"></div>
+
+  <nav class="fixed top-0 w-full z-40 px-6 py-6 flex justify-between items-center pointer-events-none">
+    <div class="flex items-center gap-3">
+      <a href="projects.html"
+        class="pointer-events-auto glass px-4 py-2 rounded-full flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gray-400 hover:text-white transition-colors hover:bg-white/10">
+        <i data-lucide="arrow-left" class="w-4 h-4"></i> Projects
+      </a>
+      <a href="index.html"
+        class="pointer-events-auto glass px-4 py-2 rounded-full flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gray-400 hover:text-white transition-colors hover:bg-white/10">
+        Home
+      </a>
+    </div>
+    <a href="mailto:hello@webresolv.com"
+      class="pointer-events-auto bg-white text-black px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest hover:scale-105 transition-transform">Start
+      Project</a>
+  </nav>
+
+  <header class="relative min-h-[85vh] flex items-end pb-24 px-6 md:px-12 pt-32">
+    <div class="absolute inset-0 z-0">
+      <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/90 to-transparent z-10"></div>
+      <img id="hero-bg" src=""
+        class="w-full h-full object-cover object-center opacity-50 transition-opacity duration-1000" />
+    </div>
+
+    <div
+      class="relative z-20 w-full max-w-7xl mx-auto border-t border-white/20 pt-8 flex flex-col lg:flex-row justify-between gap-12 reveal">
+      <div>
+        <div class="flex gap-3 mb-6">
+          <span id="tag-1"
+            class="px-3 py-1 border border-orange-500/30 bg-orange-500/10 rounded-full text-[10px] uppercase tracking-widest text-orange-400 font-bold">Category</span>
+          <span id="tag-2"
+            class="px-3 py-1 border border-white/10 bg-white/5 rounded-full text-[10px] uppercase tracking-widest text-gray-400 font-bold">Type</span>
+        </div>
+        <h1 id="project-title" class="text-6xl md:text-9xl font-black leading-[0.85] mb-6 text-white tracking-tighter">
+          PROJECT<br />NAME
+        </h1>
+      </div>
+
+      <div class="grid grid-cols-2 gap-x-12 gap-y-8 text-sm max-w-md">
+        <div>
+          <h4 class="text-gray-500 uppercase text-[10px] font-bold tracking-widest mb-2">
+            Client
+          </h4>
+          <p id="client-name" class="text-lg font-medium">Client Name</p>
+        </div>
+        <div>
+          <h4 class="text-gray-500 uppercase text-[10px] font-bold tracking-widest mb-2">
+            Year
+          </h4>
+          <p id="project-year" class="text-lg font-medium">2025</p>
+        </div>
+        <div>
+          <h4 class="text-gray-500 uppercase text-[10px] font-bold tracking-widest mb-2">
+            Services
+          </h4>
+          <ul id="service-list" class="text-gray-400 space-y-1">
+            <li>Service</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-gray-500 uppercase text-[10px] font-bold tracking-widest mb-2">
+            Outcome
+          </h4>
+          <p id="outcome" class="text-lg font-bold text-orange-400">Result</p>
+        </div>
+        <!-- ✏️ WEBSITE LINK - You can update the URL in the JavaScript section below -->
+        <div id="website-link-container" class="col-span-2" style="display: none;">
+          <h4 class="text-gray-500 uppercase text-[10px] font-bold tracking-widest mb-3">
+            Live Website
+          </h4>
+          <a id="website-link" href="#" target="_blank" rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-orange-500/50 rounded-full text-sm font-medium transition-all group">
+            <i data-lucide="external-link"
+              class="w-4 h-4 text-orange-400 group-hover:translate-x-0.5 transition-transform"></i>
+            <span>Visit Website</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-6 pb-32">
+    <div class="grid md:grid-cols-2 gap-16 mb-32 reveal">
+      <div>
+        <h3 class="text-2xl font-bold mb-4 text-white">The Challenge</h3>
+        <p id="challenge-text" class="text-gray-400 leading-relaxed text-lg">
+          Loading challenge description...
+        </p>
+      </div>
+      <div>
+        <h3 class="text-2xl font-bold mb-4 text-white">The Solution</h3>
+        <p id="solution-text" class="text-gray-400 leading-relaxed text-lg">
+          Loading solution description...
+        </p>
+      </div>
+    </div>
+
+    <div class="space-y-8">
+      <div class="w-full h-[70vh] rounded-3xl overflow-hidden bg-neutral-900 border border-white/5 reveal group">
+        <img id="img-1" src=""
+          class="w-full h-full object-cover object-center transition-transform duration-1000 group-hover:scale-105" />
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="h-[60vh] rounded-3xl overflow-hidden bg-neutral-900 border border-white/5 reveal group delay-100">
+          <img id="img-2" src=""
+            class="w-full h-full object-cover object-center transition-transform duration-1000 group-hover:scale-105" />
+        </div>
+        <div class="h-[60vh] rounded-3xl overflow-hidden bg-neutral-900 border border-white/5 reveal group delay-200">
+          <img id="img-3" src=""
+            class="w-full h-full object-cover object-center transition-transform duration-1000 group-hover:scale-105" />
+        </div>
+      </div>
+
+      <div class="w-full h-[70vh] rounded-3xl overflow-hidden bg-neutral-900 border border-white/5 reveal group">
+        <img id="img-4" src=""
+          class="w-full h-full object-cover object-center transition-transform duration-1000 group-hover:scale-105" />
+      </div>
+    </div>
+
+    <div
+      class="mt-40 pt-24 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-8 reveal">
+      <h2 class="text-4xl md:text-6xl font-black tracking-tight text-center md:text-left">
+        Ready to build<br />your legacy?
+      </h2>
+      <a href="mailto:hello@webresolv.com"
+        class="bg-white text-black px-12 py-5 rounded-full font-bold text-xl hover:bg-orange-600 hover:text-white transition-all shadow-[0_0_40px_-10px_rgba(255,255,255,0.3)]">
+        Start Project
+      </a>
+    </div>
+  </main>
+
+  <footer class="bg-black py-12 text-center border-t border-white/10 text-gray-600 text-sm">
+    <p class="mb-4 font-mono uppercase tracking-widest text-xs">
+      WebResolv Design Studio
+    </p>
+    © 2025 All Rights Reserved.
+  </footer>
+
+  <script>
+    lucide.createIcons();
+
+    // --- 1. DATA ENGINE ---
+    const projects = {
+      // WEBSITES
+      getthemall: {
+        title: "Get Them",
+        tag1: "Agency",
+        tag2: "React",
+        client: "Get Them India",
+        year: "2025",
+        outcome: "+140% Sales",
+        services: [
+          "UI/UX Design",
+          "Shopify Development",
+          "Performance Tuning",
+        ],
+        challenge:
+          "Get Them India approached us after their previous store struggled with high bounce rates and a generic visual identity that failed to communicate the brand’s premium positioning. The design lacked the trust, clarity, and sophistication expected from a medical-grade skincare brand, resulting in low engagement and missed conversions.",
+        solution:
+          "We reimagined Get Them India’s digital storefront from the ground up with a focus on trust, clarity, and conversion. Our team designed a clean, clinical-premium visual language that aligned with their medical-grade skincare positioning, using refined typography, structured layouts, and a calming color palette.",
+        // ✏️ ADD WEBSITE URL HERE - Leave empty "" if no live website
+        website: "https://getthem-agency.vercel.app/", // UPDATE THIS URL
+        images: [
+          "assets/projects/getthemall/Getthem.png",
+          "assets/projects/getthemall/getthem2.jpg",
+          "assets/projects/getthemall/getthem3.png",
+          "assets/projects/getthemall/getthem4.png",
+        ],
+      },
+      vista: {
+        title: "Bella La Vista",
+        tag1: "Cafe",
+        tag2: "Web Design",
+        client: "Bella La Vista",
+        year: "2025",
+        outcome: "Rebrand Success",
+        services: ["Web Design", "Development", "Performance Tuning"],
+        challenge:
+          "Bella La Vista needed to shed its 'legacy corporate' image to attract Gen-Z talent, while maintaining enough authority to sign B2B contracts with Fortune 500s.",
+        solution:
+          "We utilized a bold purple palette and modern geometric layouts. The site features a custom job filtering engine and a streamlined 2-step application process.",
+        website: "https://la-bella-vita-ten.vercel.app/", // ✏️ ADD WEBSITE URL HERE
+        images: [
+          "assets/projects/bella-vista/bella2.png",
+          "assets/projects/bella-vista/bella1.png",
+          "assets/projects/bella-vista/bella3.png",
+          "assets/projects/bella-vista/bella4.png",
+        ],
+      },
+      evarastaffing: {
+        title: "EvaraStaffing",
+        tag1: "consultancy",
+        tag2: "Landing Page",
+        client: "Evarastaffing",
+        year: "2024",
+        outcome: "High Conversion",
+        services: ["Landing Page", "Copywriting", "Lead Gen", "Performance Tuning", "Development", "SEO", "Content"],
+        challenge:
+          "A local ISP fighting against national giants. They needed a way to explain complex fiber-optic plans simply and quickly.",
+        solution:
+          "A high-velocity landing page with a neon-green 'gamer' aesthetic. We built custom plan comparison tables and a sticky CTA that follows the user.",
+        website: "https://evarastaffing.com/", // ✏️ ADD WEBSITE URL HERE
+        images: [
+          "assets/projects/evara/Evara1.png",
+          "assets/projects/evara/Evara2.png",
+          "assets/projects/evara/Evara3.png",
+          "assets/projects/evara/Evara4.png",
+        ],
+      },
+      pawier: {
+        title: "Pawier",
+        tag1: "Pet Shop",
+        tag2: "Web Design",
+        client: "Pawier",
+        year: "2024",
+        outcome: "Auto-Booking",
+        services: ["Portfolio", "Booking System", "Local SEO"],
+        challenge:
+          "Dr. Noor's reception was overwhelmed with phone calls. The goal was to digitize the appointment process without losing the personal touch.",
+        solution:
+          "A calming, clean aesthetic using pink and white. We integrated a custom booking engine allowing patients to view real-time availability.",
+        website: "https://pawier.vercel.app/", // ✏️ ADD WEBSITE URL HERE
+        images: [
+          "assets/projects/pawier/Pawier1.png",
+          "assets/projects/pawier/Pawier3.png",
+          "assets/projects/pawier/Pawier4.png",
+          "assets/projects/pawier/Pawier2.png",
+        ],
+      },
+
+      // NEW PROJECTS
+      "aura-estate": {
+        title: "Aura Estate",
+        tag1: "Real Estate",
+        tag2: "Web Design",
+        client: "Aura Estate Group",
+        year: "2025",
+        outcome: "+200% Leads",
+        services: ["UI/UX Design", "Property Search", "Virtual Tours", "CRM Integration", "SEO"],
+        challenge:
+          "Aura Estate needed to differentiate themselves in a saturated luxury real estate market. Their previous website failed to convey the premium nature of their properties, lacked sophisticated search functionality, and didn't capture high-net-worth leads effectively.",
+        solution:
+          "We designed a stunning, immersive website featuring interactive property maps, 3D virtual tours, and an intelligent search system. The dark-mode aesthetic with gold accents instantly communicates luxury, while advanced filtering helps buyers find their dream properties in seconds.",
+        website: "", // ✏️ ADD WEBSITE URL HERE
+        images: [
+          "assets/projects/aura-estate/Aura Estate.png",
+          "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=2073",
+          "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2075",
+          "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2053",
+        ],
+      },
+
+      athlynx: {
+        title: "Athlynx Gym",
+        tag1: "Fitness",
+        tag2: "Web App",
+        client: "Athlynx Fitness",
+        year: "2025",
+        outcome: "300+ Members",
+        services: ["Web Design", "Booking System", "Member Portal", "Payment Integration", "Mobile App"],
+        challenge:
+          "Athlynx faced challenges with member retention and class booking confusion. Their manual booking process led to double-bookings, frustrated members, and administrative overhead. They needed a modern digital solution that matched their high-energy brand.",
+        solution:
+          "We built a dynamic fitness platform with real-time class scheduling, automated membership management, and a custom member app. The bold, energetic design with neon accents reflects their brand attitude, while the smart booking system eliminated administrative headaches entirely.",
+        website: "https://athlynx-gym.vercel.app/", // ✏️ ADD WEBSITE URL HERE
+        images: [
+          "assets/projects/athlynx/Athlynx.png",
+          "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070",
+          "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?q=80&w=1975",
+          "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070",
+        ],
+      },
+
+      "dr-smith": {
+        title: "Dr. Smith<br>Dental Care",
+        tag1: "Healthcare",
+        tag2: "Landing Page",
+        client: "Dr. Smith Dental Clinic",
+        year: "2024",
+        outcome: "50% More Bookings",
+        services: ["Website Design", "Online Booking", "Patient Portal", "HIPAA Compliance", "Local SEO"],
+        challenge:
+          "Dr. Smith's dental practice struggled with phone-based appointment scheduling, leading to missed calls and lost patients. Their outdated website didn't inspire trust or showcase their modern, comfortable clinic environment.",
+        solution:
+          "We created a welcoming, professional website with calming blues and whites that reduce dental anxiety. The integrated online booking system with real-time availability increased appointments by 50%, while before/after galleries showcase their expertise.",
+        website: "https://dental-xi-henna.vercel.app/", // ✏️ ADD WEBSITE URL HERE
+        images: [
+          "assets/projects/dr-smith/Dr Smith.png",
+          "https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=2068",
+          "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?q=80&w=2074",
+          "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?q=80&w=2070",
+        ],
+      },
+
+      "peak-pine": {
+        title: "Peak & Pine<br>Coffee Co.",
+        tag1: "E-Commerce",
+        tag2: "Shopify",
+        client: "Peak & Pine",
+        year: "2025",
+        outcome: "$50K Month 1",
+        services: ["Shopify Development", "Brand Design", "Product Photography", "Email Marketing", "Social Integration"],
+        challenge:
+          "Peak & Pine, an artisan coffee roaster, needed to transition from farmers' markets to online sales. They lacked e-commerce infrastructure and needed to communicate their commitment to sustainability and craft while competing against major coffee brands.",
+        solution:
+          "We built a beautiful Shopify store with earthy tones and stunning product photography. Custom subscription management, brewing guides, and coffee finder quiz engage customers, while integrated storytelling about their direct-trade relationships builds brand loyalty.",
+        website: "", // ✏️ ADD WEBSITE URL HERE
+        images: [
+          "assets/projects/peak-pine/Peak & Pine.png",
+          "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?q=80&w=2070",
+          "https://images.unsplash.com/photo-1561882468-9110e03e0f78?q=80&w=2070",
+          "https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=2087",
+        ],
+      },
+
+      // BRANDING
+      kuro: {
+        title: "KURO<br>WEAR",
+        tag1: "Branding",
+        tag2: "Fashion",
+        client: "Kuro Apparel",
+        year: "2025",
+        outcome: "Viral Launch",
+        services: ["Visual Identity", "Packaging", "Art Direction"],
+        challenge:
+          "Entering the saturated luxury streetwear market requires a visual voice that feels 'underground' yet commands a premium price point.",
+        solution:
+          "We engineered a 'Silent Luxury' aesthetic. Stark monochrome palettes, brutalist typography, and raw textures create a mysterious, cult-like brand aura.",
+        website: "", // ✏️ ADD WEBSITE URL HERE
+        images: [
+          "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=2020",
+          "https://images.unsplash.com/photo-1558655146-d09347e0b7a8?q=80&w=2000",
+          "https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=2070",
+          "https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?q=80&w=1887",
+        ],
+      },
+      aura: {
+        title: "AURA<br>VITALITY",
+        tag1: "Wellness",
+        tag2: "Packaging",
+        client: "Aura Life",
+        year: "2025",
+        outcome: "Shelf Presence",
+        services: ["Packaging Design", "Art Direction", "Logo System"],
+        challenge:
+          "Aura needed to bridge the gap between clinical science and organic wellness. The packaging had to look good on a bathroom shelf.",
+        solution:
+          "We utilized soft, ethereal gradients representing 'energy fields', paired with sharp serif typography to convey trust and authority.",
+        website: "https://adiraushan.github.io/Aura-Estate-/", // ✏️ ADD WEBSITE URL HERE
+        images: [
+          "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&w=1887",
+          "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?q=80&w=2070",
+          "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?q=80&w=1780",
+          "https://images.unsplash.com/photo-1590439471364-192aa70c0b53?q=80&w=1887",
+        ],
+      },
+      flux: {
+        title: "FLUX<br>AI SYSTEMS",
+        tag1: "SaaS",
+        tag2: "Technology",
+        client: "Flux Corp",
+        year: "2025",
+        outcome: "User Adoption",
+        services: ["UI Kit", "Brand Identity", "Motion Design"],
+        challenge:
+          "For this AI analytics platform, the identity needed to scream 'future' without resorting to cliché robot imagery.",
+        solution:
+          "We developed a dynamic logo system based on shifting data points, paired with a dark-mode UI kit and neon data visualizations.",
+        website: "", // ✏️ ADD WEBSITE URL HERE
+        images: [
+          "https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=2232",
+          "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2070",
+          "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=1974",
+          "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070",
+        ],
+      },
+      artzen: {
+        title: "ARTZEN<br>INTERIORS",
+        tag1: "Architecture",
+        tag2: "Identity",
+        client: "Artzen Studio",
+        year: "2023",
+        outcome: "Brand Consistency",
+        services: ["Logo Design", "Brand Guidelines", "Stationery"],
+        challenge:
+          "A luxury interior studio needed a logo that reflected minimal elegance and structural integrity.",
+        solution:
+          "We created a geometric monogram based on architectural blueprints, paired with a sophisticated blue palette.",
+        website: "", // ✏️ ADD WEBSITE URL HERE
+        images: [
+          "https://framerusercontent.com/images/afkY7C5FrXfmHtYEZ0ldgSoA.png",
+          "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000",
+          "https://images.unsplash.com/photo-1615873968403-89e068629265?q=80&w=2000",
+          "https://images.unsplash.com/photo-1631679706909-1844bbd07221?q=80&w=1992",
+        ],
+      },
+      flow: {
+        title: "FLOW<br>SOCIALS",
+        tag1: "Social",
+        tag2: "Content",
+        client: "Flow Lifestyle",
+        year: "2024",
+        outcome: "+10k Followers",
+        services: ["Instagram Grid", "Story Templates", "Strategy"],
+        challenge:
+          "Flow needed a cohesive Instagram feed that looked professional but authentic to their gen-z audience.",
+        solution:
+          "A modular grid system with reusable templates for quotes, product reveals, and lifestyle shots.",
+        website: "", // ✏️ ADD WEBSITE URL HERE
+        images: [
+          "https://framerusercontent.com/images/pJEKQ7SYtRW6kimnzTjntl3r0.png",
+          "https://images.unsplash.com/photo-1611162616475-46b635cb6868?q=80&w=1974",
+          "https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?q=80&w=1974",
+          "https://images.unsplash.com/photo-1516251193000-18e6586ee186?q=80&w=2070",
+        ],
+      },
+      "evara-rebrand": {
+        title: "EVARA<br>REBRAND",
+        tag1: "Strategy",
+        tag2: "Identity",
+        client: "Evara Group",
+        year: "2024",
+        outcome: "Market Shift",
+        services: ["Rebranding", "Visual Identity", "Tone of Voice"],
+        challenge:
+          "Updating a legacy brand to compete in the modern digital landscape without losing existing trust.",
+        solution:
+          "We kept their core yellow color but brightened it for digital screens and introduced a modern sans-serif typeface.",
+        website: "", // ✏️ ADD WEBSITE URL HERE
+        images: [
+          "https://framerusercontent.com/images/crNjkGnIyGkq2jf51sIr2Onw8.png",
+          "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070",
+          "https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=2074",
+          "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2070",
+        ],
+      },
+      techdeck: {
+        title: "TECH<br>DECK",
+        tag1: "Presentation",
+        tag2: "Pitch",
+        client: "Stealth Startup",
+        year: "2025",
+        outcome: "$2M Raised",
+        services: ["Pitch Deck", "Data Visualization", "Storytelling"],
+        challenge:
+          "Turning complex technical data into a compelling narrative for venture capitalists.",
+        solution:
+          "A dark-mode, high-contrast slide deck with custom iconography and simplified charts that guided investors through the value proposition.",
+        website: "", // ✏️ ADD WEBSITE URL HERE
+        images: [
+          "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070",
+          "https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=2070",
+          "https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=2070",
+          "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2000",
+        ],
+      },
+    };
+
+    // --- 2. INJECTION LOGIC ---
+    const urlParams = new URLSearchParams(window.location.search);
+    const projectId = urlParams.get("id");
+    const data = projects[projectId] || projects["dermatotale"]; // Default
+
+    // Text Injection
+    document.title = `${data.client} | Case Study`;
+    document.getElementById("project-title").innerHTML = data.title;
+    document.getElementById("tag-1").textContent = data.tag1;
+    document.getElementById("tag-2").textContent = data.tag2;
+    document.getElementById("client-name").textContent = data.client;
+    document.getElementById("project-year").textContent = data.year;
+    document.getElementById("outcome").textContent = data.outcome;
+    document.getElementById("challenge-text").textContent = data.challenge;
+    document.getElementById("solution-text").textContent = data.solution;
+
+    const serviceList = document.getElementById("service-list");
+    serviceList.innerHTML = "";
+    data.services.forEach((s) => {
+      const li = document.createElement("li");
+      li.textContent = s;
+      serviceList.appendChild(li);
+    });
+
+    // Website Link Injection - Only show if website URL exists
+    if (data.website && data.website.trim() !== "") {
+      const websiteLinkContainer = document.getElementById("website-link-container");
+      const websiteLink = document.getElementById("website-link");
+      websiteLink.href = data.website;
+      websiteLinkContainer.style.display = "block";
+    }
+
+    // Image Injection
+    document.getElementById("hero-bg").src = data.images[0];
+    document.getElementById("img-1").src = data.images[0];
+    document.getElementById("img-2").src = data.images[1];
+    document.getElementById("img-3").src = data.images[2];
+    document.getElementById("img-4").src = data.images[3];
+
+    // --- 3. ANIMATION LOGIC ---
+    // Reveal on Scroll
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+    document
+      .querySelectorAll(".reveal")
+      .forEach((el) => observer.observe(el));
+
+    // Spotlight & Cursor
+    const spotlight = document.getElementById("spotlight");
+    const cursorDot = document.getElementById("cursor-dot");
+    const cursorOutline = document.getElementById("cursor-outline");
+
+    window.addEventListener("mousemove", (e) => {
+      const x = e.clientX;
+      const y = e.clientY;
+      spotlight.style.setProperty("--x", `${x}px`);
+      spotlight.style.setProperty("--y", `${y}px`);
+      cursorDot.style.left = `${x}px`;
+      cursorDot.style.top = `${y}px`;
+      cursorOutline.animate(
+        { left: `${x}px`, top: `${y}px` },
+        { duration: 500, fill: "forwards" }
+      );
+    });
+  </script>
+</body>
+
+</html>
