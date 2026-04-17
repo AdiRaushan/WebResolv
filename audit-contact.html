@@ -2,371 +2,431 @@
 <html lang="en" class="scroll-smooth">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
 
-  <!-- Primary Meta Tags -->
-  <title>WebResolv | Free Website Audit — Limited Slots</title>
-  <meta name="title" content="WebResolv | Free Website Audit — Limited Slots" />
-  <meta name="description"
-    content="Get a free expert audit of your website. Uncover what's killing your leads, conversions, and search rankings with a custom report from WebResolv." />
-  
-  <meta name="robots" content="index, follow" />
-  <meta name="language" content="English" />
-  <link rel="canonical" href="https://webresolv.in/audit-contact" />
+    <!-- Primary Meta Tags -->
+    <title>WebResolv | Free Website Audit — Limited Slots</title>
+    <meta name="title" content="WebResolv | Free Website Audit — Limited Slots" />
+    <meta name="description"
+        content="Get a free expert audit of your website. Uncover what's killing your leads, conversions, and search rankings with a custom report from WebResolv." />
 
-  <!-- Theme Color for Mobile Browsers -->
-  <meta name="theme-color" content="#050505" />
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" sizes="any" />
-  
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="English" />
+    <link rel="canonical" href="https://webresolv.in/audit-contact" />
 
-  <style>
-    :root {
-      --bg-color: #050505;
-      --accent: #f97316;
-    }
+    <!-- Theme Color for Mobile Browsers -->
+    <meta name="theme-color" content="#050505" />
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" sizes="any" />
 
-    body {
-      font-family: "Inter", sans-serif;
-      background-color: var(--bg-color);
-      color: #ffffff;
-      overflow-x: hidden;
-    }
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
 
-    /* Custom cursor only on desktop */
-    @media (min-width: 768px) {
-      body {
-        cursor: none;
-      }
-    }
+    <style>
+        :root {
+            --bg-color: #050505;
+            --accent: #f97316;
+        }
 
-    h1, h2, h3, h4, .font-display {
-      font-family: "Space Grotesk", sans-serif;
-    }
+        body {
+            font-family: "Inter", sans-serif;
+            background-color: var(--bg-color);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
 
-    .glass {
-      background: rgba(255, 255, 255, 0.03);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
+        /* Custom cursor only on desktop */
+        @media (min-width: 768px) {
+            body {
+                cursor: none;
+            }
+        }
 
-    .spotlight {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 0;
-      background: radial-gradient(circle at var(--x, 50%) var(--y, 50%),
-          rgba(249, 115, 22, 0.08) 0%,
-          transparent 50%);
-    }
+        h1,
+        h2,
+        h3,
+        h4,
+        .font-display {
+            font-family: "Space Grotesk", sans-serif;
+        }
 
-    #cursor-dot,
-    #cursor-outline {
-      position: fixed;
-      top: -100px;
-      left: -100px;
-      transform: translate(-50%, -50%);
-      pointer-events: none;
-      z-index: 9999;
-      border-radius: 50%;
-      transition: opacity 0.3s, transform 0.3s;
-    }
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
-    #cursor-dot {
-      width: 8px;
-      height: 8px;
-      background-color: var(--accent);
-    }
+        .spotlight {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            background: radial-gradient(circle at var(--x, 50%) var(--y, 50%),
+                    rgba(249, 115, 22, 0.08) 0%,
+                    transparent 50%);
+        }
 
-    #cursor-outline {
-      width: 40px;
-      height: 40px;
-      border: 1px solid rgba(249, 115, 22, 0.5);
-    }
+        #cursor-dot,
+        #cursor-outline {
+            position: fixed;
+            top: -100px;
+            left: -100px;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 9999;
+            border-radius: 50%;
+            transition: opacity 0.3s, transform 0.3s;
+        }
 
-    /* Animations */
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    }
+        #cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent);
+        }
 
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
+        #cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(249, 115, 22, 0.5);
+        }
 
-    .glitch-hover:hover {
-      text-shadow: 2px 0 var(--accent), -2px 0 #00fff2;
-    }
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
-    input:focus, textarea:focus {
-        outline: none;
-        border-color: var(--accent);
-        box-shadow: 0 0 20px rgba(249, 115, 22, 0.1);
-    }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-    .ring-fg {
-      stroke: var(--accent);
-      stroke-dasharray: 283;
-      stroke-dashoffset: 283;
-      transition: stroke-dashoffset 2s ease-out;
-    }
-  </style>
+        .glitch-hover:hover {
+            text-shadow: 2px 0 var(--accent), -2px 0 #00fff2;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 20px rgba(249, 115, 22, 0.1);
+        }
+
+        .ring-fg {
+            stroke: var(--accent);
+            stroke-dasharray: 283;
+            stroke-dashoffset: 283;
+            transition: stroke-dashoffset 2s ease-out;
+        }
+    </style>
 </head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-T7SMPK8WTC"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-T7SMPK8WTC');
+</script>
 
 <body class="selection:bg-orange-500/30">
-  <div class="spotlight" id="spotlight"></div>
-  <div id="cursor-dot" class="hidden md:block"></div>
-  <div id="cursor-outline" class="hidden md:block"></div>
+    <div class="spotlight" id="spotlight"></div>
+    <div id="cursor-dot" class="hidden md:block"></div>
+    <div id="cursor-outline" class="hidden md:block"></div>
 
-  <!-- NAV -->
-  <nav class="fixed top-0 w-full z-40 px-6 py-8 flex justify-between items-center mix-blend-difference text-white">
-    <a href="/" class="font-display font-bold text-2xl tracking-tighter hover:text-orange-400 transition-colors">WebResolv<span class="text-orange-500">.</span></a>
-    <a href="#form-section" class="glass px-6 py-2 rounded-full text-xs font-bold hover:bg-white hover:text-black hover:border-white transition-all">FREE AUDIT →</a>
-  </nav>
+    <!-- NAV -->
+    <nav class="fixed top-0 w-full z-40 px-6 py-8 flex justify-between items-center mix-blend-difference text-white">
+        <a href="/"
+            class="font-display font-bold text-2xl tracking-tighter hover:text-orange-400 transition-colors">WebResolv<span
+                class="text-orange-500">.</span></a>
+        <a href="#form-section"
+            class="glass px-6 py-2 rounded-full text-xs font-bold hover:bg-white hover:text-black hover:border-white transition-all">FREE
+            AUDIT →</a>
+    </nav>
 
-  <!-- HERO -->
-  <section id="hero" class="relative min-h-screen flex flex-col items-center justify-center text-center px-6 pt-20">
-    <div class="hero-badge reveal inline-flex items-center gap-2 px-4 py-1 rounded-full border border-orange-500/30 bg-orange-500/10 text-orange-400 text-[10px] font-bold uppercase tracking-[0.2em] mb-8">
-      <span class="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse"></span>
-      Free Website Audit — Limited Slots
-    </div>
-    <h1 class="reveal text-5xl md:text-8xl font-black tracking-tighter leading-tight mb-6 max-w-5xl">
-        Your Website Is <span class="text-orange-500 italic">Losing You</span> Clients Every Day
-    </h1>
-    <p class="reveal text-gray-400 text-lg md:text-xl max-w-2xl mb-12 font-medium">
-        Get a free expert audit of your website — uncover what's killing your leads, conversions, and search rankings.
-    </p>
-    <div class="reveal flex flex-col items-center gap-6">
-        <a href="#form-section" class="clickable bg-white text-black px-10 py-5 rounded-full font-bold text-lg hover:scale-105 transition-all shadow-2xl">
-            Get My Free Audit →
-        </a>
-        <span class="text-gray-500 text-xs uppercase tracking-widest font-medium">No cost. No strings. 100% honest feedback.</span>
-    </div>
-
-    <!-- Scroll Indicator -->
-    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 opacity-30">
-        <div class="w-[1px] h-20 bg-gradient-to-b from-white to-transparent"></div>
-        <span class="text-[10px] uppercase tracking-[0.3em] font-bold">Scroll</span>
-    </div>
-  </section>
-
-  <!-- PROBLEMS -->
-  <section id="problems" class="py-32 px-6 max-w-7xl mx-auto">
-    <div class="mb-20 reveal">
-        <span class="text-orange-500 text-xs font-bold uppercase tracking-[0.3em] mb-4 block">The Real Problem</span>
-        <h2 class="text-4xl md:text-6xl font-bold tracking-tighter mb-6">Your website might be<br>working against you.</h2>
-        <p class="text-gray-400 max-w-xl">Most small business websites have at least one of these silent conversion killers.</p>
-    </div>
-
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="glass p-8 rounded-3xl hover:border-orange-500/50 reveal">
-            <div class="text-3xl mb-6">⚡</div>
-            <h3 class="text-xl font-bold mb-3">Slow Load Speed</h3>
-            <p class="text-sm text-gray-400 leading-relaxed">If your page takes more than 3 seconds to load, 53% of visitors leave — before seeing a single word.</p>
+    <!-- HERO -->
+    <section id="hero" class="relative min-h-screen flex flex-col items-center justify-center text-center px-6 pt-20">
+        <div
+            class="hero-badge reveal inline-flex items-center gap-2 px-4 py-1 rounded-full border border-orange-500/30 bg-orange-500/10 text-orange-400 text-[10px] font-bold uppercase tracking-[0.2em] mb-8">
+            <span class="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse"></span>
+            Free Website Audit — Limited Slots
         </div>
-        <div class="glass p-8 rounded-3xl hover:border-orange-500/50 reveal" style="transition-delay: 0.1s;">
-            <div class="text-3xl mb-6">🎨</div>
-            <h3 class="text-xl font-bold mb-3">Outdated Design</h3>
-            <p class="text-sm text-gray-400 leading-relaxed">A poorly designed website signals untrustworthiness. Visitors judge your business in under 0.05 seconds.</p>
+        <h1 class="reveal text-5xl md:text-8xl font-black tracking-tighter leading-tight mb-6 max-w-5xl">
+            Your Website Is <span class="text-orange-500 italic">Losing You</span> Clients Every Day
+        </h1>
+        <p class="reveal text-gray-400 text-lg md:text-xl max-w-2xl mb-12 font-medium">
+            Get a free expert audit of your website — uncover what's killing your leads, conversions, and search
+            rankings.
+        </p>
+        <div class="reveal flex flex-col items-center gap-6">
+            <a href="#form-section"
+                class="clickable bg-white text-black px-10 py-5 rounded-full font-bold text-lg hover:scale-105 transition-all shadow-2xl">
+                Get My Free Audit →
+            </a>
+            <span class="text-gray-500 text-xs uppercase tracking-widest font-medium">No cost. No strings. 100% honest
+                feedback.</span>
         </div>
-        <div class="glass p-8 rounded-3xl hover:border-orange-500/50 reveal" style="transition-delay: 0.2s;">
-            <div class="text-3xl mb-6">🔍</div>
-            <h3 class="text-xl font-bold mb-3">Zero SEO Visibility</h3>
-            <p class="text-sm text-gray-400 leading-relaxed">If Google can't find you, your customers can't either. Most SMB websites are virtually invisible in search.</p>
-        </div>
-        <div class="glass p-8 rounded-3xl hover:border-orange-500/50 reveal" style="transition-delay: 0.3s;">
-            <div class="text-3xl mb-6">📉</div>
-            <h3 class="text-xl font-bold mb-3">Poor Conversion</h3>
-            <p class="text-sm text-gray-400 leading-relaxed">Traffic without a clear conversion path is just wasted spend. Your site may be driving people away.</p>
-        </div>
-    </div>
-  </section>
 
-  <!-- AUDIT INCLUDES -->
-  <section id="audit" class="py-32 bg-white/5 border-y border-white/5">
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="grid lg:grid-cols-2 gap-20 items-center">
-            <div class="reveal">
-                <span class="text-orange-500 text-xs font-bold uppercase tracking-[0.3em] mb-4 block">What's Included</span>
-                <h2 class="text-4xl md:text-6xl font-bold tracking-tighter mb-12">Your free audit<br>covers it all.</h2>
-                
-                <div class="space-y-8">
-                    <div class="flex gap-6">
-                        <span class="font-display font-black text-white/20 text-4xl">01</span>
-                        <div>
-                            <h4 class="text-xl font-bold mb-2">Design & UX Review</h4>
-                            <p class="text-gray-400 text-sm">We assess visual hierarchy, mobile experience, trust signals, and clarity of your offer.</p>
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 opacity-30">
+            <div class="w-[1px] h-20 bg-gradient-to-b from-white to-transparent"></div>
+            <span class="text-[10px] uppercase tracking-[0.3em] font-bold">Scroll</span>
+        </div>
+    </section>
+
+    <!-- PROBLEMS -->
+    <section id="problems" class="py-32 px-6 max-w-7xl mx-auto">
+        <div class="mb-20 reveal">
+            <span class="text-orange-500 text-xs font-bold uppercase tracking-[0.3em] mb-4 block">The Real
+                Problem</span>
+            <h2 class="text-4xl md:text-6xl font-bold tracking-tighter mb-6">Your website might be<br>working against
+                you.</h2>
+            <p class="text-gray-400 max-w-xl">Most small business websites have at least one of these silent conversion
+                killers.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="glass p-8 rounded-3xl hover:border-orange-500/50 reveal">
+                <div class="text-3xl mb-6">⚡</div>
+                <h3 class="text-xl font-bold mb-3">Slow Load Speed</h3>
+                <p class="text-sm text-gray-400 leading-relaxed">If your page takes more than 3 seconds to load, 53% of
+                    visitors leave — before seeing a single word.</p>
+            </div>
+            <div class="glass p-8 rounded-3xl hover:border-orange-500/50 reveal" style="transition-delay: 0.1s;">
+                <div class="text-3xl mb-6">🎨</div>
+                <h3 class="text-xl font-bold mb-3">Outdated Design</h3>
+                <p class="text-sm text-gray-400 leading-relaxed">A poorly designed website signals untrustworthiness.
+                    Visitors judge your business in under 0.05 seconds.</p>
+            </div>
+            <div class="glass p-8 rounded-3xl hover:border-orange-500/50 reveal" style="transition-delay: 0.2s;">
+                <div class="text-3xl mb-6">🔍</div>
+                <h3 class="text-xl font-bold mb-3">Zero SEO Visibility</h3>
+                <p class="text-sm text-gray-400 leading-relaxed">If Google can't find you, your customers can't either.
+                    Most SMB websites are virtually invisible in search.</p>
+            </div>
+            <div class="glass p-8 rounded-3xl hover:border-orange-500/50 reveal" style="transition-delay: 0.3s;">
+                <div class="text-3xl mb-6">📉</div>
+                <h3 class="text-xl font-bold mb-3">Poor Conversion</h3>
+                <p class="text-sm text-gray-400 leading-relaxed">Traffic without a clear conversion path is just wasted
+                    spend. Your site may be driving people away.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- AUDIT INCLUDES -->
+    <section id="audit" class="py-32 bg-white/5 border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-20 items-center">
+                <div class="reveal">
+                    <span class="text-orange-500 text-xs font-bold uppercase tracking-[0.3em] mb-4 block">What's
+                        Included</span>
+                    <h2 class="text-4xl md:text-6xl font-bold tracking-tighter mb-12">Your free audit<br>covers it all.
+                    </h2>
+
+                    <div class="space-y-8">
+                        <div class="flex gap-6">
+                            <span class="font-display font-black text-white/20 text-4xl">01</span>
+                            <div>
+                                <h4 class="text-xl font-bold mb-2">Design & UX Review</h4>
+                                <p class="text-gray-400 text-sm">We assess visual hierarchy, mobile experience, trust
+                                    signals, and clarity of your offer.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-6">
+                            <span class="font-display font-black text-white/20 text-4xl">02</span>
+                            <div>
+                                <h4 class="text-xl font-bold mb-2">SEO Health Check</h4>
+                                <p class="text-gray-400 text-sm">We identify missing meta data, keyword gaps, crawl
+                                    issues, and structural SEO problems.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-6">
+                            <span class="font-display font-black text-white/20 text-4xl">03</span>
+                            <div>
+                                <h4 class="text-xl font-bold mb-2">Speed & Performance</h4>
+                                <p class="text-gray-400 text-sm">Page load time, Core Web Vitals, image compression, and
+                                    server response analysis.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-6">
+                            <span class="font-display font-black text-white/20 text-4xl">04</span>
+                            <div>
+                                <h4 class="text-xl font-bold mb-2">Conversion Map</h4>
+                                <p class="text-gray-400 text-sm">We pinpoint where visitors drop off and suggest
+                                    specific improvements to turn traffic into leads.</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="flex gap-6">
-                        <span class="font-display font-black text-white/20 text-4xl">02</span>
-                        <div>
-                            <h4 class="text-xl font-bold mb-2">SEO Health Check</h4>
-                            <p class="text-gray-400 text-sm">We identify missing meta data, keyword gaps, crawl issues, and structural SEO problems.</p>
+                </div>
+
+                <div class="reveal glass p-12 rounded-[40px] relative">
+                    <div class="absolute -top-10 -right-10 w-40 h-40 bg-orange-600/20 blur-[60px] rounded-full"></div>
+                    <h4 class="text-center text-sm font-bold uppercase tracking-widest text-gray-500 mb-8">Average SMB
+                        Score</h4>
+                    <div class="flex justify-center mb-8 relative">
+                        <svg class="w-48 h-48 -rotate-90">
+                            <circle cx="96" cy="96" r="80" fill="transparent" stroke="rgba(255,255,255,0.05)"
+                                stroke-width="12" />
+                            <circle id="score-ring" cx="96" cy="96" r="80" fill="transparent" stroke="var(--accent)"
+                                stroke-width="12" stroke-linecap="round" class="ring-fg" />
+                        </svg>
+                        <div class="absolute inset-0 flex flex-col items-center justify-center">
+                            <span class="text-6xl font-black tracking-tighter">42</span>
+                            <span
+                                class="text-xs font-bold text-gray-500 underline uppercase tracking-widest">Fail</span>
                         </div>
                     </div>
-                    <div class="flex gap-6">
-                        <span class="font-display font-black text-white/20 text-4xl">03</span>
-                        <div>
-                            <h4 class="text-xl font-bold mb-2">Speed & Performance</h4>
-                            <p class="text-gray-400 text-sm">Page load time, Core Web Vitals, image compression, and server response analysis.</p>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-gray-400">Page Speed</span>
+                            <span
+                                class="px-3 py-1 bg-red-500/10 text-red-500 border border-red-500/20 rounded-full text-[10px] font-bold uppercase">Poor</span>
                         </div>
-                    </div>
-                    <div class="flex gap-6">
-                        <span class="font-display font-black text-white/20 text-4xl">04</span>
-                        <div>
-                            <h4 class="text-xl font-bold mb-2">Conversion Map</h4>
-                            <p class="text-gray-400 text-sm">We pinpoint where visitors drop off and suggest specific improvements to turn traffic into leads.</p>
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-gray-400">Mobile UX</span>
+                            <span
+                                class="px-3 py-1 bg-orange-500/10 text-orange-500 border border-orange-500/20 rounded-full text-[10px] font-bold uppercase">Fair</span>
+                        </div>
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-gray-400">SEO Structure</span>
+                            <span
+                                class="px-3 py-1 bg-red-500/10 text-red-500 border border-red-500/20 rounded-full text-[10px] font-bold uppercase">Critical</span>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="reveal glass p-12 rounded-[40px] relative">
-                <div class="absolute -top-10 -right-10 w-40 h-40 bg-orange-600/20 blur-[60px] rounded-full"></div>
-                <h4 class="text-center text-sm font-bold uppercase tracking-widest text-gray-500 mb-8">Average SMB Score</h4>
-                <div class="flex justify-center mb-8 relative">
-                    <svg class="w-48 h-48 -rotate-90">
-                        <circle cx="96" cy="96" r="80" fill="transparent" stroke="rgba(255,255,255,0.05)" stroke-width="12"/>
-                        <circle id="score-ring" cx="96" cy="96" r="80" fill="transparent" stroke="var(--accent)" stroke-width="12" stroke-linecap="round" class="ring-fg"/>
-                    </svg>
-                    <div class="absolute inset-0 flex flex-col items-center justify-center">
-                        <span class="text-6xl font-black tracking-tighter">42</span>
-                        <span class="text-xs font-bold text-gray-500 underline uppercase tracking-widest">Fail</span>
-                    </div>
-                </div>
-                <div class="space-y-4">
-                    <div class="flex justify-between items-center text-sm">
-                        <span class="text-gray-400">Page Speed</span>
-                        <span class="px-3 py-1 bg-red-500/10 text-red-500 border border-red-500/20 rounded-full text-[10px] font-bold uppercase">Poor</span>
-                    </div>
-                    <div class="flex justify-between items-center text-sm">
-                        <span class="text-gray-400">Mobile UX</span>
-                        <span class="px-3 py-1 bg-orange-500/10 text-orange-500 border border-orange-500/20 rounded-full text-[10px] font-bold uppercase">Fair</span>
-                    </div>
-                    <div class="flex justify-between items-center text-sm">
-                        <span class="text-gray-400">SEO Structure</span>
-                        <span class="px-3 py-1 bg-red-500/10 text-red-500 border border-red-500/20 rounded-full text-[10px] font-bold uppercase">Critical</span>
-                    </div>
-                </div>
-            </div>
         </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- FORM SECTION -->
-  <section id="form-section" class="py-32 px-6 max-w-3xl mx-auto">
-    <div class="text-center mb-16 reveal">
-        <h2 class="text-4xl md:text-6xl font-bold tracking-tighter mb-6">Claim Your Free Audit</h2>
-        <p class="text-gray-400">Takes 30 seconds. We'll review your site and send your report within 48 hours.</p>
-    </div>
+    <!-- FORM SECTION -->
+    <section id="form-section" class="py-32 px-6 max-w-3xl mx-auto">
+        <div class="text-center mb-16 reveal">
+            <h2 class="text-4xl md:text-6xl font-bold tracking-tighter mb-6">Claim Your Free Audit</h2>
+            <p class="text-gray-400">Takes 30 seconds. We'll review your site and send your report within 48 hours.</p>
+        </div>
 
-    <div class="glass p-10 md:p-16 rounded-[40px] reveal">
-        <div class="space-y-6">
-            <div class="grid md:grid-cols-2 gap-6">
+        <div class="glass p-10 md:p-16 rounded-[40px] reveal">
+            <div class="space-y-6">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label
+                            class="block text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-2 ml-4">Full
+                            Name</label>
+                        <input type="text" id="name" placeholder="Rahul Sharma"
+                            class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-orange-500 transition-all">
+                    </div>
+                    <div>
+                        <label
+                            class="block text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-2 ml-4">Business
+                            Name</label>
+                        <input type="text" id="biz" placeholder="Sharma Interiors"
+                            class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-orange-500 transition-all">
+                    </div>
+                </div>
                 <div>
-                    <label class="block text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-2 ml-4">Full Name</label>
-                    <input type="text" id="name" placeholder="Rahul Sharma" class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-orange-500 transition-all">
+                    <label class="block text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-2 ml-4">Website
+                        URL</label>
+                    <input type="url" id="url" placeholder="https://yourwebsite.com"
+                        class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-orange-500 transition-all">
                 </div>
                 <div>
-                    <label class="block text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-2 ml-4">Business Name</label>
-                    <input type="text" id="biz" placeholder="Sharma Interiors" class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-orange-500 transition-all">
+                    <label
+                        class="block text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-2 ml-4">WhatsApp
+                        Number</label>
+                    <input type="tel" id="wa" placeholder="+91 98765 43210"
+                        class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-orange-500 transition-all">
                 </div>
+                <button onclick="handleSubmit()"
+                    class="clickable w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-5 rounded-2xl text-lg shadow-xl shadow-orange-500/20 transition-all">
+                    Request Free Audit →
+                </button>
+                <p class="text-center text-[10px] text-gray-600 uppercase tracking-widest font-bold">🔒 Private &
+                    Secure. No Spam.</p>
             </div>
-            <div>
-                <label class="block text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-2 ml-4">Website URL</label>
-                <input type="url" id="url" placeholder="https://yourwebsite.com" class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-orange-500 transition-all">
-            </div>
-            <div>
-                <label class="block text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-2 ml-4">WhatsApp Number</label>
-                <input type="tel" id="wa" placeholder="+91 98765 43210" class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-orange-500 transition-all">
-            </div>
-            <button onclick="handleSubmit()" class="clickable w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-5 rounded-2xl text-lg shadow-xl shadow-orange-500/20 transition-all">
-                Request Free Audit →
-            </button>
-            <p class="text-center text-[10px] text-gray-600 uppercase tracking-widest font-bold">🔒 Private & Secure. No Spam.</p>
         </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- FOOTER -->
-  <footer class="py-20 px-6 border-t border-white/5 text-center">
-    <div class="font-display font-bold text-2xl tracking-tighter mb-8">WebResolv<span class="text-orange-500">.</span></div>
-    <div class="flex justify-center gap-8 mb-8">
-        <a href="#" class="text-xs font-bold text-gray-500 hover:text-white uppercase tracking-widest transition-colors">Twitter</a>
-        <a href="#" class="text-xs font-bold text-gray-500 hover:text-white uppercase tracking-widest transition-colors">Instagram</a>
-        <a href="#" class="text-xs font-bold text-gray-500 hover:text-white uppercase tracking-widest transition-colors">LinkedIn</a>
-    </div>
-    <p class="text-[10px] text-gray-700 font-bold uppercase tracking-[0.2em] mb-4">© 2025 WebResolv Studio.</p>
-  </footer>
+    <!-- FOOTER -->
+    <footer class="py-20 px-6 border-t border-white/5 text-center">
+        <div class="font-display font-bold text-2xl tracking-tighter mb-8">WebResolv<span
+                class="text-orange-500">.</span></div>
+        <div class="flex justify-center gap-8 mb-8">
+            <a href="#"
+                class="text-xs font-bold text-gray-500 hover:text-white uppercase tracking-widest transition-colors">Twitter</a>
+            <a href="#"
+                class="text-xs font-bold text-gray-500 hover:text-white uppercase tracking-widest transition-colors">Instagram</a>
+            <a href="#"
+                class="text-xs font-bold text-gray-500 hover:text-white uppercase tracking-widest transition-colors">LinkedIn</a>
+        </div>
+        <p class="text-[10px] text-gray-700 font-bold uppercase tracking-[0.2em] mb-4">© 2025 WebResolv Studio.</p>
+    </footer>
 
-  <script>
-    lucide.createIcons();
+    <script>
+        lucide.createIcons();
 
-    // Reveal on Scroll
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("active");
-          }
+        // Reveal on Scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("active");
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+
+        // Spotlight & Cursor Logic
+        const spotlight = document.getElementById("spotlight");
+        const cursorDot = document.getElementById("cursor-dot");
+        const cursorOutline = document.getElementById("cursor-outline");
+
+        window.addEventListener("mousemove", (e) => {
+            const x = e.clientX;
+            const y = e.clientY;
+            spotlight.style.setProperty("--x", `${x}px`);
+            spotlight.style.setProperty("--y", `${y}px`);
+            cursorDot.style.left = `${x}px`;
+            cursorDot.style.top = `${y}px`;
+            cursorOutline.animate({ left: `${x}px`, top: `${y}px` }, { duration: 500, fill: "forwards" });
         });
-      }, { threshold: 0.1 });
-    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
 
-    // Spotlight & Cursor Logic
-    const spotlight = document.getElementById("spotlight");
-    const cursorDot = document.getElementById("cursor-dot");
-    const cursorOutline = document.getElementById("cursor-outline");
+        // Score Ring Animation
+        const scoreRing = document.getElementById('score-ring');
+        // Calculate 42% of circle
+        setTimeout(() => {
+            scoreRing.style.strokeDashoffset = 283 - (283 * 0.42);
+        }, 1000);
 
-    window.addEventListener("mousemove", (e) => {
-      const x = e.clientX;
-      const y = e.clientY;
-      spotlight.style.setProperty("--x", `${x}px`);
-      spotlight.style.setProperty("--y", `${y}px`);
-      cursorDot.style.left = `${x}px`;
-      cursorDot.style.top = `${y}px`;
-      cursorOutline.animate({ left: `${x}px`, top: `${y}px` }, { duration: 500, fill: "forwards" });
-    });
+        // Form Logic
+        function handleSubmit() {
+            const name = document.getElementById('name').value.trim();
+            const biz = document.getElementById('biz').value.trim();
+            const url = document.getElementById('url').value.trim();
+            const wa = document.getElementById('wa').value.trim();
 
-    // Score Ring Animation
-    const scoreRing = document.getElementById('score-ring');
-    // Calculate 42% of circle
-    setTimeout(() => {
-        scoreRing.style.strokeDashoffset = 283 - (283 * 0.42);
-    }, 1000);
+            if (!name || !biz || !url || !wa) {
+                alert('Please fill in all fields.');
+                return;
+            }
 
-    // Form Logic
-    function handleSubmit() {
-      const name = document.getElementById('name').value.trim();
-      const biz = document.getElementById('biz').value.trim();
-      const url = document.getElementById('url').value.trim();
-      const wa = document.getElementById('wa').value.trim();
+            const msg = `Hi WebResolv! 👋\n\nI'd like a free website audit.\n\n*Name:* ${name}\n*Business:* ${biz}\n*Website:* ${url}\n\nLooking forward to hearing from you!`;
+            const encoded = encodeURIComponent(msg);
+            const phone = wa.replace(/\D/g, '');
+            const waURL = `https://wa.me/918920059901?text=${encoded}`; // Corrected to WebResolv's WhatsApp
 
-      if (!name || !biz || !url || !wa) {
-        alert('Please fill in all fields.');
-        return;
-      }
-
-      const msg = `Hi WebResolv! 👋\n\nI'd like a free website audit.\n\n*Name:* ${name}\n*Business:* ${biz}\n*Website:* ${url}\n\nLooking forward to hearing from you!`;
-      const encoded = encodeURIComponent(msg);
-      const phone = wa.replace(/\D/g, '');
-      const waURL = `https://wa.me/918920059901?text=${encoded}`; // Corrected to WebResolv's WhatsApp
-
-      window.open(waURL, '_blank');
-    }
-  </script>
+            window.open(waURL, '_blank');
+        }
+    </script>
 </body>
+
 </html>
