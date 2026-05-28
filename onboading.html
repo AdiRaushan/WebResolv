@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebResolv | Client Onboarding Kit</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --orange: #f97316;
+            --dark: #050505;
+            --ink: #FFFFFF;
+            --mid: #94a3b8;
+            --soft: #64748b;
+            --rule: rgba(255, 255, 255, 0.1);
+            --glass: rgba(255, 255, 255, 0.03);
+            --glass-hover: rgba(255, 255, 255, 0.08);
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #111111;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+            padding: 48px 24px;
+            color: var(--ink);
+        }
+
+        @media print {
+            body {
+                padding: 0;
+                background: #000;
+            }
+
+            .page {
+                border: none;
+                box-shadow: none;
+                margin: 0;
+            }
+
+            .no-print {
+                display: none !important;
+            }
+        }
+
+        .download-btn {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            background: var(--orange);
+            color: var(--dark);
+            border: none;
+            padding: 10px 18px;
+            border-radius: 4px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(249, 115, 22, 0.3);
+            transition: transform 0.2s;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .approve-btn {
+            background: rgba(249, 115, 22, 0.1);
+            color: var(--orange);
+            border: 1px solid var(--orange);
+            padding: 20px 24px;
+            border-radius: 4px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            height: 100%;
+            transition: all 0.3s;
+        }
+
+        .approve-btn:hover {
+            background: var(--orange);
+            color: var(--dark);
+        }
+
+        /* --- NOISE TEXTURE --- */
+        .noise {
+            position: absolute;
+            inset: 0;
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 50;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* ─── PAGE SHELL ─── */
+        .page {
+            width: 100%;
+            max-width: 794px;
+            min-height: 1123px;
+            background: var(--dark);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 60px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 48px;
+            page-break-after: always;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* ─── SHARED HEADER STRIP ─── */
+        .page-header-strip {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 52px;
+            border-bottom: 1px solid var(--rule);
+            z-index: 10;
+        }
+
+        .logo-mark {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            letter-spacing: -0.02em;
+            color: var(--white);
+        }
+
+        .logo-mark span.dot {
+            color: var(--orange);
+        }
+
+        .ref-tag {
+            font-size: 10px;
+            letter-spacing: 0.15em;
+            color: var(--soft);
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        /* ─── SHARED FOOTER STRIP ─── */
+        .page-footer-strip {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 52px;
+            border-top: 1px solid var(--rule);
+            z-index: 10;
+        }
+
+        .page-footer-strip span {
+            font-size: 10px;
+            color: var(--soft);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .pg-num {
+            width: 28px;
+            height: 28px;
+            border: 1px solid var(--orange);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            color: var(--orange);
+            font-weight: 700;
+            background: rgba(249, 115, 22, 0.05);
+        }
+
+        /* ══════════════════════════════════
+           PAGE 1 – COVER
+        ══════════════════════════════════ */
+        .cover-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cover-top-band {
+            background: linear-gradient(135deg, #0a0a0a 0%, #000000 100%);
+            padding: 64px 52px 52px;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .cover-top-band::before {
+            content: '';
+            position: absolute;
+            right: -100px;
+            top: -100px;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(249, 115, 22, 0.1) 0%, transparent 70%);
+            filter: blur(40px);
+        }
+
+        .cover-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(249, 115, 22, 0.1);
+            border: 1px solid rgba(249, 115, 22, 0.2);
+            color: var(--orange);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            padding: 8px 16px;
+            margin-bottom: 40px;
+            border-radius: 4px;
+        }
+
+        .cover-headline {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 58px;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 0.95;
+            letter-spacing: -0.04em;
+            max-width: 520px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-headline em {
+            font-style: normal;
+            color: var(--orange);
+        }
+
+        .cover-sub {
+            font-size: 15px;
+            color: var(--mid);
+            margin-top: 24px;
+            line-height: 1.6;
+            max-width: 460px;
+            position: relative;
+            z-index: 1;
+            font-weight: 300;
+        }
+
+        .cover-mid {
+            padding: 52px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .cover-meta-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 0;
+            border: 1px solid var(--rule);
+            background: var(--glass);
+        }
+
+        .meta-cell {
+            padding: 24px;
+            border-right: 1px solid var(--rule);
+        }
+
+        .meta-cell:last-child {
+            border-right: none;
+        }
+
+        .meta-label {
+            font-size: 9px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--soft);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .meta-value {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--white);
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .cover-intro-text {
+            font-size: 16px;
+            color: var(--mid);
+            line-height: 1.7;
+            border-left: 3px solid var(--orange);
+            padding-left: 24px;
+            font-weight: 400;
+        }
+
+        .cover-scope-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .scope-pill {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 20px;
+            background: var(--glass);
+            border: 1px solid var(--rule);
+            transition: all 0.3s ease;
+        }
+
+        .scope-icon {
+            width: 36px;
+            height: 36px;
+            background: rgba(249, 115, 22, 0.1);
+            color: var(--orange);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            border: 1px solid rgba(249, 115, 22, 0.2);
+        }
+
+        .scope-icon svg {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .scope-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--white);
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .scope-sub {
+            font-size: 11px;
+            color: var(--soft);
+            margin-top: 4px;
+        }
+
+        /* ══════════════════════════════════
+           PAGE 2 – WELCOME + TIMELINE
+        ══════════════════════════════════ */
+        .content-body {
+            flex: 1;
+            padding: 52px;
+            display: flex;
+            flex-direction: column;
+            gap: 44px;
+            position: relative;
+            z-index: 5;
+        }
+
+        .section-eyebrow {
+            font-size: 10px;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--orange);
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 34px;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.1;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .section-body {
+            font-size: 15px;
+            color: var(--mid);
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        .divider {
+            height: 1px;
+            background: linear-gradient(to right, var(--rule) 0%, transparent 100%);
+        }
+
+        /* Timeline */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 39px;
+            top: 20px;
+            bottom: 20px;
+            width: 1px;
+            background: var(--rule);
+        }
+
+        .tl-item {
+            display: flex;
+            gap: 32px;
+            align-items: flex-start;
+            padding: 20px 0;
+        }
+
+        .tl-node {
+            width: 28px;
+            height: 28px;
+            background: var(--dark);
+            border: 1px solid var(--orange);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--orange);
+            flex-shrink: 0;
+            position: relative;
+            z-index: 1;
+            margin-top: 4px;
+            margin-left: 26px;
+            box-shadow: 0 0 15px rgba(249, 115, 22, 0.2);
+        }
+
+        .tl-node.filled {
+            background: var(--orange);
+            color: var(--dark);
+        }
+
+        .tl-content {
+            flex: 1;
+        }
+
+        .tl-phase {
+            font-size: 9px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--soft);
+            margin-bottom: 6px;
+            font-weight: 700;
+        }
+
+        .tl-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 6px;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .tl-desc {
+            font-size: 13px;
+            color: var(--mid);
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        .tl-days {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--orange);
+            white-space: nowrap;
+            margin-top: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Checklist */
+        .checklist {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .check-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            font-size: 14px;
+            color: var(--mid);
+            line-height: 1.5;
+            padding: 12px;
+            background: var(--glass);
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .check-box {
+            width: 20px;
+            height: 20px;
+            border: 1px solid var(--orange);
+            flex-shrink: 0;
+            margin-top: 1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(249, 115, 22, 0.05);
+        }
+
+        .check-box svg {
+            width: 12px;
+            height: 12px;
+            stroke: var(--orange);
+            stroke-width: 2.5;
+        }
+
+        /* ══════════════════════════════════
+           PAGE 3 – SERVICES + INVESTMENT
+        ══════════════════════════════════ */
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 16px;
+        }
+
+        .service-card {
+            background: var(--glass);
+            border: 1px solid var(--rule);
+            padding: 28px 24px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--orange);
+            opacity: 0.5;
+        }
+
+        .service-cat {
+            font-size: 9px;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--soft);
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .service-name {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 20px;
+            line-height: 1.3;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .service-items {
+            list-style: none;
+        }
+
+        .service-items li {
+            font-size: 12px;
+            color: var(--mid);
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .service-items li:last-child {
+            border-bottom: none;
+        }
+
+        .service-items li::before {
+            content: '';
+            width: 4px;
+            height: 4px;
+            background: var(--orange);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* Pricing */
+        .pricing-block {
+            background: linear-gradient(135deg, #0f0f0f 0%, #000000 100%);
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 1.2fr 1.8fr;
+            gap: 40px;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--rule);
+        }
+
+        .pricing-block::after {
+            content: '';
+            position: absolute;
+            right: -60px;
+            top: -60px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(249, 115, 22, 0.08) 0%, transparent 70%);
+            filter: blur(30px);
+        }
+
+        .price-label {
+            font-size: 10px;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--soft);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .price-amount {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 64px;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1;
+            letter-spacing: -0.05em;
+        }
+
+        .price-amount sup {
+            font-size: 24px;
+            vertical-align: top;
+            margin-top: 12px;
+            display: inline-block;
+            color: var(--orange);
+            font-weight: 400;
+        }
+
+        .price-note {
+            font-size: 11px;
+            color: var(--soft);
+            margin-top: 12px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        .price-split {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .split-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 14px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .split-row:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .split-item {
+            font-size: 13px;
+            color: var(--mid);
+            font-weight: 300;
+        }
+
+        .split-val {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--white);
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* ══════════════════════════════════
+           PAGE 4 – ONBOARDING CHECKLIST + SIGN
+        ══════════════════════════════════ */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+        }
+
+        .info-block {
+            background: var(--glass);
+            border: 1px solid var(--rule);
+            padding: 28px;
+        }
+
+        .info-block-title {
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--orange);
+            font-weight: 800;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--rule);
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            padding: 10px 0;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.05);
+            color: var(--mid);
+            font-weight: 300;
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-row strong {
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .onboard-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .step-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 20px;
+            background: var(--glass);
+            border: 1px solid var(--rule);
+        }
+
+        .step-num {
+            width: 32px;
+            height: 32px;
+            background: rgba(249, 115, 22, 0.1);
+            border: 1px solid var(--orange);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 800;
+            color: var(--orange);
+            flex-shrink: 0;
+        }
+
+        .step-text {
+            font-size: 14px;
+            color: var(--mid);
+            line-height: 1.6;
+            padding-top: 4px;
+        }
+
+        .step-text strong {
+            color: var(--white);
+            display: block;
+            margin-bottom: 4px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 16px;
+            letter-spacing: -0.01em;
+        }
+
+        /* Sign-off block */
+        .signoff {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 8px;
+        }
+
+        .sign-party {
+            background: var(--glass);
+            border: 1px solid var(--rule);
+            padding: 28px;
+            position: relative;
+        }
+
+        .sign-party-label {
+            font-size: 9px;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--soft);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .sign-party-name {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 4px;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .sign-party-role {
+            font-size: 12px;
+            color: var(--soft);
+            margin-bottom: 32px;
+            font-weight: 500;
+        }
+
+        .sign-line {
+            border-top: 1px solid var(--white);
+            padding-top: 10px;
+            font-size: 10px;
+            color: var(--soft);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .sign-date-box {
+            position: absolute;
+            top: 28px;
+            right: 28px;
+            font-size: 11px;
+            color: var(--soft);
+            font-weight: 600;
+        }
+
+        .cta-strip {
+            background: var(--orange);
+            padding: 28px 36px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 4px;
+            margin-top: 12px;
+        }
+
+        .cta-text {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--dark);
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .cta-sub {
+            font-size: 12px;
+            color: rgba(0, 0, 0, 0.6);
+            margin-top: 4px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="download-btn no-print" onclick="window.print()">
+        <i data-lucide="printer" style="width: 16px; height: 16px;"></i> Download PDF
+    </button>
+
+    <!-- PAGE 1: COVER -->
+    <div class="page">
+        <div class="noise"></div>
+        <div class="page-header-strip">
+            <div class="logo-mark">WebResolv<span class="dot">.</span></div>
+            <div class="ref-tag">Strategy Proposal 2026</div>
+        </div>
+
+        <div class="cover-body">
+            <div class="cover-top-band">
+                <div class="cover-badge">
+                    <i data-lucide="zap" style="width: 12px; height: 12px;"></i>
+                    Digital Expansion Blueprint
+                </div>
+                <h1 class="cover-headline">Project Strategy <br /><em>Proposal</em> · 2026</h1>
+                <p class="cover-sub">A comprehensive roadmap to transform your digital presence — from a
+                    high-performance web architecture to an engine for growth.</p>
+            </div>
+
+            <div class="cover-mid">
+                <div class="cover-meta-row">
+                    <div class="meta-cell">
+                        <div class="meta-label">Prepared By</div>
+                        <div class="meta-value">WebResolv</div>
+                    </div>
+                    <div class="meta-cell">
+                        <div class="meta-label">Prepared For</div>
+                        <div class="meta-value">Bizeneed India Pvt Ltd.</div>
+                    </div>
+                    <div class="meta-cell">
+                        <div class="meta-label">Date</div>
+                        <div class="meta-value">April 2026</div>
+                    </div>
+                </div>
+
+                <div class="cover-intro-text">
+                    After a thorough audit of your digital ecosystem, we've identified the gaps preventing your business
+                    from scaling online. This proposal outlines a unified approach that turns your website into a
+                    conversion machine.
+                </div>
+
+                <div class="cover-scope-grid">
+                    <div class="scope-pill">
+                        <div class="scope-icon"><i data-lucide="layout-template"></i></div>
+                        <div>
+                            <div class="scope-label">127+ Pages</div>
+                            <div class="scope-sub">Complete Authority Site</div>
+                        </div>
+                    </div>
+                    <div class="scope-pill">
+                        <div class="scope-icon"><i data-lucide="palette"></i></div>
+                        <div>
+                            <div class="scope-label">Premium Design</div>
+                            <div class="scope-sub">Unified Brand Aesthetic</div>
+                        </div>
+                    </div>
+                    <div class="scope-pill">
+                        <div class="scope-icon"><i data-lucide="trending-up"></i></div>
+                        <div>
+                            <div class="scope-label">Higher Conversion</div>
+                            <div class="scope-sub">Lead-to-Booking Boost</div>
+                        </div>
+                    </div>
+                    <div class="scope-pill">
+                        <div class="scope-icon"><i data-lucide="shield-check"></i></div>
+                        <div>
+                            <div class="scope-label">Client Trust</div>
+                            <div class="scope-sub">Increased Retention</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-footer-strip">
+            <span>Confidential Document</span>
+            <div class="pg-num">1</div>
+        </div>
+    </div>
+
+    <!-- PAGE 2: ARCHITECTURE & SCOPE -->
+    <div class="page">
+        <div class="noise"></div>
+        <div class="page-header-strip">
+            <div class="logo-mark">WebResolv<span class="dot">.</span></div>
+            <div class="ref-tag">Scope of Work</div>
+        </div>
+
+        <div class="content-body">
+            <div>
+                <div class="section-eyebrow">Phase 01</div>
+                <h2 class="section-title">Web Architecture & Redesign</h2>
+                <p class="section-body">Full structural overhaul + Premium design system focusing on depth and modern
+                    authority.</p>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="services-grid" style="grid-template-columns: 1fr 1fr; gap: 24px;">
+                <div class="service-card">
+                    <div class="service-cat">Step 1</div>
+                    <div class="service-name">Create 71 Missing Pages</div>
+                    <ul class="service-items">
+                        <li>Ensure every service is visible</li>
+                        <li>High-intent search targeting</li>
+                        <li>Custom sub-domain structuring</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-cat">Step 2</div>
+                    <div class="service-name">Redesign 56 Existing Pages</div>
+                    <ul class="service-items">
+                        <li>Overhaul Home & Shop</li>
+                        <li>Premium glassmorphism layout</li>
+                        <li>Mobile-first architecture</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-cat">Step 3</div>
+                    <div class="service-name">Keyword SEO (127 Pages)</div>
+                    <ul class="service-items">
+                        <li>High-search term optimization</li>
+                        <li>Rank higher on Google</li>
+                        <li>Professional authority indicators</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-cat">Step 4</div>
+                    <div class="service-name">Shop & Product Optimization</div>
+                    <ul class="service-items">
+                        <li>Higher conversion checkout</li>
+                        <li>Final testing across all pages</li>
+                        <li>Lead generation forms</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="info-block">
+                <div class="info-block-title">Why Missing Pages Hurt Your Business</div>
+                <p class="section-body">
+                    When services exist in your business but not on your website, Google cannot show your business to
+                    people searching for those specific services. Rebuilding these 71 pages isn't just about design,
+                    it's about capturing lost revenue by ensuring you rank for every service you offer.
+                </p>
+            </div>
+        </div>
+
+        <div class="page-footer-strip">
+            <span>Confidential Document</span>
+            <div class="pg-num">2</div>
+        </div>
+    </div>
+
+    <!-- PAGE 3: TIMELINE & TECH STACK -->
+    <div class="page">
+        <div class="noise"></div>
+        <div class="page-header-strip">
+            <div class="logo-mark">WebResolv<span class="dot">.</span></div>
+            <div class="ref-tag">Project Timeline & Stack</div>
+        </div>
+
+        <div class="content-body">
+            <div>
+                <div class="section-eyebrow">Execution Roadmap</div>
+                <h2 class="section-title">12-Day Development Sprint</h2>
+                <p class="section-body">A high-velocity, structured development process building your modern web app
+                    using the React ecosystem.</p>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="two-col" style="grid-template-columns: 1fr 1fr;">
+                <div class="timeline">
+                    <div class="tl-item">
+                        <div class="tl-node filled"><i data-lucide="rocket" style="width:12px; height:12px;"></i></div>
+                        <div class="tl-content">
+                            <div class="tl-phase">Phase 1</div>
+                            <div class="tl-title">Foundation & Routing</div>
+                            <div class="tl-desc">Project initialization, Tailwind schema setup, and generating routing
+                                for the 71 missing SEO pages.</div>
+                            <div class="tl-days">Days 1 - 3</div>
+                        </div>
+                    </div>
+                    <div class="tl-item">
+                        <div class="tl-node"><i data-lucide="monitor" style="width:12px; height:12px;"></i></div>
+                        <div class="tl-content">
+                            <div class="tl-phase">Phase 2</div>
+                            <div class="tl-title">Architecture Redesign</div>
+                            <div class="tl-desc">Overhauling the Home, Shop, and previous 56 pages into a premium React
+                                glassmorphism layout.</div>
+                            <div class="tl-days">Days 4 - 7</div>
+                        </div>
+                    </div>
+                    <div class="tl-item">
+                        <div class="tl-node"><i data-lucide="search" style="width:12px; height:12px;"></i></div>
+                        <div class="tl-content">
+                            <div class="tl-phase">Phase 3</div>
+                            <div class="tl-title">SEO & Integrations</div>
+                            <div class="tl-desc">High-Search SEO keyword injection across all 127 pages, plus lead form
+                                connections.</div>
+                            <div class="tl-days">Days 8 - 10</div>
+                        </div>
+                    </div>
+                    <div class="tl-item">
+                        <div class="tl-node"><i data-lucide="check-circle" style="width:12px; height:12px;"></i></div>
+                        <div class="tl-content">
+                            <div class="tl-phase">Phase 4</div>
+                            <div class="tl-title">Testing & Launch</div>
+                            <div class="tl-desc">Cross-device responsive testing, performance optimization, and final
+                                deployment.</div>
+                            <div class="tl-days">Days 11 - 12</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display:flex; flex-direction: column; gap: 24px;">
+                    <div class="info-block" style="flex: 1;">
+                        <div class="info-block-title">Modern Technology Stack</div>
+                        <p class="section-body" style="font-size: 13px; margin-bottom: 20px;">
+                            We don't use dated templates. Your updated platform will be engineered from the ground up
+                            using a modern, scalable technology stack for maximum speed, security, and aesthetics.
+                        </p>
+
+                        <div class="checklist">
+                            <div class="check-item">
+                                <div class="check-box" style="background:transparent; border:none;"><i
+                                        data-lucide="code" style="color:var(--orange);"></i></div>
+                                <div>
+                                    <strong
+                                        style="color:var(--white);font-weight:600;display:block;margin-bottom:4px;">React
+                                        & Vite JS</strong>
+                                    Next-gen dynamic rendering for an instantaneous browsing experience.
+                                </div>
+                            </div>
+                            <div class="check-item">
+                                <div class="check-box" style="background:transparent; border:none;"><i
+                                        data-lucide="pen-tool" style="color:var(--orange);"></i></div>
+                                <div>
+                                    <strong
+                                        style="color:var(--white);font-weight:600;display:block;margin-bottom:4px;">Tailwind
+                                        CSS</strong>
+                                    Utility-first robust design system ensuring perfect responsiveness anywhere.
+                                </div>
+                            </div>
+                            <div class="check-item">
+                                <div class="check-box" style="background:transparent; border:none;"><i
+                                        data-lucide="sparkles" style="color:var(--orange);"></i></div>
+                                <div>
+                                    <strong
+                                        style="color:var(--white);font-weight:600;display:block;margin-bottom:4px;">Framer
+                                        Motion</strong>
+                                    Micro-interaction engine powering smooth, premium glassmorphic animations.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-footer-strip">
+            <span>Confidential Document</span>
+            <div class="pg-num">3</div>
+        </div>
+    </div>
+
+    <!-- PAGE 4: INVESTMENT & SIGN-OFF -->
+    <div class="page">
+        <div class="noise"></div>
+        <div class="page-header-strip">
+            <div class="logo-mark">WebResolv<span class="dot">.</span></div>
+            <div class="ref-tag">Investment Summary</div>
+        </div>
+
+        <div class="content-body">
+            <div>
+                <div class="section-eyebrow">Financial Outline</div>
+                <h2 class="section-title">Architecture Investment</h2>
+                <p class="section-body">A transparent breakdown of the required investment to execute the proposed
+                    digital strategy over a 10 to 12 day turnaround timeline.</p>
+            </div>
+
+            <div class="pricing-block">
+                <div>
+                    <div class="price-label">Web Rebuild Total</div>
+                    <div class="price-amount"><sup>₹</sup>30,000</div>
+                    <div class="price-note">Timeline: 10 - 12 Days Max</div>
+                </div>
+                <div class="price-split">
+                    <div class="split-row">
+                        <div class="split-item">Create 71 missing service pages</div>
+                        <div class="split-val">Included</div>
+                    </div>
+                    <div class="split-row">
+                        <div class="split-item">Redesign 56 existing pages</div>
+                        <div class="split-val">Included</div>
+                    </div>
+                    <div class="split-row">
+                        <div class="split-item">High-Search SEO (127 Pages)</div>
+                        <div class="split-val">Included</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 16px; text-align: center;" class="no-print">
+            <a href="#"
+                style="color: var(--mid); font-size: 13px; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 4px; background: var(--glass); border: 1px solid var(--rule); transition: all 0.3s;"
+                onmouseover="this.style.background='var(--glass-hover)'; this.style.borderColor='var(--orange)';"
+                onmouseout="this.style.background='var(--glass)'; this.style.borderColor='var(--rule)';">
+                <i data-lucide="message-circle" style="width: 14px; height: 14px; color: var(--orange);"></i> Wait, we
+                need to talk about the product first.
+            </a>
+        </div>
+
+        <div class="divider" style="margin-top: 24px;"></div>
+
+        <div class="two-col">
+            <div class="info-block">
+                <div class="info-block-title">Phase 1: Advance</div>
+                <div class="info-row">
+                    <span>Due at Onboarding</span>
+                    <strong>₹15,000</strong>
+                </div>
+                <p style="font-size: 11px; color: var(--soft); margin-top: 12px; line-height: 1.5;">Initiates the
+                    project, secures server environments, and hands off design assets to the development team.</p>
+            </div>
+            <div class="info-block">
+                <div class="info-block-title">Phase 2: Completion</div>
+                <div class="info-row">
+                    <span>Due post-testing</span>
+                    <strong>₹15,000</strong>
+                </div>
+                <p style="font-size: 11px; color: var(--soft); margin-top: 12px; line-height: 1.5;">Invoiced upon
+                    successful launch and handoff of the new platform. Final deliverables provided.</p>
+            </div>
+        </div>
+
+        <div style="flex: 1;"></div>
+
+        <div>
+            <div class="section-eyebrow">Authorization</div>
+            <div class="signoff">
+                <div class="sign-party"
+                    style="display: flex; align-items: center; justify-content: center; padding: 0; background: transparent; border: none;">
+                    <button class="approve-btn no-print"
+                        onclick="window.open('https://wa.me/919217671611?text=Hi%2C%20I%20have%20reviewed%20and%20approved%20the%20%E2%82%B930%2C000%20Onboarding%20Proposal%20for%20Bizeneed.%20Let%27s%20get%20started!', '_blank')">
+                        <i data-lucide="check-circle-2"></i>
+                        Approve This Onboarding Letter
+                    </button>
+                </div>
+                <div class="sign-party">
+                    <div class="sign-date-box">April 2026</div>
+                    <div class="sign-party-label">Prepared By</div>
+                    <div class="sign-party-name">WebResolv</div>
+                    <div class="sign-party-role">Digital Growth Partners</div>
+                    <div class="sign-line">Authorized Signatory</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-footer-strip">
+        <span>Confidential Document</span>
+        <div class="pg-num">4</div>
+    </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

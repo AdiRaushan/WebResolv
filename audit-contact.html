@@ -146,13 +146,24 @@
     <div id="cursor-outline" class="hidden md:block"></div>
 
     <!-- NAV -->
-    <nav class="fixed top-0 w-full z-40 px-6 py-8 flex justify-between items-center mix-blend-difference text-white">
-        <a href="/"
-            class="font-display font-bold text-2xl tracking-tighter hover:text-orange-400 transition-colors">WebResolv<span
-                class="text-orange-500">.</span></a>
-        <a href="#form-section"
-            class="glass px-6 py-2 rounded-full text-xs font-bold hover:bg-white hover:text-black hover:border-white transition-all">FREE
-            AUDIT →</a>
+    <nav id="top-nav"
+        class="fixed top-0 w-full z-40 px-4 md:px-6 py-4 md:py-6 flex justify-between items-center mix-blend-difference text-white transition-all duration-500">
+        <a href="/" class="font-display font-bold text-lg md:text-xl tracking-tighter hover:text-orange-500 transition-colors clickable">
+            WebResolv<span class="text-orange-500">.</span>
+        </a>
+
+        <!-- Right Side Actions -->
+        <div class="flex items-center gap-2 md:gap-3">
+            <a href="mailto:webresolv16@gmail.com"
+                class="glass px-3 md:px-6 py-1.5 md:py-2 rounded-full text-[10px] md:text-xs font-bold hover:bg-white hover:text-black hover:border-white transition-all clickable touch-manipulation">START
+                PROJECT</a>
+
+            <a href="https://wa.me/919217671611" target="_blank" rel="noopener noreferrer"
+                class="glass px-3 md:px-6 py-1.5 md:py-2 rounded-full text-[10px] md:text-xs font-bold hover:bg-[#25D366] hover:text-black hover:border-[#25D366] transition-all clickable touch-manipulation flex items-center gap-1.5">
+                <i data-lucide="message-circle" class="w-3.5 h-3.5 md:w-4 h-4 text-[#25D366]"></i>
+                <span>WHATSAPP</span>
+            </a>
+        </div>
     </nav>
 
     <!-- HERO -->
@@ -170,10 +181,16 @@
             rankings.
         </p>
         <div class="reveal flex flex-col items-center gap-6">
-            <a href="#form-section"
-                class="clickable bg-white text-black px-10 py-5 rounded-full font-bold text-lg hover:scale-105 transition-all shadow-2xl">
-                Get My Free Audit →
-            </a>
+            <div class="flex flex-col sm:flex-row gap-4 w-full justify-center">
+                <a href="#form-section"
+                    class="clickable bg-white text-black px-10 py-5 rounded-full font-bold text-lg hover:scale-105 transition-all shadow-2xl text-center">
+                    Get My Free Audit →
+                </a>
+                <a href="/audit-report.html"
+                    class="clickable glass border border-white/20 text-white px-10 py-5 rounded-full font-bold text-lg hover:bg-white/5 hover:border-white/40 transition-all text-center">
+                    View Live Sample Audit →
+                </a>
+            </div>
             <span class="text-gray-500 text-xs uppercase tracking-widest font-medium">No cost. No strings. 100% honest
                 feedback.</span>
         </div>
@@ -362,14 +379,14 @@
         <div class="font-display font-bold text-2xl tracking-tighter mb-8">WebResolv<span
                 class="text-orange-500">.</span></div>
         <div class="flex justify-center gap-8 mb-8">
-            <a href="#"
+            <a href="https://x.com/webresolv" target="_blank" rel="noopener noreferrer"
                 class="text-xs font-bold text-gray-500 hover:text-white uppercase tracking-widest transition-colors">Twitter</a>
-            <a href="#"
+            <a href="https://www.instagram.com/webresolv/" target="_blank" rel="noopener noreferrer"
                 class="text-xs font-bold text-gray-500 hover:text-white uppercase tracking-widest transition-colors">Instagram</a>
-            <a href="#"
+            <a href="https://linkedin.com/company/webresolv" target="_blank" rel="noopener noreferrer"
                 class="text-xs font-bold text-gray-500 hover:text-white uppercase tracking-widest transition-colors">LinkedIn</a>
         </div>
-        <p class="text-[10px] text-gray-700 font-bold uppercase tracking-[0.2em] mb-4">© 2025 WebResolv Studio.</p>
+        <p class="text-[10px] text-gray-700 font-bold uppercase tracking-[0.2em] mb-4">© 2026 WebResolv Studio.</p>
     </footer>
 
     <script>
@@ -400,6 +417,20 @@
             cursorOutline.animate({ left: `${x}px`, top: `${y}px` }, { duration: 500, fill: "forwards" });
         });
 
+        // Top Navbar Glassmorphism & Blur on Scroll
+        const topNav = document.getElementById("top-nav");
+        if (topNav) {
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 50) {
+                    topNav.classList.add("bg-[#050505]/80", "backdrop-blur-lg", "border-b", "border-white/5", "py-3");
+                    topNav.classList.remove("py-4", "md:py-6", "mix-blend-difference");
+                } else {
+                    topNav.classList.remove("bg-[#050505]/80", "backdrop-blur-lg", "border-b", "border-white/5", "py-3");
+                    topNav.classList.add("py-4", "md:py-6", "mix-blend-difference");
+                }
+            });
+        }
+
         // Score Ring Animation
         const scoreRing = document.getElementById('score-ring');
         // Calculate 42% of circle
@@ -422,7 +453,7 @@
             const msg = `Hi WebResolv! 👋\n\nI'd like a free website audit.\n\n*Name:* ${name}\n*Business:* ${biz}\n*Website:* ${url}\n\nLooking forward to hearing from you!`;
             const encoded = encodeURIComponent(msg);
             const phone = wa.replace(/\D/g, '');
-            const waURL = `https://wa.me/918920059901?text=${encoded}`; // Corrected to WebResolv's WhatsApp
+            const waURL = `https://wa.me/919217671611?text=${encoded}`; // Corrected to WebResolv's WhatsApp
 
             window.open(waURL, '_blank');
         }
