@@ -1,0 +1,16 @@
+{
+  "name": "WebResolv Studio",
+  "short_name": "WebResolv",
+  "description": "High-performance web design and WhatsApp automation agency.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050505",
+  "theme_color": "#050505",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+Disallow: /admin/
+Disallow: /thank-you/
+Disallow: /dashboard.html
+Disallow: /onboading.html
+Disallow: /?*
+Disallow: /cdn-cgi/
+
+Sitemap: https://webresolv.in/sitemap.xml
