@@ -765,9 +765,9 @@
       <div class="relative p-8 md:p-14 lg:p-16 flex flex-col justify-between bg-[#0a0a0a] border-r border-white/5">
         <!-- Project image -->
         <div class="relative rounded-2xl overflow-hidden aspect-[4/3] mb-8 group">
-          <img src="assets/projects/aura-estate/Aura Estate.webp" width="1906" height="907"
+          <img src="assets/projects/aura-estate/Aura Estate.webp" width="1906" height="912"
             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 brightness-[0.8]"
-            alt="Peak & Pine Coffee Project" />
+            alt="Aura Estate Real Estate Project Showcase" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
           <div class="absolute top-5 left-5">
             <span class="text-[9px] uppercase tracking-[0.2em] font-bold text-gray-400">Recent Project</span>
@@ -776,9 +776,9 @@
 
         <!-- Project info -->
         <div class="reveal">
-          <h3 class="text-xl md:text-2xl font-bold text-white mb-3">Peak & Pine Coffee</h3>
+          <h3 class="text-xl md:text-2xl font-bold text-white mb-3">Aura Estate</h3>
           <div class="flex flex-wrap gap-x-8 gap-y-2 text-[10px] uppercase tracking-widest text-gray-500 font-bold">
-            <span>Brand Design</span>
+            <span>Real Estate</span>
             <span>UI/UX Design</span>
             <span>Web Development</span>
           </div>
@@ -3191,6 +3191,9 @@
           });
 
           lucide.createIcons();
+          if (window.ScrollTrigger) {
+            ScrollTrigger.refresh();
+          }
         } catch (err) {
           console.error("Error rendering insights:", err);
         }
@@ -3198,7 +3201,9 @@
       renderInsights();
 
       lucide.createIcons();
-      gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+      const initGSAP = () => {
+        gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 
 
@@ -3302,7 +3307,7 @@
           x: () => -(track.scrollWidth - window.innerWidth),
           ease: "none",
           scrollTrigger: {
-            trigger: ".projects-pin-container",
+            trigger: "#work",
             pin: true,
             scrub: 1,
             start: "top top",
@@ -3481,6 +3486,16 @@
           }
         }
       };
+      
+      // Recalculate ScrollTrigger parameters on load
+      ScrollTrigger.refresh();
+      };
+
+      if (document.readyState === "complete") {
+        setTimeout(initGSAP, 100);
+      } else {
+        window.addEventListener("load", initGSAP);
+      }
 
 
 
