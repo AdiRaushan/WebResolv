@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+
+  <!-- Primary Meta Tags & Preloads -->
+  <link rel="preload" href="images/herobg.webp" as="image" type="image/webp" />
+  <title>Services — Web Design & WhatsApp Automation | WebResolv</title>
+  <meta name="title" content="Services — Web Design & WhatsApp Automation | WebResolv" />
+  <meta name="description"
+    content="Explore our range of services: from custom web design and development to advanced WhatsApp CRM automation and lead generation systems." />
+  <meta name="author" content="WebResolv" />
+  <meta name="robots" content="index, follow" />
+  <meta name="language" content="English" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://unpkg.com/lucide@latest"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-color: #050505;
+      --accent: #f97316;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background-color: var(--bg-color);
+      color: #ffffff;
+      overflow-x: hidden;
+    }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (min-width: 768px) {
+      body {
+        cursor: none;
+      }
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    .font-display {
+      font-family: "Space Grotesk", sans-serif;
+    }
+
+    .spotlight {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      background: radial-gradient(600px circle at var(--x) var(--y), rgba(249, 115, 22, 0.15), transparent 40%);
+    }
+
+    .cursor-dot,
+    .cursor-outline {
+      position: fixed;
+      top: 0;
+      left: 0;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      z-index: 9999;
+      pointer-events: none;
+    }
+
+    .cursor-dot {
+      width: 8px;
+      height: 8px;
+      background: white;
+      mix-blend-mode: difference;
+    }
+
+    .cursor-outline {
+      width: 40px;
+      height: 40px;
+      border: 1.5px solid white;
+      mix-blend-mode: difference;
+      transition: width 0.2s, height 0.2s;
+    }
+
+    a:hover~.cursor-outline,
+    button:hover~.cursor-outline,
+    .clickable:hover~.cursor-outline {
+      width: 60px;
+      height: 60px;
+      background: rgba(255, 255, 255, 0.15);
+      border-color: transparent;
+    }
+
+    .glass {
+      background: rgba(20, 20, 20, 0.6);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(60px);
+      transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hero-marquee {
+      display: flex;
+      overflow: hidden;
+      user-select: none;
+      gap: 3rem;
+      mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    }
+
+    .hero-marquee-track {
+      flex-shrink: 0;
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+      min-width: max-content;
+      animation: hero-scroll 15s linear infinite;
+    }
+
+    @keyframes hero-scroll {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(calc(-100% - 3rem));
+      }
+    }
+  </style>
+</head>
+
+<body class="antialiased">
+  <div class="spotlight" id="spotlight"></div>
+  <div class="cursor-dot hidden md:block" id="cursor-dot"></div>
+  <div class="cursor-outline hidden md:block" id="cursor-outline"></div>
+
+  <nav id="top-nav"
+    class="fixed top-0 w-full z-40 px-4 md:px-6 py-4 md:py-6 flex justify-between items-center mix-blend-difference text-white transition-all duration-500">
+    <a href="index.html"
+      class="font-display font-bold text-lg md:text-xl tracking-tighter hover:text-orange-500 transition-colors clickable">
+      WebResolv<span class="text-orange-500">.</span>
+    </a>
+    <div class="flex items-center gap-2 md:gap-3">
+      <a href="mailto:webresolv16@gmail.com"
+        class="glass px-3 md:px-6 py-1.5 md:py-2 rounded-full text-[10px] md:text-xs font-bold hover:bg-white hover:text-black hover:border-white transition-all clickable shadow-lg">START
+        PROJECT</a>
+      <a href="https://wa.me/919217671611" target="_blank" rel="noopener noreferrer"
+        class="glass px-3 md:px-6 py-1.5 md:py-2 rounded-full text-[10px] md:text-xs font-bold hover:bg-[#25D366] hover:text-black hover:border-[#25D366] transition-all clickable flex items-center gap-1.5">
+        <i data-lucide="message-circle" class="w-3.5 h-3.5 md:w-4 h-4 text-[#25D366]"></i>
+        <span>WHATSAPP</span>
+      </a>
+    </div>
+  </nav>
+
+  <header id="hero-parallax" class="relative h-screen overflow-hidden bg-[#050505]">
+    <div class="absolute inset-0 pointer-events-none z-[2] opacity-[0.03] mix-blend-screen"
+      style="background-image: url(&quot;data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;); background-color: rgba(249, 115, 22, 0.15);">
+    </div>
+    <div class="relative z-10 h-screen flex flex-col">
+      <div class="flex-1 grid grid-cols-1 lg:grid-cols-2 min-h-0">
+        <div id="para-content"
+          class="flex flex-col justify-between px-6 md:px-12 lg:px-16 pt-28 pb-6 lg:pt-32 lg:pb-8 relative">
+          <div class="reveal">
+            <h1 class="visually-hidden sr-only">Our Services — Web Design & WhatsApp Automation</h1>
+            <div aria-hidden="true"
+              class="font-display font-black text-[14vw] sm:text-[12vw] md:text-[10vw] lg:text-[7.5vw] leading-[0.85] tracking-[-0.04em] text-white uppercase">
+              OUR<br>SERVICES<span class="text-orange-500">.</span>
+            </div>
+            <p class="text-[10px] sm:text-xs text-gray-500 uppercase tracking-[0.3em] font-bold mt-3">Solutions Suite
+            </p>
+            <p class="text-xs sm:text-sm text-gray-400 mt-3 max-w-md font-light leading-relaxed">
+              From bespoke UI/UX to integrated WhatsApp sales channels, we provide end-to-end digital solutions that
+              convert traffic into loyal customers.
+            </p>
+          </div>
+          <div class="reveal">
+            <div class="flex items-start gap-3">
+              <span class="text-orange-500 text-sm font-bold mt-0.5">/</span>
+              <p class="text-base sm:text-lg md:text-xl text-gray-300 font-light leading-relaxed max-w-md">
+                We craft experiences that<br>
+                <span class="text-white font-semibold">elevate your brand</span> and<br>
+                accelerate your growth.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="relative hidden lg:flex flex-col">
+          <div class="relative flex-1 overflow-hidden">
+            <img id="hero-portrait" src="images/services-img.png" width="1672" height="941"
+              class="w-full h-full object-cover object-center brightness-[0.55] contrast-[1.15] saturate-[0.25]"
+              alt="WebResolv Services" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/20 to-transparent"></div>
+            <div
+              class="absolute inset-0 bg-gradient-to-br from-orange-600/15 via-transparent to-transparent mix-blend-screen">
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-r from-[#050505] via-transparent to-transparent opacity-90">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="w-full border-t border-white/5 bg-[#050505]/80 backdrop-blur-sm z-30 flex-shrink-0 flex flex-col">
+        <div class="flex items-center justify-between gap-4 px-6 md:px-10 pt-4 pb-2">
+          <div class="flex items-center gap-4 flex-1 min-w-0 max-w-[55%]">
+            <span
+              class="text-[8px] text-gray-600 uppercase tracking-[0.2em] font-bold whitespace-nowrap flex-shrink-0">Trusted
+              by:</span>
+            <div class="hero-marquee flex-1 min-w-0">
+              <div class="hero-marquee-track">
+                <span class="text-xs font-black text-white/25 whitespace-nowrap">Artzen</span>
+                <span class="text-xs font-black text-white/25 whitespace-nowrap">EvaraStaffing</span>
+                <span class="text-xs font-black text-white/25 whitespace-nowrap">RV Internet</span>
+                <span class="text-xs font-black text-white/25 whitespace-nowrap">Dr Noor</span>
+                <span class="text-xs font-black text-white/25 whitespace-nowrap">Tourly</span>
+                <span class="text-xs font-black text-white/25 whitespace-nowrap">Lens Bros</span>
+              </div>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0 flex-wrap">
+            <a href="services.html"
+              class="clickable text-[9px] sm:text-[10px] uppercase tracking-[0.12em] font-bold text-orange-500 px-3 py-1.5 rounded-full transition-all duration-300">Services</a>
+            <a href="work.html"
+              class="clickable text-[9px] sm:text-[10px] uppercase tracking-[0.12em] font-bold text-white/70 hover:text-orange-500 px-3 py-1.5 rounded-full transition-all duration-300">Work</a>
+            <a href="about.html"
+              class="clickable text-[9px] sm:text-[10px] uppercase tracking-[0.12em] font-bold text-white/70 hover:text-orange-500 px-3 py-1.5 rounded-full transition-all duration-300">About</a>
+            <a href="index.html#process"
+              class="clickable text-[9px] sm:text-[10px] uppercase tracking-[0.12em] font-bold text-white/70 hover:text-orange-500 px-3 py-1.5 rounded-full transition-all duration-300 hidden md:inline-block">Process</a>
+            <a href="index.html#pricing"
+              class="clickable text-[9px] sm:text-[10px] uppercase tracking-[0.12em] font-bold text-white/70 hover:text-orange-500 px-3 py-1.5 rounded-full transition-all duration-300 hidden sm:inline-block">Pricing</a>
+            <a href="index.html#contact"
+              class="clickable text-[9px] sm:text-[10px] uppercase tracking-[0.12em] font-bold text-white/70 hover:text-orange-500 px-3 py-1.5 rounded-full transition-all duration-300 hidden lg:inline-block">Contact</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="reveal py-20 px-4 md:px-10 max-w-7xl mx-auto">
+      <div class="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
+        <img src="images/services page.png" alt="Services Detail" class="w-full h-auto object-cover" />
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact" class="relative bg-black text-white pt-40 pb-32 px-6 overflow-hidden border-t border-white/10">
+    <div
+      class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80vw] h-[500px] bg-orange-600/15 blur-[120px] rounded-full pointer-events-none">
+    </div>
+    <div class="relative z-10 max-w-7xl mx-auto flex flex-col items-center text-center">
+      <p class="text-orange-500 tracking-widest uppercase text-xs font-bold mb-8 animate-pulse">Stop Thinking. Start
+        Building.</p>
+      <a href="mailto:webresolv16@gmail.com"
+        class="clickable group relative block transition-transform hover:scale-105 duration-500">
+        <h2
+          class="text-[15vw] md:text-[12vw] leading-none font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-700 group-hover:to-orange-500 transition-all duration-500 cursor-pointer">
+          LET'S TALK</h2>
+      </a>
+      <div
+        class="mt-32 flex flex-col md:flex-row justify-between items-center w-full gap-6 border-t border-white/10 pt-8">
+        <p class="text-gray-600 text-sm">© 2026 WebResolv Studio. <span class="text-neutral-800 mx-2">|</span> <a
+            href="dashboard.html" class="text-gray-600 hover:text-orange-500 transition-colors">Admin Console</a></p>
+        <div class="flex gap-8">
+          <a href="https://x.com/webresolv" target="_blank" rel="noopener noreferrer"
+            class="text-gray-400 hover:text-white transition-colors text-sm uppercase tracking-wider font-bold">Twitter</a>
+          <a href="https://www.instagram.com/webresolv/" target="_blank" rel="noopener noreferrer"
+            class="text-gray-400 hover:text-white transition-colors text-sm uppercase tracking-wider font-bold">Instagram</a>
+          <a href="https://linkedin.com/company/webresolv" target="_blank" rel="noopener noreferrer"
+            class="text-gray-400 hover:text-white transition-colors text-sm uppercase tracking-wider font-bold">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      lucide.createIcons();
+      gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => { if (entry.isIntersecting) entry.target.classList.add("active"); });
+      }, { threshold: 0.1 });
+      document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+
+      const spotlight = document.getElementById("spotlight");
+      const cursorDot = document.getElementById("cursor-dot");
+      const cursorOutline = document.getElementById("cursor-outline");
+      window.addEventListener("mousemove", (e) => {
+        const x = e.clientX, y = e.clientY;
+        spotlight.style.setProperty("--x", `${x}px`);
+        spotlight.style.setProperty("--y", `${y}px`);
+        cursorDot.style.left = `${x}px`; cursorDot.style.top = `${y}px`;
+        cursorOutline.animate({ left: `${x}px`, top: `${y}px` }, { duration: 500, fill: "forwards" });
+      });
+
+      const topNav = document.getElementById("top-nav");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          topNav.classList.add("bg-[#050505]/80", "backdrop-blur-lg", "border-b", "border-white/5", "py-3");
+          topNav.classList.remove("py-4", "md:py-6", "mix-blend-difference");
+        } else {
+          topNav.classList.remove("bg-[#050505]/80", "backdrop-blur-lg", "border-b", "border-white/5", "py-3");
+          topNav.classList.add("py-4", "md:py-6", "mix-blend-difference");
+        }
+      });
+
+      gsap.to("#hero-portrait", {
+        scale: 1.08, ease: "none",
+        scrollTrigger: { trigger: "#hero-parallax", start: "top top", end: "bottom top", scrub: true }
+      });
+      gsap.to("#para-content", {
+        yPercent: 15, opacity: 0, ease: "none",
+        scrollTrigger: { trigger: "#hero-parallax", start: "top top", end: "60% top", scrub: true }
+      });
+    });
+  </script>
+</body>
+
+</html>

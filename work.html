@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+
+  <!-- Primary Meta Tags & Preloads -->
+  <link rel="preload" href="images/herobg.webp" as="image" type="image/webp" />
+  <title>Selected Works — Web Design & Branding Portfolio | WebResolv</title>
+  <meta name="title" content="Selected Works — Web Design & Branding Portfolio | WebResolv" />
+  <meta name="description"
+    content="View our portfolio of selected projects including Web Design, UI/UX, and Branding for clients in India, US, UK, and UAE." />
+  <meta name="author" content="WebResolv" />
+  <meta name="robots" content="index, follow" />
+  <meta name="language" content="English" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://unpkg.com/lucide@latest"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-color: #050505;
+      --accent: #f97316;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background-color: var(--bg-color);
+      color: #ffffff;
+      overflow-x: hidden;
+    }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (min-width: 768px) {
+      body {
+        cursor: none;
+      }
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    .font-display {
+      font-family: "Space Grotesk", sans-serif;
+    }
+
+    .spotlight {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      background: radial-gradient(600px circle at var(--x) var(--y), rgba(249, 115, 22, 0.15), transparent 40%);
+    }
+
+    .cursor-dot,
+    .cursor-outline {
+      position: fixed;
+      top: 0;
+      left: 0;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      z-index: 9999;
+      pointer-events: none;
+    }
+
+    .cursor-dot {
+      width: 8px;
+      height: 8px;
+      background: white;
+      mix-blend-mode: difference;
+    }
+
+    .cursor-outline {
+      width: 40px;
+      height: 40px;
+      border: 1.5px solid white;
+      mix-blend-mode: difference;
+      transition: width 0.2s, height 0.2s;
+    }
+
+    a:hover~.cursor-outline,
+    button:hover~.cursor-outline,
+    .clickable:hover~.cursor-outline {
+      width: 60px;
+      height: 60px;
+      background: rgba(255, 255, 255, 0.15);
+      border-color: transparent;
+    }
+
+    .glass {
+      background: rgba(20, 20, 20, 0.6);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(60px);
+      transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hero-marquee {
+      display: flex;
+      overflow: hidden;
+      user-select: none;
+      gap: 3rem;
+      mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    }
+
+    .hero-marquee-track {
+      flex-shrink: 0;
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+      min-width: max-content;
+      animation: hero-scroll 15s linear infinite;
+    }
+
+    /* Horizontal Scroll Layout (Windows 8 Start Screen Bento Grid) */
+    .bento-horizontal {
+      display: grid;
+      grid-template-rows: repeat(2, 320px);
+      grid-auto-flow: column dense;
+      grid-auto-columns: 320px;
+      gap: 1.5rem;
+      padding: 2rem 4rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none; /* Hide scrollbar Firefox */
+      -ms-overflow-style: none; /* Hide scrollbar IE */
+      width: 100%;
+      cursor: grab;
+      user-select: none;
+    }
+
+    .bento-horizontal::-webkit-scrollbar {
+      display: none; /* Hide scrollbar Chrome/Safari */
+    }
+
+    .bento-horizontal.active-grab {
+      cursor: grabbing;
+      scroll-snap-type: none;
+    }
+
+    /* Tile Grid Spans & Proper Square/Rectangle Proportions */
+    .tile-sq {
+      grid-row: span 1;
+      grid-column: span 1;
+      width: 320px;
+      height: 320px;
+      scroll-snap-align: start;
+    }
+
+    .tile-wd {
+      grid-row: span 1;
+      grid-column: span 2;
+      width: 664px; /* 320 * 2 + 24 gap */
+      height: 320px;
+      scroll-snap-align: start;
+    }
+
+    .tile-lg {
+      grid-row: span 2;
+      grid-column: span 2;
+      width: 664px;
+      height: 664px; /* 320 * 2 + 24 gap */
+      scroll-snap-align: start;
+    }
+
+    @media (max-width: 768px) {
+      .bento-horizontal {
+        grid-template-rows: 80vw;
+        grid-auto-columns: 80vw;
+        gap: 1rem;
+        padding: 1rem 1.5rem;
+      }
+      
+      .tile-sq, .tile-wd, .tile-lg {
+        grid-row: span 1 !important;
+        grid-column: span 1 !important;
+        width: 80vw !important;
+        height: 80vw !important;
+      }
+    }
+
+    /* Premium Glassmorphism */
+    .glass-tile {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+      transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .glass-dark {
+      background: rgba(10, 10, 10, 0.75);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1), 0 20px 40px rgba(0, 0, 0, 0.6);
+      transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    /* 3D Flip Card Styles */
+    .flip-card {
+      perspective: 1500px;
+      position: relative;
+    }
+
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    /* Flip triggering on hover & auto-flipped */
+    .flip-card:hover .flip-card-inner,
+    .flip-card.auto-flipped .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-card-front,
+    .flip-card-back {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden; /* Safari compatibility */
+      border-radius: 2rem;
+      overflow: hidden;
+    }
+
+    .flip-card-front {
+      z-index: 2;
+      transform: rotateY(0deg);
+    }
+
+    .flip-card-back {
+      z-index: 1;
+      transform: rotateY(180deg);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+</head>
+
+<body class="antialiased">
+  <div class="spotlight" id="spotlight"></div>
+  <div class="cursor-dot hidden md:block" id="cursor-dot"></div>
+  <div class="cursor-outline hidden md:block" id="cursor-outline"></div>
+
+  <nav id="top-nav"
+    class="fixed top-0 w-full z-40 px-4 md:px-6 py-4 md:py-6 flex justify-between items-center mix-blend-difference text-white transition-all duration-500">
+    <a href="index.html"
+      class="font-display font-bold text-lg md:text-xl tracking-tighter hover:text-orange-500 transition-colors clickable">
+      WebResolv<span class="text-orange-500">.</span>
+    </a>
+    <div class="flex items-center gap-2 md:gap-3">
+      <a href="mailto:webresolv16@gmail.com"
+        class="glass px-3 md:px-6 py-1.5 md:py-2 rounded-full text-[10px] md:text-xs font-bold hover:bg-white hover:text-black hover:border-white transition-all clickable shadow-lg">START
+        PROJECT</a>
+      <a href="https://wa.me/919217671611" target="_blank" rel="noopener noreferrer"
+        class="glass px-3 md:px-6 py-1.5 md:py-2 rounded-full text-[10px] md:text-xs font-bold hover:bg-[#25D366] hover:text-black hover:border-[#25D366] transition-all clickable flex items-center gap-1.5">
+        <i data-lucide="message-circle" class="w-3.5 h-3.5 md:w-4 h-4 text-[#25D366]"></i>
+        <span>WHATSAPP</span>
+      </a>
+    </div>
+  </nav>
+
+  <header id="hero-parallax" class="relative h-screen overflow-hidden bg-[#050505]">
+    <div class="absolute inset-0 pointer-events-none z-[2] opacity-[0.03] mix-blend-screen"
+      style="background-image: url(&quot;data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;); background-color: rgba(249, 115, 22, 0.15);">
+    </div>
+    <div class="relative z-10 h-screen flex flex-col">
+      <div class="flex-1 grid grid-cols-1 lg:grid-cols-2 min-h-0">
+        <div id="para-content"
+          class="flex flex-col justify-between px-6 md:px-12 lg:px-16 pt-28 pb-6 lg:pt-32 lg:pb-8 relative">
+          <div class="reveal">
+            <h1 class="visually-hidden sr-only">Selected Works — WebResolv Portfolio</h1>
+            <div aria-hidden="true"
+              class="font-display font-black text-[14vw] sm:text-[12vw] md:text-[10vw] lg:text-[7.5vw] leading-[0.85] tracking-[-0.04em] text-white uppercase">
+              SELECTED<br>WORKS<span class="text-orange-500">.</span>
+            </div>
+            <p class="text-[10px] sm:text-xs text-gray-500 uppercase tracking-[0.3em] font-bold mt-3">Portfolio Case
+              Studies</p>
+            <p class="text-xs sm:text-sm text-gray-400 mt-3 max-w-md font-light leading-relaxed">
+              A collection of high-impact digital products we've crafted for forward-thinking brands across the globe.
+            </p>
+          </div>
+          <div class="reveal">
+            <div class="flex items-start gap-3">
+              <span class="text-orange-500 text-sm font-bold mt-0.5">/</span>
+              <p class="text-base sm:text-lg md:text-xl text-gray-300 font-light leading-relaxed max-w-md">
+                We turn vision into<br>
+                <span class="text-white font-semibold">interactive reality</span> through<br>
+                precise design and code.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="relative hidden lg:flex flex-col">
+          <div class="relative flex-1 overflow-hidden">
+            <img id="hero-portrait" src="images/workimg.png" width="1672" height="941"
+              class="w-full h-full object-cover object-center brightness-[0.55] contrast-[1.15] saturate-[0.25]"
+              alt="WebResolv Selected Works Portfolio" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/20 to-transparent"></div>
+            <div
+              class="absolute inset-0 bg-gradient-to-br from-orange-600/15 via-transparent to-transparent mix-blend-screen">
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-r from-[#050505] via-transparent to-transparent opacity-90">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="w-full border-t border-white/5 bg-[#050505]/80 backdrop-blur-sm z-30 flex-shrink-0 flex flex-col">
+        <div class="flex items-center justify-between gap-4 px-6 md:px-10 pt-4 pb-2">
+          <div class="flex items-center gap-4 flex-1 min-w-0 max-w-[55%]">
+            <span
+              class="text-[8px] text-gray-600 uppercase tracking-[0.2em] font-bold whitespace-nowrap flex-shrink-0">Trusted
+              by:</span>
+            <div class="hero-marquee flex-1 min-w-0">
+              <div class="hero-marquee-track">
+                <span class="text-xs font-black text-white/25 whitespace-nowrap">Artzen</span>
+                <span class="text-xs font-black text-white/25 whitespace-nowrap">EvaraStaffing</span>
+                <span class="text-xs font-black text-white/25 whitespace-nowrap">RV Internet</span>
+                <span class="text-xs font-black text-white/25 whitespace-nowrap">Dr Noor</span>
+                <span class="text-xs font-black text-white/25 whitespace-nowrap">Tourly</span>
+                <span class="text-xs font-black text-white/25 whitespace-nowrap">Lens Bros</span>
+              </div>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0 flex-wrap">
+            <a href="services.html"
+              class="clickable text-[9px] sm:text-[10px] uppercase tracking-[0.12em] font-bold text-white/70 hover:text-orange-500 px-3 py-1.5 rounded-full transition-all duration-300">Services</a>
+            <a href="work.html"
+              class="clickable text-[9px] sm:text-[10px] uppercase tracking-[0.12em] font-bold text-orange-500 px-3 py-1.5 rounded-full transition-all duration-300">Work</a>
+            <a href="about.html"
+              class="clickable text-[9px] sm:text-[10px] uppercase tracking-[0.12em] font-bold text-white/70 hover:text-orange-500 px-3 py-1.5 rounded-full transition-all duration-300">About</a>
+            <a href="index.html#process"
+              class="clickable text-[9px] sm:text-[10px] uppercase tracking-[0.12em] font-bold text-white/70 hover:text-orange-500 px-3 py-1.5 rounded-full transition-all duration-300 hidden md:inline-block">Process</a>
+            <a href="index.html#pricing"
+              class="clickable text-[9px] sm:text-[10px] uppercase tracking-[0.12em] font-bold text-white/70 hover:text-orange-500 px-3 py-1.5 rounded-full transition-all duration-300 hidden sm:inline-block">Pricing</a>
+            <a href="index.html#contact"
+              class="clickable text-[9px] sm:text-[10px] uppercase tracking-[0.12em] font-bold text-white/70 hover:text-orange-500 px-3 py-1.5 rounded-full transition-all duration-300 hidden lg:inline-block">Contact</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="w-full">
+    <section id="work-grid" class="py-16 w-full border-t border-white/5 overflow-hidden">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 border-b border-white/10 pb-10 px-8 mx-auto">
+        <div>
+          <h2 class="text-4xl md:text-7xl font-black tracking-tighter uppercase font-display leading-[0.8] mb-2">
+            COLLECTION<br>ARCHIVE<span class="text-orange-500">.</span>
+          </h2>
+          <p class="text-[10px] md:text-xs text-orange-500 mt-2 uppercase tracking-[0.5em] font-black">Scroll Horizontally to Explore — 2026</p>
+        </div>
+        <div class="flex items-center gap-6">
+          <div class="text-right">
+            <p class="text-[10px] uppercase font-bold text-white/40 tracking-widest leading-none">Perspective</p>
+            <p class="text-xs font-mono text-white">PANORAMIC MODE</p>
+          </div>
+          <div class="w-px h-10 bg-white/10"></div>
+          <div class="text-right">
+            <p class="text-[10px] uppercase font-bold text-white/40 tracking-widest leading-none">Navigation</p>
+            <p class="text-xs font-mono text-white">LIVE TILES</p>
+          </div>
+        </div>
+      </div>
+      
+      <div id="bento-container" class="bento-horizontal">
+        <!-- Dynamically Injected Panoramic Tiles -->
+      </div>
+
+      <div class="px-8 mt-12 flex items-center justify-between pointer-events-none">
+        <div class="flex gap-2 items-center">
+          <div class="w-12 h-[1px] bg-white/20"></div>
+          <span class="text-[8px] font-bold text-white/20 uppercase tracking-[0.4em]">Navigation Bar</span>
+        </div>
+        <div class="flex gap-4">
+           <i data-lucide="mouse-pointer" class="w-4 h-4 text-white/10"></i>
+           <i data-lucide="arrow-right" class="w-4 h-4 text-white/10"></i>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact" class="relative bg-black text-white pt-40 pb-32 px-6 overflow-hidden border-t border-white/10">
+    <div
+      class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80vw] h-[500px] bg-orange-600/15 blur-[120px] rounded-full pointer-events-none">
+    </div>
+    <div class="relative z-10 max-w-7xl mx-auto flex flex-col items-center text-center">
+      <p class="text-orange-500 tracking-widest uppercase text-xs font-bold mb-8 animate-pulse">Stop Thinking. Start
+        Building.</p>
+      <a href="mailto:webresolv16@gmail.com"
+        class="clickable group relative block transition-transform hover:scale-105 duration-500">
+        <h2
+          class="text-[15vw] md:text-[12vw] leading-none font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-700 group-hover:to-orange-500 transition-all duration-500 cursor-pointer">
+          LET'S TALK</h2>
+      </a>
+      <div
+        class="mt-32 flex flex-col md:flex-row justify-between items-center w-full gap-6 border-t border-white/10 pt-8">
+        <p class="text-gray-600 text-sm">© 2026 WebResolv Studio. <span class="text-neutral-800 mx-2">|</span> <a
+            href="dashboard.html" class="text-gray-600 hover:text-orange-500 transition-colors">Admin Console</a></p>
+        <div class="flex gap-8">
+          <a href="https://x.com/webresolv" target="_blank" rel="noopener noreferrer"
+            class="text-gray-400 hover:text-white transition-colors text-sm uppercase tracking-wider font-bold">Twitter</a>
+          <a href="https://www.instagram.com/webresolv/" target="_blank" rel="noopener noreferrer"
+            class="text-gray-400 hover:text-white transition-colors text-sm uppercase tracking-wider font-bold">Instagram</a>
+          <a href="https://linkedin.com/company/webresolv" target="_blank" rel="noopener noreferrer"
+            class="text-gray-400 hover:text-white transition-colors text-sm uppercase tracking-wider font-bold">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      lucide.createIcons();
+      gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+      // --- 1. DEFAULT PROJECTS CMS SEED DATA ---
+      const defaultProjects = [
+        {
+          id: "aura-estate",
+          title: "Aura Estate",
+          type: "website",
+          tag: "Real Estate",
+          description: "Luxury real estate platform with virtual tours and smart search.",
+          image: "assets/projects/aura-estate/Aura Estate.webp",
+          caseStudyUrl: "case-study.html?id=aura-estate",
+          visitUrl: "https://adiraushan.github.io/Aura-Estate-/",
+          colorClass: "bg-amber-600 hover:bg-amber-700",
+          icon: "home"
+        },
+        {
+          id: "getthemall",
+          title: "Get Them",
+          type: "website",
+          tag: "Shopify",
+          description: "Agency overhaul achieving +140% sales growth.",
+          image: "assets/projects/getthemall/Getthem.webp",
+          caseStudyUrl: "case-study.html?id=getthemall",
+          visitUrl: "https://getthem-agency.vercel.app/",
+          colorClass: "bg-orange-500 hover:bg-orange-600",
+          icon: "shopping-bag"
+        },
+        {
+          id: "vista",
+          title: "La Bella Vista",
+          type: "website",
+          tag: "Corporate",
+          description: "Modernizing corporate recruitment with high-end UI.",
+          image: "assets/projects/bella-vista/la bella vista.webp",
+          caseStudyUrl: "case-study.html?id=vista",
+          visitUrl: "https://la-bella-vita-ten.vercel.app/",
+          colorClass: "bg-purple-500 hover:bg-purple-600",
+          icon: "building"
+        },
+        {
+          id: "evarastaffing",
+          title: "Evarastaffing",
+          type: "website",
+          tag: "Landing Page",
+          description: "High-speed landing page design for local staffing company.",
+          image: "assets/projects/evara/Evara1.webp",
+          caseStudyUrl: "case-study.html?id=evarastaffing",
+          visitUrl: "https://evarastaffing.com/",
+          colorClass: "bg-green-500 hover:bg-green-600",
+          icon: "users"
+        },
+        {
+          id: "pawier",
+          title: "Pawier",
+          type: "website",
+          tag: "Pet Shop",
+          description: "Automated booking system & portfolio. Clean, modern design.",
+          image: "assets/projects/pawier/pawier.webp",
+          caseStudyUrl: "case-study.html?id=pawier",
+          visitUrl: "https://pawier.vercel.app/",
+          colorClass: "bg-pink-500 hover:bg-pink-600",
+          icon: "dog"
+        },
+        {
+          id: "athlynx",
+          title: "Athlynx Gym",
+          type: "website",
+          tag: "Fitness",
+          description: "Dynamic fitness platform with real-time class booking.",
+          image: "assets/projects/athlynx/Athlynx.webp",
+          caseStudyUrl: "case-study.html?id=athlynx",
+          visitUrl: "",
+          colorClass: "bg-red-600 hover:bg-red-700",
+          icon: "activity"
+        },
+        {
+          id: "dr-smith",
+          title: "Dr. Smith Dental",
+          type: "website",
+          tag: "Healthcare",
+          description: "Modern dental practice website with online booking system.",
+          image: "assets/projects/dr-smith/Dr Smith.webp",
+          caseStudyUrl: "case-study.html?id=dr-smith",
+          visitUrl: "https://dental-xi-henna.vercel.app/",
+          colorClass: "bg-cyan-600 hover:bg-cyan-700",
+          icon: "activity"
+        },
+        {
+          id: "peak-pine",
+          title: "Peak & Pine Coffee",
+          type: "website",
+          tag: "E-Commerce",
+          description: "Artisan coffee e-commerce with subscription management.",
+          image: "assets/projects/peak-pine/Peak & Pine.webp",
+          caseStudyUrl: "case-study.html?id=peak-pine",
+          visitUrl: "https://athlynx-gym.vercel.app/",
+          colorClass: "bg-amber-700 hover:bg-amber-800",
+          icon: "coffee"
+        },
+        // Brand projects
+        {
+          id: "kuro",
+          title: "Kuro Wear",
+          type: "branding",
+          tag: "Apparel",
+          description: "Japanese luxury streetwear branding and packaging design.",
+          image: "",
+          caseStudyUrl: "case-study.html?id=kuro",
+          visitUrl: "",
+          colorClass: "text-blue-400",
+          icon: "shirt",
+          iconBg: "bg-gray-100 text-black"
+        },
+        {
+          id: "aura",
+          title: "Aura Vitality",
+          type: "branding",
+          tag: "Wellness",
+          description: "Organic wellness packaging and art direction.",
+          image: "",
+          caseStudyUrl: "case-study.html?id=aura",
+          visitUrl: "",
+          colorClass: "text-green-400",
+          icon: "leaf",
+          iconBg: "bg-green-500 text-black"
+        },
+        {
+          id: "flux",
+          title: "Flux AI",
+          type: "branding",
+          tag: "AI SaaS",
+          description: "SaaS Identity Kit and futuristic UI design system.",
+          image: "",
+          caseStudyUrl: "case-study.html?id=flux",
+          visitUrl: "",
+          colorClass: "text-purple-400",
+          icon: "zap",
+          iconBg: "bg-purple-600 text-white"
+        },
+        {
+          id: "artzen",
+          title: "Artzen",
+          type: "branding",
+          tag: "Interior Design",
+          description: "Geometric interior design brand guidelines.",
+          image: "",
+          caseStudyUrl: "case-study.html?id=artzen",
+          visitUrl: "",
+          colorClass: "text-blue-400",
+          icon: "hexagon",
+          iconBg: "bg-blue-600 text-white"
+        },
+        {
+          id: "flow",
+          title: "Flow Socials",
+          type: "branding",
+          tag: "Marketing",
+          description: "Instagram strategy, grid layout, and templates.",
+          image: "",
+          caseStudyUrl: "case-study.html?id=flow",
+          visitUrl: "",
+          colorClass: "text-pink-400",
+          icon: "instagram",
+          iconBg: "bg-pink-600 text-white"
+        },
+        {
+          id: "evara-rebrand",
+          title: "Evara Rebrand",
+          type: "branding",
+          tag: "Corporate",
+          description: "Complete corporate modernization strategy.",
+          image: "",
+          caseStudyUrl: "case-study.html?id=evara-rebrand",
+          visitUrl: "",
+          colorClass: "text-yellow-400",
+          icon: "pen-tool",
+          iconBg: "bg-yellow-500 text-white"
+        },
+        {
+          id: "techdeck",
+          title: "Tech Deck",
+          type: "branding",
+          tag: "Visualization",
+          description: "Investor pitch deck and data visualization.",
+          image: "",
+          caseStudyUrl: "case-study.html?id=techdeck",
+          visitUrl: "",
+          colorClass: "text-cyan-400",
+          icon: "layers",
+          iconBg: "bg-cyan-600 text-white"
+        }
+      ];
+
+      // Seed localStorage if empty
+      if (!localStorage.getItem("webresolv_projects")) {
+        localStorage.setItem("webresolv_projects", JSON.stringify(defaultProjects));
+      }
+
+      // --- 2. RENDER DYNAMIC PROJECTS (PANORAMIC TILES) ---
+      function renderProjects() {
+        const bentoContainer = document.getElementById("bento-container");
+        if (!bentoContainer) return;
+
+        try {
+          const projects = JSON.parse(localStorage.getItem("webresolv_projects")) || [];
+          bentoContainer.innerHTML = "";
+
+          projects.forEach((project, index) => {
+            const tile = document.createElement("div");
+            
+            // Sizing hierarchy: websites with images can be large (tile-lg) or wide (tile-wd), others are standard squares (tile-sq)
+            let spanClass = "tile-sq";
+            if (project.type === "website" && project.image) {
+              if (project.id === "aura-estate" || project.id === "vista" || project.id === "athlynx") {
+                spanClass = "tile-lg"; // 2x2 large square
+              } else if (project.id === "getthemall" || project.id === "pawier" || project.id === "peak-pine") {
+                spanClass = "tile-wd"; // 2x1 wide rectangle
+              } else {
+                spanClass = "tile-sq"; // 1x1 standard square
+              }
+            } else {
+              spanClass = "tile-sq"; // 1x1 standard square for branding/rest
+            }
+
+            tile.className = `flip-card group ${spanClass}`;
+
+            const visitUrl = project.visitUrl || "#";
+            const caseStudyUrl = project.caseStudyUrl || `case-study.html?id=${project.id}`;
+
+            // Brand glows and color mapping for branding/no-image projects
+            let glowColor = "rgba(249, 115, 22, 0.15)"; // Default orange glow
+            let textColor = "text-orange-500";
+            let iconColor = "text-orange-400";
+            if (project.id === "aura") { glowColor = "rgba(34, 197, 94, 0.15)"; textColor = "text-green-500"; iconColor = "text-green-400"; }
+            else if (project.id === "flux") { glowColor = "rgba(147, 51, 234, 0.15)"; textColor = "text-purple-500"; iconColor = "text-purple-400"; }
+            else if (project.id === "kuro") { glowColor = "rgba(59, 130, 246, 0.15)"; textColor = "text-blue-500"; iconColor = "text-blue-400"; }
+            else if (project.id === "artzen") { glowColor = "rgba(79, 70, 229, 0.15)"; textColor = "text-indigo-500"; iconColor = "text-indigo-400"; }
+            else if (project.id === "flow") { glowColor = "rgba(236, 72, 153, 0.15)"; textColor = "text-pink-500"; iconColor = "text-pink-400"; }
+            else if (project.id === "evara-rebrand") { glowColor = "rgba(245, 158, 11, 0.15)"; textColor = "text-yellow-500"; iconColor = "text-yellow-400"; }
+            else if (project.id === "techdeck") { glowColor = "rgba(6, 182, 212, 0.15)"; textColor = "text-cyan-500"; iconColor = "text-cyan-400"; }
+
+            tile.innerHTML = `
+              <div class="flip-card-inner h-full w-full">
+                <!-- Front Side: Giant Panoramic Glass / Visual Card -->
+                ${project.image ? `
+                  <div class="flip-card-front glass-tile rounded-3xl overflow-hidden group">
+                    <div class="absolute inset-0 z-0">
+                      <img src="${project.image}" class="absolute inset-0 w-full h-full object-cover transition-all duration-1000 group-hover:scale-105" alt="${project.title}" />
+                      <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
+                    </div>
+                    
+                    <div class="absolute inset-0 z-10 p-8 flex flex-col justify-end">
+                      <span class="inline-block px-3 py-1 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full text-[9px] uppercase font-black text-white w-fit mb-3 tracking-widest">
+                        ${project.tag || 'Website'}
+                      </span>
+                      <h3 class="text-2xl md:text-4xl font-black text-white font-display uppercase tracking-tighter leading-none mb-2">${project.title}</h3>
+                    </div>
+                  </div>
+                ` : `
+                  <div class="flip-card-front glass-tile rounded-3xl overflow-hidden group flex flex-col justify-between p-8 border border-white/10">
+                    <!-- Dynamic background glow blob -->
+                    <div class="absolute inset-0 pointer-events-none z-0" style="background: radial-gradient(circle at 50% 40%, ${glowColor}, transparent 65%);"></div>
+                    
+                    <div class="flex justify-between items-start z-10">
+                      <span class="inline-block px-3 py-1 bg-white/5 backdrop-blur-xl border border-white/10 rounded-full text-[9px] uppercase font-black text-white/70 tracking-widest">
+                        ${project.tag || 'Branding'}
+                      </span>
+                      <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
+                        <i data-lucide="${project.icon || 'star'}" class="w-5 h-5 ${iconColor}"></i>
+                      </div>
+                    </div>
+                    
+                    <div class="z-10 mt-auto">
+                      <h3 class="text-2xl font-black text-white font-display uppercase tracking-tighter leading-none mb-1">${project.title}</h3>
+                      <p class="text-[9px] uppercase font-bold tracking-[0.2em] ${textColor}">Brand Identity</p>
+                    </div>
+                  </div>
+                `}
+
+                <!-- Back Side: Action Dashboard (No long description) -->
+                <div class="flip-card-back glass-dark rounded-3xl p-8 flex flex-col justify-between items-center text-center border border-white/10">
+                  <div class="mt-4">
+                    <span class="text-[9px] uppercase tracking-[0.3em] text-white/40 font-bold block mb-1">WebResolv Archive</span>
+                    <h4 class="text-xl md:text-3xl font-black text-orange-500 font-display uppercase tracking-tight leading-none">${project.title}</h4>
+                  </div>
+                  
+                  <div class="w-full max-w-[240px] space-y-3 z-10">
+                    <a href="${caseStudyUrl}" class="flex items-center justify-center gap-2.5 w-full py-3.5 bg-white text-black hover:bg-orange-500 hover:text-white rounded-xl text-[10px] sm:text-xs font-black uppercase tracking-widest transition-all duration-300 shadow-2xl">
+                       Case Study <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                    ${project.visitUrl ? `
+                      <a href="${visitUrl}" target="_blank" class="flex items-center justify-center gap-2.5 w-full py-3.5 bg-white/5 hover:bg-white/10 border border-white/20 hover:border-white/40 rounded-xl text-[10px] sm:text-xs font-black uppercase tracking-widest transition-all duration-300">
+                        Launch Site <i data-lucide="external-link" class="w-4 h-4"></i>
+                      </a>
+                    ` : ""}
+                  </div>
+                  
+                  <div class="mb-2 opacity-25 flex gap-2">
+                     <i data-lucide="layers" class="w-4 h-4 text-white"></i>
+                     <span class="text-[8px] font-mono tracking-widest text-white/50 uppercase">SECURE DIRECTORY</span>
+                  </div>
+                </div>
+              </div>
+            `;
+            bentoContainer.appendChild(tile);
+          });
+
+          lucide.createIcons();
+          startAutoFlip();
+          setupDragScroll();
+        } catch (err) {
+          console.error("Error rendering panoramic tiles:", err);
+        }
+      }
+
+      // --- 3. AUTO FLIP LIVE TILES MECHANISM ---
+      function startAutoFlip() {
+        const cards = document.querySelectorAll('.flip-card');
+        cards.forEach((card) => {
+          // Set a random initial delay so they don't all flip at the same time
+          const initialDelay = Math.random() * 10000;
+          
+          setTimeout(() => {
+            // Start a randomized interval for each card to flip back and forth
+            setInterval(() => {
+              if (!card.matches(':hover')) {
+                card.classList.add('auto-flipped');
+                
+                // Flip back to the front after a random duration (e.g. 3.5 to 6 seconds)
+                const flipBackDuration = 3500 + Math.random() * 2500;
+                setTimeout(() => {
+                  if (!card.matches(':hover')) {
+                    card.classList.remove('auto-flipped');
+                  }
+                }, flipBackDuration);
+              }
+            }, 8000 + Math.random() * 8000); // Trigger check every 8 to 16 seconds
+          }, initialDelay);
+        });
+      }
+
+      // --- 4. DRAG-TO-SCROLL INTERACTIVE MECHANICS ---
+      function setupDragScroll() {
+        const container = document.getElementById("bento-container");
+        if (!container) return;
+
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+        let hasMoved = false;
+
+        container.addEventListener("mousedown", (e) => {
+          isDown = true;
+          container.classList.add("active-grab");
+          startX = e.pageX - container.offsetLeft;
+          scrollLeft = container.scrollLeft;
+          hasMoved = false;
+        });
+
+        container.addEventListener("mouseleave", () => {
+          isDown = false;
+          container.classList.remove("active-grab");
+        });
+
+        container.addEventListener("mouseup", (e) => {
+          isDown = false;
+          container.classList.remove("active-grab");
+          // If we drag-scrolled, prevent links from firing on mouseup
+          if (hasMoved) {
+            e.preventDefault();
+            e.stopPropagation();
+          }
+        });
+
+        container.addEventListener("mousemove", (e) => {
+          if (!isDown) return;
+          e.preventDefault();
+          const x = e.pageX - container.offsetLeft;
+          const walk = (x - startX) * 1.5; // Scroll speed multiplier
+          if (Math.abs(x - startX) > 5) {
+            hasMoved = true;
+          }
+          container.scrollLeft = scrollLeft - walk;
+        });
+
+        // Prevent click navigation if drag occurred
+        container.addEventListener("click", (e) => {
+          if (hasMoved) {
+            e.preventDefault();
+            e.stopPropagation();
+          }
+        }, true);
+      }
+
+      renderProjects();
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => { if (entry.isIntersecting) entry.target.classList.add("active"); });
+      }, { threshold: 0.1 });
+      document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+
+      const spotlight = document.getElementById("spotlight");
+      const cursorDot = document.getElementById("cursor-dot");
+      const cursorOutline = document.getElementById("cursor-outline");
+      window.addEventListener("mousemove", (e) => {
+        const x = e.clientX, y = e.clientY;
+        spotlight.style.setProperty("--x", `${x}px`);
+        spotlight.style.setProperty("--y", `${y}px`);
+        cursorDot.style.left = `${x}px`; cursorDot.style.top = `${y}px`;
+        cursorOutline.animate({ left: `${x}px`, top: `${y}px` }, { duration: 500, fill: "forwards" });
+      });
+
+      const topNav = document.getElementById("top-nav");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          topNav.classList.add("bg-[#050505]/80", "backdrop-blur-lg", "border-b", "border-white/5", "py-3");
+          topNav.classList.remove("py-4", "md:py-6", "mix-blend-difference");
+        } else {
+          topNav.classList.remove("bg-[#050505]/80", "backdrop-blur-lg", "border-b", "border-white/5", "py-3");
+          topNav.classList.add("py-4", "md:py-6", "mix-blend-difference");
+        }
+      });
+
+      gsap.to("#hero-portrait", {
+        scale: 1.08, ease: "none",
+        scrollTrigger: { trigger: "#hero-parallax", start: "top top", end: "bottom top", scrub: true }
+      });
+      gsap.to("#para-content", {
+        yPercent: 15, opacity: 0, ease: "none",
+        scrollTrigger: { trigger: "#hero-parallax", start: "top top", end: "60% top", scrub: true }
+      });
+    });
+  </script>
+</body>
+
+</html>
