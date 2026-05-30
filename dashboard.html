@@ -1383,8 +1383,13 @@
       if (!localStorage.getItem("webresolv_posts")) {
         localStorage.setItem("webresolv_posts", JSON.stringify(defaultBlogs));
       }
-      if (!localStorage.getItem("webresolv_projects")) {
+      // Seed or update localStorage if version is outdated to prevent stale cached images
+      const PROJECT_DATA_VERSION = "v1.2"; // Increment this to force refresh browser cache
+      const cachedVersion = localStorage.getItem("webresolv_projects_version");
+      
+      if (cachedVersion !== PROJECT_DATA_VERSION || !localStorage.getItem("webresolv_projects")) {
         localStorage.setItem("webresolv_projects", JSON.stringify(defaultProjects));
+        localStorage.setItem("webresolv_projects_version", PROJECT_DATA_VERSION);
       }
       if (!localStorage.getItem("webresolv_leads")) {
         localStorage.setItem("webresolv_leads", JSON.stringify(dummyLeads));
@@ -1914,6 +1919,7 @@
       if (confirm("Factory Reset entire suite storage? This clears custom blogs, custom projects, and CRM leads queue, loading default seeds.")) {
         localStorage.setItem("webresolv_posts", JSON.stringify(defaultBlogs));
         localStorage.setItem("webresolv_projects", JSON.stringify(defaultProjects));
+        localStorage.setItem("webresolv_projects_version", "v1.2");
         localStorage.setItem("webresolv_leads", JSON.stringify(dummyLeads));
 
         bootstrapCMS();

@@ -450,9 +450,13 @@
       }
     ];
 
-    // Seed localStorage if empty
-    if (!localStorage.getItem("webresolv_projects")) {
+    // Seed or update localStorage if version is outdated to prevent stale cached images
+    const PROJECT_DATA_VERSION = "v1.2"; // Increment this to force refresh browser cache
+    const cachedVersion = localStorage.getItem("webresolv_projects_version");
+    
+    if (cachedVersion !== PROJECT_DATA_VERSION || !localStorage.getItem("webresolv_projects")) {
       localStorage.setItem("webresolv_projects", JSON.stringify(defaultProjects));
+      localStorage.setItem("webresolv_projects_version", PROJECT_DATA_VERSION);
     }
 
     // --- 2. RENDER DYNAMIC PROJECTS ---

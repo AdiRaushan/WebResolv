@@ -153,6 +153,112 @@
         transform: translateX(calc(-100% - 3rem));
       }
     }
+
+    /* --- INTERACTIVE SERVICES CUSTOM STYLES --- */
+    .service-image-layer {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transform: scale(1.08);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 1;
+    }
+
+    .service-image-layer.active {
+      opacity: 1;
+      transform: scale(1);
+      z-index: 2;
+    }
+
+    /* Menu Text Hover & Active styling overrides */
+    .service-menu-item {
+      font-size: 1.5rem; /* text-2xl equivalent */
+      color: rgba(255, 255, 255, 0.15) !important;
+      font-weight: 300;
+      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    @media (min-width: 1024px) {
+      .service-menu-item {
+        font-size: 1.875rem; /* text-3xl */
+      }
+    }
+    
+    @media (min-width: 1280px) {
+      .service-menu-item {
+        font-size: 2.25rem; /* text-4xl */
+      }
+    }
+
+    .service-menu-item:hover {
+      color: rgba(255, 255, 255, 0.4) !important;
+    }
+    
+    .service-menu-item.active {
+      font-size: 2rem; /* text-3xl */
+      color: #ffffff !important;
+      font-weight: 500;
+    }
+
+    @media (min-width: 1024px) {
+      .service-menu-item.active {
+        font-size: 2.75rem; /* text-5xl */
+      }
+    }
+
+    @media (min-width: 1280px) {
+      .service-menu-item.active {
+        font-size: 3.5rem; /* text-6xl */
+      }
+    }
+
+    /* Process badge styling */
+    .process-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.35rem 0.75rem;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      color: #cbd5e1;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      transition: all 0.3s ease;
+    }
+
+    .process-badge:hover {
+      background: rgba(249, 115, 22, 0.08);
+      border-color: rgba(249, 115, 22, 0.3);
+      color: #f97316;
+    }
+
+    /* Mobile Accordion styling */
+    .accordion-header {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .accordion-header.active {
+      background: rgba(249, 115, 22, 0.04);
+      border-color: rgba(249, 115, 22, 0.2);
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+      opacity: 0;
+    }
+
+    .accordion-content.open {
+      max-height: 1200px; /* High limit to fit content */
+      opacity: 1;
+    }
   </style>
 </head>
 
@@ -184,9 +290,19 @@
       style="background-image: url(&quot;data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;); background-color: rgba(249, 115, 22, 0.15);">
     </div>
     <div class="relative z-10 h-screen flex flex-col">
-      <div class="flex-1 grid grid-cols-1 lg:grid-cols-2 min-h-0">
+      <div class="flex-1 grid grid-cols-1 lg:grid-cols-2 min-h-0 relative">
+        <!-- Mobile-only Background Hero Image -->
+        <div class="absolute inset-0 lg:hidden pointer-events-none z-0 overflow-hidden">
+          <img id="hero-portrait-mobile" src="images/services-img.png" width="1672" height="941"
+            class="w-full h-full object-cover object-center brightness-[0.18] contrast-[1.15] saturate-[0.25]"
+            alt="WebResolv Services" />
+          <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/60 to-transparent"></div>
+          <div class="absolute inset-0 bg-gradient-to-br from-orange-600/10 via-transparent to-transparent mix-blend-screen"></div>
+          <div class="absolute inset-0 bg-gradient-to-r from-[#050505] via-[#050505]/60 to-transparent opacity-95"></div>
+        </div>
+
         <div id="para-content"
-          class="flex flex-col justify-between px-6 md:px-12 lg:px-16 pt-28 pb-6 lg:pt-32 lg:pb-8 relative">
+          class="flex flex-col justify-between px-6 md:px-12 lg:px-16 pt-28 pb-6 lg:pt-32 lg:pb-8 relative z-10">
           <div class="reveal">
             <h1 class="visually-hidden sr-only">Our Services — Web Design & WhatsApp Automation</h1>
             <div aria-hidden="true"
@@ -211,8 +327,10 @@
             </div>
           </div>
         </div>
-        <div class="relative hidden lg:flex flex-col">
-          <div class="relative flex-1 overflow-hidden">
+
+        <!-- Desktop-only Side Hero Image -->
+        <div class="relative hidden lg:flex flex-col overflow-hidden z-10">
+          <div class="relative flex-1 overflow-hidden h-full w-full">
             <img id="hero-portrait" src="images/services-img.png" width="1672" height="941"
               class="w-full h-full object-cover object-center brightness-[0.55] contrast-[1.15] saturate-[0.25]"
               alt="WebResolv Services" />
@@ -261,10 +379,124 @@
     </div>
   </header>
 
-  <main>
-    <section class="reveal py-20 px-4 md:px-10 max-w-7xl mx-auto">
-      <div class="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
-        <img src="images/services page.png" alt="Services Detail" class="w-full h-auto object-cover" />
+  <main class="relative z-10">
+    <section id="interactive-services" class="relative bg-[#050505] border-t border-white/5 overflow-hidden w-full lg:h-screen lg:min-h-[800px] flex items-center">
+      <!-- Background Ambient glow -->
+      <div class="absolute inset-0 pointer-events-none z-0">
+        <div class="absolute top-1/2 left-1/4 -translate-y-1/2 w-[40vw] h-[40vw] bg-orange-500/5 rounded-full blur-[120px]"></div>
+        <div class="absolute top-1/3 right-1/4 -translate-y-1/2 w-[30vw] h-[30vw] bg-blue-500/5 rounded-full blur-[120px]"></div>
+      </div>
+
+      <div class="w-full h-full relative z-10 flex flex-col justify-center">
+        <!-- Desktop Grid (lg:grid) -->
+        <div class="hidden lg:grid grid-cols-12 w-full h-full max-w-[1600px] mx-auto px-6 md:px-12 lg:px-16 gap-8">
+          
+          <!-- LEFT PANEL: Dynamic details (col-span-4) -->
+          <div class="col-span-4 flex flex-col justify-between py-16 h-full min-h-[650px] pr-4">
+            <!-- Top Section: Header & Desc -->
+            <div class="space-y-6">
+              <div>
+                <h2 id="service-detail-title" class="font-display font-medium text-lg text-white uppercase tracking-wider mb-2">
+                  What We Do
+                </h2>
+                <div class="w-12 h-px bg-white/20"></div>
+              </div>
+              <p id="service-desc" class="text-sm text-neutral-400 font-light leading-relaxed transition-all duration-500">
+                We craft high-converting landing pages within 2 days tailored for your products, lead magnets, or courses. Built with rapid load speeds and optimized conversion paths, we turn immediate attention into immediate action.
+              </p>
+            </div>
+
+            <!-- Middle Section: Strategy Metadata -->
+            <div id="service-detail-body" class="space-y-6 my-auto pt-6 border-t border-white/5 transition-all duration-500">
+              <div class="grid grid-cols-2 gap-x-6 gap-y-5 text-xs font-mono">
+                <div>
+                  <span class="block text-[9px] text-neutral-600 uppercase tracking-widest font-bold mb-1.5">How We Do It</span>
+                  <div id="service-process" class="text-neutral-400 font-light leading-relaxed">
+                    <!-- Populated by JS -->
+                  </div>
+                </div>
+                <div>
+                  <span class="block text-[9px] text-neutral-600 uppercase tracking-widest font-bold mb-1.5">Timeframe</span>
+                  <span id="service-delivery" class="text-neutral-400 font-light">2 Days</span>
+                </div>
+                <div>
+                  <span class="block text-[9px] text-neutral-600 uppercase tracking-widest font-bold mb-1.5">Served Regions</span>
+                  <span id="service-countries" class="text-neutral-400 font-light">India, US, UK, UAE</span>
+                </div>
+                <div>
+                  <span class="block text-[9px] text-neutral-600 uppercase tracking-widest font-bold mb-1.5">Featured Work</span>
+                  <div id="service-links" class="flex flex-wrap gap-x-3 text-orange-500 font-medium">
+                    <!-- Populated by JS -->
+                  </div>
+                </div>
+              </div>
+
+              <!-- Contact Information Links -->
+              <div class="text-xs font-mono text-neutral-500 border-t border-white/5 pt-5">
+                <span>Get in touch:</span>
+                <a href="mailto:webresolv16@gmail.com" class="text-white hover:text-orange-500 underline transition-colors ml-1">Email</a>
+                <span class="mx-1.5 text-neutral-700">//</span>
+                <a href="https://wa.me/919217671611" target="_blank" rel="noopener noreferrer" class="text-white hover:text-[#25D366] underline transition-colors">WhatsApp</a>
+              </div>
+            </div>
+
+            <!-- Bottom Section: Location Time Clock -->
+            <div id="service-footer-label" class="text-[10px] text-neutral-500 font-mono tracking-widest uppercase transition-all duration-300">
+              New York / 12:42 PM (EST)
+            </div>
+          </div>
+
+          <!-- MIDDLE PANEL: Interactive Image & Number Index (col-span-4) -->
+          <div class="col-span-4 flex flex-col justify-between items-center py-16 h-full">
+            <!-- Dynamic Index, aligned with the left edge of the image container -->
+            <div class="w-full max-w-[420px] xl:max-w-[480px]">
+              <div class="text-left font-display font-medium text-lg tracking-widest text-white/50 font-mono" id="service-index">
+                [01]
+              </div>
+            </div>
+
+            <!-- Image Canvas -->
+            <div class="relative w-full max-w-[420px] xl:max-w-[480px] aspect-[3/4] max-h-[58vh] rounded-lg overflow-hidden group my-auto flex justify-center items-center bg-neutral-900 border border-white/5 shadow-2xl">
+              <div id="images-container" class="absolute inset-0 w-full h-full">
+                <!-- Stacked images with scale & opacity transition (populated by JS) -->
+              </div>
+              <!-- Inner overlay shadow -->
+              <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-black/10 pointer-events-none z-10"></div>
+            </div>
+
+            <!-- Bottom Spacer to keep layout balanced -->
+            <div class="h-6"></div>
+          </div>
+
+          <!-- RIGHT PANEL: Menu List (col-span-4) -->
+          <div class="col-span-4 flex flex-col justify-center py-16 h-full pl-8">
+            <div class="flex flex-col gap-2 select-none text-left">
+              <!-- Services List items (no numbers, no arrows, scaling handled via CSS transitions) -->
+              <div class="service-menu-item active clickable font-display uppercase tracking-tight cursor-pointer" data-index="0">Landing Page</div>
+              <div class="service-menu-item clickable font-display uppercase tracking-tight cursor-pointer" data-index="1">Web Design</div>
+              <div class="service-menu-item clickable font-display uppercase tracking-tight cursor-pointer" data-index="2">Web Development</div>
+              <div class="service-menu-item clickable font-display uppercase tracking-tight cursor-pointer" data-index="3">UI/UX Design</div>
+              <div class="service-menu-item clickable font-display uppercase tracking-tight cursor-pointer" data-index="4">Branding</div>
+              <div class="service-menu-item clickable font-display uppercase tracking-tight cursor-pointer" data-index="5">Automation</div>
+              <div class="service-menu-item clickable font-display uppercase tracking-tight cursor-pointer" data-index="6">Content Writing</div>
+              <div class="service-menu-item clickable font-display uppercase tracking-tight cursor-pointer" data-index="7">E-commerce</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Mobile Accordion (lg:hidden) -->
+        <div class="lg:hidden w-full px-6 py-20 max-w-2xl mx-auto space-y-4">
+          <div class="text-center mb-10">
+            <span class="text-[9px] text-orange-500 uppercase tracking-[0.25em] font-bold block mb-1 font-mono">/ WHAT WE EXCEL AT</span>
+            <h2 class="font-display font-black text-3xl text-white tracking-tighter uppercase leading-none">Our Services</h2>
+          </div>
+          
+          <div id="mobile-accordion-container" class="space-y-4">
+            <!-- Dynamically generated accordion items -->
+          </div>
+        </div>
+
       </div>
     </section>
   </main>
@@ -308,6 +540,381 @@
       }, { threshold: 0.1 });
       document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
 
+      // --- SERVICES DATA ---
+      const servicesData = [
+        {
+          index: "01",
+          title: "Landing Page",
+          description: "We craft high-converting landing pages within 2 days tailored for your products, lead magnets, or courses. Built with rapid load speeds and optimized conversion paths, we turn immediate attention into immediate action.",
+          process: ["Briefing", "Wireframing", "Figma Design", "Rapid Launch"],
+          delivery: "2 Days",
+          countries: "India, US, UK, UAE",
+          links: [
+            { name: "RV Internet Page", url: "work.html" },
+            { name: "Bella Vista Promo", url: "case-study.html" }
+          ],
+          imageUrl: "images/service_landing.png",
+          timeZone: "America/New_York",
+          tzLabel: "New York (EST)"
+        },
+        {
+          index: "02",
+          title: "Web Design",
+          description: "Crafting visually stunning, immersive web designs that tell your brand's story. We focus on modern typography, dark mode aesthetics, smooth layouts, and premium interactive prototypes in Figma that elevate your brand from the very first scroll.",
+          process: ["Brand Research", "Wireframing", "Figma Design", "Prototyping"],
+          delivery: "2 - 3 Weeks",
+          countries: "India, US, UK, UAE, Canada",
+          links: [
+            { name: "Evara Landing Page", url: "work.html" },
+            { name: "Aura Web Layout", url: "case-study.html" }
+          ],
+          imageUrl: "images/service_webdesign.png",
+          timeZone: "Asia/Kolkata",
+          tzLabel: "New Delhi (IST)"
+        },
+        {
+          index: "03",
+          title: "Web Development",
+          description: "Turning designs into pixel-perfect, lightning-fast web applications. We specialize in clean semantic HTML/JS, custom frontend integrations, rich GSAP scroll animations, robust backend systems, and search-optimized lead-capture architectures.",
+          process: ["Semantic Coding", "GSAP Animations", "API Integration", "SEO Tuning"],
+          delivery: "3 - 4 Weeks",
+          countries: "India, US, UK, UAE",
+          links: [
+            { name: "RV Internet Portal", url: "work.html" },
+            { name: "Tourly Web App", url: "case-study.html" }
+          ],
+          imageUrl: "images/service_webdev.png",
+          timeZone: "Europe/London",
+          tzLabel: "London (GMT)"
+        },
+        {
+          index: "04",
+          title: "UI/UX Design",
+          description: "Designing user interfaces that feel intuitive, seamless, and human-centered. We map user journeys, conduct user research, and refine button alignments, transitions, and micro-interactions to optimize user retention and drive direct conversions.",
+          process: ["User Research", "Journey Mapping", "Wireframes", "Usability Testing"],
+          delivery: "2 - 3 Weeks",
+          countries: "India, US, UK, UAE, Canada",
+          links: [
+            { name: "Dr. Smith Portal", url: "work.html" },
+            { name: "Athlynx App UX", url: "case-study.html" }
+          ],
+          imageUrl: "images/service_uiux.png",
+          timeZone: "Asia/Dubai",
+          tzLabel: "Dubai (GST)"
+        },
+        {
+          index: "05",
+          title: "Branding",
+          description: "Building distinctive brand identities that leave a lasting mark. From logos, custom color schemes, and brand typography systems to complete visual style guides, we establish the core soul and aesthetic direction of your company.",
+          process: ["Vision Workshop", "Concept Sketching", "Vector Refinement", "Style Guidelines"],
+          delivery: "1 - 2 Weeks",
+          countries: "India, US, UK, UAE, Australia",
+          links: [
+            { name: "Pawier Identity Guide", url: "work.html" },
+            { name: "Aura Brand Guidelines", url: "case-study.html" }
+          ],
+          imageUrl: "images/service_branding.png",
+          timeZone: "Australia/Sydney",
+          tzLabel: "Sydney (AEST)"
+        },
+        {
+          index: "06",
+          title: "Automation",
+          description: "Streamlining your business workflows by connecting CRM systems, communication channels, and lead pipelines. We set up automated follow-ups, chatbots, and triggers so your systems run seamlessly around the clock.",
+          process: ["API Integration", "CRM Routing", "Chatbot Config", "Flow Testing"],
+          delivery: "1 - 2 Weeks",
+          countries: "India, US, UK, UAE, Canada",
+          links: [
+            { name: "WhatsApp Pipeline", url: "case-study.html" },
+            { name: "Evara Automated CRM", url: "work.html" }
+          ],
+          imageUrl: "images/service_automation.png",
+          timeZone: "Europe/Paris",
+          tzLabel: "Paris (CET)"
+        },
+        {
+          index: "07",
+          title: "Content Writing",
+          description: "Custom content writing for your blogs, web assets, and business needs. We draft search-optimized posts and persuasive website copy that build client authority, expand organic visibility, and drive sales.",
+          process: ["SEO Keywords", "Topic Research", "Drafting & Copy", "Refinement"],
+          delivery: "3 - 5 Days",
+          countries: "India, US, UK, UAE",
+          links: [
+            { name: "RV Internet Blog Articles", url: "work.html" },
+            { name: "Evara Copywriting", url: "case-study.html" }
+          ],
+          imageUrl: "images/service_writing.png",
+          timeZone: "America/Toronto",
+          tzLabel: "Toronto (EST)"
+        },
+        {
+          index: "08",
+          title: "E-commerce",
+          description: "Building robust online stores with secure checkout setups, seamless payment gateways, and high-performance product displays. From custom single-product funnels to complete Shopify or WooCommerce structures.",
+          process: ["Store Design", "Checkout Flow", "Gateway Link", "Testing"],
+          delivery: "3 - 4 Weeks",
+          countries: "India, US, UK, UAE, Canada",
+          links: [
+            { name: "Bella Vista Shop", url: "case-study.html" },
+            { name: "Pawier Checkout", url: "work.html" }
+          ],
+          imageUrl: "images/service_ecommerce.png",
+          timeZone: "Asia/Singapore",
+          tzLabel: "Singapore (SGT)"
+        }
+      ];
+
+      // --- DYNAMIC GENERATION ---
+      // Generate Desktop Images
+      const imagesContainer = document.getElementById("images-container");
+      if (imagesContainer) {
+        servicesData.forEach((service, idx) => {
+          const img = document.createElement("img");
+          img.src = service.imageUrl;
+          img.className = `service-image-layer ${idx === 0 ? 'active' : ''}`;
+          img.alt = service.title;
+          img.id = `service-img-${idx}`;
+          img.loading = "lazy";
+          imagesContainer.appendChild(img);
+        });
+      }
+
+      // Generate Mobile Accordion
+      const accordionContainer = document.getElementById("mobile-accordion-container");
+      if (accordionContainer) {
+        servicesData.forEach((service, idx) => {
+          const item = document.createElement("div");
+          item.className = "border border-white/5 bg-white/[0.01] rounded-xl overflow-hidden";
+          
+          // Header
+          const header = document.createElement("button");
+          header.className = `accordion-header w-full flex items-center justify-between p-5 text-left transition-all duration-300 ${idx === 0 ? 'active' : ''}`;
+          header.dataset.index = idx;
+          header.innerHTML = `
+            <div class="flex items-center gap-3">
+              <span class="font-mono text-xs text-orange-500/60">${service.index}.</span>
+              <span class="font-display font-bold text-lg text-white uppercase tracking-tight">${service.title}</span>
+            </div>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-gray-500 transition-transform duration-300 ${idx === 0 ? 'rotate-180 text-orange-500' : ''}"></i>
+          `;
+          
+          // Content
+          const content = document.createElement("div");
+          content.className = `accordion-content transition-all duration-500 ${idx === 0 ? 'open' : ''}`;
+          content.style.maxHeight = idx === 0 ? 'fit-content' : '0px';
+          
+          const processHtml = service.process.map(p => `<span class="process-badge">${p}</span>`).join('');
+          const linksHtml = service.links.map(l => `
+            <a href="${l.url}" class="text-[10px] text-orange-500 hover:text-white transition-colors underline font-mono flex items-center gap-1 inline-flex">
+              <span>${l.name}</span>
+              <i data-lucide="arrow-up-right" class="w-2.5 h-2.5"></i>
+            </a>
+          `).join('<span class="text-white/10 mx-2">/</span>');
+
+          content.innerHTML = `
+            <div class="p-5 border-t border-white/5 space-y-6">
+              <div class="relative w-full aspect-[4/3] rounded-lg overflow-hidden border border-white/10 bg-neutral-900">
+                <img src="${service.imageUrl}" class="w-full h-full object-cover" alt="${service.title}" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+              </div>
+              
+              <p class="text-xs sm:text-sm text-gray-400 font-light leading-relaxed">${service.description}</p>
+              
+              <div class="space-y-2">
+                <span class="text-[9px] text-gray-500 uppercase tracking-wider font-bold block font-mono">How We Do It</span>
+                <div class="flex flex-wrap gap-1.5">${processHtml}</div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-4 border-t border-white/5 pt-4 text-[11px]">
+                <div>
+                  <span class="block text-[8px] text-gray-500 uppercase tracking-wider font-mono">Delivery</span>
+                  <span class="font-semibold text-gray-300 font-mono">${service.delivery}</span>
+                </div>
+                <div>
+                  <span class="block text-[8px] text-gray-500 uppercase tracking-wider font-mono">Served</span>
+                  <span class="font-semibold text-gray-300 font-mono">${service.countries}</span>
+                </div>
+              </div>
+
+              <div class="border-t border-white/5 pt-4">
+                <span class="block text-[8px] text-gray-500 uppercase tracking-wider font-mono mb-2">Featured Project Links</span>
+                <div class="flex flex-wrap gap-1 items-center">${linksHtml}</div>
+              </div>
+
+              <div class="flex items-center gap-3 pt-2">
+                <a href="mailto:webresolv16@gmail.com" class="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-5 py-2.5 rounded-full text-[10px] font-bold tracking-wider w-full justify-center">
+                  <span>CONTACT US</span>
+                  <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
+                </a>
+              </div>
+            </div>
+          `;
+          
+          item.appendChild(header);
+          item.appendChild(content);
+          accordionContainer.appendChild(item);
+        });
+      }
+
+      // --- STATE & INTERACTION LOGIC ---
+      let activeIndex = 0;
+
+      function getCountryTime(timeZone, label) {
+        try {
+          const options = {
+            timeZone: timeZone,
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: true
+          };
+          const formatter = new Intl.DateTimeFormat([], options);
+          return `${label} / ${formatter.format(new Date())}`;
+        } catch (e) {
+          return `${label} / --:--`;
+        }
+      }
+
+      function updateTimeTicker() {
+        const data = servicesData[activeIndex];
+        const footerLabel = document.getElementById("service-footer-label");
+        if (footerLabel && data) {
+          footerLabel.innerText = getCountryTime(data.timeZone, data.tzLabel);
+        }
+      }
+
+      function updateActiveService(index) {
+        if (index === activeIndex) return;
+
+        // Update active index
+        activeIndex = index;
+        const data = servicesData[index];
+
+        // 1. Right side menu classes
+        document.querySelectorAll(".service-menu-item").forEach((item, idx) => {
+          if (idx === index) {
+            item.classList.add("active");
+          } else {
+            item.classList.remove("active");
+          }
+        });
+
+        // 2. Middle Image layers transition
+        document.querySelectorAll(".service-image-layer").forEach((img, idx) => {
+          if (idx === index) {
+            img.classList.add("active");
+          } else {
+            img.classList.remove("active");
+          }
+        });
+
+        // 3. Middle Dynamic Index & Timezone Label
+        document.getElementById("service-index").innerText = `[${data.index}]`;
+        updateTimeTicker();
+
+        // 4. Left side details fade transition with GSAP
+        gsap.to("#service-detail-body", {
+          opacity: 0,
+          y: 10,
+          duration: 0.25,
+          onComplete: () => {
+            // Update description
+            document.getElementById("service-desc").innerText = data.description;
+            // Update process badges
+            const processDiv = document.getElementById("service-process");
+            processDiv.innerHTML = data.process.join(' <span class="text-neutral-700 font-bold mx-1">·</span> ');
+            // Update delivery
+            document.getElementById("service-delivery").innerText = data.delivery;
+            // Update countries
+            document.getElementById("service-countries").innerText = data.countries;
+            // Update project links
+            const linksDiv = document.getElementById("service-links");
+            linksDiv.innerHTML = data.links.map(l => `
+              <a href="${l.url}" class="hover:text-white underline transition-colors inline-flex items-center gap-0.5">
+                <span>${l.name}</span>
+                <i data-lucide="arrow-up-right" class="w-2.5 h-2.5"></i>
+              </a>
+            `).join(' <span class="text-neutral-700 mx-1.5">/</span> ');
+            
+            // Re-create icons for project links
+            lucide.createIcons();
+
+            // Fade in
+            gsap.to("#service-detail-body", {
+              opacity: 1,
+              y: 0,
+              duration: 0.35,
+              ease: "power2.out"
+            });
+          }
+        });
+      }
+
+      // Initialize the detail panels
+      const firstService = servicesData[0];
+      const processDiv = document.getElementById("service-process");
+      if (processDiv) {
+        processDiv.innerHTML = firstService.process.join(' <span class="text-neutral-700 font-bold mx-1">·</span> ');
+      }
+      const linksDiv = document.getElementById("service-links");
+      if (linksDiv) {
+        linksDiv.innerHTML = firstService.links.map(l => `
+          <a href="${l.url}" class="hover:text-white underline transition-colors inline-flex items-center gap-0.5">
+            <span>${l.name}</span>
+            <i data-lucide="arrow-up-right" class="w-2.5 h-2.5"></i>
+          </a>
+        `).join(' <span class="text-neutral-700 mx-1.5">/</span> ');
+      }
+
+      // Attach event listeners to desktop menu items
+      document.querySelectorAll(".service-menu-item").forEach((item) => {
+        const idx = parseInt(item.dataset.index);
+        item.addEventListener("mouseenter", () => {
+          updateActiveService(idx);
+        });
+        item.addEventListener("click", () => {
+          updateActiveService(idx);
+        });
+      });
+
+      // Attach event listeners to mobile accordion items
+      document.querySelectorAll(".accordion-header").forEach(header => {
+        header.addEventListener("click", () => {
+          const index = parseInt(header.dataset.index);
+          const content = header.nextElementSibling;
+          const icon = header.querySelector("[data-lucide='chevron-down']");
+          
+          const isCurrentlyOpen = content.classList.contains("open");
+          
+          // Close all accordions first
+          document.querySelectorAll(".accordion-header").forEach(h => h.classList.remove("active"));
+          document.querySelectorAll(".accordion-content").forEach(c => {
+            c.classList.remove("open");
+            c.style.maxHeight = "0px";
+          });
+          document.querySelectorAll(".accordion-header [data-lucide='chevron-down']").forEach(i => {
+            i.classList.remove("rotate-180", "text-orange-500");
+          });
+          
+          // Open clicked one if it was closed
+          if (!isCurrentlyOpen) {
+            header.classList.add("active");
+            content.classList.add("open");
+            content.style.maxHeight = content.scrollHeight + "px";
+            if (icon) {
+              icon.classList.add("rotate-180", "text-orange-500");
+            }
+          }
+        });
+      });
+
+      // Initialize timezone clocks
+      updateTimeTicker();
+      setInterval(updateTimeTicker, 60000);
+
+      // Re-create icons for dynamically generated items
+      lucide.createIcons();
+
+      // --- HERO SCROLL ANIMATIONS ---
       const spotlight = document.getElementById("spotlight");
       const cursorDot = document.getElementById("cursor-dot");
       const cursorOutline = document.getElementById("cursor-outline");
@@ -330,7 +937,7 @@
         }
       });
 
-      gsap.to("#hero-portrait", {
+      gsap.to("#hero-portrait, #hero-portrait-mobile", {
         scale: 1.08, ease: "none",
         scrollTrigger: { trigger: "#hero-parallax", start: "top top", end: "bottom top", scrub: true }
       });
