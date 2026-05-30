@@ -305,19 +305,9 @@
       style="background-image: url(&quot;data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;); background-color: rgba(249, 115, 22, 0.15);">
     </div>
     <div class="relative z-10 h-screen flex flex-col">
-      <div class="flex-1 grid grid-cols-1 lg:grid-cols-2 min-h-0 relative">
-        <!-- Mobile-only Background Hero Image -->
-        <div class="absolute inset-0 lg:hidden pointer-events-none z-0 overflow-hidden">
-          <img id="hero-portrait-mobile" src="images/workimg.png" width="1672" height="941"
-            class="w-full h-full object-cover object-center brightness-[0.18] contrast-[1.15] saturate-[0.25]"
-            alt="WebResolv Selected Works Portfolio" />
-          <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/60 to-transparent"></div>
-          <div class="absolute inset-0 bg-gradient-to-br from-orange-600/10 via-transparent to-transparent mix-blend-screen"></div>
-          <div class="absolute inset-0 bg-gradient-to-r from-[#050505] via-[#050505]/60 to-transparent opacity-95"></div>
-        </div>
-
+      <div class="flex-1 grid grid-cols-1 lg:grid-cols-2 min-h-0">
         <div id="para-content"
-          class="flex flex-col justify-between px-6 md:px-12 lg:px-16 pt-28 pb-6 lg:pt-32 lg:pb-8 relative z-10">
+          class="flex flex-col justify-between px-6 md:px-12 lg:px-16 pt-28 pb-6 lg:pt-32 lg:pb-8 relative">
           <div class="reveal">
             <h1 class="visually-hidden sr-only">Selected Works — WebResolv Portfolio</h1>
             <div aria-hidden="true"
@@ -343,8 +333,8 @@
         </div>
 
         <!-- Desktop-only Side Hero Image -->
-        <div class="relative hidden lg:flex flex-col overflow-hidden z-10">
-          <div class="relative flex-1 overflow-hidden h-full w-full">
+        <div class="relative hidden lg:flex flex-col">
+          <div class="relative flex-1 overflow-hidden">
             <img id="hero-portrait" src="images/workimg.png" width="1672" height="941"
               class="w-full h-full object-cover object-center brightness-[0.55] contrast-[1.15] saturate-[0.25]"
               alt="WebResolv Selected Works Portfolio" />
@@ -354,6 +344,22 @@
             </div>
             <div class="absolute inset-0 bg-gradient-to-r from-[#050505] via-transparent to-transparent opacity-90">
             </div>
+          </div>
+        </div>
+
+        <!-- MOBILE: Portrait strip (shown only on mobile/tablet) -->
+        <div class="relative h-[35vh] overflow-hidden lg:hidden">
+          <img id="hero-portrait-mobile" src="images/workimg.png" width="1672" height="941"
+            class="w-full h-full object-cover object-center brightness-[0.5] contrast-[1.1] saturate-[0.2]"
+            alt="WebResolv Selected Works Portfolio" />
+          <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-[#050505]/60"></div>
+          <div
+            class="absolute inset-0 bg-gradient-to-br from-orange-600/10 via-transparent to-transparent mix-blend-screen">
+          </div>
+          <!-- Mobile overlay text -->
+          <div class="absolute bottom-6 right-6 text-right z-20">
+            <p class="text-gray-400 text-xs">Beyond Visuals.</p>
+            <p class="text-white text-lg font-bold">Crafted with <span class="text-orange-500">Precision.</span></p>
           </div>
         </div>
       </div>
