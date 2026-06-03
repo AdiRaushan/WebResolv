@@ -301,7 +301,16 @@
     }
 
     const urlParams = new URLSearchParams(window.location.search);
-    const articleId = urlParams.get("id");
+    let articleId = urlParams.get("id");
+
+    // Fallback: extract from pathname if it's a rewritten Vercel SEO slug (e.g. /blog/some-slug)
+    if (!articleId) {
+      const pathParts = window.location.pathname.split("/");
+      const blogIdx = pathParts.indexOf("blog");
+      if (blogIdx !== -1 && pathParts[blogIdx + 1]) {
+        articleId = pathParts[blogIdx + 1];
+      }
+    }
 
     // Find the current post
     let activePost = posts.find(p => p.id === articleId);
@@ -401,7 +410,7 @@
         
         otherPosts.forEach(item => {
           const card = document.createElement("a");
-          card.href = `blog.html?id=${item.id}`;
+          card.href = item.slug ? item.slug : `/blog/${item.id}`;
           card.className = "glass group rounded-2xl p-6 flex flex-col hover:border-orange-500/40 hover:-translate-y-1 transition-all duration-300 clickable";
           
           card.innerHTML = `

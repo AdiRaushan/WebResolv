@@ -1,4 +1,12 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/services/whatsapp-automation", "destination": "/services?id=automation" },
+    { "source": "/services/lead-automation", "destination": "/services?id=landingpage" },
+    { "source": "/work/evara-staffing", "destination": "/case-study?id=evarastaffing" },
+    { "source": "/pricing", "destination": "/index#pricing" },
+    { "source": "/contact", "destination": "/index#contact" },
+    { "source": "/blog/:id", "destination": "/blog.html?id=:id" }
+  ]
 }

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  
+  <!-- Primary Meta Tags -->
+  <title>How We Built a Website That Replies in 90 Seconds | WebResolv</title>
+  <meta name="title" content="How We Built a Website That Replies in 90 Seconds | WebResolv" />
+  <meta name="description"
+    content="See how WebResolv built a website with WhatsApp automation that replies to every client in 90 seconds — no missed leads, no manual follow-up. Full case study." />
+  <meta name="keywords" content="WhatsApp automation website India, website lead automation, auto reply WhatsApp business, never miss a client, lead capture website India" />
+  <meta name="author" content="WebResolv Editorial" />
+  <meta name="robots" content="index, follow" />
+  <meta name="language" content="English" />
+  <link rel="canonical" href="https://webresolv.in/blog/website-replies-clients-90-seconds" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://webresolv.in/blog/website-replies-clients-90-seconds" />
+  <meta property="og:title" content="How We Built a Website That Replies in 90 Seconds | WebResolv" />
+  <meta property="og:description"
+    content="See how WebResolv built a website with WhatsApp automation that replies to every client in 90 seconds — no missed leads, no manual follow-up. Full case study." />
+  <meta property="og:image" content="https://webresolv.in/images/whatsapp-automation-website-reply-90-seconds.png" />
+  <meta property="og:site_name" content="WebResolv" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="How We Built a Website That Replies in 90 Seconds | WebResolv" />
+  <meta name="twitter:description"
+    content="See how WebResolv built a website with WhatsApp automation that replies to every client in 90 seconds — no missed leads, no manual follow-up. Full case study." />
+  <meta name="twitter:image" content="https://webresolv.in/images/whatsapp-automation-website-reply-90-seconds.png" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.svg" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://unpkg.com/lucide@latest"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-T7SMPK8WTC"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-T7SMPK8WTC');
+  </script>
+
+  <style>
+    :root {
+      --bg-color: #050505;
+      --accent: #f97316;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background-color: var(--bg-color);
+      color: #ffffff;
+      overflow-x: hidden;
+    }
+
+    @media (min-width: 768px) {
+      body {
+        cursor: none;
+      }
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    .font-display {
+      font-family: "Space Grotesk", sans-serif;
+    }
+
+    .noise-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 50;
+      opacity: 0.05;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
+    .spotlight {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      background: radial-gradient(600px circle at var(--x) var(--y),
+          rgba(249, 115, 22, 0.15),
+          transparent 40%);
+    }
+
+    .cursor-dot,
+    .cursor-outline {
+      position: fixed;
+      top: 0;
+      left: 0;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      z-index: 9999;
+      pointer-events: none;
+    }
+
+    .cursor-dot {
+      width: 8px;
+      height: 8px;
+      background: white;
+    }
+
+    .cursor-outline {
+      width: 40px;
+      height: 40px;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      transition: width 0.2s, height 0.2s;
+    }
+
+    body:hover .cursor-outline {
+      width: 40px;
+      height: 40px;
+    }
+
+    a:hover~.cursor-outline,
+    button:hover~.cursor-outline {
+      width: 60px;
+      height: 60px;
+      background: rgba(255, 255, 255, 0.1);
+      border-color: transparent;
+    }
+
+    .glass {
+      background: rgba(20, 20, 20, 0.6);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 1s cubic-bezier(0.5, 0, 0, 1);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body class="antialiased selection:bg-orange-500 selection:text-white">
+  <div class="noise-overlay"></div>
+  <div class="spotlight" id="spotlight"></div>
+  <div class="cursor-dot hidden md:block" id="cursor-dot"></div>
+  <div class="cursor-outline hidden md:block" id="cursor-outline"></div>
+
+  <!-- NAV -->
+  <nav id="top-nav"
+    class="fixed top-0 w-full z-40 px-4 md:px-6 py-4 md:py-6 flex justify-between items-center mix-blend-difference text-white transition-all duration-500">
+    <div class="flex items-center gap-3 md:gap-4">
+      <a href="/" class="font-display font-bold text-lg md:text-xl tracking-tighter hover:text-orange-500 transition-colors clickable">
+        WebResolv<span class="text-orange-500">.</span>
+      </a>
+      <a href="/#insights"
+        class="glass px-3 py-1.5 rounded-full text-[9px] md:text-[10px] font-bold text-gray-400 hover:text-white hover:border-white transition-all clickable flex items-center gap-1">
+        <i data-lucide="arrow-left" class="w-3 h-3"></i>
+        <span>JOURNAL</span>
+      </a>
+    </div>
+
+    <!-- Right Side Actions -->
+    <div class="flex items-center gap-2 md:gap-3">
+      <a href="mailto:webresolv16@gmail.com"
+        class="glass px-3 md:px-6 py-1.5 md:py-2 rounded-full text-[10px] md:text-xs font-bold hover:bg-white hover:text-black hover:border-white transition-all clickable touch-manipulation">START
+        PROJECT</a>
+
+      <a href="https://wa.me/919217671611" target="_blank" rel="noopener noreferrer"
+        class="glass px-3 md:px-6 py-1.5 md:py-2 rounded-full text-[10px] md:text-xs font-bold hover:bg-[#25D366] hover:text-black hover:border-[#25D366] transition-all clickable touch-manipulation flex items-center gap-1.5">
+        <i data-lucide="message-circle" class="w-3.5 h-3.5 md:w-4 h-4 text-[#25D366]"></i>
+        <span>WHATSAPP</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <header class="relative min-h-[60vh] flex items-end pb-16 px-6 md:px-12 pt-36">
+    <div class="absolute inset-0 z-0">
+      <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/75 to-transparent z-10"></div>
+      <img id="article-hero-bg" src="/images/whatsapp-automation-website-reply-90-seconds.png" width="1920" height="1080" class="w-full h-full object-cover object-center opacity-40" alt="WhatsApp automation website reply system built by WebResolv India" />
+    </div>
+
+    <div class="relative z-20 w-full max-w-4xl mx-auto border-t border-white/10 pt-8 reveal active">
+      <div class="flex flex-wrap gap-3 mb-6">
+        <span id="article-tag" class="px-3 py-1 border border-orange-500/30 bg-orange-500/10 rounded-full text-[10px] uppercase tracking-widest text-orange-400 font-bold">Case Study</span>
+        <span id="article-readtime" class="px-3 py-1 border border-white/10 bg-white/5 rounded-full text-[10px] uppercase tracking-widest text-gray-400 font-bold">5 Min Read</span>
+      </div>
+      <h1 id="article-title" class="text-4xl md:text-7xl font-black tracking-tighter text-white uppercase leading-tight mb-8">
+        How We Built a Website That Replies to Clients in 90 Seconds
+      </h1>
+      
+      <div class="flex items-center gap-4 text-sm text-gray-400">
+        <div class="flex flex-col">
+          <span class="text-xs uppercase tracking-wider text-gray-600 font-bold">Author</span>
+          <span id="article-author" class="text-white font-medium">WebResolv Editorial</span>
+        </div>
+        <div class="w-px h-8 bg-white/10"></div>
+        <div class="flex flex-col">
+          <span class="text-xs uppercase tracking-wider text-gray-600 font-bold">Published</span>
+          <span id="article-date" class="text-white font-medium">May 30, 2026</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ARTICLE BODY -->
+  <main class="relative z-10 max-w-4xl mx-auto px-6 pb-32">
+    <article id="article-content" class="text-gray-300 leading-relaxed text-base md:text-lg space-y-8 font-light max-w-3xl border-b border-white/10 pb-20 reveal active">
+      <p class="text-xl text-white font-normal leading-relaxed mb-8">Most business owners lose leads not because they have a bad product — but because they replied too late. A client messages at 11pm. You see it at 9am. They've already hired someone else. This is the problem we solved for one of our clients. Here's exactly how we built a website that captures every inquiry and sends a WhatsApp reply within 90 seconds — automatically, every time, even at 3am.</p>
+      
+      <h2 class="text-2xl font-bold text-white mt-12 mb-4 font-display">The Problem — Leads Were Coming In But Going Cold</h2>
+      <p class="mb-6">Every week, our client was getting 15–20 inquiries through their website contact form. But they were checking email only twice a day. By the time they replied, 40% of those leads had already gone elsewhere.</p>
+      <p class="mb-6">The issue wasn't the product. It wasn't the price. It was the <strong>response time</strong>.</p>
+      <p class="mb-6">Studies consistently show that if you reply to a lead within 5 minutes, your chance of converting them is <strong>21x higher</strong> than replying after 30 minutes. After 24 hours, most leads are gone permanently.</p>
+      
+      <h2 class="text-2xl font-bold text-white mt-12 mb-4 font-display">The Solution — Website + WhatsApp Automation + CRM in One System</h2>
+      <p class="mb-6">We built a system with three connected parts:</p>
+      
+      <div class="space-y-4 mb-8">
+        <p class="mb-2"><strong>Part 1: The website form</strong><br>A simple, fast-loading contact form on the website. Name, phone number, and one question: "What do you need help with?" That's it. No 10-field forms that kill conversions.</p>
+        <p class="mb-2"><strong>Part 2: Zapier triggers the automation</strong><br>The moment someone submits the form, Zapier catches it instantly. No delay. It fires two actions simultaneously.</p>
+        <p class="mb-2"><strong>Part 3: WhatsApp reply + CRM entry</strong><br>Action one: A personalised WhatsApp message goes to the client's phone number within 90 seconds. It uses their first name, acknowledges what they asked for, and tells them when to expect a call.</p>
+        <p class="mb-2">Action two: Their details land in a CRM automatically. Name, number, inquiry type, timestamp — all logged. Nothing is forgotten.</p>
+      </div>
+
+      <div class="my-10 overflow-hidden rounded-2xl border border-white/10 bg-neutral-900 aspect-[8/5] max-w-[800px] mx-auto">
+        <img src="/images/website-lead-automation-flow-diagram.png" class="w-full h-full object-cover" alt="Website lead automation flow — form to WhatsApp to CRM using Zapier" />
+      </div>
+
+      <h2 class="text-2xl font-bold text-white mt-12 mb-4 font-display">What the Client Saw After 30 Days</h2>
+      <ul class="list-disc pl-6 mb-8 space-y-2">
+        <li>Response time dropped from average <strong>6 hours &rarr; 90 seconds</strong></li>
+        <li>Lead conversion rate increased by <strong>34%</strong></li>
+        <li>Zero inquiries missed even during weekends and evenings</li>
+        <li>Client reported spending <strong>2 fewer hours per day</strong> on manual follow-ups</li>
+      </ul>
+      <p class="mb-6">The business didn't change. The product didn't change. Only the system changed.</p>
+
+      <div class="my-10 overflow-hidden rounded-2xl border border-white/10 bg-neutral-900 aspect-[8/5] max-w-[800px] mx-auto">
+        <img src="/images/crm-lead-tracking-dashboard-webresolv.png" class="w-full h-full object-cover" alt="Automatic lead tracking CRM dashboard — WebResolv lead automation system" />
+      </div>
+
+      <h2 class="text-2xl font-bold text-white mt-12 mb-4 font-display">Why This Works Better Than a Human Receptionist</h2>
+      <p class="mb-6">A receptionist costs ₹15,000–₹25,000 per month. They work 8 hours a day. They take weekends off. They forget to log a lead sometimes.</p>
+      <p class="mb-6">This system costs a fraction of that as a one-time setup. It works 24 hours a day, 7 days a week. It never forgets a single lead. It never has a bad day.</p>
+      <p class="mb-6">We're not replacing people. We're making sure <strong>no opportunity ever falls through the cracks</strong> while the business owner focuses on actually delivering their service.</p>
+
+      <h2 class="text-2xl font-bold text-white mt-12 mb-4 font-display">Can This Work for Your Business?</h2>
+      <p class="mb-6">This system works for any service business that gets inquiries — real estate agents, clinics, staffing agencies, consultants, interior designers, coaches, or any small business where a missed reply costs real money.</p>
+      <p class="mb-6">If your website is just sitting there looking good but not actively capturing and following up on every lead — it's costing you clients you'll never even know you lost.</p>
+      
+      <div class="border-t border-white/10 pt-6 mt-10 space-y-3 font-mono text-sm">
+        <p>&rarr; <a href="/services/lead-automation" class="text-orange-500 hover:text-white underline">See how we build websites with lead automation — WebResolv Services</a></p>
+        <p>&rarr; <a href="/work/evara-staffing" class="text-orange-500 hover:text-white underline">View the full case study — Evara Staffing</a></p>
+        <p>&rarr; <a href="/contact" class="text-orange-500 hover:text-white underline">Start a project with WebResolv</a></p>
+      </div>
+    </article>
+
+    <!-- READ NEXT / RELATED -->
+    <div class="mt-24 reveal">
+      <h3 class="text-2xl font-bold text-white mb-10 font-display">Keep Reading</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="read-next-container">
+        <!-- Injected read next cards -->
+      </div>
+    </div>
+
+    <!-- BACK TO BLOG ACTION -->
+    <div class="mt-20 pt-16 border-t border-white/5 text-center reveal">
+      <a href="/#insights" class="inline-flex items-center gap-2 bg-orange-500/10 border border-orange-500/30 hover:bg-orange-500 px-6 py-3 rounded-full text-xs font-bold text-orange-400 hover:text-white transition-all duration-300">
+        <i data-lucide="arrow-left" class="w-4 h-4"></i>
+        <span>Back to Insights</span>
+      </a>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-black py-12 text-center border-t border-white/10 text-gray-600 text-sm relative z-10">
+    <p class="mb-4">
+      Ready to build something legendary?
+      <a href="mailto:webresolv16@gmail.com" class="text-white underline">Contact Us</a>
+    </p>
+    © 2026 WebResolv Studio. <span class="text-neutral-800 mx-2">|</span> <a href="/dashboard.html" class="text-gray-600 hover:text-orange-500 transition-colors">Admin Console</a>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      lucide.createIcons();
+
+      // Spotlight & Cursor Logic
+      const spotlight = document.getElementById("spotlight");
+      const cursorDot = document.getElementById("cursor-dot");
+      const cursorOutline = document.getElementById("cursor-outline");
+
+      window.addEventListener("mousemove", (e) => {
+        const x = e.clientX;
+        const y = e.clientY;
+        spotlight.style.setProperty("--x", `${x}px`);
+        spotlight.style.setProperty("--y", `${y}px`);
+        cursorDot.style.left = `${x}px`;
+        cursorDot.style.top = `${y}px`;
+        cursorOutline.animate(
+          { left: `${x}px`, top: `${y}px` },
+          { duration: 500, fill: "forwards" }
+        );
+      });
+
+      // Top Navbar Glassmorphism & Blur on Scroll
+      const topNav = document.getElementById("top-nav");
+      if (topNav) {
+        window.addEventListener("scroll", () => {
+          if (window.scrollY > 50) {
+            topNav.classList.add("bg-[#050505]/80", "backdrop-blur-lg", "border-b", "border-white/5", "py-3");
+            topNav.classList.remove("py-4", "md:py-6", "mix-blend-difference");
+          } else {
+            topNav.classList.remove("bg-[#050505]/80", "backdrop-blur-lg", "border-b", "border-white/5", "py-3");
+            topNav.classList.add("py-4", "md:py-6", "mix-blend-difference");
+          }
+        });
+      }
+
+      // Intersection Observer for Reveal elements
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("active");
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+      document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+
+      // Load read next cards from localStorage
+      let posts = [];
+      try {
+        posts = JSON.parse(localStorage.getItem("webresolv_posts")) || [];
+      } catch (e) {
+        console.error("Error reading localStorage:", e);
+      }
+
+      const readNextContainer = document.getElementById("read-next-container");
+      if (readNextContainer && posts.length > 0) {
+        readNextContainer.innerHTML = "";
+        
+        // Find other posts (limit to 2 next articles)
+        const otherPosts = posts.filter(p => p.id !== "website-replies-clients-90-seconds").slice(0, 2);
+        
+        otherPosts.forEach(item => {
+          const card = document.createElement("a");
+          card.href = item.slug ? item.slug : `/blog.html?id=${item.id}`;
+          card.className = "glass group rounded-2xl p-6 flex flex-col hover:border-orange-500/40 hover:-translate-y-1 transition-all duration-300 clickable";
+          
+          const rawImage = item.image || 'https://images.unsplash.com/photo-1501504905252-473c47e087f8?q=80&w=600';
+          const imageSrc = rawImage.startsWith('http') ? rawImage : '/' + rawImage;
+          
+          card.innerHTML = `
+            <div class="aspect-[16/9] w-full rounded-xl overflow-hidden mb-4 bg-neutral-900 border border-white/5 relative">
+              <img src="${imageSrc}" 
+                class="w-full h-full object-cover grayscale opacity-75 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500" alt="${item.title}" />
+            </div>
+            <div class="flex items-center justify-between text-[9px] text-gray-500 font-mono font-bold uppercase tracking-wider mb-2">
+              <span class="${item.tagColor || 'text-orange-400'}">${item.tag || 'Insight'}</span>
+              <span>${item.readTime || '5 min read'}</span>
+            </div>
+            <h4 class="text-lg font-bold text-white group-hover:text-orange-500 transition-colors leading-tight mb-2 font-display">
+              ${item.title.replace("<br>", " ")}
+            </h4>
+            <div class="flex items-center gap-1.5 text-[10px] font-bold text-white uppercase tracking-wider mt-auto">
+              <span>Read</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-orange-500"></i>
+            </div>
+          `;
+          readNextContainer.appendChild(card);
+        });
+        lucide.createIcons();
+      }
+    });
+  </script>
+</body>
+
+</html>

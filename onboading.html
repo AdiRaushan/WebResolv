@@ -41,15 +41,26 @@
         }
 
         @media print {
+            @page {
+                size: A4 portrait;
+                margin: 0;
+            }
             body {
-                padding: 0;
-                background: #000;
+                padding: 0 !important;
+                margin: 0 !important;
+                background: #050505 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
             }
 
             .page {
-                border: none;
-                box-shadow: none;
-                margin: 0;
+                width: 210mm !important;
+                height: 297mm !important;
+                border: none !important;
+                box-shadow: none !important;
+                margin: 0 !important;
+                page-break-after: always !important;
+                page-break-inside: avoid !important;
             }
 
             .no-print {
@@ -876,6 +887,15 @@
             margin-top: 4px;
             font-weight: 600;
         }
+
+        .spinner {
+            animation: spin 1s linear infinite;
+            display: inline-block;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
     </style>
 </head>
 
@@ -889,7 +909,7 @@
         <div class="noise"></div>
         <div class="page-header-strip">
             <div class="logo-mark">WebResolv<span class="dot">.</span></div>
-            <div class="ref-tag">Strategy Proposal 2026</div>
+            <div class="ref-tag">Onboarding Checklist 2026</div>
         </div>
 
         <div class="cover-body">
@@ -898,9 +918,8 @@
                     <i data-lucide="zap" style="width: 12px; height: 12px;"></i>
                     Digital Expansion Blueprint
                 </div>
-                <h1 class="cover-headline">Project Strategy <br /><em>Proposal</em> · 2026</h1>
-                <p class="cover-sub">A comprehensive roadmap to transform your digital presence — from a
-                    high-performance web architecture to an engine for growth.</p>
+                <h1 class="cover-headline">Client Onboarding <br /><em>Checklist</em> · 2026</h1>
+                <p class="cover-sub">A structured outline of project scope, timelines, and terms to build a strong online presence for AP Elastpro.</p>
             </div>
 
             <div class="cover-mid">
@@ -911,47 +930,45 @@
                     </div>
                     <div class="meta-cell">
                         <div class="meta-label">Prepared For</div>
-                        <div class="meta-value">Bizeneed India Pvt Ltd.</div>
+                        <div class="meta-value">AP Elastpro</div>
                     </div>
                     <div class="meta-cell">
-                        <div class="meta-label">Date</div>
-                        <div class="meta-value">April 2026</div>
+                        <div class="meta-label">Start Date</div>
+                        <div class="meta-value">03 - June - 2026</div>
                     </div>
                 </div>
 
                 <div class="cover-intro-text">
-                    After a thorough audit of your digital ecosystem, we've identified the gaps preventing your business
-                    from scaling online. This proposal outlines a unified approach that turns your website into a
-                    conversion machine.
+                    <strong>Project Overview:</strong> India’s first and largest manufacturer of advanced TPE and EVA-based technical products, specializing in CIPP liners for pipe and sewage rehabilitation, anti-slip shelf liners, expansion joint tapes, waterproofing tapes and corners, medical tourniquets, Esmarch bandages, and exercise bands.
                 </div>
 
                 <div class="cover-scope-grid">
                     <div class="scope-pill">
                         <div class="scope-icon"><i data-lucide="layout-template"></i></div>
                         <div>
-                            <div class="scope-label">127+ Pages</div>
-                            <div class="scope-sub">Complete Authority Site</div>
+                            <div class="scope-label">12 - 13 Pages</div>
+                            <div class="scope-sub">Home + Services + Contact</div>
                         </div>
                     </div>
                     <div class="scope-pill">
                         <div class="scope-icon"><i data-lucide="palette"></i></div>
                         <div>
                             <div class="scope-label">Premium Design</div>
-                            <div class="scope-sub">Unified Brand Aesthetic</div>
+                            <div class="scope-sub">Modern Industrial Aesthetic</div>
                         </div>
                     </div>
                     <div class="scope-pill">
-                        <div class="scope-icon"><i data-lucide="trending-up"></i></div>
+                        <div class="scope-icon"><i data-lucide="globe"></i></div>
                         <div>
-                            <div class="scope-label">Higher Conversion</div>
-                            <div class="scope-sub">Lead-to-Booking Boost</div>
+                            <div class="scope-label">Pan India & Outside</div>
+                            <div class="scope-sub">National & Global Outreach</div>
                         </div>
                     </div>
                     <div class="scope-pill">
                         <div class="scope-icon"><i data-lucide="shield-check"></i></div>
                         <div>
-                            <div class="scope-label">Client Trust</div>
-                            <div class="scope-sub">Increased Retention</div>
+                            <div class="scope-label">Trust Signals</div>
+                            <div class="scope-sub">Social Proof & Reviews Page</div>
                         </div>
                     </div>
                 </div>
@@ -959,7 +976,7 @@
         </div>
 
         <div class="page-footer-strip">
-            <span>Confidential Document</span>
+            <span>Onboarding Kit | AP Elastpro</span>
             <div class="pg-num">1</div>
         </div>
     </div>
@@ -975,9 +992,8 @@
         <div class="content-body">
             <div>
                 <div class="section-eyebrow">Phase 01</div>
-                <h2 class="section-title">Web Architecture & Redesign</h2>
-                <p class="section-body">Full structural overhaul + Premium design system focusing on depth and modern
-                    authority.</p>
+                <h2 class="section-title">Web Structure & Content Map</h2>
+                <p class="section-body">A comprehensive 12-13 page layout optimized for technical product display, service demonstration, and rapid lead acquisition.</p>
             </div>
 
             <div class="divider"></div>
@@ -985,38 +1001,40 @@
             <div class="services-grid" style="grid-template-columns: 1fr 1fr; gap: 24px;">
                 <div class="service-card">
                     <div class="service-cat">Step 1</div>
-                    <div class="service-name">Create 71 Missing Pages</div>
+                    <div class="service-name">Homepage (Business Intro)</div>
                     <ul class="service-items">
-                        <li>Ensure every service is visible</li>
-                        <li>High-intent search targeting</li>
-                        <li>Custom sub-domain structuring</li>
+                        <li>Business intro & manufacturer profile</li>
+                        <li>Key Product highlights</li>
+                        <li>Direct Call / WhatsApp CTA buttons</li>
                     </ul>
                 </div>
                 <div class="service-card">
                     <div class="service-cat">Step 2</div>
-                    <div class="service-name">Redesign 56 Existing Pages</div>
+                    <div class="service-name">8+ Technical Product Pages</div>
                     <ul class="service-items">
-                        <li>Overhaul Home & Shop</li>
-                        <li>Premium glassmorphism layout</li>
-                        <li>Mobile-first architecture</li>
+                        <li>Trench-less CIPP Liners</li>
+                        <li>EVA Anti-Slip Shelf/Drawer Liners</li>
+                        <li>TPE Expansion Joint Tapes & Epoxy</li>
+                        <li>Felt Corner Waterproofing (L-SHAPED)</li>
+                        <li>Latex-Free TPE Tourniquets</li>
                     </ul>
                 </div>
                 <div class="service-card">
                     <div class="service-cat">Step 3</div>
-                    <div class="service-name">Keyword SEO (127 Pages)</div>
+                    <div class="service-name">Services & About Us</div>
                     <ul class="service-items">
-                        <li>High-search term optimization</li>
-                        <li>Rank higher on Google</li>
-                        <li>Professional authority indicators</li>
+                        <li>Expansion Joint Waterproofing Services</li>
+                        <li>About Us (Experience, trust & story)</li>
+                        <li>Testimonials / Reviews (Social proof)</li>
                     </ul>
                 </div>
                 <div class="service-card">
                     <div class="service-cat">Step 4</div>
-                    <div class="service-name">Shop & Product Optimization</div>
+                    <div class="service-name">Contact & Leads Page</div>
                     <ul class="service-items">
-                        <li>Higher conversion checkout</li>
-                        <li>Final testing across all pages</li>
-                        <li>Lead generation forms</li>
+                        <li>Interactive contact / inquiry form</li>
+                        <li>Direct Phone & WhatsApp buttons</li>
+                        <li>Google Location Map integration</li>
                     </ul>
                 </div>
             </div>
@@ -1024,17 +1042,19 @@
             <div class="divider"></div>
 
             <div class="info-block">
-                <div class="info-block-title">Why Missing Pages Hurt Your Business</div>
-                <p class="section-body">
-                    When services exist in your business but not on your website, Google cannot show your business to
-                    people searching for those specific services. Rebuilding these 71 pages isn't just about design,
-                    it's about capturing lost revenue by ensuring you rank for every service you offer.
+                <div class="info-block-title">Requirements from Your Side</div>
+                <p class="section-body" style="font-size: 13px; line-height: 1.6;">
+                    To begin development on schedule, we need the following details:<br />
+                    • <strong>Logo</strong> (if available) & <strong>Business details</strong> (name, address, phone)<br />
+                    • <strong>Product details</strong> (any specific text, details, or photos)<br />
+                    • <strong>Domain access</strong> (credentials / delegation through GoDaddy)<br />
+                    • <strong>Reviews / Testimonials</strong> (Client testimonials to build social proof)
                 </p>
             </div>
         </div>
 
         <div class="page-footer-strip">
-            <span>Confidential Document</span>
+            <span>Onboarding Kit | AP Elastpro</span>
             <div class="pg-num">2</div>
         </div>
     </div>
@@ -1050,9 +1070,8 @@
         <div class="content-body">
             <div>
                 <div class="section-eyebrow">Execution Roadmap</div>
-                <h2 class="section-title">12-Day Development Sprint</h2>
-                <p class="section-body">A high-velocity, structured development process building your modern web app
-                    using the React ecosystem.</p>
+                <h2 class="section-title">4–6 Working Days Sprint</h2>
+                <p class="section-body">A high-velocity, structured development process building your technical product showcase website.</p>
             </div>
 
             <div class="divider"></div>
@@ -1060,84 +1079,76 @@
             <div class="two-col" style="grid-template-columns: 1fr 1fr;">
                 <div class="timeline">
                     <div class="tl-item">
-                        <div class="tl-node filled"><i data-lucide="rocket" style="width:12px; height:12px;"></i></div>
+                        <div class="tl-node filled"><i data-lucide="settings" style="width:12px; height:12px;"></i></div>
                         <div class="tl-content">
                             <div class="tl-phase">Phase 1</div>
-                            <div class="tl-title">Foundation & Routing</div>
-                            <div class="tl-desc">Project initialization, Tailwind schema setup, and generating routing
-                                for the 71 missing SEO pages.</div>
-                            <div class="tl-days">Days 1 - 3</div>
+                            <div class="tl-title">Planning & GoDaddy Setup</div>
+                            <div class="tl-desc">Asset collection, logo placement, layout planning, and initial server configuration.</div>
+                            <div class="tl-days">Days 1 - 2</div>
                         </div>
                     </div>
                     <div class="tl-item">
                         <div class="tl-node"><i data-lucide="monitor" style="width:12px; height:12px;"></i></div>
                         <div class="tl-content">
                             <div class="tl-phase">Phase 2</div>
-                            <div class="tl-title">Architecture Redesign</div>
-                            <div class="tl-desc">Overhauling the Home, Shop, and previous 56 pages into a premium React
-                                glassmorphism layout.</div>
-                            <div class="tl-days">Days 4 - 7</div>
+                            <div class="tl-title">Design & Development</div>
+                            <div class="tl-desc">Building the homepage, 8 product pages, and services layout with premium responsiveness.</div>
+                            <div class="tl-days">Days 3 - 4</div>
                         </div>
                     </div>
                     <div class="tl-item">
                         <div class="tl-node"><i data-lucide="search" style="width:12px; height:12px;"></i></div>
                         <div class="tl-content">
                             <div class="tl-phase">Phase 3</div>
-                            <div class="tl-title">SEO & Integrations</div>
-                            <div class="tl-desc">High-Search SEO keyword injection across all 127 pages, plus lead form
-                                connections.</div>
-                            <div class="tl-days">Days 8 - 10</div>
+                            <div class="tl-title">RankMath SEO & Sitemap</div>
+                            <div class="tl-desc">SEO optimization across pages, Google Search Console & Sitemap setup.</div>
+                            <div class="tl-days">Day 5</div>
                         </div>
                     </div>
                     <div class="tl-item">
                         <div class="tl-node"><i data-lucide="check-circle" style="width:12px; height:12px;"></i></div>
                         <div class="tl-content">
                             <div class="tl-phase">Phase 4</div>
-                            <div class="tl-title">Testing & Launch</div>
-                            <div class="tl-desc">Cross-device responsive testing, performance optimization, and final
-                                deployment.</div>
-                            <div class="tl-days">Days 11 - 12</div>
+                            <div class="tl-title">Handoff & Launch</div>
+                            <div class="tl-desc">WhatsApp/Call button integrations, QA testing, and going live.</div>
+                            <div class="tl-days">Day 6</div>
                         </div>
                     </div>
                 </div>
 
                 <div style="display:flex; flex-direction: column; gap: 24px;">
                     <div class="info-block" style="flex: 1;">
-                        <div class="info-block-title">Modern Technology Stack</div>
+                        <div class="info-block-title">Key Features Included</div>
                         <p class="section-body" style="font-size: 13px; margin-bottom: 20px;">
-                            We don't use dated templates. Your updated platform will be engineered from the ground up
-                            using a modern, scalable technology stack for maximum speed, security, and aesthetics.
+                            Your website is built to drive client trust and capture industrial leads efficiently.
                         </p>
 
                         <div class="checklist">
                             <div class="check-item">
                                 <div class="check-box" style="background:transparent; border:none;"><i
-                                        data-lucide="code" style="color:var(--orange);"></i></div>
+                                        data-lucide="smartphone" style="color:var(--orange);"></i></div>
                                 <div>
                                     <strong
-                                        style="color:var(--white);font-weight:600;display:block;margin-bottom:4px;">React
-                                        & Vite JS</strong>
-                                    Next-gen dynamic rendering for an instantaneous browsing experience.
+                                        style="color:var(--white);font-weight:600;display:block;margin-bottom:4px;">Mobile-Friendly & Fast</strong>
+                                    Designed to load instantly and look beautiful on all screen sizes.
                                 </div>
                             </div>
                             <div class="check-item">
                                 <div class="check-box" style="background:transparent; border:none;"><i
-                                        data-lucide="pen-tool" style="color:var(--orange);"></i></div>
+                                        data-lucide="search" style="color:var(--orange);"></i></div>
                                 <div>
                                     <strong
-                                        style="color:var(--white);font-weight:600;display:block;margin-bottom:4px;">Tailwind
-                                        CSS</strong>
-                                    Utility-first robust design system ensuring perfect responsiveness anywhere.
+                                        style="color:var(--white);font-weight:600;display:block;margin-bottom:4px;">SEO setup via RankMath</strong>
+                                    Configured properly for high-intent technical search keywords.
                                 </div>
                             </div>
                             <div class="check-item">
                                 <div class="check-box" style="background:transparent; border:none;"><i
-                                        data-lucide="sparkles" style="color:var(--orange);"></i></div>
+                                        data-lucide="message-square" style="color:var(--orange);"></i></div>
                                 <div>
                                     <strong
-                                        style="color:var(--white);font-weight:600;display:block;margin-bottom:4px;">Framer
-                                        Motion</strong>
-                                    Micro-interaction engine powering smooth, premium glassmorphic animations.
+                                        style="color:var(--white);font-weight:600;display:block;margin-bottom:4px;">WhatsApp & Call CTA</strong>
+                                    Instant contact buttons for seamless buyer inquiries.
                                 </div>
                             </div>
                         </div>
@@ -1147,7 +1158,7 @@
         </div>
 
         <div class="page-footer-strip">
-            <span>Confidential Document</span>
+            <span>Onboarding Kit | AP Elastpro</span>
             <div class="pg-num">3</div>
         </div>
     </div>
@@ -1163,99 +1174,165 @@
         <div class="content-body">
             <div>
                 <div class="section-eyebrow">Financial Outline</div>
-                <h2 class="section-title">Architecture Investment</h2>
-                <p class="section-body">A transparent breakdown of the required investment to execute the proposed
-                    digital strategy over a 10 to 12 day turnaround timeline.</p>
+                <h2 class="section-title">Development Investment</h2>
+                <p class="section-body">A transparent breakdown of the required investment for AP Elastpro's website design and development.</p>
             </div>
 
             <div class="pricing-block">
                 <div>
-                    <div class="price-label">Web Rebuild Total</div>
-                    <div class="price-amount"><sup>₹</sup>30,000</div>
-                    <div class="price-note">Timeline: 10 - 12 Days Max</div>
+                    <div class="price-label">Project Rebuild Total</div>
+                    <div class="price-amount"><sup>₹</sup>10,000</div>
+                    <div class="price-note">Timeline: 4 - 6 Working Days</div>
                 </div>
                 <div class="price-split">
                     <div class="split-row">
-                        <div class="split-item">Create 71 missing service pages</div>
+                        <div class="split-item">12-13 Pages Design & Development</div>
                         <div class="split-val">Included</div>
                     </div>
                     <div class="split-row">
-                        <div class="split-item">Redesign 56 existing pages</div>
+                        <div class="split-item">SEO target keyword RankMath setup</div>
                         <div class="split-val">Included</div>
                     </div>
                     <div class="split-row">
-                        <div class="split-item">High-Search SEO (127 Pages)</div>
+                        <div class="split-item">Google Search Console + Sitemap</div>
                         <div class="split-val">Included</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="two-col" style="margin-top: 16px;">
+                <div class="info-block">
+                    <div class="info-block-title">Client Details</div>
+                    <div class="info-row">
+                        <span>Company / Brand</span>
+                        <strong>AP Elastpro</strong>
+                    </div>
+                    <div class="info-row">
+                        <span>Primary Contact</span>
+                        <strong>Mobile Number</strong>
+                    </div>
+                    <div class="info-row">
+                        <span>Phone / Email</span>
+                        <strong>98735 07113</strong>
+                    </div>
+                    <div class="info-row" style="border:none;">
+                        <span>Email ID</span>
+                        <strong style="font-size: 11px;">ankitpolymers1997@gmail.com</strong>
+                    </div>
+                </div>
+                <div class="info-block">
+                    <div class="info-block-title">Project Info</div>
+                    <div class="info-row">
+                        <span>Primary Goal</span>
+                        <strong>Home + Services + Contact</strong>
+                    </div>
+                    <div class="info-row">
+                        <span>Total Pages</span>
+                        <strong>12 - 13 Pages</strong>
+                    </div>
+                    <div class="info-row">
+                        <span>Timeline</span>
+                        <strong>4 - 6 Working Days</strong>
+                    </div>
+                    <div class="info-row" style="border:none;">
+                        <span>Target Area</span>
+                        <strong>Pan India & Export</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="divider" style="margin-top: 16px;"></div>
+
+            <div class="two-col">
+                <div class="info-block">
+                    <div class="info-block-title">Step 1 — Advance</div>
+                    <div class="info-row">
+                        <span>Due at Onboarding (50%)</span>
+                        <strong>₹5,000</strong>
+                    </div>
+                    <p style="font-size: 11px; color: var(--soft); margin-top: 12px; line-height: 1.5;">Required before project starts to initiate styling, framework setup, and map assets.</p>
+                </div>
+                <div class="info-block">
+                    <div class="info-block-title">Step 2 — After Project</div>
+                    <div class="info-row">
+                        <span>Upon Completion (50%)</span>
+                        <strong>₹5,000</strong>
+                    </div>
+                    <p style="font-size: 11px; color: var(--soft); margin-top: 12px; line-height: 1.5;">Balance payment due after full project completion, review, testing, and final launch.</p>
+                </div>
+            </div>
+
+            <div style="flex: 1;"></div>
+
+            <div>
+                <div class="section-eyebrow">Authorization</div>
+                <div class="signoff">
+                    <div class="sign-party"
+                        style="display: flex; align-items: center; justify-content: center; padding: 0; background: transparent; border: none;">
+                        <button class="approve-btn no-print"
+                            onclick="handleApproval(this)">
+                            <i data-lucide="check-circle-2"></i>
+                            I AGREE TO THE SCOPE AND TERMS.
+                        </button>
+                    </div>
+                    <div class="sign-party">
+                        <div class="sign-date-box">03 - June - 2026</div>
+                        <div class="sign-party-label">Prepared For</div>
+                        <div class="sign-party-name">AP Elastpro</div>
+                        <div class="sign-party-role">Ankit Polymers</div>
+                        <div class="sign-line">Acceptance Signature</div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div style="margin-top: 16px; text-align: center;" class="no-print">
-            <a href="#"
-                style="color: var(--mid); font-size: 13px; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 4px; background: var(--glass); border: 1px solid var(--rule); transition: all 0.3s;"
-                onmouseover="this.style.background='var(--glass-hover)'; this.style.borderColor='var(--orange)';"
-                onmouseout="this.style.background='var(--glass)'; this.style.borderColor='var(--rule)';">
-                <i data-lucide="message-circle" style="width: 14px; height: 14px; color: var(--orange);"></i> Wait, we
-                need to talk about the product first.
-            </a>
+        <div class="page-footer-strip">
+            <span>Looking forward to building a strong online presence for Ankit Polymers</span>
+            <div class="pg-num">4</div>
         </div>
-
-        <div class="divider" style="margin-top: 24px;"></div>
-
-        <div class="two-col">
-            <div class="info-block">
-                <div class="info-block-title">Phase 1: Advance</div>
-                <div class="info-row">
-                    <span>Due at Onboarding</span>
-                    <strong>₹15,000</strong>
-                </div>
-                <p style="font-size: 11px; color: var(--soft); margin-top: 12px; line-height: 1.5;">Initiates the
-                    project, secures server environments, and hands off design assets to the development team.</p>
-            </div>
-            <div class="info-block">
-                <div class="info-block-title">Phase 2: Completion</div>
-                <div class="info-row">
-                    <span>Due post-testing</span>
-                    <strong>₹15,000</strong>
-                </div>
-                <p style="font-size: 11px; color: var(--soft); margin-top: 12px; line-height: 1.5;">Invoiced upon
-                    successful launch and handoff of the new platform. Final deliverables provided.</p>
-            </div>
-        </div>
-
-        <div style="flex: 1;"></div>
-
-        <div>
-            <div class="section-eyebrow">Authorization</div>
-            <div class="signoff">
-                <div class="sign-party"
-                    style="display: flex; align-items: center; justify-content: center; padding: 0; background: transparent; border: none;">
-                    <button class="approve-btn no-print"
-                        onclick="window.open('https://wa.me/919217671611?text=Hi%2C%20I%20have%20reviewed%20and%20approved%20the%20%E2%82%B930%2C000%20Onboarding%20Proposal%20for%20Bizeneed.%20Let%27s%20get%20started!', '_blank')">
-                        <i data-lucide="check-circle-2"></i>
-                        Approve This Onboarding Letter
-                    </button>
-                </div>
-                <div class="sign-party">
-                    <div class="sign-date-box">April 2026</div>
-                    <div class="sign-party-label">Prepared By</div>
-                    <div class="sign-party-name">WebResolv</div>
-                    <div class="sign-party-role">Digital Growth Partners</div>
-                    <div class="sign-line">Authorized Signatory</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="page-footer-strip">
-        <span>Confidential Document</span>
-        <div class="pg-num">4</div>
-    </div>
     </div>
 
     <script>
         lucide.createIcons();
+
+        async function handleApproval(btn) {
+            btn.disabled = true;
+            btn.style.opacity = '0.7';
+            btn.style.cursor = 'not-allowed';
+            btn.innerHTML = '<i data-lucide="loader" class="spinner" style="width: 18px; height: 18px;"></i> Accepting...';
+            lucide.createIcons();
+            
+            await sendAcceptanceNotification();
+            
+            const parent = btn.parentElement;
+            parent.innerHTML = `
+                <div style="background: rgba(34, 197, 94, 0.1); border: 1px solid #22c55e; color: #22c55e; padding: 18px 24px; border-radius: 4px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 13px; text-align: center; width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 0 20px rgba(34, 197, 150, 0.15);">
+                    <i data-lucide="check-circle" style="width: 16px; height: 16px; stroke-width: 2.5;"></i>
+                    Your confirmation has been accepted and the developer will call you right away.
+                </div>
+            `;
+            lucide.createIcons();
+        }
+
+        async function sendAcceptanceNotification() {
+            try {
+                // Send a silent email ping using FormSubmit
+                await fetch('https://formsubmit.co/ajax/webresolv16@gmail.com', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        subject: 'AP Elastpro Onboarding Accepted!',
+                        message: 'Client AP Elastpro (Ankit Polymers) has agreed to the scope and terms of the ₹10,000 project.',
+                        timestamp: new Date().toLocaleString()
+                    })
+                });
+            } catch (e) {
+                console.error('Error sending acceptance notification:', e);
+            }
+        }
     </script>
 </body>
 

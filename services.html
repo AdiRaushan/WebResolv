@@ -917,6 +917,23 @@
       updateTimeTicker();
       setInterval(updateTimeTicker, 60000);
 
+      // Parse URL parameters to open specific service dynamically (for SEO rewrites)
+      const urlParams = new URLSearchParams(window.location.search);
+      const serviceId = urlParams.get("id");
+      if (serviceId) {
+        const cleanId = serviceId.toLowerCase().replace(/[^a-z0-9]/g, "");
+        const foundIdx = servicesData.findIndex(s => s.title.toLowerCase().replace(/[^a-z0-9]/g, "") === cleanId);
+        if (foundIdx !== -1) {
+          updateActiveService(foundIdx);
+          setTimeout(() => {
+            const headers = document.querySelectorAll(".accordion-header");
+            if (headers[foundIdx]) {
+              headers[foundIdx].click();
+            }
+          }, 150);
+        }
+      }
+
       // Re-create icons for dynamically generated items
       lucide.createIcons();
 
