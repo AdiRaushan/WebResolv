@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Advocate Rahul — Criminal & Civil Legal Defense Counsel | Delhi NCR</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            800: '#1e293b',
+                            900: '#0f172a',
+                            950: '#070a13',
+                        },
+                        coat: {
+                            black: '#09090b',
+                            charcoal: '#18181b',
+                        },
+                        gold: {
+                            DEFAULT: '#c5a880',
+                            light: '#e5d5c0',
+                            dark: '#9a7b56',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom animations & design details */
+        .court-tab-active {
+            border-color: #c5a880;
+            color: #c5a880;
+            background-color: #0f172a;
+        }
+        
+        .faq-answer {
+            transition: all 0.3s ease-out;
+            max-height: 0;
+            overflow: hidden;
+        }
+        
+        .faq-answer.open {
+            max-height: 200px;
+        }
+
+        .gold-border-gradient {
+            border-image: linear-gradient(to right, #9a7b56, #e5d5c0, #9a7b56) 1;
+        }
+    </style>
+</head>
+
+<body class="font-sans bg-white text-slate-800 antialiased overflow-x-hidden">
+
+    <!-- ============== HEADER / NAVIGATION ============== -->
+    <header class="sticky top-0 z-50 bg-navy-950/90 backdrop-blur-md border-b border-navy-900 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Stylized Scales of Justice Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <svg class="w-10 h-10 transform group-hover:rotate-6 transition-transform duration-300" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Shield outline representing legal defense -->
+                    <path d="M50 10 C68 10 80 18 80 38 C80 62 62 82 50 90 C38 82 20 62 20 38 C20 18 32 10 50 10 Z" stroke="#c5a880" stroke-width="3" stroke-linejoin="round"/>
+                    <!-- Scales of Justice -->
+                    <!-- Center post -->
+                    <line x1="50" y1="25" x2="50" y2="70" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+                    <!-- Crossbeam -->
+                    <line x1="32" y1="35" x2="68" y2="35" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+                    <!-- Left Scale hanging chains and plate -->
+                    <line x1="32" y1="35" x2="26" y2="55" stroke="#c5a880" stroke-width="2"/>
+                    <line x1="32" y1="35" x2="38" y2="55" stroke="#c5a880" stroke-width="2"/>
+                    <path d="M22 55 H42 C42 62 22 62 22 55 Z" fill="#c5a880"/>
+                    <!-- Right Scale hanging chains and plate -->
+                    <line x1="68" y1="35" x2="62" y2="55" stroke="#c5a880" stroke-width="2"/>
+                    <line x1="68" y1="35" x2="74" y2="55" stroke="#c5a880" stroke-width="2"/>
+                    <path d="M58 55 H78 C78 62 58 62 58 55 Z" fill="#c5a880"/>
+                    <!-- Stand base -->
+                    <path d="M40 70 H60 V74 H40 Z" fill="#ffffff"/>
+                </svg>
+                <div class="flex flex-col">
+                    <span class="font-serif font-bold text-xl text-white leading-none tracking-wide">RAHUL</span>
+                    <span class="text-[9px] font-extrabold text-gold uppercase tracking-widest mt-1">ADVOCATE &amp; COUNSEL</span>
+                </div>
+            </a>
+
+            <!-- Desktop Links with sliding underlines -->
+            <nav class="hidden lg:flex items-center gap-4 xl:gap-6">
+                <a href="#home" class="relative text-[10px] xl:text-[11px] font-bold uppercase tracking-wider text-slate-300 hover:text-gold transition group py-2">
+                    Home
+                    <span class="absolute bottom-0 left-0 w-0 h-[2px] bg-gold transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#about" class="relative text-[10px] xl:text-[11px] font-bold uppercase tracking-wider text-slate-300 hover:text-gold transition group py-2">
+                    Profile
+                    <span class="absolute bottom-0 left-0 w-0 h-[2px] bg-gold transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#services" class="relative text-[10px] xl:text-[11px] font-bold uppercase tracking-wider text-slate-300 hover:text-gold transition group py-2">
+                    Expertise
+                    <span class="absolute bottom-0 left-0 w-0 h-[2px] bg-gold transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#courts" class="relative text-[10px] xl:text-[11px] font-bold uppercase tracking-wider text-slate-300 hover:text-gold transition group py-2">
+                    Courts
+                    <span class="absolute bottom-0 left-0 w-0 h-[2px] bg-gold transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#reviews" class="relative text-[10px] xl:text-[11px] font-bold uppercase tracking-wider text-slate-300 hover:text-gold transition group py-2">
+                    Reviews
+                    <span class="absolute bottom-0 left-0 w-0 h-[2px] bg-gold transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#contact" class="relative text-[10px] xl:text-[11px] font-bold uppercase tracking-wider text-slate-300 hover:text-gold transition group py-2">
+                    Consultation
+                    <span class="absolute bottom-0 left-0 w-0 h-[2px] bg-gold transition-all duration-300 group-hover:w-full"></span>
+                </a>
+            </nav>
+
+            <!-- Emergency Consultation Trigger & Hamburger Menu -->
+            <div class="flex items-center gap-3">
+                <a href="tel:+919999999999" class="hidden sm:inline-flex items-center gap-1.5 text-[11px] font-bold text-white hover:text-gold transition py-1">
+                    <span class="w-1.5 h-1.5 rounded-full bg-gold animate-pulse"></span>
+                    <span class="text-[9px] uppercase tracking-wider text-slate-400">Bail Desk:</span>
+                    +91 99999 99999
+                </a>
+                <a href="#contact" class="hidden sm:inline-flex items-center justify-center px-4 py-2 border border-gold text-gold bg-transparent hover:bg-gold hover:text-navy-950 text-[10px] font-bold uppercase tracking-wider transition-all duration-300">
+                    Request Call
+                </a>
+                
+                <!-- Hamburger Button -->
+                <button onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-lg text-slate-300 hover:text-gold hover:bg-white/5 transition" aria-label="Toggle Menu">
+                    <i data-lucide="menu" class="w-6 h-6" id="menu-icon"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Dropdown Menu (Dark matching Navy theme) -->
+        <div id="mobile-menu" class="hidden lg:hidden border-t border-navy-900 bg-navy-950/95 backdrop-blur-md py-4 px-4 shadow-inner space-y-3 animate-in slide-in-from-top-4 duration-200">
+            <a href="#home" onclick="toggleMobileMenu()" class="block text-xs font-bold uppercase tracking-wider text-slate-300 hover:text-gold transition py-2 border-b border-navy-900/60">Home</a>
+            <a href="#about" onclick="toggleMobileMenu()" class="block text-xs font-bold uppercase tracking-wider text-slate-300 hover:text-gold transition py-2 border-b border-navy-900/60">Profile</a>
+            <a href="#services" onclick="toggleMobileMenu()" class="block text-xs font-bold uppercase tracking-wider text-slate-300 hover:text-gold transition py-2 border-b border-navy-900/60">Practice Areas</a>
+            <a href="#courts" onclick="toggleMobileMenu()" class="block text-xs font-bold uppercase tracking-wider text-slate-300 hover:text-gold transition py-2 border-b border-navy-900/60">Courts of Practice</a>
+            <a href="#reviews" onclick="toggleMobileMenu()" class="block text-xs font-bold uppercase tracking-wider text-slate-300 hover:text-gold transition py-2 border-b border-navy-900/60">Testimonials</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block text-xs font-bold uppercase tracking-wider text-slate-300 hover:text-gold transition py-2 border-b border-navy-900/60">Book Consultation</a>
+            <div class="pt-2 flex flex-col gap-2">
+                <a href="tel:+919999999999" class="flex items-center gap-2 text-xs font-extrabold text-white hover:text-gold transition py-1">
+                    📞 Emergency Helpline: +91 99999 99999
+                </a>
+                <a href="#contact" onclick="toggleMobileMenu()" class="w-full text-center inline-block py-2.5 border border-gold bg-gold text-navy-950 text-xs font-bold uppercase tracking-wider hover:bg-transparent hover:text-gold transition-colors duration-300">
+                    Request Callback
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ============== HERO SECTION (THE BLACK COAT GRAPHIC THEME) ============== -->
+        <section id="home" class="relative bg-navy-950 overflow-hidden py-16 sm:py-24 border-b border-navy-900">
+            <!-- Background grids & ambient lights -->
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(197,168,128,0.06),transparent_50%)]"></div>
+            <div class="absolute -right-40 -top-40 w-96 h-96 rounded-full bg-navy-900/40 blur-3xl"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Left: Copy & Value Hook -->
+                    <div class="lg:col-span-7 text-white space-y-6">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 bg-gold/10 border border-gold/30 rounded-full">
+                            <span class="w-1.5 h-1.5 rounded-full bg-gold animate-pulse"></span>
+                            <span class="text-[10px] font-extrabold uppercase tracking-widest text-gold-light">Serving Delhi, Noida, Gurgaon &amp; NCR</span>
+                        </div>
+                        
+                        <h1 class="text-4xl sm:text-6xl font-serif leading-tight font-semibold tracking-wide">
+                            Providing Authoritative <br/>
+                            <span class="text-gold">Legal Defense</span> &amp; Counsel
+                        </h1>
+                        
+                        <p class="text-slate-300 text-sm sm:text-base leading-relaxed max-w-xl">
+                            Advocate Rahul delivers comprehensive representation across criminal defense, civil litigation, family disputes, and appellate advocacy. Grounded in confidentiality, procedural mastery, and direct personal counsel.
+                        </p>
+                        
+                        <!-- Mini Highlights Grid -->
+                        <div class="grid grid-cols-2 gap-6 pt-4 max-w-lg border-t border-slate-800">
+                            <div>
+                                <span class="font-serif text-3xl font-bold text-gold block">12+ Years</span>
+                                <span class="text-[10px] uppercase tracking-wider text-slate-400">Courtroom Precedent</span>
+                            </div>
+                            <div>
+                                <span class="font-serif text-3xl font-bold text-gold block">950+ Cases</span>
+                                <span class="text-[10px] uppercase tracking-wider text-slate-400">Represented in NCR</span>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap gap-4 pt-4">
+                            <a href="#contact" class="px-6 py-3.5 bg-gold hover:bg-gold-dark text-navy-950 font-bold text-xs uppercase tracking-wider transition-colors duration-200">
+                                Schedule Consultation
+                            </a>
+                            <a href="#services" class="px-6 py-3.5 border border-slate-700 bg-white/5 hover:bg-white/10 text-white font-bold text-xs uppercase tracking-wider transition-colors">
+                                Practice Expertise
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right: The Black Coat & White Bands Graphic Presentation -->
+                    <div class="lg:col-span-5 flex justify-center relative">
+                        <!-- Decorative Gold Accent Frame -->
+                        <div class="absolute -inset-4 border border-gold/20 rounded-3xl pointer-events-none transform -rotate-2"></div>
+                        <div class="absolute -inset-4 border border-gold/10 rounded-3xl pointer-events-none transform rotate-3"></div>
+                        
+                        <!-- Graphic Container -->
+                        <div class="relative bg-navy-900 border border-slate-800 p-8 rounded-2xl w-full max-w-[380px] flex flex-col items-center justify-center shadow-2xl">
+                            <!-- Visualizing the Gown / Advocate Black Coat & White Bands -->
+                            <svg viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto max-w-[280px] drop-shadow-3xl">
+                                <!-- Shoulders of Black Coat -->
+                                <path d="M40 500 C40 370 80 230 200 230 C320 230 360 370 360 500 Z" fill="#09090b" stroke="#1c1917" stroke-width="4"/>
+                                
+                                <!-- V-Neck White Gown Background -->
+                                <path d="M145 230 L200 370 L255 230 Z" fill="#ffffff" />
+                                
+                                <!-- Lapels of Black Coat -->
+                                <path d="M125 230 L200 385 L145 385 Z" fill="#18181b" />
+                                <path d="M275 230 L200 385 L255 385 Z" fill="#18181b" />
+                                <path d="M40 500 L125 230 L200 385 L145 500 Z" fill="#09090b" />
+                                <path d="M360 500 L275 230 L200 385 L255 500 Z" fill="#09090b" />
+                                
+                                <!-- White Collar Band Connector -->
+                                <path d="M165 230 H235 V255 H165 Z" fill="#ffffff" stroke="#f1f5f9" stroke-width="1"/>
+                                
+                                <!-- Advocate White Bands hanging down -->
+                                <rect x="175" y="255" width="22" height="95" fill="#ffffff" rx="1.5" filter="url(#shadow-filter)"/>
+                                <rect x="203" y="255" width="22" height="95" fill="#ffffff" rx="1.5" filter="url(#shadow-filter)"/>
+                                
+                                <!-- Fine outlines for the bands -->
+                                <rect x="175" y="255" width="22" height="95" stroke="#f1f5f9" stroke-width="1.5" rx="1.5"/>
+                                <rect x="203" y="255" width="22" height="95" stroke="#f1f5f9" stroke-width="1.5" rx="1.5"/>
+
+                                <!-- Charcoal lapel seam stitching -->
+                                <path d="M125 230 L200 385" stroke="#27272a" stroke-width="1.5" stroke-dasharray="4 4" />
+                                <path d="M275 230 L200 385" stroke="#27272a" stroke-width="1.5" stroke-dasharray="4 4" />
+
+                                <defs>
+                                    <filter id="shadow-filter" x="-5" y="-5" width="50" height="120" filterUnits="userSpaceOnUse">
+                                        <feDropShadow dx="0" dy="4" stdDeviation="3" flood-color="#000" flood-opacity="0.15"/>
+                                    </filter>
+                                </defs>
+                            </svg>
+                            
+                            <!-- Small Credential Badge below illustration -->
+                            <div class="mt-6 text-center space-y-1 z-10">
+                                <span class="text-[10px] font-bold text-gold uppercase tracking-widest block">Delhi Bar Council</span>
+                                <span class="text-xs text-white font-medium block">Licensed Legal Advocate</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ============== SECTION 2: THE ADVOCATE PROFILE ============== -->
+        <section id="about" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    
+                    <!-- Left: Authoritative Portrait Placeholder & Gavel Accent -->
+                    <div class="relative flex justify-center">
+                        <div class="absolute inset-0 bg-navy-50 rounded-2xl -rotate-3 transform border border-navy-100"></div>
+                        <div class="relative bg-white border border-slate-200 p-6 rounded-2xl shadow-lg w-full max-w-[400px] space-y-6">
+                            <div class="relative aspect-[3/4] bg-slate-900 rounded-xl overflow-hidden group">
+                                <!-- We generate a highly professional lawyer photo representation using unsplash -->
+                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80" alt="Advocate Rahul Portrait" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500" />
+                                <div class="absolute bottom-4 left-4 right-4 bg-navy-950/90 backdrop-blur-xs p-3 border-l-2 border-gold text-white text-xs">
+                                    "My client's safety and constitutional rights are the highest priority under Indian jurisprudence."
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between text-xs text-slate-500 font-medium">
+                                <span>Delhi High Court Bar Association</span>
+                                <span>ID: D-4829/2014</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Profile Content -->
+                    <div class="space-y-6">
+                        <span class="text-xs font-bold text-gold uppercase tracking-widest block">The Counsel</span>
+                        <h2 class="text-3xl sm:text-4xl font-serif text-navy-900 font-bold leading-tight">Advocate Rahul</h2>
+                        <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                            With over a decade of litigation experience in the Supreme Court, High Court of Delhi, and various tribunals, Advocate Rahul has established a reputation for strategic depth and absolute dedication.
+                        </p>
+                        <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                            He specializes in navigating complex procedural laws, commercial arbitrations, constitutional law writs, and urgent criminal bail procedures. His approach involves direct oversight of all pleadings, drafting, and arguments, ensuring your case receives senior legal attention.
+                        </p>
+
+                        <!-- Operational Principles -->
+                        <div class="space-y-4 pt-4 border-t border-slate-100">
+                            <div class="flex gap-4">
+                                <div class="w-10 h-10 rounded-full bg-navy-50 flex items-center justify-center flex-shrink-0 text-navy-900">
+                                    <i data-lucide="shield-check" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <strong class="text-sm text-navy-900 block">Absolute Privilege &amp; Confidentiality</strong>
+                                    <span class="text-xs text-slate-500 block mt-1">Every case evaluation is handled under strict legal professional privilege.</span>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="w-10 h-10 rounded-full bg-navy-50 flex items-center justify-center flex-shrink-0 text-navy-900">
+                                    <i data-lucide="scale" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <strong class="text-sm text-navy-900 block">Procedural Integrity</strong>
+                                    <span class="text-xs text-slate-500 block mt-1">Specialized expertise in CPC, CrPC, Evidence Act, and Indian Penal Code/BNS.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ============== SECTION 3: PRACTICE AREAS & SERVICES ============== -->
+        <section id="services" class="py-20 bg-slate-50 border-t border-b border-slate-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Section Header -->
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                    <span class="text-xs font-bold text-gold uppercase tracking-widest block">Practice Areas</span>
+                    <h2 class="text-3xl sm:text-4xl font-serif text-navy-900 font-bold leading-tight">Legal Competencies</h2>
+                    <p class="text-slate-500 text-sm sm:text-base">Targeted legal strategy customized for district level defense and appellate advocacy.</p>
+                </div>
+
+                <!-- Services Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Criminal Law -->
+                    <div class="bg-white border border-slate-100 rounded-xl p-6 shadow-2xs hover:shadow-lg hover:-translate-y-1 transition duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-lg bg-navy-900 text-gold flex items-center justify-center mb-6">
+                                <i data-lucide="gavel" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-lg font-serif font-bold text-navy-900 mb-3">Criminal Defense</h3>
+                            <p class="text-slate-500 text-xs sm:text-sm leading-relaxed mb-6">
+                                Representation for regular/anticipatory bails, economic offences, cross-examination, and appellate trials under legal code matrices.
+                            </p>
+                        </div>
+                        <a href="#contact" onclick="prefillPractice('Criminal Defense')" class="text-xs font-bold text-gold hover:text-gold-dark inline-flex items-center gap-1">Enquire Strategy <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i></a>
+                    </div>
+
+                    <!-- Civil & Property -->
+                    <div class="bg-white border border-slate-100 rounded-xl p-6 shadow-2xs hover:shadow-lg hover:-translate-y-1 transition duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-lg bg-navy-900 text-gold flex items-center justify-center mb-6">
+                                <i data-lucide="landmark" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-lg font-serif font-bold text-navy-900 mb-3">Civil Litigation</h3>
+                            <p class="text-slate-500 text-xs sm:text-sm leading-relaxed mb-6">
+                                Property partition suits, specific performance suits, execution petitions, summary suits, and commercial litigation cases.
+                            </p>
+                        </div>
+                        <a href="#contact" onclick="prefillPractice('Civil Litigation')" class="text-xs font-bold text-gold hover:text-gold-dark inline-flex items-center gap-1">Enquire Strategy <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i></a>
+                    </div>
+
+                    <!-- Family Law -->
+                    <div class="bg-white border border-slate-100 rounded-xl p-6 shadow-2xs hover:shadow-lg hover:-translate-y-1 transition duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-lg bg-navy-900 text-gold flex items-center justify-center mb-6">
+                                <i data-lucide="users" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-lg font-serif font-bold text-navy-900 mb-3">Matrimonial Disputes</h3>
+                            <p class="text-slate-500 text-xs sm:text-sm leading-relaxed mb-6">
+                                Divorce filings (mutual/contested), maintenance and alimony petitions, child custody representation, and domestic counseling.
+                            </p>
+                        </div>
+                        <a href="#contact" onclick="prefillPractice('Matrimonial Disputes')" class="text-xs font-bold text-gold hover:text-gold-dark inline-flex items-center gap-1">Enquire Strategy <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i></a>
+                    </div>
+
+                    <!-- Writs & SLPs -->
+                    <div class="bg-white border border-slate-100 rounded-xl p-6 shadow-2xs hover:shadow-lg hover:-translate-y-1 transition duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-lg bg-navy-900 text-gold flex items-center justify-center mb-6">
+                                <i data-lucide="scroll" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-lg font-serif font-bold text-navy-900 mb-3">Appellate Practice</h3>
+                            <p class="text-slate-500 text-xs sm:text-sm leading-relaxed mb-6">
+                                Filing Writ petitions under Article 226/32, Special Leave Petitions (SLPs) at Supreme Court, and High Court review appeals.
+                            </p>
+                        </div>
+                        <a href="#contact" onclick="prefillPractice('Appellate & Writs')" class="text-xs font-bold text-gold hover:text-gold-dark inline-flex items-center gap-1">Enquire Strategy <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i></a>
+                    </div>
+                </div>
+
+                <!-- 24/7 Bail Desk Block (Black Coat Highlight) -->
+                <div class="mt-12 bg-navy-950 text-white rounded-2xl p-8 border border-navy-900 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div class="absolute -right-20 -bottom-20 w-48 h-48 rounded-full bg-gold/5 blur-xl"></div>
+                    <div class="flex items-center gap-5 z-10">
+                        <div class="w-14 h-14 rounded-xl bg-gold/10 border border-gold/30 text-gold flex items-center justify-center flex-shrink-0 text-3xl">
+                            ⚖️
+                        </div>
+                        <div>
+                            <span class="text-gold text-[10px] font-extrabold uppercase tracking-widest block mb-1">Urgent Bail Hotline</span>
+                            <h3 class="font-serif font-bold text-xl sm:text-2xl">Bail &amp; Criminal Custody Arrest Intervention</h3>
+                            <p class="text-slate-400 text-xs sm:text-sm mt-1 max-w-xl">
+                                Available 24 hours for emergency remand arrest representation, police custody intervention, and anticipatory bail drafting at High Court and District Courts.
+                            </p>
+                        </div>
+                    </div>
+                    <a href="tel:+919999999999" class="w-full md:w-auto px-6 py-3 bg-gold hover:bg-gold-dark text-navy-950 font-bold text-xs uppercase tracking-wider text-center z-10 whitespace-nowrap shadow-md shadow-gold/10">
+                        Call Emergency Desk
+                    </a>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ============== SECTION 4: DELHI NCR COURTS SELECTOR ============== -->
+        <section id="courts" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                    
+                    <!-- Left: Courts Selection Tabs and Description -->
+                    <div class="lg:col-span-5 space-y-6">
+                        <span class="text-xs font-bold text-gold uppercase tracking-widest block">NCR Jurisdiction</span>
+                        <h2 class="text-3xl sm:text-4xl font-serif text-navy-900 font-bold leading-tight">Delhi NCR Courts of Practice</h2>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Advocate Rahul holds active bar standing to file pleadings, argue, and represent clients before the High Court of Delhi and all associated suburban district court complexes.
+                        </p>
+                        
+                        <!-- Tabs list -->
+                        <div class="flex flex-col gap-2.5 pt-4">
+                            <button onclick="switchCourtTab(0)" id="court-tab-0" class="court-tab-active flex items-center justify-between p-4 border border-slate-200 text-left transition duration-200 hover:border-gold">
+                                <span class="text-xs font-bold uppercase tracking-wider">Supreme Court &amp; High Court</span>
+                                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                            </button>
+                            <button onclick="switchCourtTab(1)" id="court-tab-1" class="flex items-center justify-between p-4 border border-slate-200 text-left transition duration-200 hover:border-gold text-slate-700">
+                                <span class="text-xs font-bold uppercase tracking-wider">Delhi District Courts</span>
+                                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                            </button>
+                            <button onclick="switchCourtTab(2)" id="court-tab-2" class="flex items-center justify-between p-4 border border-slate-200 text-left transition duration-200 hover:border-gold text-slate-700">
+                                <span class="text-xs font-bold uppercase tracking-wider">NCR Suburban Tribunals</span>
+                                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Right: Dynamic Courts Display Panel -->
+                    <div class="lg:col-span-7 bg-slate-50 border border-slate-200 p-6 sm:p-8 rounded-2xl relative overflow-hidden" id="courts-display-panel">
+                        <!-- Panel Content gets injected/modified via JS -->
+                        <div id="court-content-area" class="space-y-6">
+                            <!-- JS will inject the layout here based on tabs -->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ============== SECTION 5: CLIENT TESTIMONIALS ============== -->
+        <section id="reviews" class="py-20 bg-slate-50 border-t border-b border-slate-200/60">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                    
+                    <!-- Stats Card -->
+                    <div class="lg:col-span-1 bg-white border border-slate-100 rounded-2xl p-8 shadow-xs flex flex-col justify-between">
+                        <div class="space-y-4">
+                            <span class="text-xs font-bold text-gold uppercase tracking-widest block">Client Feedback</span>
+                            <h3 class="text-2xl font-serif text-navy-900 font-bold leading-tight">Legal Representation Integrity</h3>
+                            <p class="text-slate-500 text-xs leading-relaxed">
+                                Client feedback summaries across trial litigation and advisory contracts in Delhi NCR.
+                            </p>
+                            
+                            <div class="flex items-baseline gap-2 pt-4">
+                                <span class="text-6xl font-serif font-bold text-navy-900">4.9</span>
+                                <div class="flex flex-col">
+                                    <div class="flex items-center text-amber-500 gap-0.5">
+                                        <i data-lucide="star" class="w-4 h-4 fill-amber-500"></i>
+                                        <i data-lucide="star" class="w-4 h-4 fill-amber-500"></i>
+                                        <i data-lucide="star" class="w-4 h-4 fill-amber-500"></i>
+                                        <i data-lucide="star" class="w-4 h-4 fill-amber-500"></i>
+                                        <i data-lucide="star" class="w-4 h-4 fill-amber-500"></i>
+                                    </div>
+                                    <span class="text-[10px] text-slate-400 font-bold mt-1 uppercase tracking-wider">Delhi Lawyers Registry</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pt-6 border-t border-slate-100 mt-8">
+                            <span class="px-2 py-0.5 bg-navy-950 text-gold text-[9px] font-extrabold uppercase tracking-widest rounded inline-block">Direct Advocacy</span>
+                            <div class="text-[10px] text-slate-500 mt-2 font-medium">Rahul manages all court pleadings and arguments directly without third-party assignment.</div>
+                        </div>
+                    </div>
+
+                    <!-- Client Reviews Column -->
+                    <div class="lg:col-span-2 space-y-6">
+                        <!-- Review 1 -->
+                        <div class="bg-white border border-slate-100 rounded-xl p-6 shadow-2xs">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-9 h-9 rounded-full bg-navy-50 font-bold text-xs flex items-center justify-center text-navy-900">KS</div>
+                                    <div>
+                                        <span class="font-serif font-bold text-sm text-navy-900 block">Kiran Sharma</span>
+                                        <span class="text-[9px] text-slate-400">Delhi High Court Appeal Client</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center text-amber-500 gap-0.5">
+                                    <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-500"></i>
+                                    <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-500"></i>
+                                    <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-500"></i>
+                                    <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-500"></i>
+                                    <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-500"></i>
+                                </div>
+                            </div>
+                            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed italic">
+                                "Advocate Rahul represented our company in a complex commercial recovery matter before the Delhi High Court. His procedural insights and crisp oral arguments secured us a favorable order. A thorough professional."
+                            </p>
+                        </div>
+
+                        <!-- Review 2 -->
+                        <div class="bg-white border border-slate-100 rounded-xl p-6 shadow-2xs">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-9 h-9 rounded-full bg-navy-50 font-bold text-xs flex items-center justify-center text-navy-900">RP</div>
+                                    <div>
+                                        <span class="font-serif font-bold text-sm text-navy-900 block">Rajesh Pathak</span>
+                                        <span class="text-[9px] text-slate-400">Bail Representation Client</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center text-amber-500 gap-0.5">
+                                    <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-500"></i>
+                                    <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-500"></i>
+                                    <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-500"></i>
+                                    <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-500"></i>
+                                    <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-500"></i>
+                                </div>
+                            </div>
+                            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed italic">
+                                "Highly responsive under emergency arrest distress. He got our matter listed at the earliest and secured anticipatory bail. His direct oversight gave our family massive peace of mind."
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ============== SECTION 6: CONSULTATION FORM ============== -->
+        <section id="contact" class="py-20 bg-navy-950 text-white relative">
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(197,168,128,0.05),transparent_40%)]"></div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                    
+                    <!-- Left: Advisory Desk & FAQs -->
+                    <div class="space-y-8">
+                        <div>
+                            <span class="text-xs font-bold text-gold uppercase tracking-widest block mb-2">Legal Helpdesk</span>
+                            <h2 class="text-3xl sm:text-4xl font-serif font-bold leading-tight">Request Case Review</h2>
+                            <p class="text-slate-400 text-xs sm:text-sm mt-4 leading-relaxed max-w-md">
+                                Submit a short overview of your legal issue, court summons details, or emergency bail query. All submissions are protected under client-advocate privilege.
+                            </p>
+                        </div>
+
+                        <!-- FAQ Accordion -->
+                        <div class="space-y-4 max-w-lg">
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-gold border-b border-slate-800 pb-2">Common Legal FAQs</h4>
+                            
+                            <!-- FAQ 1 -->
+                            <div class="border-b border-slate-800 pb-3">
+                                <button onclick="toggleFAQ(0)" class="w-full flex items-center justify-between text-left text-xs font-semibold py-2 hover:text-gold transition">
+                                    <span>How fast can an anticipatory bail application be listed in Delhi?</span>
+                                    <i data-lucide="plus" id="faq-icon-0" class="w-3.5 h-3.5 text-gold"></i>
+                                </button>
+                                <div id="faq-ans-0" class="faq-answer text-[11px] text-slate-400 leading-relaxed space-y-2">
+                                    <p class="pt-2">Depending on court listing registries and urgency clearance before the District Judge or High Court registrar, emergency bail applications can be filed and heard within 24 to 48 hours.</p>
+                                </div>
+                            </div>
+
+                            <!-- FAQ 2 -->
+                            <div class="border-b border-slate-800 pb-3">
+                                <button onclick="toggleFAQ(1)" class="w-full flex items-center justify-between text-left text-xs font-semibold py-2 hover:text-gold transition">
+                                    <span>Does Advocate Rahul serve Noida and Gurugram courts?</span>
+                                    <i data-lucide="plus" id="faq-icon-1" class="w-3.5 h-3.5 text-gold"></i>
+                                </button>
+                                <div id="faq-ans-1" class="faq-answer text-[11px] text-slate-400 leading-relaxed space-y-2">
+                                    <p class="pt-2">Yes, Advocate Rahul has standing to represent clients at the Gurugram District Court, Surajpur District Court (Greater Noida), and other courts across NCR.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Callback booking form -->
+                    <div class="bg-navy-900 border border-slate-850 rounded-2xl p-6 sm:p-8 shadow-2xl relative overflow-hidden">
+                        <span class="text-[10px] font-bold text-gold uppercase tracking-widest block mb-6">Confidential Callback Request</span>
+                        
+                        <form id="advocate-inquiry-form" onsubmit="submitAdvocateForm(event)" class="space-y-4">
+                            <div>
+                                <label class="text-[10px] font-bold text-slate-450 uppercase tracking-wider block mb-1">Full Name</label>
+                                <input type="text" placeholder="Your Name" required class="w-full px-4 py-2.5 rounded-lg border border-slate-700 bg-slate-850 text-white text-xs focus:outline-none focus:ring-1 focus:ring-gold" />
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="text-[10px] font-bold text-slate-455 uppercase tracking-wider block mb-1">Contact Phone</label>
+                                    <input type="tel" placeholder="+91 99999 99999" required class="w-full px-4 py-2.5 rounded-lg border border-slate-700 bg-slate-850 text-white text-xs focus:outline-none focus:ring-1 focus:ring-gold" />
+                                </div>
+                                <div>
+                                    <label class="text-[10px] font-bold text-slate-455 uppercase tracking-wider block mb-1">Legal Category</label>
+                                    <select id="form-practice-select" class="w-full px-3 py-2.5 rounded-lg border border-slate-700 bg-slate-850 text-white text-xs focus:outline-none focus:ring-1 focus:ring-gold">
+                                        <option value="criminal">Criminal Offence &amp; Bail Desk</option>
+                                        <option value="civil">Civil Litigation / Property Law</option>
+                                        <option value="marital">Matrimonial / Divorce Disputes</option>
+                                        <option value="appeal">Appellate Writ / SLP</option>
+                                        <option value="other">Other Consultation</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="text-[10px] font-bold text-slate-455 uppercase tracking-wider block mb-1">Brief Fact Summary</label>
+                                <textarea placeholder="Outline dates, court name (if summons received), or legal action history..." rows="3" required class="w-full px-4 py-2.5 rounded-lg border border-slate-700 bg-slate-850 text-white text-xs focus:outline-none focus:ring-1 focus:ring-gold"></textarea>
+                            </div>
+                            <button type="submit" class="w-full inline-flex items-center justify-center px-6 py-3.5 bg-gold hover:bg-gold-dark text-navy-950 font-bold text-xs uppercase tracking-wider transition shadow-lg shadow-gold/10">
+                                Book Case Evaluation
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ============== FOOTER ============== -->
+    <footer class="bg-navy-950 text-slate-450 py-16 border-t border-navy-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <!-- Column 1: Profile Shield -->
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <svg class="w-8 h-8" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M50 10 C68 10 80 18 80 38 C80 62 62 82 50 90 C38 82 20 62 20 38 C20 18 32 10 50 10 Z" stroke="#c5a880" stroke-width="3" stroke-linejoin="round"/>
+                            <line x1="50" y1="25" x2="50" y2="70" stroke="#ffffff" stroke-width="4"/>
+                            <line x1="32" y1="35" x2="68" y2="35" stroke="#ffffff" stroke-width="4"/>
+                            <path d="M22 55 H42 C42 62 22 62 22 55 Z" fill="#c5a880"/>
+                            <path d="M58 55 H78 C78 62 58 62 58 55 Z" fill="#c5a880"/>
+                        </svg>
+                        <span class="font-serif font-bold text-sm text-white">Advocate Rahul</span>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed mb-4">
+                        Dedicated advocacy for district courtroom litigation and high appellate petitions across the National Capital Region.
+                    </p>
+                    <div class="text-xs text-slate-500">
+                        Delhi High Court Bar Chambers, Delhi, India
+                    </div>
+                </div>
+
+                <!-- Column 2: Gurgaon & Haryana Services -->
+                <div>
+                    <h4 class="font-serif font-bold text-xs text-white uppercase tracking-wider mb-4 border-b border-slate-900 pb-2">Gurgaon &amp; Haryana</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#courts" class="hover:text-gold transition">Advocate in Gurgaon Sector 56</a></li>
+                        <li><a href="#courts" class="hover:text-gold transition">Legal Counsel in DLF Phase 1-5</a></li>
+                        <li><a href="#courts" class="hover:text-gold transition">Bail Advocate Gurgaon District Court</a></li>
+                        <li><a href="#services" class="hover:text-gold transition">Property Dispute Lawyer Gurugram</a></li>
+                        <li><a href="#services" class="hover:text-gold transition">Corporate Arbitration Gurgaon</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Noida & Uttar Pradesh NCR -->
+                <div>
+                    <h4 class="font-serif font-bold text-xs text-white uppercase tracking-wider mb-4 border-b border-slate-900 pb-2">Noida &amp; Ghaziabad</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#courts" class="hover:text-gold transition">Advocate in Noida Sector 62</a></li>
+                        <li><a href="#courts" class="hover:text-gold transition">Legal Consultation Noida Greater Area</a></li>
+                        <li><a href="#courts" class="hover:text-gold transition">Surajpur Court Remand Defense</a></li>
+                        <li><a href="#services" class="hover:text-gold transition">Commercial Contract Attorney Noida</a></li>
+                        <li><a href="#services" class="hover:text-gold transition">Ghaziabad District Court Litigator</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: South Delhi & Supreme Court -->
+                <div>
+                    <h4 class="font-serif font-bold text-xs text-white uppercase tracking-wider mb-4 border-b border-slate-900 pb-2">South Delhi &amp; Appellate</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#courts" class="hover:text-gold transition">Supreme Court SLP Advocate Delhi</a></li>
+                        <li><a href="#courts" class="hover:text-gold transition">Delhi High Court Writ Pleadings</a></li>
+                        <li><a href="#courts" class="hover:text-gold transition">Advocate in Saket District Courts</a></li>
+                        <li><a href="#courts" class="hover:text-gold transition">Matrimonial Advocate Saket Court</a></li>
+                        <li><a href="#services" class="hover:text-gold transition">Patiala House Court Bail Filings</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom footer bar -->
+            <div class="pt-8 border-t border-slate-900 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-slate-500">
+                <p>&copy; 2026 Advocate Rahul. All rights reserved. Bar Council Rules prohibit advertising; client outcomes are based on merits.</p>
+                <div class="flex gap-4">
+                    <a href="#reviews" class="hover:text-white transition">Rating: 4.9/5 on Bar Registry</a>
+                    <span class="text-slate-800">|</span>
+                    <a href="#contact" class="hover:text-white transition">Schedule Call</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============== JS CONTROL LOGIC ============== -->
+    <script>
+        // Init Lucide vector icons
+        lucide.createIcons();
+
+        // Toggle Mobile Menu Functionality
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            const isHidden = menu.classList.contains('hidden');
+            
+            if (isHidden) {
+                menu.classList.remove('hidden');
+                icon.setAttribute('data-lucide', 'x');
+            } else {
+                menu.classList.add('hidden');
+                icon.setAttribute('data-lucide', 'menu');
+            }
+            lucide.createIcons();
+        }
+
+        // 1. Interactive Courts Presence Registry Data
+        const courtsData = [
+            {
+                title: "Supreme Court of India & Delhi High Court",
+                intro: "Appellate advocacy and writ jurisdictions representing constitutional matters under Articles 32 and 226 of the Constitution of India.",
+                items: [
+                    "Special Leave Petitions (SLPs) challenging final orders of state High Courts.",
+                    "Writ Mandamus, Certiorari, and Habeas Corpus filings against administrative actions.",
+                    "Appellate appeals and stay orders against tribunal decrees."
+                ],
+                location: "Sher Shah Road / Tilak Marg, New Delhi",
+                timing: "Court Sitting: 10:30 AM - 4:00 PM"
+            },
+            {
+                title: "Delhi District Courts Complex",
+                intro: "Trial-level litigation, regular bail arguments, property suit filings, and original jurisdiction proceedings.",
+                items: [
+                    "Saket Court Complex: Family law matters, economic offenses, and South Delhi disputes.",
+                    "Dwarka Court Complex: Negotiable Instruments (Sec 138) trials and criminal complaints.",
+                    "Patiala House Court Complex: Custody bails, NDPS interventions, and urgent applications."
+                ],
+                location: "Saket, Dwarka, and India Gate Districts",
+                timing: "Court Sitting: 10:00 AM - 4:00 PM"
+            },
+            {
+                title: "NCR Regional Courts & Tribunals",
+                intro: "Suburban district defense trials, industrial tribunal pleadings, and municipal legal appeals.",
+                items: [
+                    "Gurugram District Court: Corporate complaints, local bail filings, and property suits.",
+                    "Surajpur Court (Noida): Land acquisition disputes, criminal remand defense, and state appeals.",
+                    "Debt Recovery Tribunals (DRT) and NCLT company law petition briefs."
+                ],
+                location: "Gurugram Sector 15 / Surajpur Greater Noida",
+                timing: "Remand hearings & filings: 10:00 AM - 5:00 PM"
+            }
+        ];
+
+        // Switch Tabs Functionality
+        function switchCourtTab(index) {
+            // Update tab styles
+            for (let i = 0; i < 3; i++) {
+                const tab = document.getElementById(`court-tab-${i}`);
+                if (i === index) {
+                    tab.className = "court-tab-active flex items-center justify-between p-4 border border-gold text-left transition duration-200 text-gold";
+                } else {
+                    tab.className = "flex items-center justify-between p-4 border border-slate-200 text-left transition duration-200 hover:border-gold text-slate-700";
+                }
+            }
+
+            // Update content display area
+            const activeData = courtsData[index];
+            const contentArea = document.getElementById('court-content-area');
+            
+            // Build items list HTML
+            let listHTML = '';
+            activeData.items.forEach(item => {
+                listHTML += `
+                    <li class="flex items-start gap-2 text-xs text-slate-600">
+                        <span class="text-gold text-base leading-none mt-0.5">•</span>
+                        <span>${item}</span>
+                    </li>
+                `;
+            });
+
+            contentArea.innerHTML = `
+                <div class="space-y-4 animate-in fade-in duration-300">
+                    <span class="px-2.5 py-1 bg-navy-900 text-gold text-[9px] font-bold uppercase tracking-widest rounded inline-block">Active Standing</span>
+                    <h3 class="font-serif font-bold text-xl text-navy-900">${activeData.title}</h3>
+                    <p class="text-slate-500 text-xs sm:text-sm leading-relaxed">${activeData.intro}</p>
+                    
+                    <ul class="space-y-2 pt-2 border-t border-slate-200/60">
+                        ${listHTML}
+                    </ul>
+                    
+                    <div class="pt-4 flex flex-wrap gap-4 items-center justify-between text-[11px] text-slate-400 font-bold uppercase tracking-wider">
+                        <span>📍 ${activeData.location}</span>
+                        <span>⏱️ ${activeData.timing}</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Initialize first tab content
+        switchCourtTab(0);
+
+        // 2. FAQ Accordion Toggle
+        function toggleFAQ(index) {
+            const ans = document.getElementById(`faq-ans-${index}`);
+            const icon = document.getElementById(`faq-icon-${index}`);
+            
+            if (ans.classList.contains('open')) {
+                ans.classList.remove('open');
+                ans.style.maxHeight = '0';
+                icon.setAttribute('data-lucide', 'plus');
+            } else {
+                ans.classList.add('open');
+                ans.style.maxHeight = ans.scrollHeight + 'px';
+                icon.setAttribute('data-lucide', 'minus');
+            }
+            lucide.createIcons();
+        }
+
+        // 3. Prefill Legal Category on Practice Area Clicks
+        function prefillPractice(areaName) {
+            const selectEl = document.getElementById('form-practice-select');
+            if (areaName.includes('Criminal')) {
+                selectEl.value = 'criminal';
+            } else if (areaName.includes('Civil')) {
+                selectEl.value = 'civil';
+            } else if (areaName.includes('Matrimonial')) {
+                selectEl.value = 'marital';
+            } else if (areaName.includes('Appellate')) {
+                selectEl.value = 'appeal';
+            }
+        }
+
+        // 4. Form Submission Mock Alert
+        function submitAdvocateForm(e) {
+            e.preventDefault();
+            alert("Thank you. Your consultation request has been logged confidentially. Advocate Rahul's chamber will contact you within 2 business hours.");
+            e.target.reset();
+        }
+    </script>
+</body>
+
+</html>
