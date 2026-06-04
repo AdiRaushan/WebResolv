@@ -45,12 +45,14 @@
                 size: A4 portrait;
                 margin: 0;
             }
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
             body {
                 padding: 0 !important;
                 margin: 0 !important;
                 background: #050505 !important;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
             }
 
             .page {
@@ -61,6 +63,11 @@
                 margin: 0 !important;
                 page-break-after: always !important;
                 page-break-inside: avoid !important;
+                overflow: hidden !important;
+            }
+
+            .page:last-of-type {
+                page-break-after: avoid !important;
             }
 
             .no-print {
@@ -482,6 +489,7 @@
             padding: 52px;
             display: flex;
             flex-direction: column;
+            justify-content: center;
             gap: 44px;
             position: relative;
             z-index: 5;
@@ -992,6 +1000,117 @@
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
         }
+
+        /* Mobile Responsiveness styling */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 16px 8px !important;
+            }
+
+            .page {
+                min-height: auto !important;
+                height: auto !important;
+                margin-bottom: 24px !important;
+                border-radius: 12px !important;
+            }
+
+            .cover-page {
+                padding: 28px 20px !important;
+                min-height: auto !important;
+            }
+
+            .page-header-strip {
+                padding: 16px 20px !important;
+            }
+
+            .page-footer-strip {
+                padding: 16px 20px !important;
+            }
+
+            .content-body {
+                padding: 28px 20px !important;
+                gap: 28px !important;
+            }
+
+            .proposal-title-main {
+                font-size: 42px !important;
+                line-height: 1.0 !important;
+            }
+
+            .proposal-title-sub {
+                margin-top: 16px !important;
+                font-size: 8px !important;
+                line-height: 1.4 !important;
+            }
+
+            .glowing-bars {
+                height: 140px !important;
+            }
+
+            .glowing-bars-reflection {
+                height: 90px !important;
+            }
+
+            .proposal-footer-meta {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 16px !important;
+                margin-top: 24px !important;
+            }
+
+            .proposal-footer-meta .meta-group.text-right {
+                text-align: left !important;
+            }
+
+            .cover-scope-grid {
+                grid-template-columns: 1fr !important;
+                gap: 12px !important;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr !important;
+                gap: 16px !important;
+            }
+
+            .pricing-block {
+                grid-template-columns: 1fr !important;
+                gap: 24px !important;
+                padding: 24px !important;
+            }
+
+            .price-amount {
+                font-size: 48px !important;
+            }
+
+            .two-col {
+                grid-template-columns: 1fr !important;
+                gap: 20px !important;
+            }
+
+            .timeline::before {
+                left: 13px !important;
+            }
+
+            .tl-item {
+                gap: 16px !important;
+            }
+
+            .tl-node {
+                margin-left: 0 !important;
+            }
+
+            .signoff {
+                grid-template-columns: 1fr !important;
+                gap: 16px !important;
+            }
+
+            .download-btn {
+                position: static !important;
+                width: 100% !important;
+                margin-bottom: 16px !important;
+                justify-content: center !important;
+            }
+        }
     </style>
 </head>
 
@@ -1143,7 +1262,7 @@
 
             <div class="divider"></div>
 
-            <div class="info-block" style="margin-top: auto;">
+            <div class="info-block">
                 <div class="info-block-title">Key Parameters</div>
                 <div class="info-row">
                     <span>Target Audience</span>
@@ -1446,8 +1565,6 @@
                     <p style="font-size: 11px; color: var(--soft); margin-top: 12px; line-height: 1.5;">Balance payment due after full project completion, review, testing, and final launch.</p>
                 </div>
             </div>
-
-            <div style="flex: 1;"></div>
 
             <div>
                 <div class="section-eyebrow">Authorization</div>
