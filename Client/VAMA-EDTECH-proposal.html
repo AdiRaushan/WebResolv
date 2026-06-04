@@ -1,0 +1,1529 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VAMA EdTech — Project Proposal by WebResolv</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #f9f7f4;
+            color: #1a1a1a;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 48px 16px;
+        }
+
+        h1,
+        h2,
+        h3,
+        .heading {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* Brand Colors */
+        :root {
+            --wr-accent: #ff4f1f;
+            --wr-yellow: #ffd234;
+            --vama-blue: #1e40af;
+            --vama-pink: #ec4899;
+            --vama-purple: #7c3aed;
+            --vama-orange: #f97316;
+            --vama-green: #10b981;
+        }
+
+        /* Page Shell (A4 Aspect Ratio) */
+        .page {
+            background: #ffffff;
+            width: 100%;
+            max-width: 794px;
+            /* A4 width at 96 DPI */
+            height: 1123px;
+            /* A4 height at 96 DPI */
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 40px;
+            border: 1px solid #ece9e3;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.02);
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            page-break-after: always;
+            page-break-inside: avoid;
+        }
+
+        /* Hero cover page specific */
+        .cover-page {
+            background: linear-gradient(rgba(10, 10, 12, 0.8), rgba(10, 10, 12, 0.9)), url('image.png') no-repeat center center / cover !important;
+            border: 1px solid rgba(255, 255, 255, 0.05) !important;
+            color: #ffffff !important;
+        }
+
+        /* Page number tag */
+        .pg-tag {
+            background: #f3f0ea;
+            border-radius: 8px;
+            padding: 3px 10px;
+            font-size: 11px;
+            font-weight: 700;
+            color: #4b5563;
+        }
+
+        /* Signature block custom line */
+        .sig-line {
+            border-bottom: 1.5px dashed #d1d5db;
+            height: 36px;
+            width: 100%;
+        }
+
+        /* Mobile navbar styles */
+        .nav-pill {
+            padding: 8px 16px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all .2s;
+            white-space: nowrap;
+            border: none;
+            background: transparent;
+            color: #6b7280;
+        }
+
+        .nav-pill.active,
+        .nav-pill:hover {
+            background: #0f0f0f;
+            color: #fff;
+        }
+
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Print and Export Media Queries */
+        @media print {
+            body {
+                padding: 0 !important;
+                margin: 0 !important;
+                background: #ffffff !important;
+            }
+
+            .page {
+                width: 210mm !important;
+                height: 297mm !important;
+                /* Strict A4 height in print */
+                border: none !important;
+                box-shadow: none !important;
+                margin: 0 !important;
+                border-radius: 0 !important;
+                page-break-after: always !important;
+                page-break-inside: avoid !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .cover-page {
+                height: 297mm !important;
+                min-height: 297mm !important;
+            }
+
+            .no-print {
+                display: none !important;
+            }
+        }
+
+        /* Mobile Adjustments */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 16px 8px !important;
+            }
+
+            .page {
+                height: auto !important;
+                min-height: auto !important;
+                border-radius: 12px !important;
+                margin-bottom: 24px !important;
+            }
+
+            .cover-page {
+                min-height: 600px !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ============== TOP NAV ============== -->
+    <nav
+        class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-100 no-print w-full max-w-[794px] rounded-2xl mb-8 shadow-sm">
+        <div class="px-4 py-3 flex flex-col md:flex-row items-center justify-between gap-3 md:gap-4">
+            <!-- Logo Group -->
+            <div class="flex items-center gap-2 flex-shrink-0">
+                <!-- WebResolv Logo -->
+                <svg class="w-6 h-6 flex-shrink-0" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="48" fill="#ff4f1f" />
+                    <path
+                        d="M 20 30 L 30 70 L 40 45 L 50 70 L 60 45 L 70 70 L 80 30 L 72 30 L 65 55 L 55 35 L 50 45 L 45 35 L 35 55 L 28 30 Z"
+                        fill="#fff" stroke="#fff" stroke-width="2" stroke-linejoin="round" />
+                </svg>
+                <span class="font-bold text-xs text-gray-900"
+                    style="font-family:'Space Grotesk',sans-serif">WebResolv</span>
+                <span class="text-gray-300 mx-1">×</span>
+                <img src="vama-logo.png" class="h-6 w-auto object-contain rounded" alt="VAMA EdTech" />
+            </div>
+
+            <!-- Nav Pills -->
+            <div
+                class="flex items-center gap-1 overflow-x-auto hide-scrollbar w-full md:w-auto justify-center md:justify-end py-1 md:py-0 border-t border-gray-50 md:border-t-0 mt-1 md:mt-0">
+                <button class="nav-pill active" onclick="scrollToPage('overview')">Overview</button>
+                <button class="nav-pill" onclick="scrollToPage('scope-web')">Web Scope</button>
+                <button class="nav-pill" onclick="scrollToPage('scope-kit')">Kit Scope</button>
+                <button class="nav-pill" onclick="scrollToPage('features')">Features</button>
+                <button class="nav-pill" onclick="scrollToPage('roadmap')">Roadmap</button>
+                <button class="nav-pill" onclick="scrollToPage('pricing')">Pricing</button>
+                <button class="nav-pill" onclick="scrollToPage('signoff')">Sign Off</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ================= PAGE 1: COVER PAGE ================= -->
+    <div class="page cover-page" id="overview">
+        <div class="flex-1 flex flex-col justify-between p-6 sm:p-12">
+            <!-- Header Logos -->
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <svg class="w-8 h-8 flex-shrink-0" viewBox="0 0 100 100" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="50" r="48" fill="#ff4f1f" />
+                        <path
+                            d="M 20 30 L 30 70 L 40 45 L 50 70 L 60 45 L 70 70 L 80 30 L 72 30 L 65 55 L 55 35 L 50 45 L 45 35 L 35 55 L 28 30 Z"
+                            fill="#fff" stroke="#fff" stroke-width="2" stroke-linejoin="round" />
+                    </svg>
+                    <div class="flex flex-col">
+                        <span class="font-bold text-white leading-none text-base"
+                            style="font-family:'Space Grotesk',sans-serif">WebResolv</span>
+                        <span class="text-[9px] text-gray-500 font-bold uppercase tracking-wider mt-0.5">Web &
+                            Automation Co.</span>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-3">
+                    <img src="vama-logo.png" class="h-8 w-auto object-contain rounded" alt="VAMA EdTech" />
+                    <div class="flex flex-col">
+                        <span class="font-bold text-white leading-none text-base font-display">VAMA EdTech</span>
+                        <span class="text-[9px] text-gray-500 font-bold uppercase tracking-wider mt-0.5">STEM Learning
+                            Center</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Center Proposal Title -->
+            <div class="my-auto py-8 sm:py-12">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full text-xs font-semibold text-gray-300 mb-6">
+                    <span class="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span>
+                    PROJECT PROPOSAL & SPECIFICATIONS
+                </div>
+                <h1 class="text-4xl sm:text-5xl font-extrabold text-white leading-tight font-display mb-6">
+                    Building the <br />Digital Home for<br />
+                    <span style="color:#ffd234">VAMA EdTech</span> 🚀
+                </h1>
+                <p class="text-gray-400 text-xs sm:text-sm max-w-md leading-relaxed">
+                    A technical specifications document outlining the scope, deliverables, and timeline for launching
+                    the new class explorer platform and science kit storefront.
+                </p>
+            </div>
+
+            <!-- Footer Meta -->
+            <div class="flex items-end justify-between border-t border-white/10 pt-6 sm:pt-8">
+                <div>
+                    <span class="text-[9px] font-bold text-orange-500 uppercase tracking-widest block mb-1">Prepared
+                        For</span>
+                    <span class="text-xs sm:text-sm font-bold text-white block">VAMA EdTech Group</span>
+                    <span class="text-[10px] text-gray-500 block">STEM Educational Center</span>
+                </div>
+
+                <div class="text-right">
+                    <span class="text-[9px] font-bold text-orange-500 uppercase tracking-widest block mb-1">Presented
+                        By</span>
+                    <span class="text-xs sm:text-sm font-bold text-white block">WebResolv Studio</span>
+                    <span class="text-[10px] text-gray-500 block">Design & Automation Partner</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= PAGE 2: PROJECT OVERVIEW & TOC ================= -->
+    <div class="page">
+        <!-- Header -->
+        <div class="px-4 sm:px-8 py-3 sm:py-4 border-b border-gray-100 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <svg class="w-6 h-6 flex-shrink-0" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="48" fill="#ff4f1f" />
+                    <path
+                        d="M 20 30 L 30 70 L 40 45 L 50 70 L 60 45 L 70 70 L 80 30 L 72 30 L 65 55 L 55 35 L 50 45 L 45 35 L 35 55 L 28 30 Z"
+                        fill="#fff" stroke="#fff" stroke-width="2" stroke-linejoin="round" />
+                </svg>
+                <span class="font-bold text-xs text-gray-900"
+                    style="font-family:'Space Grotesk',sans-serif">WebResolv</span>
+                <span class="text-gray-300">×</span>
+                <img src="vama-logo.png" class="h-6 w-auto object-contain rounded" alt="VAMA EdTech" />
+            </div>
+            <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Project Overview</span>
+        </div>
+
+        <!-- Page Content -->
+        <div class="flex-1 px-4 sm:px-8 py-6 sm:py-8 flex flex-col justify-center gap-6 sm:gap-8">
+            <!-- Text section -->
+            <div>
+                <div class="sec-label mb-1">01 · Mission Context</div>
+                <h2 class="text-xl sm:text-2xl font-bold text-gray-900 mb-2 font-display">Hands-On Educational Mission
+                </h2>
+                <div class="border-l-4 border-orange-500 pl-4 py-1.5 my-3 bg-orange-50/20 pr-4 rounded-r-lg">
+                    <p class="text-xs sm:text-sm text-gray-700 leading-relaxed font-semibold">
+                        VAMA EdTech is a premier learning center specializing in <strong>Science, Technology,
+                            Engineering, and Mathematics (STEM)</strong> education, providing exciting hands-on programs
+                        for kids aged 4-15 years.
+                    </p>
+                </div>
+                <p class="text-xs sm:text-sm text-gray-600 leading-relaxed mt-3">
+                    Our creative learning programs include LEGO Duplo Play, LEGO, Paper Circuits, Electronic Circuits,
+                    Scratch coding, Robotics, Arduino coding, Python, IoT, and cloud/sensor Arduino programming. We also
+                    design specialized workshops and School SUPW programs for Grades 1-10.
+                    <br /><br />
+                    By designing a fun, easy-going online explorer, WebResolv will help VAMA EdTech display its
+                    interactive curriculum cleanly, building trust with parents and giving them the confidence to invest
+                    in their child's hands-on educational growth.
+                </p>
+            </div>
+
+            <div class="border-t border-gray-100"></div>
+
+            <!-- Table of Contents -->
+            <div>
+                <div class="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-3">Table of Contents</div>
+                <div class="space-y-3">
+                    <div class="flex items-center gap-2">
+                        <span class="font-semibold text-xs sm:text-sm text-gray-800">01. Context &amp; Educational
+                            Mission</span>
+                        <div class="flex-1 border-b border-dotted border-gray-200"></div>
+                        <span class="text-xs sm:text-sm font-bold text-gray-500">Page 2</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="font-semibold text-xs sm:text-sm text-gray-800">02. Scope of Work: Designing for
+                            Kids &amp; Parents</span>
+                        <div class="flex-1 border-b border-dotted border-gray-200"></div>
+                        <span class="text-xs sm:text-sm font-bold text-gray-500">Page 3</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="font-semibold text-xs sm:text-sm text-gray-800">03. Scope of Work: Science Kit
+                            Store &amp; Checkout</span>
+                        <div class="flex-1 border-b border-dotted border-gray-200"></div>
+                        <span class="text-xs sm:text-sm font-bold text-gray-500">Page 4</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="font-semibold text-xs sm:text-sm text-gray-800">04. Platform Features &amp; Content
+                            Dashboard</span>
+                        <div class="flex-1 border-b border-dotted border-gray-200"></div>
+                        <span class="text-xs sm:text-sm font-bold text-gray-500">Page 5</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="font-semibold text-xs sm:text-sm text-gray-800">05. Project Roadmap &amp;
+                            Design/Tech Stack</span>
+                        <div class="flex-1 border-b border-dotted border-gray-200"></div>
+                        <span class="text-xs sm:text-sm font-bold text-gray-500">Page 6</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="font-semibold text-xs sm:text-sm text-gray-800">06. Pricing Packages &amp;
+                            Marketing Add-ons</span>
+                        <div class="flex-1 border-b border-dotted border-gray-200"></div>
+                        <span class="text-xs sm:text-sm font-bold text-gray-500">Page 7</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="font-semibold text-xs sm:text-sm text-gray-800">07. Next Steps &amp; Agreement
+                            Sign-off</span>
+                        <div class="flex-1 border-b border-dotted border-gray-200"></div>
+                        <span class="text-xs sm:text-sm font-bold text-gray-500">Page 8</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kid Image Section (fills gap beautifully) -->
+            <div
+                class="rounded-2xl overflow-hidden h-[150px] sm:h-[220px] w-full border border-gray-100 shadow-xs relative">
+                <img src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=800&q=80"
+                    alt="Kid learning STEM" class="w-full h-full object-cover object-center" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div
+                    class="absolute bottom-3 left-4 text-white text-[10px] sm:text-[11px] font-bold uppercase tracking-wider">
+                    VAMA EdTech Hands-on Science Classes</div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div
+            class="px-4 sm:px-8 py-3 sm:py-4 border-t border-gray-100 flex items-center justify-between text-[11px] text-gray-400 font-medium">
+            <span>Project Proposal | VAMA EdTech Platform Rebuild</span>
+            <div class="flex items-center gap-2">
+                <span class="pg-tag">Page 2</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= PAGE 3: SCOPE OF WORK - WEBPAGE ================= -->
+    <div class="page" id="scope-web">
+        <!-- Header -->
+        <div class="px-4 sm:px-8 py-3 sm:py-4 border-b border-gray-100 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <svg class="w-6 h-6 flex-shrink-0" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="48" fill="#ff4f1f" />
+                    <path
+                        d="M 20 30 L 30 70 L 40 45 L 50 70 L 60 45 L 70 70 L 80 30 L 72 30 L 65 55 L 55 35 L 50 45 L 45 35 L 35 55 L 28 30 Z"
+                        fill="#fff" stroke="#fff" stroke-width="2" stroke-linejoin="round" />
+                </svg>
+                <span class="font-bold text-xs text-gray-900"
+                    style="font-family:'Space Grotesk',sans-serif">WebResolv</span>
+                <span class="text-gray-300">×</span>
+                <img src="vama-logo.png" class="h-6 w-auto object-contain rounded" alt="VAMA EdTech" />
+            </div>
+            <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Scope: Website</span>
+        </div>
+
+        <!-- Page Content -->
+        <div class="flex-1 px-4 sm:px-8 py-6 sm:py-8 flex flex-col justify-center gap-6 sm:gap-8">
+            <div>
+                <div class="sec-label mb-1">02 · Course Website Scope</div>
+                <h2 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1 font-display">Designing for Kids &amp;
+                    Parents</h2>
+                <p class="text-xs sm:text-sm text-gray-500 mb-4 font-normal">An easy-going, fun website layout designed
+                    to excite kids while giving parents the confidence to enroll.</p>
+
+                <!-- Grid of Scope Cards -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                    <div class="bg-gray-50/50 border border-gray-100 rounded-xl p-4">
+                        <div class="flex items-center gap-2.5 mb-2">
+                            <div
+                                class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="home" class="w-4 h-4"></i>
+                            </div>
+                            <span class="font-bold text-xs sm:text-sm text-gray-800">Homepage Experience</span>
+                        </div>
+                        <p class="text-xs text-gray-500 leading-relaxed">Eye-catching top banner · Dedicated section
+                            showing how hands-on learning works · Highlighting grades 1-10 SUPW programs.</p>
+                    </div>
+
+                    <div class="bg-gray-50/50 border border-gray-100 rounded-xl p-4">
+                        <div class="flex items-center gap-2.5 mb-2">
+                            <div
+                                class="w-8 h-8 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="book-open" class="w-4 h-4"></i>
+                            </div>
+                            <span class="font-bold text-xs sm:text-sm text-gray-800">4 to 5 Course Explorers</span>
+                        </div>
+                        <p class="text-xs text-gray-500 leading-relaxed">Details, ages, and schedules for LEGO,
+                            Circuits, Robotics, coding, and Python · Parent Camp promo zones.</p>
+                    </div>
+
+                    <div class="bg-gray-50/50 border border-gray-100 rounded-xl p-4">
+                        <div class="flex items-center gap-2.5 mb-2">
+                            <div
+                                class="w-8 h-8 rounded-lg bg-orange-50 text-orange-600 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="layout" class="w-4 h-4"></i>
+                            </div>
+                            <span class="font-bold text-xs sm:text-sm text-gray-800">Visual Vibe &amp; Graphics</span>
+                        </div>
+                        <p class="text-xs text-gray-500 leading-relaxed">Interactive details that feel playful yet
+                            professional · Clear design rules for tablets, laptops, and mobiles.</p>
+                    </div>
+
+                    <div class="bg-gray-50/50 border border-gray-100 rounded-xl p-4">
+                        <div class="flex items-center gap-2.5 mb-2">
+                            <div
+                                class="w-8 h-8 rounded-lg bg-green-50 text-green-600 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="pen-tool" class="w-4 h-4"></i>
+                            </div>
+                            <span class="font-bold text-xs sm:text-sm text-gray-800">Free Copywriting</span>
+                        </div>
+                        <p class="text-xs text-gray-500 leading-relaxed">We write clean course descriptions and
+                            headlines at no extra charge, making complex topics easy to read.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Value Highlight Card -->
+            <div class="bg-blue-50/40 border border-blue-100 rounded-xl p-4 my-2 shadow-xs">
+                <div class="flex items-center gap-2 mb-1">
+                    <i data-lucide="sparkles" class="w-4 h-4 text-blue-600"></i>
+                    <span class="font-bold text-xs text-blue-800 uppercase tracking-wider">How This Drives
+                        Enrollment</span>
+                </div>
+                <p class="text-xs text-blue-900/80 leading-relaxed">
+                    By displaying high-quality photos of robot builds and coding projects directly next to age filters,
+                    parents can quickly find classes that fit their child's skills, leading to faster sign-ups.
+                </p>
+            </div>
+
+            <!-- Structure Info Block & Block Map -->
+            <div>
+                <div class="text-xs sm:text-sm font-bold text-gray-700 mb-1.5 font-display">Core Platform Focus — Three
+                    Key Pillars</div>
+                <p class="text-xs text-gray-500 leading-relaxed mb-3">
+                    To make the VAMA EdTech platform a highly engaging hub that drives parent enrollment and kit sales,
+                    we focus strictly on three main pillars:
+                </p>
+
+                <!-- 3-pillar map layout -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <div
+                        class="bg-gray-50 border border-gray-100 rounded-xl p-3 text-center flex flex-col justify-between shadow-xs">
+                        <div>
+                            <div class="text-[8px] font-bold text-orange-500 uppercase tracking-wider">Pillar 1</div>
+                            <div class="font-bold text-[10px] text-gray-800 mt-0.5">Design Kids &amp; Parents Love</div>
+                        </div>
+                        <div class="text-[9px] text-gray-500 mt-1 leading-relaxed">
+                            Custom Homepage · About Us · Integrated Google Reviews to build high trust.
+                        </div>
+                    </div>
+                    <div
+                        class="bg-gray-50 border border-gray-100 rounded-xl p-3 text-center flex flex-col justify-between shadow-xs">
+                        <div>
+                            <div class="text-[8px] font-bold text-blue-600 uppercase tracking-wider">Pillar 2</div>
+                            <div class="font-bold text-[10px] text-gray-800 mt-0.5">Deep Course Stories</div>
+                        </div>
+                        <div class="text-[9px] text-gray-500 mt-1 leading-relaxed">
+                            In-depth detail pages with storytelling images showing how classes help your kids grow.
+                        </div>
+                    </div>
+                    <div
+                        class="bg-gray-50 border border-gray-100 rounded-xl p-3 text-center flex flex-col justify-between shadow-xs">
+                        <div>
+                            <div class="text-[8px] font-bold text-purple-600 uppercase tracking-wider">Pillar 3</div>
+                            <div class="font-bold text-[10px] text-gray-800 mt-0.5">Product Showcase</div>
+                        </div>
+                        <div class="text-[9px] text-gray-500 mt-1 leading-relaxed">
+                            Interactive previews, sticky add-to-cart drawers, and checkout setup fully managed by us.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div
+            class="px-4 sm:px-8 py-3 sm:py-4 border-t border-gray-100 flex items-center justify-between text-[11px] text-gray-400 font-medium">
+            <span>Project Proposal | VAMA EdTech Platform Rebuild</span>
+            <div class="flex items-center gap-2">
+                <span class="pg-tag">Page 3</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= PAGE 4: SCOPE OF WORK - KIT STORE ================= -->
+    <div class="page" id="scope-kit">
+        <!-- Header -->
+        <div class="px-4 sm:px-8 py-3 sm:py-4 border-b border-gray-100 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <svg class="w-6 h-6 flex-shrink-0" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="48" fill="#ff4f1f" />
+                    <path
+                        d="M 20 30 L 30 70 L 40 45 L 50 70 L 60 45 L 70 70 L 80 30 L 72 30 L 65 55 L 55 35 L 50 45 L 45 35 L 35 55 L 28 30 Z"
+                        fill="#fff" stroke="#fff" stroke-width="2" stroke-linejoin="round" />
+                </svg>
+                <span class="font-bold text-xs text-gray-900"
+                    style="font-family:'Space Grotesk',sans-serif">WebResolv</span>
+                <span class="text-gray-300">×</span>
+                <img src="vama-logo.png" class="h-6 w-auto object-contain rounded" alt="VAMA EdTech" />
+            </div>
+            <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Scope: Kit Store</span>
+        </div>
+
+        <!-- Page Content -->
+        <div class="flex-1 px-4 sm:px-8 py-6 sm:py-8 flex flex-col justify-center gap-6 sm:gap-8">
+            <div>
+                <div class="sec-label mb-1">03 · Science Kit Store Scope</div>
+                <h2 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1 font-display">Science Kit Store &amp;
+                    E-Commerce</h2>
+                <p class="text-xs sm:text-sm text-gray-500 mb-4 font-normal">A simple, frictionless shopping setup for
+                    parents to purchase physical learning materials and science kits.</p>
+
+                <!-- Grid of Scope Cards -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                    <div class="bg-gray-50/50 border border-gray-100 rounded-xl p-4">
+                        <div class="flex items-center gap-2.5 mb-2">
+                            <div
+                                class="w-8 h-8 rounded-lg bg-orange-50 text-orange-600 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="play-circle" class="w-4 h-4"></i>
+                            </div>
+                            <span class="font-bold text-xs sm:text-sm text-gray-800">Rich Media Previews</span>
+                        </div>
+                        <p class="text-xs text-gray-500 leading-relaxed">Parents view high-res product photos and short
+                            experiment demo videos showing the kit in action.</p>
+                    </div>
+
+                    <div class="bg-gray-50/50 border border-gray-100 rounded-xl p-4">
+                        <div class="flex items-center gap-2.5 mb-2">
+                            <div
+                                class="w-8 h-8 rounded-lg bg-pink-50 text-pink-600 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="shopping-bag" class="w-4 h-4"></i>
+                            </div>
+                            <span class="font-bold text-xs sm:text-sm text-gray-800">Smart Cart &amp; Offers</span>
+                        </div>
+                        <p class="text-xs text-gray-500 leading-relaxed">Sticky shopping cart that dynamically displays
+                            active discount coupons, bundle packages, or special offers.</p>
+                    </div>
+
+                    <div class="bg-gray-50/50 border border-gray-100 rounded-xl p-4">
+                        <div class="flex items-center gap-2.5 mb-2">
+                            <div
+                                class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="shield-check" class="w-4 h-4"></i>
+                            </div>
+                            <span class="font-bold text-xs sm:text-sm text-gray-800">100% Secure Payments</span>
+                        </div>
+                        <p class="text-xs text-gray-500 leading-relaxed">Razorpay PCI-DSS Level 1 gateway integration
+                            supporting secure UPI (PhonePe, Paytm, Google Pay), netbanking, and cards.</p>
+                    </div>
+
+                    <div class="bg-gray-50/50 border border-gray-100 rounded-xl p-4">
+                        <div class="flex items-center gap-2.5 mb-2">
+                            <div
+                                class="w-8 h-8 rounded-lg bg-green-50 text-green-600 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="truck" class="w-4 h-4"></i>
+                            </div>
+                            <span class="font-bold text-xs sm:text-sm text-gray-800">Live Delivery Tracking</span>
+                        </div>
+                        <p class="text-xs text-gray-500 leading-relaxed">Parents receive instant WhatsApp/Email updates
+                            with active tracking links to monitor shipment status and delivery times.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Value Highlight Card -->
+            <div class="bg-orange-50/40 border border-orange-100 rounded-xl p-4 my-2 shadow-xs">
+                <div class="flex items-center gap-2 mb-1">
+                    <i data-lucide="lock" class="w-4 h-4 text-orange-600"></i>
+                    <span class="font-bold text-xs text-orange-800 uppercase tracking-wider">Parent-Centric Safety
+                        Guarantee</span>
+                </div>
+                <p class="text-xs text-orange-950/80 leading-relaxed">
+                    By showing video previews of the kits, using bank-grade secure payment pages, and sending instant
+                    WhatsApp tracking links, we eliminate parent hesitation, leading to a much higher kit purchase rate.
+                </p>
+            </div>
+
+            <!-- Flow Chart Block -->
+            <div>
+                <div class="text-xs sm:text-sm font-bold text-gray-700 mb-1.5 font-display">Science Kit Purchase Journey
+                    — Step-by-Step Flow</div>
+                <p class="text-xs text-gray-500 leading-relaxed mb-3">
+                    A completely managed shopping experience designed to be safe, reliable, and transparent for parents:
+                </p>
+
+                <!-- Kit purchase flowchart -->
+                <div
+                    class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between bg-gray-50 border border-gray-100 rounded-xl p-3 gap-2 sm:gap-1">
+                    <div
+                        class="flex-1 text-center bg-white border border-gray-100 rounded-lg p-2 shadow-xs min-h-[90px] flex flex-col justify-between">
+                        <div>
+                            <div class="text-[9px] font-bold text-orange-600 uppercase tracking-wider">Step 1</div>
+                            <div class="font-bold text-[10px] sm:text-[11px] text-gray-800 leading-tight mt-0.5">Explore
+                                &amp; Preview</div>
+                        </div>
+                        <div class="text-[9px] text-gray-400 mt-1 leading-tight">See images &amp; videos</div>
+                    </div>
+                    <div
+                        class="text-gray-300 text-xs font-bold text-center flex items-center justify-center h-2 sm:h-auto flex-shrink-0">
+                        <span class="hidden sm:inline">→</span>
+                        <span class="inline sm:hidden">↓</span>
+                    </div>
+                    <div
+                        class="flex-1 text-center bg-white border border-gray-100 rounded-lg p-2 shadow-xs min-h-[90px] flex flex-col justify-between">
+                        <div>
+                            <div class="text-[9px] font-bold text-pink-600 uppercase tracking-wider">Step 2</div>
+                            <div class="font-bold text-[10px] sm:text-[11px] text-gray-800 leading-tight mt-0.5">Cart
+                                &amp; Offers</div>
+                        </div>
+                        <div class="text-[9px] text-gray-400 mt-1 leading-tight">Auto-applied discounts</div>
+                    </div>
+                    <div
+                        class="text-gray-300 text-xs font-bold text-center flex items-center justify-center h-2 sm:h-auto flex-shrink-0">
+                        <span class="hidden sm:inline">→</span>
+                        <span class="inline sm:hidden">↓</span>
+                    </div>
+                    <div
+                        class="flex-1 text-center bg-white border border-gray-100 rounded-lg p-2 shadow-xs min-h-[90px] flex flex-col justify-between">
+                        <div>
+                            <div class="text-[9px] font-bold text-blue-600 uppercase tracking-wider">Step 3</div>
+                            <div class="font-bold text-[10px] sm:text-[11px] text-gray-800 leading-tight mt-0.5">Secure
+                                Payment</div>
+                        </div>
+                        <div class="text-[9px] text-gray-400 mt-1 leading-tight">UPI, Card &amp; NetBanking</div>
+                    </div>
+                    <div
+                        class="text-gray-300 text-xs font-bold text-center flex items-center justify-center h-2 sm:h-auto flex-shrink-0">
+                        <span class="hidden sm:inline">→</span>
+                        <span class="inline sm:hidden">↓</span>
+                    </div>
+                    <div
+                        class="flex-1 text-center bg-white border border-gray-100 rounded-lg p-2 shadow-xs min-h-[90px] flex flex-col justify-between">
+                        <div>
+                            <div class="text-[9px] font-bold text-purple-600 uppercase tracking-wider">Step 4</div>
+                            <div class="font-bold text-[10px] sm:text-[11px] text-gray-800 leading-tight mt-0.5">Instant
+                                Alert</div>
+                        </div>
+                        <div class="text-[9px] text-gray-400 mt-1 leading-tight">WhatsApp confirmation</div>
+                    </div>
+                    <div
+                        class="text-gray-300 text-xs font-bold text-center flex items-center justify-center h-2 sm:h-auto flex-shrink-0">
+                        <span class="hidden sm:inline">→</span>
+                        <span class="inline sm:hidden">↓</span>
+                    </div>
+                    <div
+                        class="flex-1 text-center bg-white border border-gray-100 rounded-lg p-2 shadow-xs min-h-[90px] flex flex-col justify-between">
+                        <div>
+                            <div class="text-[9px] font-bold text-green-600 uppercase tracking-wider">Step 5</div>
+                            <div class="font-bold text-[10px] sm:text-[11px] text-gray-800 leading-tight mt-0.5">Courier
+                                Track</div>
+                        </div>
+                        <div class="text-[9px] text-gray-400 mt-1 leading-tight">Live tracker &amp; ETA</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div
+            class="px-4 sm:px-8 py-3 sm:py-4 border-t border-gray-100 flex items-center justify-between text-[11px] text-gray-400 font-medium">
+            <span>Project Proposal | VAMA EdTech Platform Rebuild</span>
+            <div class="flex items-center gap-2">
+                <span class="pg-tag">Page 4</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= PAGE 5: PLATFORM FEATURES & CONTENT CONTROLS ================= -->
+    <div class="page" id="features">
+        <!-- Header -->
+        <div class="px-4 sm:px-8 py-3 sm:py-4 border-b border-gray-100 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <svg class="w-6 h-6 flex-shrink-0" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="48" fill="#ff4f1f" />
+                    <path
+                        d="M 20 30 L 30 70 L 40 45 L 50 70 L 60 45 L 70 70 L 80 30 L 72 30 L 65 55 L 55 35 L 50 45 L 45 35 L 35 55 L 28 30 Z"
+                        fill="#fff" stroke="#fff" stroke-width="2" stroke-linejoin="round" />
+                </svg>
+                <span class="font-bold text-xs text-gray-900"
+                    style="font-family:'Space Grotesk',sans-serif">WebResolv</span>
+                <span class="text-gray-300">×</span>
+                <img src="vama-logo.png" class="h-6 w-auto object-contain rounded" alt="VAMA EdTech" />
+            </div>
+            <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Platform Features</span>
+        </div>
+
+        <!-- Page Content -->
+        <div class="flex-1 px-4 sm:px-8 py-6 sm:py-8 flex flex-col justify-center gap-6 sm:gap-8">
+            <div>
+                <div class="sec-label mb-1">04 · Deliverables Included</div>
+                <h2 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1 font-display">Value Justification &amp;
+                    Integrations</h2>
+                <p class="text-xs sm:text-sm text-gray-500 mb-4 font-normal">A detailed breakdown of all the premium
+                    custom features, included deliverables, and optional add-ons for the platform rebuild.</p>
+
+                <!-- Grid of Deliverables -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                    <!-- Card 1: Admin Content Dashboard -->
+                    <div class="bg-gray-50/50 border border-gray-100 rounded-xl p-4">
+                        <div class="flex items-center gap-2.5 mb-2">
+                            <div
+                                class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="layout-dashboard" class="w-4 h-4"></i>
+                            </div>
+                            <span class="font-bold text-xs sm:text-sm text-gray-800">Admin Content Dashboard</span>
+                            <span
+                                class="bg-indigo-100 text-indigo-700 text-[8px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded ml-auto flex-shrink-0">Add-on</span>
+                        </div>
+                        <p class="text-xs text-gray-500 leading-relaxed">Modify homepage banners, courses, descriptions,
+                            and update display images independently via WordPress.</p>
+                    </div>
+
+                    <!-- Card 2: E-Commerce Kit Control -->
+                    <div class="bg-gray-50/50 border border-gray-100 rounded-xl p-4">
+                        <div class="flex items-center gap-2.5 mb-2">
+                            <div
+                                class="w-8 h-8 rounded-lg bg-orange-50 text-orange-600 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="shopping-bag" class="w-4 h-4"></i>
+                            </div>
+                            <span class="font-bold text-xs sm:text-sm text-gray-800">E-Commerce Kit Control</span>
+                        </div>
+                        <p class="text-xs text-gray-500 leading-relaxed">Add science kits, edit discount coupons, and
+                            track stock sync directly through Shopify's secure panel.</p>
+                    </div>
+
+                    <!-- Card 3: Instagram Reels Integration -->
+                    <div class="bg-gray-50/50 border border-gray-100 rounded-xl p-4">
+                        <div class="flex items-center gap-2.5 mb-2">
+                            <div
+                                class="w-8 h-8 rounded-lg bg-pink-50 text-pink-600 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="instagram" class="w-4 h-4"></i>
+                            </div>
+                            <span class="font-bold text-xs sm:text-sm text-gray-800">Instagram Reels Integration</span>
+                        </div>
+                        <p class="text-xs text-gray-500 leading-relaxed">Showcase live student activity videos by
+                            embedding active Instagram Reels to build parent trust and visual proof.</p>
+                    </div>
+
+                    <!-- Card 4: Graphic Design & Image Polish -->
+                    <div class="bg-gray-50/50 border border-gray-100 rounded-xl p-4">
+                        <div class="flex items-center gap-2.5 mb-2">
+                            <div
+                                class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="image" class="w-4 h-4"></i>
+                            </div>
+                            <span class="font-bold text-xs sm:text-sm text-gray-800">Image Polish &amp; Banners</span>
+                        </div>
+                        <p class="text-xs text-gray-500 leading-relaxed">Professional processing of all photos you
+                            share, plus custom graphic banners designed to give a rich, high-end appearance.</p>
+                    </div>
+
+                    <!-- Card 5: AI + Peer-Reviewed Copywriting -->
+                    <div class="bg-gray-50/50 border border-gray-100 rounded-xl p-4">
+                        <div class="flex items-center gap-2.5 mb-2">
+                            <div
+                                class="w-8 h-8 rounded-lg bg-yellow-50 text-yellow-700 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="pen-tool" class="w-4 h-4"></i>
+                            </div>
+                            <span class="font-bold text-xs sm:text-sm text-gray-800">Free Copywriting Service</span>
+                        </div>
+                        <p class="text-xs text-gray-500 leading-relaxed">Course copy drafts generated by AI,
+                            peer-reviewed by two team members, and polished specifically for VAMA's brand voice.</p>
+                    </div>
+
+                    <!-- Card 6: Custom Code & Basic SEO -->
+                    <div class="bg-gray-50/50 border border-gray-100 rounded-xl p-4">
+                        <div class="flex items-center gap-2.5 mb-2">
+                            <div
+                                class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="code" class="w-4 h-4"></i>
+                            </div>
+                            <span class="font-bold text-xs sm:text-sm text-gray-800">Custom Code &amp; Basic SEO</span>
+                        </div>
+                        <p class="text-xs text-gray-500 leading-relaxed">Includes custom Tailwind CSS setup, responsive
+                            layout checkouts, and basic SEO meta tag indexing out of the box.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Value Highlight Card -->
+            <div class="bg-indigo-50/40 border border-indigo-100 rounded-xl p-4 my-2 shadow-xs">
+                <div class="flex items-center gap-2 mb-1">
+                    <i data-lucide="gem" class="w-4 h-4 text-indigo-600"></i>
+                    <span class="font-bold text-xs text-indigo-800 uppercase tracking-wider">Why This Justifies the
+                        <span class="addon-total-price">₹18,500</span> Investment</span>
+                </div>
+                <p class="text-xs text-indigo-950/80 leading-relaxed">
+                    Instead of a generic template, you receive a custom hybrid solution (custom presentation site +
+                    Shopify kit storefront integration), complete with live social media integrations and full styling.
+                    This offers a premium, enterprise-grade digital setup at a fraction of traditional agency costs,
+                    with optional custom admin dashboards available to manage text and banners dynamically.
+                </p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div
+            class="px-4 sm:px-8 py-3 sm:py-4 border-t border-gray-100 flex items-center justify-between text-[11px] text-gray-400 font-medium">
+            <span>Project Proposal | VAMA EdTech Platform Rebuild</span>
+            <div class="flex items-center gap-2">
+                <span class="pg-tag">Page 5</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= PAGE 6: TIMELINE & TECH STACK ================= -->
+    <div class="page" id="roadmap">
+        <!-- Header -->
+        <div class="px-4 sm:px-8 py-3 sm:py-4 border-b border-gray-100 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <svg class="w-6 h-6 flex-shrink-0" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="48" fill="#ff4f1f" />
+                    <path
+                        d="M 20 30 L 30 70 L 40 45 L 50 70 L 60 45 L 70 70 L 80 30 L 72 30 L 65 55 L 55 35 L 50 45 L 45 35 L 35 55 L 28 30 Z"
+                        fill="#fff" stroke="#fff" stroke-width="2" stroke-linejoin="round" />
+                </svg>
+                <span class="font-bold text-xs text-gray-900"
+                    style="font-family:'Space Grotesk',sans-serif">WebResolv</span>
+                <span class="text-gray-300">×</span>
+                <img src="vama-logo.png" class="h-6 w-auto object-contain rounded" alt="VAMA EdTech" />
+            </div>
+            <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Roadmap &amp; Tech</span>
+        </div>
+
+        <!-- Page Content -->
+        <div class="flex-1 px-4 sm:px-8 py-6 sm:py-8 flex flex-col justify-center gap-6 sm:gap-8">
+            <!-- Timeline Section -->
+            <div>
+                <div class="sec-label mb-1">05 · Timeline</div>
+                <h2 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1 font-display">10-Day Delivery Roadmap</h2>
+                <p class="text-[11px] text-gray-500 mb-3">Start date: June 8, 2026 · Target launch date: June 17, 2026
+                </p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div class="bg-gray-50/50 border border-gray-100 rounded-xl p-3">
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="font-bold text-xs text-gray-800">Days 1–2 · Planning</span>
+                            <span
+                                class="text-[9px] font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded font-medium">Jun
+                                8–9</span>
+                        </div>
+                        <p class="text-xs text-gray-500 leading-relaxed">Prepare course curriculum lists, organize kit
+                            inventory data, set up base Shopify product listings.</p>
+                    </div>
+
+                    <div class="bg-gray-50/50 border border-gray-100 rounded-xl p-3">
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="font-bold text-xs text-gray-800">Days 3–5 · Design &amp; Build</span>
+                            <span
+                                class="text-[9px] font-bold text-purple-600 bg-purple-50 px-2 py-0.5 rounded font-medium">Jun
+                                10–12</span>
+                        </div>
+                        <p class="text-xs text-gray-500 leading-relaxed">Build homepage, course explorer listings, and
+                            individual kit pages. Setup kid-friendly typography and promo banners.</p>
+                    </div>
+
+                    <div class="bg-gray-50/50 border border-gray-100 rounded-xl p-3">
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="font-bold text-xs text-gray-800">Days 6–7 · Cart Integration</span>
+                            <span
+                                class="text-[9px] font-bold text-orange-600 bg-orange-50 px-2 py-0.5 rounded font-medium">Jun
+                                13–14</span>
+                        </div>
+                        <p class="text-xs text-gray-500 leading-relaxed">Configure sticky shopping cart, connect
+                            Razorpay / UPI gateway channels, set up delivery options.</p>
+                    </div>
+
+                    <div class="bg-gray-50/50 border border-gray-100 rounded-xl p-3">
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="font-bold text-xs text-gray-800">Days 8–10 · Launch 🚀</span>
+                            <span
+                                class="text-[9px] font-bold text-green-600 bg-green-50 px-2 py-0.5 rounded font-medium">Jun
+                                15–17</span>
+                        </div>
+                        <p class="text-xs text-gray-500 leading-relaxed">Configure RankMath SEO tags, run responsive
+                            design tests on tablets and phones, point domain, and go live.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Value Assurance Card -->
+            <div class="bg-green-50/40 border border-green-100 rounded-xl p-4 my-2 shadow-xs">
+                <div class="flex items-center gap-2 mb-1">
+                    <i data-lucide="shield-check" class="w-4 h-4 text-green-600"></i>
+                    <span class="font-bold text-xs text-green-800 uppercase tracking-wider">Launch Quality
+                        Assurance</span>
+                </div>
+                <p class="text-xs text-green-900/80 leading-relaxed">
+                    Before go-live, we run automated mobile layout tests and perform mock checkouts to verify that
+                    payment gateways, Shopify inventory sync, and shipping rate calculations are working flawlessly.
+                </p>
+            </div>
+
+            <!-- Tech Stack Section -->
+            <div>
+                <div class="text-xs font-bold text-gray-700 mb-2 font-display">Design &amp; Technology Stack</div>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                    <div class="bg-gray-50 border border-gray-100 rounded-lg p-2 text-center shadow-xs">
+                        <div class="text-blue-600 mb-1 flex justify-center"><i data-lucide="globe" class="w-4 h-4"></i>
+                        </div>
+                        <div class="font-bold text-[10px] text-gray-800">WordPress</div>
+                    </div>
+                    <div class="bg-gray-50 border border-gray-100 rounded-lg p-2 text-center shadow-xs">
+                        <div class="text-orange-600 mb-1 flex justify-center"><i data-lucide="store"
+                                class="w-4 h-4"></i></div>
+                        <div class="font-bold text-[10px] text-gray-800">Shopify</div>
+                    </div>
+                    <div class="bg-gray-50 border border-gray-100 rounded-lg p-2 text-center shadow-xs">
+                        <div class="text-indigo-600 mb-1 flex justify-center"><i data-lucide="code" class="w-4 h-4"></i>
+                        </div>
+                        <div class="font-bold text-[10px] text-gray-800">Custom Code Design</div>
+                    </div>
+                    <div class="bg-gray-50 border border-gray-100 rounded-lg p-2 text-center shadow-xs">
+                        <div class="text-pink-600 mb-1 flex justify-center"><i data-lucide="layout" class="w-4 h-4"></i>
+                        </div>
+                        <div class="font-bold text-[10px] text-gray-800">UI - UX Design</div>
+                    </div>
+                    <div class="bg-gray-50 border border-gray-100 rounded-lg p-2 text-center shadow-xs">
+                        <div class="text-sky-500 mb-1 flex justify-center"><i data-lucide="palette" class="w-4 h-4"></i>
+                        </div>
+                        <div class="font-bold text-[10px] text-gray-800">Adobe PS &amp; Canva</div>
+                    </div>
+                    <div class="bg-gray-50 border border-gray-100 rounded-lg p-2 text-center shadow-xs">
+                        <div class="text-green-600 mb-1 flex justify-center"><i data-lucide="wallet"
+                                class="w-4 h-4"></i></div>
+                        <div class="font-bold text-[10px] text-gray-800">Razorpay</div>
+                    </div>
+                    <div class="bg-gray-50 border border-gray-100 rounded-lg p-2 text-center shadow-xs">
+                        <div class="text-purple-600 mb-1 flex justify-center"><i data-lucide="search"
+                                class="w-4 h-4"></i></div>
+                        <div class="font-bold text-[10px] text-gray-800">RankMath</div>
+                    </div>
+                    <div class="bg-gray-50 border border-gray-100 rounded-lg p-2 text-center shadow-xs">
+                        <div class="text-emerald-500 mb-1 flex justify-center"><i data-lucide="message-square"
+                                class="w-4 h-4"></i></div>
+                        <div class="font-bold text-[10px] text-gray-800">WhatsApp Alerts</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Checklist Handoff -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-3 border-t border-gray-100">
+                <div>
+                    <span class="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mb-1.5">What VAMA
+                        Provides</span>
+                    <ul class="text-xs text-gray-500 space-y-1">
+                        <li class="flex items-start gap-1"><span class="text-green-500 font-bold">✓</span> Class
+                            curriculum schedules &amp; age groups</li>
+                        <li class="flex items-start gap-1"><span class="text-green-500 font-bold">✓</span> Kit
+                            photographs, descriptions, and stock values</li>
+                        <li class="flex items-start gap-1"><span class="text-green-500 font-bold">✓</span> Shopify login
+                            details &amp; custom domain DNS access</li>
+                    </ul>
+                </div>
+                <div>
+                    <span class="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mb-1.5">What
+                        WebResolv Handles</span>
+                    <ul class="text-xs text-gray-500 space-y-1">
+                        <li class="flex items-start gap-1"><span class="text-blue-500 font-bold">★</span> Premium
+                            website layout design &amp; graphics</li>
+                        <li class="flex items-start gap-1"><span class="text-blue-500 font-bold">★</span> Copywriting
+                            and content writing for courses</li>
+                        <li class="flex items-start gap-1"><span class="text-blue-500 font-bold">★</span> Payment
+                            configuration, SEO, and go-live launch</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div
+            class="px-4 sm:px-8 py-3 sm:py-4 border-t border-gray-100 flex items-center justify-between text-[11px] text-gray-400 font-medium">
+            <span>Project Proposal | VAMA EdTech Platform Rebuild</span>
+            <div class="flex items-center gap-2">
+                <span class="pg-tag">Page 6</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= PAGE 6: PRICING ================= -->
+    <div class="page" id="pricing">
+        <!-- Header -->
+        <div class="px-4 sm:px-8 py-3 sm:py-4 border-b border-gray-100 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <svg class="w-6 h-6 flex-shrink-0" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="48" fill="#ff4f1f" />
+                    <path
+                        d="M 20 30 L 30 70 L 40 45 L 50 70 L 60 45 L 70 70 L 80 30 L 72 30 L 65 55 L 55 35 L 50 45 L 45 35 L 35 55 L 28 30 Z"
+                        fill="#fff" stroke="#fff" stroke-width="2" stroke-linejoin="round" />
+                </svg>
+                <span class="font-bold text-xs text-gray-900"
+                    style="font-family:'Space Grotesk',sans-serif">WebResolv</span>
+                <span class="text-gray-300">×</span>
+                <img src="vama-logo.png" class="h-6 w-auto object-contain rounded" alt="VAMA EdTech" />
+            </div>
+            <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Financial Investment</span>
+        </div>
+
+        <!-- Page Content -->
+        <div class="flex-1 px-4 sm:px-8 py-6 sm:py-8 flex flex-col justify-center gap-6 sm:gap-8">
+            <div>
+                <div class="sec-label mb-1">06 · Investment</div>
+                <h2 class="text-xl sm:text-2xl font-bold text-gray-900 mb-2 font-display">Transparent Pricing</h2>
+                <p class="text-xs sm:text-sm text-gray-500 mb-4 font-normal">No hidden costs or licensing surprises.
+                    Investment split cleanly across project milestones.</p>
+
+                <!-- Main Package Block -->
+                <div class="bg-gray-950 text-white rounded-2xl p-5 relative overflow-hidden border border-gray-800">
+                    <div class="absolute -right-16 -top-16 w-36 h-36 rounded-full bg-orange-600/10 blur-xl"></div>
+                    <div class="flex items-start justify-between flex-wrap gap-4 mb-4">
+                        <div>
+                            <span
+                                class="bg-orange-600 text-white text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded mb-2 inline-block">Core
+                                Package</span>
+                            <div class="text-4xl font-extrabold flex items-baseline gap-1"
+                                style="font-family:'Space Grotesk',sans-serif">
+                                <span id="total-price" class="addon-total-price">₹18,500</span>
+                            </div>
+                            <div id="recurring-payment"
+                                class="hidden text-xs text-orange-400 font-bold mt-1 animate-pulse">+ ₹2,000/month (Blog
+                                Hub)</div>
+                            <div class="text-[10px] text-gray-400 mt-1">Complete website setup with kit store · 10
+                                working days</div>
+                        </div>
+                        <div class="text-4xl">🎯</div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2 text-[10px] text-gray-300 pt-4 border-t border-white/10">
+                        <div class="flex items-center gap-1.5"><span class="text-green-500 font-bold">✓</span> Homepage
+                            &amp; Promos</div>
+                        <div class="flex items-center gap-1.5"><span class="text-green-500 font-bold">✓</span> 4-5
+                            Product Pages</div>
+                        <div class="flex items-center gap-1.5"><span class="text-green-500 font-bold">✓</span> 14-16
+                            Pages Total</div>
+                        <div class="flex items-center gap-1.5"><span class="text-green-500 font-bold">✓</span> Razorpay
+                            / UPI Integration</div>
+                        <div class="flex items-center gap-1.5"><span class="text-green-500 font-bold">✓</span> Sticky
+                            Shopping Cart</div>
+                        <div class="flex items-center gap-1.5"><span class="text-green-500 font-bold">✓</span> Included
+                            Copywriting</div>
+                    </div>
+                </div>
+
+                <!-- Milestone Split -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+                    <div class="bg-blue-50/50 border border-blue-100 rounded-xl p-4">
+                        <span class="text-[9px] font-bold text-blue-600 uppercase tracking-widest block mb-1">Step 1 —
+                            Project Start</span>
+                        <strong class="text-xl text-blue-900 block font-display addon-split-price" id="start-payment">₹9,250</strong>
+                        <span class="text-[9px] text-blue-600/80 block mt-1">50% advance to initiate layout design and
+                            Shopify sync credentials.</span>
+                    </div>
+                    <div class="bg-green-50/50 border border-green-100 rounded-xl p-4">
+                        <span class="text-[9px] font-bold text-green-600 uppercase tracking-widest block mb-1">Step 2 —
+                            Launch Day</span>
+                        <strong class="text-xl text-green-900 block font-display addon-split-price" id="launch-payment">₹9,250</strong>
+                        <span class="text-[9px] text-green-600/80 block mt-1">50% balance after full review, checkout
+                            testing, and go-live deployment.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Value Highlight Card -->
+            <div class="bg-gray-50 border border-gray-100 rounded-xl p-4 my-2 shadow-xs">
+                <div class="flex items-center gap-2 mb-1">
+                    <i data-lucide="coins" class="w-4 h-4 text-gray-600"></i>
+                    <span class="font-bold text-xs text-gray-800 uppercase tracking-wider">Investment Value
+                        Guarantee</span>
+                </div>
+                <p class="text-xs text-gray-600 leading-relaxed">
+                    At an investment of <span class="addon-total-price">₹18,500</span>, the platform pays for itself by helping you sign up just a few kids for
+                    your premium robotics or coding programs, making it a high-return asset for VAMA EdTech.
+                </p>
+            </div>
+
+            <!-- Optional Add-ons Row -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <!-- Optional Blog Add-on -->
+                <div id="card-addon-blog"
+                    class="bg-purple-50/30 border border-purple-100 rounded-xl p-4 flex flex-col justify-between shadow-xs transition duration-300">
+                    <div>
+                        <div class="flex items-start justify-between gap-2">
+                            <div class="w-full">
+                                <div class="flex items-center justify-between gap-2 mb-1.5">
+                                    <span
+                                        class="bg-purple-100 text-purple-700 text-[8px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded inline-block">Optional
+                                        Add-on</span>
+                                    <button id="btn-addon-blog" onclick="toggleAddon('blog')"
+                                        class="px-2 py-0.5 border border-purple-300 text-purple-700 text-[8px] font-bold rounded uppercase tracking-wider transition hover:bg-purple-100 no-print">Add
+                                        to Proposal</button>
+                                </div>
+                                <h4 class="font-bold text-xs text-gray-800 font-display">Educational Blog Hub</h4>
+                                <p class="text-[10px] text-gray-400 mt-0.5 leading-tight">Boost organic traffic and
+                                    attract parents by publishing local science articles.</p>
+                            </div>
+                            <div class="text-right flex-shrink-0">
+                                <strong class="text-purple-700 text-xs block font-display">₹2,000 Setup</strong>
+                                <span class="text-[9px] text-gray-400 font-semibold block mt-0.5">+ ₹2,000/mo</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex gap-3 text-[8px] text-gray-500 pt-2 border-t border-purple-100/50 mt-2">
+                        <div class="flex items-center gap-0.5"><span class="text-purple-500 font-bold">✓</span> Custom
+                            blog</div>
+                        <div class="flex items-center gap-0.5"><span class="text-purple-500 font-bold">✓</span> SEO
+                            optimized</div>
+                        <div class="flex items-center gap-0.5"><span class="text-purple-500 font-bold">✓</span> 5-6
+                            articles</div>
+                    </div>
+                </div>
+
+                <!-- Optional Admin Dashboard Add-on -->
+                <div id="card-addon-dash"
+                    class="bg-indigo-50/30 border border-indigo-100 rounded-xl p-4 flex flex-col justify-between shadow-xs transition duration-300">
+                    <div>
+                        <div class="flex items-start justify-between gap-2">
+                            <div class="w-full">
+                                <div class="flex items-center justify-between gap-2 mb-1.5">
+                                    <span
+                                        class="bg-indigo-100 text-indigo-700 text-[8px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded inline-block">Optional
+                                        Add-on</span>
+                                    <button id="btn-addon-dash" onclick="toggleAddon('dash')"
+                                        class="px-2 py-0.5 border border-indigo-300 text-indigo-700 text-[8px] font-bold rounded uppercase tracking-wider transition hover:bg-indigo-100 no-print">Add
+                                        to Proposal</button>
+                                </div>
+                                <h4 class="font-bold text-xs text-gray-800 font-display">Dynamic Content Dashboard</h4>
+                                <p class="text-[10px] text-gray-400 mt-0.5 leading-tight">Change homepage banners,
+                                    add/edit courses, and upload images dynamically.</p>
+                            </div>
+                            <div class="text-right flex-shrink-0">
+                                <strong class="text-indigo-700 text-xs block font-display">₹3,500 Setup</strong>
+                                <span class="text-[9px] text-gray-400 font-semibold block mt-0.5">One-Time Fee</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex gap-3 text-[8px] text-gray-500 pt-2 border-t border-indigo-100/50 mt-2">
+                        <div class="flex items-center gap-0.5"><span class="text-indigo-500 font-bold">✓</span> Banner
+                            control</div>
+                        <div class="flex items-center gap-0.5"><span class="text-indigo-500 font-bold">✓</span> Course
+                            updates</div>
+                        <div class="flex items-center gap-0.5"><span class="text-indigo-500 font-bold">✓</span> Image
+                            manager</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div
+            class="px-4 sm:px-8 py-3 sm:py-4 border-t border-gray-100 flex items-center justify-between text-[11px] text-gray-400 font-medium">
+            <span>Project Proposal | VAMA EdTech Platform Rebuild</span>
+            <div class="flex items-center gap-2">
+                <span class="pg-tag">Page 7</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= PAGE 7: NEXT STEPS & SIGN-OFF ================= -->
+    <div class="page" id="signoff">
+        <!-- Header -->
+        <div class="px-4 sm:px-8 py-3 sm:py-4 border-b border-gray-100 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <svg class="w-6 h-6 flex-shrink-0" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="48" fill="#ff4f1f" />
+                    <path
+                        d="M 20 30 L 30 70 L 40 45 L 50 70 L 60 45 L 70 70 L 80 30 L 72 30 L 65 55 L 55 35 L 50 45 L 45 35 L 35 55 L 28 30 Z"
+                        fill="#fff" stroke="#fff" stroke-width="2" stroke-linejoin="round" />
+                </svg>
+                <span class="font-bold text-xs text-gray-900"
+                    style="font-family:'Space Grotesk',sans-serif">WebResolv</span>
+                <span class="text-gray-300">×</span>
+                <img src="vama-logo.png" class="h-6 w-auto object-contain rounded" alt="VAMA EdTech" />
+            </div>
+            <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Sign-Off Authorization</span>
+        </div>
+
+        <!-- Page Content -->
+        <div class="flex-1 px-4 sm:px-8 py-6 sm:py-8 flex flex-col justify-center gap-6 sm:gap-8">
+            <div>
+                <div class="sec-label mb-1">07 · Sign-off</div>
+                <h2 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1 font-display">Next Steps &amp; Signing</h2>
+                <p class="text-xs text-gray-500 mb-4">Authorize this proposal below to secure the development roadmap
+                    scheduling and initiate page wireframing.</p>
+
+                <!-- Action steps checklist -->
+                <div class="grid grid-cols-2 gap-3 text-xs text-gray-500 mb-4">
+                    <div class="flex gap-2">
+                        <span
+                            class="font-bold text-orange-600 bg-orange-50 w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0">1</span>
+                        <div>
+                            <span class="font-bold text-gray-800 block">Sign Proposal</span>
+                            Accept digitally below or sign the print copy.
+                        </div>
+                    </div>
+                    <div class="flex gap-2">
+                        <span
+                            class="font-bold text-blue-600 bg-blue-50 w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0">2</span>
+                        <div>
+                            <span class="font-bold text-gray-800 block">Advance Deposit</span>
+                            Wire <span class="addon-split-price">₹9,250</span> advance to book development.
+                        </div>
+                    </div>
+                    <div class="flex gap-2">
+                        <span
+                            class="font-bold text-purple-600 bg-purple-50 w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0">3</span>
+                        <div>
+                            <span class="font-bold text-gray-800 block">Share Syllabi &amp; Assets</span>
+                            Send logo, kit details, class lists.
+                        </div>
+                    </div>
+                    <div class="flex gap-2">
+                        <span
+                            class="font-bold text-green-600 bg-green-50 w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0">4</span>
+                        <div>
+                            <span class="font-bold text-gray-800 block">Kickoff — June 8</span>
+                            WebResolv starts wireframing and copywriting.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Terms Highlight Card -->
+            <div class="bg-gray-50 border border-gray-100 rounded-xl p-4 my-2 shadow-xs">
+                <div class="flex items-center gap-2 mb-1">
+                    <i data-lucide="info" class="w-4 h-4 text-gray-600"></i>
+                    <span class="font-bold text-xs text-gray-800 uppercase tracking-wider">Proposal Terms &amp;
+                        Validity</span>
+                </div>
+                <p class="text-xs text-gray-500 leading-relaxed">
+                    This proposal is valid for 14 days from the date of presentation. Work will commence immediately
+                    upon receipt of the 50% onboarding advance and necessary access details.
+                </p>
+            </div>
+
+            <!-- Signature block wrapper -->
+            <div class="flex flex-col gap-4">
+                <!-- Signature Fields Box -->
+                <div class="border border-gray-100 rounded-2xl p-5 bg-gray-50/50">
+                    <div class="grid grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <div class="text-[9px] text-gray-400 font-bold uppercase tracking-wider mb-1">PREPARED BY
+                            </div>
+                            <div class="font-bold text-gray-800 text-xs">WebResolv Team</div>
+                            <div class="text-[10px] text-gray-500 leading-none">Design &amp; Automation Studio</div>
+                        </div>
+                        <div>
+                            <div class="text-[9px] text-gray-400 font-bold uppercase tracking-wider mb-1">PREPARED FOR
+                            </div>
+                            <div class="font-bold text-gray-800 text-xs">VAMA EdTech Group</div>
+                            <div class="text-[10px] text-gray-500 leading-none">STEM Education Center</div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-6 pt-4 border-t border-gray-200/50 items-center">
+                        <div>
+                            <div class="text-[9px] text-gray-400 font-bold uppercase tracking-wider mb-2">WebResolv Authorized</div>
+                            <div class="flex items-center gap-2">
+                                <svg class="w-8 h-8 flex-shrink-0" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="50" cy="50" r="48" fill="#ff4f1f" />
+                                    <path
+                                        d="M 20 30 L 30 70 L 40 45 L 50 70 L 60 45 L 70 70 L 80 30 L 72 30 L 65 55 L 55 35 L 50 45 L 45 35 L 35 55 L 28 30 Z"
+                                        fill="#fff" stroke="#fff" stroke-width="2" stroke-linejoin="round" />
+                                </svg>
+                                <span class="font-bold text-xs sm:text-sm text-gray-900" style="font-family:'Space Grotesk',sans-serif">WebResolv</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="text-[9px] text-gray-400 font-bold uppercase tracking-wider mb-2">VAMA EdTech Authorized</div>
+                            <div class="flex items-center">
+                                <img src="vama-logo.png" class="h-8 w-auto object-contain rounded" alt="VAMA EdTech" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactivity buttons -->
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <button
+                        class="approve-btn flex-1 py-3 px-6 rounded-xl font-bold text-sm bg-orange-600 text-white hover:bg-orange-700 transition flex items-center justify-center gap-2 no-print shadow-md shadow-orange-600/25"
+                        onclick="handleApproval(this)">
+                        <i data-lucide="check-circle-2" class="w-4 h-4"></i>
+                        I AGREE TO SCOPE &amp; TERMS
+                    </button>
+                    <button
+                        class="flex-1 py-3 px-6 rounded-xl font-bold text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 transition flex items-center justify-center gap-2 no-print"
+                        onclick="window.print()">
+                        <i data-lucide="printer" class="w-4 h-4"></i>
+                        DOWNLOAD PROPOSAL (PDF)
+                    </button>
+                </div>
+            </div>
+
+            <!-- Direct Reach -->
+            <div class="text-center text-[10px] text-gray-400 mt-2 no-print">
+                Questions? Call +91 92176 71611 or mail hello@webresolv.in
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div
+            class="px-4 sm:px-8 py-3 sm:py-4 border-t border-gray-100 flex items-center justify-between text-[11px] text-gray-400 font-medium">
+            <span>Project Proposal | VAMA EdTech Platform Rebuild</span>
+            <div class="flex items-center gap-2">
+                <span class="pg-tag">Page 8</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============== JAVASCRIPT LOGIC & ROUTERS ============== -->
+    <script>
+        // Init Lucide vector icons
+        lucide.createIcons();
+
+        // Nav scroll logic
+        function scrollToPage(id) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        // Active nav spying
+        const pageSections = ['overview', 'scope-web', 'scope-kit', 'features', 'roadmap', 'pricing', 'signoff'];
+        const navButtons = document.querySelectorAll('.nav-pill');
+        const spyObserver = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    navButtons.forEach(btn => btn.classList.remove('active'));
+                    const idx = pageSections.indexOf(e.target.id);
+                    if (idx >= 0 && navButtons[idx]) {
+                        navButtons[idx].classList.add('active');
+                    }
+                }
+            });
+        }, { threshold: 0.3 });
+
+        pageSections.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) spyObserver.observe(el);
+        });
+
+        // Dynamic Price & Add-on Toggling Logic
+        let addonsSelected = {
+            blog: false,
+            dash: false
+        };
+
+        function toggleAddon(addon) {
+            addonsSelected[addon] = !addonsSelected[addon];
+            updateCalculations();
+        }
+
+        function updateCalculations() {
+            let basePrice = 18500;
+            let blogPrice = 2000;
+            let dashPrice = 3500;
+
+            let currentTotal = basePrice;
+            let selectedList = [];
+
+            const blogCard = document.getElementById('card-addon-blog');
+            const blogBtn = document.getElementById('btn-addon-blog');
+            const dashCard = document.getElementById('card-addon-dash');
+            const dashBtn = document.getElementById('btn-addon-dash');
+
+            if (addonsSelected.blog) {
+                currentTotal += blogPrice;
+                selectedList.push('Educational Blog Hub (₹2,000 Setup + ₹2,000/mo)');
+                blogCard.classList.remove('bg-purple-50/30', 'border-purple-100');
+                blogCard.classList.add('bg-purple-50/80', 'border-purple-400');
+                blogBtn.textContent = 'Remove Add-on';
+                blogBtn.classList.remove('text-purple-700', 'border-purple-300');
+                blogBtn.classList.add('bg-purple-600', 'text-white', 'border-purple-600');
+                document.getElementById('recurring-payment').classList.remove('hidden');
+            } else {
+                blogCard.classList.add('bg-purple-50/30', 'border-purple-100');
+                blogCard.classList.remove('bg-purple-50/80', 'border-purple-400');
+                blogBtn.textContent = 'Add to Proposal';
+                blogBtn.classList.add('text-purple-700', 'border-purple-300');
+                blogBtn.classList.remove('bg-purple-600', 'text-white', 'border-purple-600');
+                document.getElementById('recurring-payment').classList.add('hidden');
+            }
+
+            if (addonsSelected.dash) {
+                currentTotal += dashPrice;
+                selectedList.push('Dynamic Content Dashboard (₹3,500 Setup)');
+                dashCard.classList.remove('bg-indigo-50/30', 'border-indigo-100');
+                dashCard.classList.add('bg-indigo-50/80', 'border-indigo-400');
+                dashBtn.textContent = 'Remove Add-on';
+                dashBtn.classList.remove('text-indigo-700', 'border-indigo-300');
+                dashBtn.classList.add('bg-indigo-600', 'text-white', 'border-indigo-600');
+            } else {
+                dashCard.classList.add('bg-indigo-50/30', 'border-indigo-100');
+                dashCard.classList.remove('bg-indigo-50/80', 'border-indigo-400');
+                dashBtn.textContent = 'Add to Proposal';
+                dashBtn.classList.add('text-indigo-700', 'border-indigo-300');
+                dashBtn.classList.remove('bg-indigo-600', 'text-white', 'border-indigo-600');
+            }
+
+            const formattedTotal = '₹' + currentTotal.toLocaleString('en-IN');
+            const formattedSplit = '₹' + (currentTotal / 2).toLocaleString('en-IN');
+
+            document.getElementById('total-price').textContent = formattedTotal;
+            document.getElementById('start-payment').textContent = formattedSplit;
+            document.getElementById('launch-payment').textContent = formattedSplit;
+
+            document.querySelectorAll('.addon-total-price').forEach(el => el.textContent = formattedTotal);
+            document.querySelectorAll('.addon-split-price').forEach(el => el.textContent = formattedSplit);
+
+            window.selectedAddonsText = selectedList.join(', ');
+            window.finalTotalPriceText = formattedTotal;
+            window.finalStartPaymentText = formattedSplit;
+            window.finalLaunchPaymentText = formattedSplit;
+        }
+
+        // FormSubmit AJAX Acceptance Function
+        async function handleApproval(btn) {
+            const originalHTML = btn.innerHTML;
+            btn.disabled = true;
+            btn.style.opacity = '0.7';
+            btn.style.cursor = 'not-allowed';
+            btn.innerHTML = '<i data-lucide="loader" class="spinner w-4 h-4 animate-spin inline-block"></i> Accepting...';
+            lucide.createIcons();
+
+            const addonsList = window.selectedAddonsText || 'None';
+            const finalPrice = window.finalTotalPriceText || '₹18,500';
+            const startPay = window.finalStartPaymentText || '₹9,250';
+            const launchPay = window.finalLaunchPaymentText || '₹9,250';
+
+            try {
+                const res = await fetch('https://formsubmit.co/ajax/webresolv16@gmail.com', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        subject: 'Vama Edtech Proposal Accepted!',
+                        message: `Client Vama Edtech has agreed to the scope and terms.`,
+                        totalPrice: finalPrice,
+                        projectStartAdvance: startPay,
+                        projectLaunchBalance: launchPay,
+                        selectedAddons: addonsList,
+                        timestamp: new Date().toLocaleString()
+                    })
+                });
+
+                if (res.ok) {
+                    const parent = btn.parentElement;
+                    parent.innerHTML = `
+                        <div class="bg-green-50 border border-green-200 text-green-700 py-3 px-6 rounded-xl font-bold text-sm text-center w-full flex items-center justify-center gap-2 shadow-sm animate-pulse">
+                            <i data-lucide="check-circle" class="w-4 h-4"></i>
+                            Proposal Accepted! We will contact you immediately.
+                        </div>
+                    `;
+                    lucide.createIcons();
+                } else {
+                    throw new Error('FormSubmit error response');
+                }
+            } catch (e) {
+                console.error(e);
+                btn.disabled = false;
+                btn.style.opacity = '1';
+                btn.style.cursor = 'pointer';
+                btn.innerHTML = originalHTML;
+                alert('Acceptance failed. Please check your internet connection or email hello@webresolv.in directly.');
+                lucide.createIcons();
+            }
+        }
+
+        // Run initial calculations on page load
+        updateCalculations();
+    </script>
+</body>
+
+</html>

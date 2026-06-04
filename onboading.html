@@ -207,118 +207,214 @@
         }
 
         /* ══════════════════════════════════
-           PAGE 1 – COVER
+           PAGE 1 – CUSTOM PROPOSAL COVER
         ══════════════════════════════════ */
-        .cover-body {
+        .cover-page {
+            background: #000000 !important;
+            padding: 52px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .proposal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            z-index: 10;
+        }
+
+        .proposal-logo-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .proposal-logo-mark {
+            width: 32px;
+            height: 32px;
+        }
+
+        .proposal-company {
+            display: flex;
+            flex-direction: column;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .comp-name {
+            font-weight: 700;
+            font-size: 15px;
+            color: #ffffff;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+
+        .comp-sub {
+            font-size: 9px;
+            color: var(--soft);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .proposal-contact-info {
+            text-align: right;
+            font-size: 9px;
+            color: var(--mid);
+            line-height: 1.5;
+            letter-spacing: 0.05em;
+        }
+
+        .proposal-title-container {
+            margin-top: 56px;
+            z-index: 10;
+        }
+
+        .proposal-title-main {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 76px;
+            font-weight: 300;
+            color: #ffffff;
+            line-height: 0.9;
+            letter-spacing: -0.04em;
+            text-transform: capitalize;
+        }
+
+        .proposal-title-sub {
+            margin-top: 28px;
+            font-size: 9px;
+            letter-spacing: 0.18em;
+            color: var(--mid);
+            max-width: 480px;
+            line-height: 1.6;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .proposal-graphic-container {
+            position: relative;
             flex: 1;
             display: flex;
             flex-direction: column;
-        }
-
-        .cover-top-band {
-            background: linear-gradient(135deg, #0a0a0a 0%, #000000 100%);
-            padding: 64px 52px 52px;
-            position: relative;
+            justify-content: flex-end;
+            align-items: center;
+            margin-top: 30px;
+            margin-bottom: 20px;
             overflow: hidden;
-            border-bottom: 1px solid var(--rule);
+            width: 100%;
         }
 
-        .cover-top-band::before {
+        .glowing-bars {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 6px;
+            width: 100%;
+            height: 190px;
+            position: relative;
+        }
+
+        .glowing-bars-reflection {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 6px;
+            width: 100%;
+            height: 120px;
+            opacity: 0.45;
+            transform: scaleY(-1);
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, transparent 100%);
+        }
+
+        .bar {
+            width: 16px;
+            border-radius: 2px 2px 0 0;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        /* Reflection flip border-radius */
+        .glowing-bars-reflection .bar {
+            border-radius: 0 0 2px 2px;
+        }
+
+        .bar::after {
             content: '';
             position: absolute;
-            right: -100px;
-            top: -100px;
-            width: 400px;
-            height: 400px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(249, 115, 22, 0.1) 0%, transparent 70%);
-            filter: blur(40px);
+            bottom: 0;
+            left: 0;
+            right: 0;
+            top: 0;
+            border-radius: inherit;
+            background: inherit;
+            filter: blur(10px);
+            opacity: 0.65;
+            pointer-events: none;
         }
 
-        .cover-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(249, 115, 22, 0.1);
-            border: 1px solid rgba(249, 115, 22, 0.2);
-            color: var(--orange);
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            padding: 8px 16px;
-            margin-bottom: 40px;
-            border-radius: 4px;
+        /* Gradient colors for orange, yellow, rust to match brand */
+        .bar-1 { height: 25%; background: linear-gradient(to top, rgba(249, 115, 22, 0.15), transparent); }
+        .bar-2 { height: 35%; background: linear-gradient(to top, rgba(249, 115, 22, 0.25), transparent); }
+        .bar-3 { height: 50%; background: linear-gradient(to top, rgba(249, 115, 22, 0.4), transparent); }
+        .bar-4 { height: 65%; background: linear-gradient(to top, rgba(249, 115, 22, 0.55), transparent); }
+        .bar-5 { height: 75%; background: linear-gradient(to top, rgba(249, 115, 22, 0.7), transparent); }
+        .bar-6 { height: 85%; background: linear-gradient(to top, rgba(249, 115, 22, 0.85), transparent); }
+        .bar-7 { height: 95%; background: linear-gradient(to top, #ffffff, rgba(249, 115, 22, 0.9) 40%, transparent); }
+        .bar-8 { height: 100%; background: linear-gradient(to top, #ffffff 10%, #f97316 60%, transparent); }
+        .bar-9 { height: 90%; background: linear-gradient(to top, #f97316 20%, rgba(249, 115, 22, 0.8) 60%, transparent); }
+        .bar-10 { height: 80%; background: linear-gradient(to top, #ea580c, rgba(249, 115, 22, 0.65) 50%, transparent); }
+        .bar-11 { height: 70%; background: linear-gradient(to top, #f97316, rgba(249, 115, 22, 0.5) 60%, transparent); }
+        .bar-12 { height: 82%; background: linear-gradient(to top, #ffffff, rgba(249, 115, 22, 0.75) 40%, transparent); }
+        .bar-13 { height: 90%; background: linear-gradient(to top, #f97316, rgba(249, 115, 22, 0.85) 50%, transparent); }
+        .bar-14 { height: 72%; background: linear-gradient(to top, rgba(249, 115, 22, 0.6), transparent); }
+        .bar-15 { height: 50%; background: linear-gradient(to top, rgba(249, 115, 22, 0.35), transparent); }
+        .bar-16 { height: 30%; background: linear-gradient(to top, rgba(249, 115, 22, 0.15), transparent); }
+
+        /* Reflection line */
+        .graphic-reflection-line {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.25) 30%, rgba(255, 255, 255, 0.25) 70%, transparent);
+            margin: 2px 0;
+            z-index: 5;
         }
 
-        .cover-headline {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 58px;
-            font-weight: 700;
-            color: var(--white);
-            line-height: 0.95;
-            letter-spacing: -0.04em;
-            max-width: 520px;
-            position: relative;
-            z-index: 1;
+        .proposal-footer-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-top: 36px;
+            z-index: 10;
         }
 
-        .cover-headline em {
-            font-style: normal;
-            color: var(--orange);
-        }
-
-        .cover-sub {
-            font-size: 15px;
-            color: var(--mid);
-            margin-top: 24px;
-            line-height: 1.6;
-            max-width: 460px;
-            position: relative;
-            z-index: 1;
-            font-weight: 300;
-        }
-
-        .cover-mid {
-            padding: 52px;
-            flex: 1;
+        .meta-group {
             display: flex;
             flex-direction: column;
-            gap: 40px;
-        }
-
-        .cover-meta-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 0;
-            border: 1px solid var(--rule);
-            background: var(--glass);
-        }
-
-        .meta-cell {
-            padding: 24px;
-            border-right: 1px solid var(--rule);
-        }
-
-        .meta-cell:last-child {
-            border-right: none;
-        }
-
-        .meta-label {
-            font-size: 9px;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--soft);
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-
-        .meta-value {
-            font-size: 15px;
-            font-weight: 600;
-            color: var(--white);
             font-family: 'Space Grotesk', sans-serif;
         }
+
+        .meta-group .meta-label {
+            font-size: 8px;
+            letter-spacing: 0.18em;
+            color: var(--orange);
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .meta-group .meta-val {
+            font-size: 15px;
+            font-weight: 600;
+            color: #ffffff;
+            line-height: 1.2;
+        }
+
+        .meta-group .meta-sub {
+            font-size: 10px;
+            color: var(--soft);
+            margin-top: 2px;
+        }
+
 
         .cover-intro-text {
             font-size: 16px;
@@ -905,79 +1001,168 @@
     </button>
 
     <!-- PAGE 1: COVER -->
+    <div class="page cover-page">
+        <div class="noise"></div>
+        
+        <!-- Custom Proposal Header -->
+        <div class="proposal-header">
+            <div class="proposal-logo-group">
+                <svg class="proposal-logo-mark" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="6" cy="6" r="4" fill="#ffffff" />
+                    <circle cx="18" cy="6" r="4" fill="#f97316" />
+                    <circle cx="6" cy="18" r="4" fill="#f97316" />
+                    <circle cx="18" cy="18" r="4" fill="#ffffff" />
+                </svg>
+                <div class="proposal-company">
+                    <span class="comp-name">WebResolv</span>
+                    <span class="comp-sub">Web & Automation Co.</span>
+                </div>
+            </div>
+            <div class="proposal-contact-info">
+                <div>+91 92176 71611</div>
+                <div>hello@webresolv.in</div>
+                <div>www.webresolv.in</div>
+            </div>
+        </div>
+
+        <!-- Proposal Title -->
+        <div class="proposal-title-container">
+            <h1 class="proposal-title-main">Client<br>Onboarding</h1>
+            <p class="proposal-title-sub">TECHNICAL SPECIFICATIONS AND DEVELOPMENT ROADMAP FOR THE LAUNCH OF THE NEW PLATFORM ARCHITECTURE</p>
+        </div>
+
+        <!-- Abstract Glowing Graphic -->
+        <div class="proposal-graphic-container">
+            <div class="glowing-bars">
+                <div class="bar bar-1"></div>
+                <div class="bar bar-2"></div>
+                <div class="bar bar-3"></div>
+                <div class="bar bar-4"></div>
+                <div class="bar bar-5"></div>
+                <div class="bar bar-6"></div>
+                <div class="bar bar-7"></div>
+                <div class="bar bar-8"></div>
+                <div class="bar bar-9"></div>
+                <div class="bar bar-10"></div>
+                <div class="bar bar-11"></div>
+                <div class="bar bar-12"></div>
+                <div class="bar bar-13"></div>
+                <div class="bar bar-14"></div>
+                <div class="bar bar-15"></div>
+                <div class="bar bar-16"></div>
+            </div>
+            <div class="graphic-reflection-line"></div>
+            <div class="glowing-bars-reflection">
+                <div class="bar bar-1"></div>
+                <div class="bar bar-2"></div>
+                <div class="bar bar-3"></div>
+                <div class="bar bar-4"></div>
+                <div class="bar bar-5"></div>
+                <div class="bar bar-6"></div>
+                <div class="bar bar-7"></div>
+                <div class="bar bar-8"></div>
+                <div class="bar bar-9"></div>
+                <div class="bar bar-10"></div>
+                <div class="bar bar-11"></div>
+                <div class="bar bar-12"></div>
+                <div class="bar bar-13"></div>
+                <div class="bar bar-14"></div>
+                <div class="bar bar-15"></div>
+                <div class="bar bar-16"></div>
+            </div>
+        </div>
+
+        <!-- Proposal Footer Meta -->
+        <div class="proposal-footer-meta">
+            <div class="meta-group">
+                <div class="meta-label">PREPARED FOR</div>
+                <div class="meta-val">AP Elastpro</div>
+                <div class="meta-sub">Ankit Polymers</div>
+            </div>
+            <div class="meta-group text-right">
+                <div class="meta-label">PRESENTED BY</div>
+                <div class="meta-val">WebResolv Team</div>
+                <div class="meta-sub">Design & Automation Studio</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 2: PROJECT OVERVIEW & SCOPE -->
     <div class="page">
         <div class="noise"></div>
         <div class="page-header-strip">
             <div class="logo-mark">WebResolv<span class="dot">.</span></div>
-            <div class="ref-tag">Onboarding Checklist 2026</div>
+            <div class="ref-tag">Project Overview</div>
         </div>
 
-        <div class="cover-body">
-            <div class="cover-top-band">
-                <div class="cover-badge">
-                    <i data-lucide="zap" style="width: 12px; height: 12px;"></i>
-                    Digital Expansion Blueprint
-                </div>
-                <h1 class="cover-headline">Client Onboarding <br /><em>Checklist</em> · 2026</h1>
-                <p class="cover-sub">A structured outline of project scope, timelines, and terms to build a strong online presence for AP Elastpro.</p>
+        <div class="content-body">
+            <div>
+                <div class="section-eyebrow">Overview</div>
+                <h2 class="section-title">Project Context & Scope</h2>
+                <p class="section-body">A high-level summary of the branding, design direction, and core capabilities we are building for AP Elastpro.</p>
             </div>
 
-            <div class="cover-mid">
-                <div class="cover-meta-row">
-                    <div class="meta-cell">
-                        <div class="meta-label">Prepared By</div>
-                        <div class="meta-value">WebResolv</div>
-                    </div>
-                    <div class="meta-cell">
-                        <div class="meta-label">Prepared For</div>
-                        <div class="meta-value">AP Elastpro</div>
-                    </div>
-                    <div class="meta-cell">
-                        <div class="meta-label">Start Date</div>
-                        <div class="meta-value">03 - June - 2026</div>
+            <div class="divider"></div>
+
+            <div class="cover-intro-text" style="font-size: 14px; line-height: 1.8; margin-top: 10px;">
+                <strong>Project Overview:</strong> India’s first and largest manufacturer of advanced TPE and EVA-based technical products, specializing in B2B product distribution, sewage and pipe rehabilitation CIPP liners, expansion joint waterproofing, exercise bands, and tourniquets.
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="cover-scope-grid" style="margin-top: 10px;">
+                <div class="scope-pill">
+                    <div class="scope-icon"><i data-lucide="layout-template"></i></div>
+                    <div>
+                        <div class="scope-label">12 - 13 Pages</div>
+                        <div class="scope-sub">Home + Services + Contact</div>
                     </div>
                 </div>
-
-                <div class="cover-intro-text">
-                    <strong>Project Overview:</strong> India’s first and largest manufacturer of advanced TPE and EVA-based technical products, specializing in CIPP liners for pipe and sewage rehabilitation, anti-slip shelf liners, expansion joint tapes, waterproofing tapes and corners, medical tourniquets, Esmarch bandages, and exercise bands.
+                <div class="scope-pill">
+                    <div class="scope-icon"><i data-lucide="palette"></i></div>
+                    <div>
+                        <div class="scope-label">Premium Design</div>
+                        <div class="scope-sub">Modern Industrial Aesthetic</div>
+                    </div>
                 </div>
+                <div class="scope-pill">
+                    <div class="scope-icon"><i data-lucide="globe"></i></div>
+                    <div>
+                        <div class="scope-label">Pan India & Outside</div>
+                        <div class="scope-sub">National & Global Outreach</div>
+                    </div>
+                </div>
+                <div class="scope-pill">
+                    <div class="scope-icon"><i data-lucide="shield-check"></i></div>
+                    <div>
+                        <div class="scope-label">Trust Signals</div>
+                        <div class="scope-sub">Social Proof & Reviews Page</div>
+                    </div>
+                </div>
+            </div>
 
-                <div class="cover-scope-grid">
-                    <div class="scope-pill">
-                        <div class="scope-icon"><i data-lucide="layout-template"></i></div>
-                        <div>
-                            <div class="scope-label">12 - 13 Pages</div>
-                            <div class="scope-sub">Home + Services + Contact</div>
-                        </div>
-                    </div>
-                    <div class="scope-pill">
-                        <div class="scope-icon"><i data-lucide="palette"></i></div>
-                        <div>
-                            <div class="scope-label">Premium Design</div>
-                            <div class="scope-sub">Modern Industrial Aesthetic</div>
-                        </div>
-                    </div>
-                    <div class="scope-pill">
-                        <div class="scope-icon"><i data-lucide="globe"></i></div>
-                        <div>
-                            <div class="scope-label">Pan India & Outside</div>
-                            <div class="scope-sub">National & Global Outreach</div>
-                        </div>
-                    </div>
-                    <div class="scope-pill">
-                        <div class="scope-icon"><i data-lucide="shield-check"></i></div>
-                        <div>
-                            <div class="scope-label">Trust Signals</div>
-                            <div class="scope-sub">Social Proof & Reviews Page</div>
-                        </div>
-                    </div>
+            <div class="divider"></div>
+
+            <div class="info-block" style="margin-top: auto;">
+                <div class="info-block-title">Key Parameters</div>
+                <div class="info-row">
+                    <span>Target Audience</span>
+                    <strong>Industrial Buyers, B2B Clients, Export Partners</strong>
+                </div>
+                <div class="info-row">
+                    <span>Design Language</span>
+                    <strong>Sleek, High-Contrast Industrial Tech Aesthetic</strong>
+                </div>
+                <div class="info-row" style="border:none;">
+                    <span>Primary Objective</span>
+                    <strong>High-Intent Lead Generation via Phone & WhatsApp</strong>
                 </div>
             </div>
         </div>
 
         <div class="page-footer-strip">
             <span>Onboarding Kit | AP Elastpro</span>
-            <div class="pg-num">1</div>
+            <div class="pg-num">2</div>
         </div>
     </div>
 
@@ -1055,7 +1240,7 @@
 
         <div class="page-footer-strip">
             <span>Onboarding Kit | AP Elastpro</span>
-            <div class="pg-num">2</div>
+            <div class="pg-num">3</div>
         </div>
     </div>
 
@@ -1159,7 +1344,7 @@
 
         <div class="page-footer-strip">
             <span>Onboarding Kit | AP Elastpro</span>
-            <div class="pg-num">3</div>
+            <div class="pg-num">4</div>
         </div>
     </div>
 
@@ -1288,7 +1473,7 @@
 
         <div class="page-footer-strip">
             <span>Looking forward to building a strong online presence for Ankit Polymers</span>
-            <div class="pg-num">4</div>
+            <div class="pg-num">5</div>
         </div>
     </div>
 
