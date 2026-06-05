@@ -13,7 +13,7 @@ import { TasksView } from './components/TasksView'
 import { TemplatesView } from './components/TemplatesView'
 import {
   LayoutDashboard, Users, Layers, CheckSquare, Mail, 
-  Moon, Sun, LogOut, Menu, X
+  Moon, Sun, LogOut, Menu, X, Briefcase, BookOpen
 } from 'lucide-react'
 
 // Main App container providing QueryClient
@@ -276,6 +276,30 @@ const CRMManager: React.FC = () => {
             </button>
 
             <button
+              onClick={() => navigateTab('ongoing')}
+              className={`flex items-center gap-3 w-full px-4 py-3 rounded-2xl text-xs font-bold transition-all border ${
+                activeTab === 'ongoing'
+                  ? 'bg-slate-100 dark:bg-background text-orange-500 border-slate-200 dark:border-orange-500/30 shadow-sm'
+                  : 'border-transparent text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-background/40 hover:text-orange-500 dark:hover:text-orange-500'
+              }`}
+            >
+              <Briefcase size={15} />
+              <span>Ongoing Clients</span>
+            </button>
+
+            <button
+              onClick={() => navigateTab('contacts')}
+              className={`flex items-center gap-3 w-full px-4 py-3 rounded-2xl text-xs font-bold transition-all border ${
+                activeTab === 'contacts'
+                  ? 'bg-slate-100 dark:bg-background text-orange-500 border-slate-200 dark:border-orange-500/30 shadow-sm'
+                  : 'border-transparent text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-background/40 hover:text-orange-500 dark:hover:text-orange-500'
+              }`}
+            >
+              <BookOpen size={15} />
+              <span>CRM Contacts</span>
+            </button>
+
+            <button
               onClick={() => navigateTab('tasks')}
               className={`flex items-center gap-3 w-full px-4 py-3 rounded-2xl text-xs font-bold transition-all border ${
                 activeTab === 'tasks'
@@ -369,6 +393,8 @@ const CRMManager: React.FC = () => {
                     ['overview', 'Overview & Stats', LayoutDashboard],
                     ['leads', 'Captured Leads', Users],
                     ['pipeline', 'Sales Pipeline', Layers],
+                    ['ongoing', 'Ongoing Clients', Briefcase],
+                    ['contacts', 'CRM Contacts', BookOpen],
                     ['tasks', 'CRM Task Check', CheckSquare],
                     ['templates', 'Message Templates', Mail]
                   ].map(([id, label, Icon]: any) => (
@@ -424,64 +450,103 @@ const CRMManager: React.FC = () => {
         )}
 
         {/* MAIN DISPLAY WORKSPACE */}
-        <main className="flex-1 p-4 md:p-8 max-w-7xl mx-auto w-full overflow-y-auto">
-          {activeTab === 'overview' && (
-            <DashboardOverview
-              leads={leads}
-              tasks={tasks}
-              activities={activities}
-              onNav={navigateTab}
-              onSelectLead={handleSelectLeadProfile}
-              isDark={isDark}
-              fmtCurrency={fmtCurrency}
-            />
-          )}
+        {(() => {
+          const pipelineLeads = leads.filter(l => !['onboarding', 'active_client', 'completed'].includes(l.status))
+          const ongoingLeads = leads.filter(l => ['onboarding', 'active_client'].includes(l.status))
+          const contactsLeads = leads.filter(l => l.status === 'completed')
 
-          {activeTab === 'leads' && (
-            <LeadsView
-              leads={leads}
-              onSelectLead={handleSelectLeadProfile}
-              onSaveLead={saveLeadMutation.mutateAsync}
-              onDeleteLead={deleteLeadMutation.mutateAsync}
-              fmtCurrency={fmtCurrency}
-            />
-          )}
+          return (
+            <main className="flex-1 p-4 md:p-8 max-w-7xl mx-auto w-full overflow-y-auto">
+              {activeTab === 'overview' && (
+                <DashboardOverview
+                  leads={leads}
+                  tasks={tasks}
+                  activities={activities}
+                  onNav={navigateTab}
+                  onSelectLead={handleSelectLeadProfile}
+                  isDark={isDark}
+                  fmtCurrency={fmtCurrency}
+                />
+              )}
 
-          {activeTab === 'pipeline' && (
-            <PipelineView
-              leads={leads}
-              onStatusChange={(id, status) => saveLeadStatusMutation.mutateAsync({ id, status })}
-              onSelectLead={handleSelectLeadProfile}
-              fmtCurrency={fmtCurrency}
-            />
-          )}
+              {activeTab === 'leads' && (
+                <LeadsView
+                  leads={pipelineLeads}
+                  viewType="pipeline"
+                  onSelectLead={handleSelectLeadProfile}
+                  onSaveLead={saveLeadMutation.mutateAsync}
+                  onDeleteLead={deleteLeadMutation.mutateAsync}
+                  fmtCurrency={fmtCurrency}
+                />
+              )}
 
-          {activeTab === 'tasks' && (
-            <TasksView
-              tasks={tasks}
-              leads={leads}
-              onSaveTask={saveTaskMutation.mutateAsync}
-              onDeleteTask={deleteTaskMutation.mutateAsync}
-              onSelectLead={handleSelectLeadProfile}
-            />
-          )}
+              {activeTab === 'ongoing' && (
+                <LeadsView
+                  leads={ongoingLeads}
+                  viewType="ongoing"
+                  onSelectLead={handleSelectLeadProfile}
+                  onSaveLead={saveLeadMutation.mutateAsync}
+                  onDeleteLead={deleteLeadMutation.mutateAsync}
+                  fmtCurrency={fmtCurrency}
+                />
+              )}
 
-          {activeTab === 'templates' && <TemplatesView />}
+              {activeTab === 'contacts' && (
+                <LeadsView
+                  leads={contactsLeads}
+                  viewType="contacts"
+                  onSelectLead={handleSelectLeadProfile}
+                  onSaveLead={saveLeadMutation.mutateAsync}
+                  onDeleteLead={deleteLeadMutation.mutateAsync}
+                  fmtCurrency={fmtCurrency}
+                />
+              )}
 
-          {activeTab === 'client_profile' && selectedLead && (
-            <ClientProfile
-              lead={selectedLead}
-              activities={activities}
-              tasks={tasks}
-              onBack={() => navigateTab('leads')}
-              onSaveActivity={saveActivityMutation.mutateAsync}
-              onDeleteActivity={deleteActivityMutation.mutateAsync}
-              onSaveTask={saveTaskMutation.mutateAsync}
-              onDeleteTask={deleteTaskMutation.mutateAsync}
-              fmtCurrency={fmtCurrency}
-            />
-          )}
-        </main>
+              {activeTab === 'pipeline' && (
+                <PipelineView
+                  leads={pipelineLeads}
+                  onStatusChange={(id, status) => saveLeadStatusMutation.mutateAsync({ id, status })}
+                  onSelectLead={handleSelectLeadProfile}
+                  fmtCurrency={fmtCurrency}
+                />
+              )}
+
+              {activeTab === 'tasks' && (
+                <TasksView
+                  tasks={tasks}
+                  leads={leads}
+                  onSaveTask={saveTaskMutation.mutateAsync}
+                  onDeleteTask={deleteTaskMutation.mutateAsync}
+                  onSelectLead={handleSelectLeadProfile}
+                />
+              )}
+
+              {activeTab === 'templates' && <TemplatesView />}
+
+              {activeTab === 'client_profile' && selectedLead && (
+                <ClientProfile
+                  lead={selectedLead}
+                  activities={activities}
+                  tasks={tasks}
+                  onBack={() => {
+                    if (['onboarding', 'active_client'].includes(selectedLead.status)) {
+                      navigateTab('ongoing')
+                    } else if (selectedLead.status === 'completed') {
+                      navigateTab('contacts')
+                    } else {
+                      navigateTab('leads')
+                    }
+                  }}
+                  onSaveActivity={saveActivityMutation.mutateAsync}
+                  onDeleteActivity={deleteActivityMutation.mutateAsync}
+                  onSaveTask={saveTaskMutation.mutateAsync}
+                  onDeleteTask={deleteTaskMutation.mutateAsync}
+                  fmtCurrency={fmtCurrency}
+                />
+              )}
+            </main>
+          )
+        })()}
 
       </div>
     </div>

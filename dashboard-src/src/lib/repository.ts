@@ -7,14 +7,14 @@ import type { Lead, Task, Activity } from '../types'
 const todayStr = new Date().toISOString().split("T")[0]
 
 const LEADS_SEED: Lead[] = [
-  { id:"1", businessName:"Spice Garden Restaurant", contactPerson:"Rajesh Kumar",   phone:"+91 98765 43210", whatsapp:"+91 98765 43210", email:"rajesh@spicegarden.in",  website:"spicegarden.in",   googleBusiness:"", industry:"Restaurant",   city:"Mumbai",    notes:"Needs website redesign + Google Ads. Old WordPress site.",           dealValue:45000,  source:"Google Maps", status:"interested",     createdDate:"2024-01-10", lastContact:"2024-01-18", nextFollowUp:todayStr },
-  { id:"2", businessName:"FitZone Gym",              contactPerson:"Priya Sharma",   phone:"+91 99887 76543", whatsapp:"+91 99887 76543", email:"priya@fitzone.in",        website:"",                 googleBusiness:"", industry:"Fitness",      city:"Delhi",     notes:"Full digital presence — website, SEO, Instagram ads.",               dealValue:75000,  source:"Cold Call",   status:"proposal_sent",  createdDate:"2024-01-05", lastContact:"2024-01-15", nextFollowUp:"2024-01-22" },
-  { id:"3", businessName:"Elite Realty",             contactPerson:"Arun Mehta",     phone:"+91 77665 54321", whatsapp:"+91 77665 54321", email:"arun@eliterealty.in",     website:"eliterealty.in",   googleBusiness:"", industry:"Real Estate",  city:"Bangalore", notes:"Property portal website. Has budget. Decision maker.",               dealValue:120000, source:"Referral",    status:"negotiation",    createdDate:"2023-12-20", lastContact:"2024-01-12", nextFollowUp:"2024-01-24" },
-  { id:"4", businessName:"Delhi Sweet House",        contactPerson:"Mohan Lal",      phone:"+91 88776 65432", whatsapp:"+91 88776 65432", email:"info@delhisweethouse.in", website:"",                 googleBusiness:"", industry:"Restaurant",   city:"Delhi",     notes:"Wants Facebook + Instagram ads for festivals.",                      dealValue:25000,  source:"WhatsApp",    status:"contacted",      createdDate:"2024-01-12", lastContact:"2024-01-14", nextFollowUp:"2024-01-20" },
-  { id:"5", businessName:"MedCare Clinic",           contactPerson:"Dr. Sunita Patel",phone:"+91 99123 45678",whatsapp:"+91 99123 45678", email:"drpatel@medcare.in",      website:"medcare.in",       googleBusiness:"", industry:"Healthcare",   city:"Pune",      notes:"Booking system + SEO + Google My Business optimisation.",            dealValue:85000,  source:"Google Maps", status:"demo_sent",      createdDate:"2024-01-08", lastContact:"2024-01-16", nextFollowUp:"2024-01-23" },
-  { id:"6", businessName:"LawPros Associates",       contactPerson:"Vikram Singh",   phone:"+91 90909 01234", whatsapp:"+91 90909 01234", email:"vikram@lawpros.in",       website:"",                 googleBusiness:"", industry:"Legal",        city:"Mumbai",    notes:"Professional website + local SEO for law firm.",                     dealValue:55000,  source:"Email",       status:"new_lead",       createdDate:"2024-01-17", lastContact:"",           nextFollowUp:"2024-01-22" },
-  { id:"7", businessName:"TrendStyle Boutique",      contactPerson:"Neha Gupta",     phone:"+91 78901 23456", whatsapp:"+91 78901 23456", email:"neha@trendstyle.in",      website:"trendstyle.in",    googleBusiness:"", industry:"Retail",       city:"Jaipur",    notes:"E-commerce integration. Currently sells on Instagram.",              dealValue:40000,  source:"Social Media",status:"active_client",  createdDate:"2023-11-10", lastContact:"2024-01-18", nextFollowUp:"2024-02-01" },
-  { id:"8", businessName:"GreenThumb Nursery",       contactPerson:"Ramesh Yadav",   phone:"+91 91234 56789", whatsapp:"+91 91234 56789", email:"ramesh@greenthumb.in",    website:"",                 googleBusiness:"", industry:"Retail",       city:"Hyderabad", notes:"Small nursery. Low budget. Wanted basic site.",                      dealValue:15000,  source:"Cold Call",   status:"lost",           createdDate:"2023-12-15", lastContact:"2024-01-05", nextFollowUp:"" },
+  { id:"1", businessName:"Spice Garden Restaurant", contactPerson:"Rajesh Kumar",   phone:"+91 98765 43210", whatsapp:"+91 98765 43210", email:"rajesh@spicegarden.in",  website:"spicegarden.in",   googleBusiness:"", industry:"Restaurant",   city:"Mumbai",    notes:"Needs website redesign + Google Ads. Old WordPress site.",           dealValue:45000,  source:"Google Maps", status:"interested",     createdDate:"2024-01-10", lastContact:"2024-01-18", nextFollowUp:todayStr, assignedUser:"Adi Raushan" },
+  { id:"2", businessName:"FitZone Gym",              contactPerson:"Priya Sharma",   phone:"+91 99887 76543", whatsapp:"+91 99887 76543", email:"priya@fitzone.in",        website:"",                 googleBusiness:"", industry:"Fitness",      city:"Delhi",     notes:"Full digital presence — website, SEO, Instagram ads.",               dealValue:75000,  source:"Cold Call",   status:"proposal_sent",  createdDate:"2024-01-05", lastContact:"2024-01-15", nextFollowUp:"2024-01-22", assignedUser:"John Doe" },
+  { id:"3", businessName:"Elite Realty",             contactPerson:"Arun Mehta",     phone:"+91 77665 54321", whatsapp:"+91 77665 54321", email:"arun@eliterealty.in",     website:"eliterealty.in",   googleBusiness:"", industry:"Real Estate",  city:"Bangalore", notes:"Property portal website. Has budget. Decision maker.",               dealValue:120000, source:"Referral",    status:"negotiation",    createdDate:"2023-12-20", lastContact:"2024-01-12", nextFollowUp:"2024-01-24", assignedUser:"Jane Smith" },
+  { id:"4", businessName:"Delhi Sweet House",        contactPerson:"Mohan Lal",      phone:"+91 88776 65432", whatsapp:"+91 88776 65432", email:"info@delhisweethouse.in", website:"",                 googleBusiness:"", industry:"Restaurant",   city:"Delhi",     notes:"Wants Facebook + Instagram ads for festivals.",                      dealValue:25000,  source:"WhatsApp",    status:"contacted",      createdDate:"2024-01-12", lastContact:"2024-01-14", nextFollowUp:"2024-01-20", assignedUser:"Adi Raushan" },
+  { id:"5", businessName:"MedCare Clinic",           contactPerson:"Dr. Sunita Patel",phone:"+91 99123 45678",whatsapp:"+91 99123 45678", email:"drpatel@medcare.in",      website:"medcare.in",       googleBusiness:"", industry:"Healthcare",   city:"Pune",      notes:"Booking system + SEO + Google My Business optimisation.",            dealValue:85000,  source:"Google Maps", status:"demo_sent",      createdDate:"2024-01-08", lastContact:"2024-01-16", nextFollowUp:"2024-01-23", assignedUser:"John Doe" },
+  { id:"6", businessName:"LawPros Associates",       contactPerson:"Vikram Singh",   phone:"+91 90909 01234", whatsapp:"+91 90909 01234", email:"vikram@lawpros.in",       website:"",                 googleBusiness:"", industry:"Legal",        city:"Mumbai",    notes:"Professional website + local SEO for law firm.",                     dealValue:55000,  source:"Email",       status:"new_lead",       createdDate:"2024-01-17", lastContact:"",           nextFollowUp:"2024-01-22", assignedUser:"Unassigned" },
+  { id:"7", businessName:"TrendStyle Boutique",      contactPerson:"Neha Gupta",     phone:"+91 78901 23456", whatsapp:"+91 78901 23456", email:"neha@trendstyle.in",      website:"trendstyle.in",    googleBusiness:"", industry:"Retail",       city:"Jaipur",    notes:"E-commerce integration. Currently sells on Instagram.",              dealValue:40000,  source:"Social Media",status:"active_client",  createdDate:"2023-11-10", lastContact:"2024-01-18", nextFollowUp:"2024-02-01", assignedUser:"Jane Smith" },
+  { id:"8", businessName:"GreenThumb Nursery",       contactPerson:"Ramesh Yadav",   phone:"+91 91234 56789", whatsapp:"+91 91234 56789", email:"ramesh@greenthumb.in",    website:"",                 googleBusiness:"", industry:"Retail",       city:"Hyderabad", notes:"Small nursery. Low budget. Wanted basic site.",                      dealValue:15000,  source:"Cold Call",   status:"lost",           createdDate:"2023-12-15", lastContact:"2024-01-05", nextFollowUp:"", assignedUser:"Unassigned" },
 ]
 
 const TASKS_SEED: Task[] = [
@@ -74,10 +74,11 @@ const mapLeadToDb = (l: Partial<Lead>) => ({
   notes: l.notes,
   deal_value: l.dealValue,
   source: l.source,
-  status: l.status,
+  status: l.status === 'demo_scheduled' ? 'demo_sent' : l.status,
   created_date: l.createdDate,
   last_contact: l.lastContact || null,
   next_follow_up: l.nextFollowUp || null,
+  assigned_user: l.assignedUser || 'Unassigned',
 })
 
 const mapLeadFromDb = (db: any): Lead => ({
@@ -94,10 +95,11 @@ const mapLeadFromDb = (db: any): Lead => ({
   notes: db.notes || '',
   dealValue: Number(db.deal_value || 0),
   source: db.source || 'Other',
-  status: db.status || 'new_lead',
+  status: db.status === 'demo_sent' ? 'demo_scheduled' : (db.status || 'new_lead'),
   createdDate: db.created_date,
   lastContact: db.last_contact || '',
   nextFollowUp: db.next_follow_up || '',
+  assignedUser: db.assigned_user || 'Unassigned',
 })
 
 const mapTaskToDb = (t: Partial<Task>) => ({

@@ -11,13 +11,14 @@ interface LeadsViewProps {
   onSaveLead: (lead: Omit<Lead, 'id'> & { id?: string }) => Promise<Lead>
   onDeleteLead: (id: string) => Promise<void>
   fmtCurrency?: (n: number) => string
+  viewType?: 'pipeline' | 'ongoing' | 'contacts'
 }
 
 const STAGES = [
   { id: "new_lead",       label: "New Lead",       hex: "#8b5cf6" },
   { id: "contacted",      label: "Contacted",      hex: "#f59e0b" },
   { id: "interested",     label: "Interested",     hex: "#0ea5e9" },
-  { id: "demo_sent",      label: "Demo Sent",      hex: "#3b82f6" },
+  { id: "demo_scheduled", label: "Demo Scheduled", hex: "#3b82f6" },
   { id: "proposal_sent",  label: "Proposal Sent",  hex: "#a855f7" },
   { id: "follow_up",      label: "Follow Up",      hex: "#ec4899" },
   { id: "negotiation",    label: "Negotiation",    hex: "#f97316" },
@@ -28,6 +29,7 @@ const STAGES = [
 ]
 const SOURCES = ["Cold Call", "WhatsApp", "Email", "Google Maps", "Referral", "Website", "Social Media", "Other"]
 const INDUSTRIES = ["Restaurant", "Retail", "Healthcare", "Real Estate", "Education", "Fitness", "Legal", "Hospitality", "E-commerce", "Construction", "Beauty & Wellness", "Finance", "Other"]
+const AGENTS = ["Adi Raushan", "John Doe", "Jane Smith", "Unassigned"]
 
 const fmtDate = (d: string) => {
   if (!d) return "—"
@@ -43,18 +45,31 @@ const daysAgo = (d: string) => {
   return Math.floor(diff / 86400000)
 }
 
+const formatInputValue = (val: string | number, isUSD: boolean): string => {
+  if (val === undefined || val === null) return ''
+  const digits = String(val).replace(/\D/g, '')
+  if (!digits) return ''
+  const num = parseInt(digits, 10)
+  if (isNaN(num)) return ''
+  return new Intl.NumberFormat(isUSD ? 'en-US' : 'en-IN').format(num)
+}
+
 export const LeadsView: React.FC<LeadsViewProps> = ({
   leads,
   onSelectLead,
   onSaveLead,
   onDeleteLead,
-  fmtCurrency = fmtINR
+  fmtCurrency = fmtINR,
+  viewType = 'pipeline'
 }) => {
   const isUSD = fmtCurrency(100).includes('$')
   const [q, setQ] = useState("")
   const [st, setSt] = useState("")
   const [ind, setInd] = useState("")
   const [src, setSrc] = useState("")
+  const [sortBy, setSortBy] = useState("newest")
+  const [dateRange, setDateRange] = useState("")
+  const [assignedAgent, setAssignedAgent] = useState("")
   
   // Dialog State
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -71,8 +86,10 @@ export const LeadsView: React.FC<LeadsViewProps> = ({
   const [industry, setIndustry] = useState("Other")
   const [city, setCity] = useState("")
   const [dealValue, setDealValue] = useState(0)
+  const [dealValueStr, setDealValueStr] = useState("")
   const [source, setSource] = useState("Other")
   const [status, setStatus] = useState("new_lead")
+  const [assignedUser, setAssignedUser] = useState("Unassigned")
   const [nextFollowUp, setNextFollowUp] = useState("")
   const [notes, setNotes] = useState("")
   const [lastContact, setLastContact] = useState("")
@@ -89,8 +106,13 @@ export const LeadsView: React.FC<LeadsViewProps> = ({
     setIndustry("Other")
     setCity("")
     setDealValue(0)
+    setDealValueStr("")
     setSource("Other")
-    setStatus("new_lead")
+    // Default status according to active view context
+    if (viewType === 'ongoing') setStatus("onboarding")
+    else if (viewType === 'contacts') setStatus("completed")
+    else setStatus("new_lead")
+    setAssignedUser("Unassigned")
     setNextFollowUp("")
     setNotes("")
     setLastContact("")
@@ -110,12 +132,22 @@ export const LeadsView: React.FC<LeadsViewProps> = ({
     setIndustry(lead.industry)
     setCity(lead.city)
     setDealValue(lead.dealValue)
+    setDealValueStr(formatInputValue(lead.dealValue, isUSD))
     setSource(lead.source)
     setStatus(lead.status)
+    setAssignedUser(lead.assignedUser || "Unassigned")
     setNextFollowUp(lead.nextFollowUp)
     setNotes(lead.notes)
     setLastContact(lead.lastContact || "")
     setIsModalOpen(true)
+  }
+
+  const handleDealValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const inputVal = e.target.value
+    const formatted = formatInputValue(inputVal, isUSD)
+    setDealValueStr(formatted)
+    const rawNum = parseInt(inputVal.replace(/\D/g, ''), 10) || 0
+    setDealValue(rawNum)
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -135,6 +167,7 @@ export const LeadsView: React.FC<LeadsViewProps> = ({
       dealValue: Number(dealValue || 0),
       source,
       status,
+      assignedUser,
       nextFollowUp,
       notes,
       lastContact,
@@ -154,21 +187,72 @@ export const LeadsView: React.FC<LeadsViewProps> = ({
     }
   }
 
-  const filteredLeads = useMemo(() => {
-    return leads.filter(l => {
-      const query = q.toLowerCase()
-      const matchesSearch = 
-        !q ||
-        l.businessName.toLowerCase().includes(query) ||
-        l.contactPerson.toLowerCase().includes(query) ||
-        l.city.toLowerCase().includes(query)
-      const matchesStage = !st || l.status === st
-      const matchesIndustry = !ind || l.industry === ind
-      const matchesSource = !src || l.source === src
+  const filterStages = useMemo(() => {
+    if (viewType === 'pipeline') {
+      return STAGES.filter(s => ['new_lead', 'contacted', 'interested', 'demo_scheduled', 'proposal_sent', 'follow_up', 'negotiation'].includes(s.id))
+    }
+    if (viewType === 'ongoing') {
+      return STAGES.filter(s => ['onboarding', 'active_client'].includes(s.id))
+    }
+    if (viewType === 'contacts') {
+      return STAGES.filter(s => ['completed'].includes(s.id))
+    }
+    return STAGES
+  }, [viewType])
 
-      return matchesSearch && matchesStage && matchesIndustry && matchesSource
-    })
-  }, [leads, q, st, ind, src])
+  const filteredLeads = useMemo(() => {
+    return leads
+      .filter(l => {
+        const query = q.toLowerCase()
+        const matchesSearch = 
+          !q ||
+          l.businessName.toLowerCase().includes(query) ||
+          l.contactPerson.toLowerCase().includes(query) ||
+          l.city.toLowerCase().includes(query)
+        const matchesStage = !st || l.status === st
+        const matchesIndustry = !ind || l.industry === ind
+        const matchesSource = !src || l.source === src
+        const matchesAgent = !assignedAgent || l.assignedUser === assignedAgent
+
+        const leadDate = new Date(l.createdDate)
+        const now = new Date()
+        now.setHours(0, 0, 0, 0)
+        let matchesDate = true
+        if (dateRange === 'today') {
+          const todayStr = now.toISOString().split('T')[0]
+          matchesDate = l.createdDate === todayStr
+        } else if (dateRange === 'week') {
+          const oneWeekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000)
+          matchesDate = leadDate >= oneWeekAgo
+        } else if (dateRange === 'month') {
+          const oneMonthAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000)
+          matchesDate = leadDate >= oneMonthAgo
+        }
+
+        return matchesSearch && matchesStage && matchesIndustry && matchesSource && matchesAgent && matchesDate
+      })
+      .sort((a, b) => {
+        const dateA = new Date(a.createdDate).getTime()
+        const dateB = new Date(b.createdDate).getTime()
+        if (sortBy === 'newest') {
+          return dateB - dateA
+        } else {
+          return dateA - dateB
+        }
+      })
+  }, [leads, q, st, ind, src, assignedAgent, dateRange, sortBy])
+
+  const titleText = {
+    pipeline: 'Captured Leads',
+    ongoing: 'Ongoing Clients',
+    contacts: 'CRM Contacts Database'
+  }[viewType]
+
+  const descText = {
+    pipeline: 'Manage active sales pipeline and prospective clients.',
+    ongoing: 'Track active projects, retainer clients, and ongoing work.',
+    contacts: 'Long-term database for completed projects and past clients.'
+  }[viewType]
 
   return (
     <div className="space-y-6">
@@ -176,10 +260,10 @@ export const LeadsView: React.FC<LeadsViewProps> = ({
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h1 className="text-2xl font-extrabold font-display text-slate-900 dark:text-white leading-tight">
-            Client Leads Manager
+            {titleText}
           </h1>
           <p className="text-slate-500 dark:text-slate-400 text-sm mt-1">
-            {filteredLeads.length} of {leads.length} leads matching filters
+            {descText} ({filteredLeads.length} leads matching filters)
           </p>
         </div>
         <button
@@ -187,35 +271,50 @@ export const LeadsView: React.FC<LeadsViewProps> = ({
           className="flex items-center justify-center gap-1.5 bg-orange-500 hover:bg-orange-600 active:scale-[0.98] text-white font-bold text-xs px-5 py-3 rounded-2xl transition-all shadow-lg shadow-orange-500/15 cursor-pointer"
         >
           <Plus size={16} />
-          <span>Add Client Lead</span>
+          <span>Add Lead</span>
         </button>
       </div>
 
       {/* Filter Toolbar */}
-      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-4 flex flex-col md:flex-row gap-3 shadow-sm">
-        <div className="flex-1 relative">
-          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500" size={16} />
-          <input
-            type="text"
-            value={q}
-            onChange={e => setQ(e.target.value)}
-            placeholder="Search by company name, contact, city..."
-            className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 focus:border-orange-500 rounded-2xl py-2.5 pl-10 pr-4 text-sm outline-none text-slate-800 dark:text-white transition-all focus:ring-2 focus:ring-orange-500/10"
-          />
+      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-4 space-y-3 shadow-sm">
+        <div className="flex flex-col md:flex-row gap-3">
+          <div className="flex-1 relative">
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500" size={16} />
+            <input
+              type="text"
+              value={q}
+              onChange={e => setQ(e.target.value)}
+              placeholder="Search by company name, contact, city..."
+              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 focus:border-orange-500 rounded-2xl py-2.5 pl-10 pr-4 text-sm outline-none text-slate-800 dark:text-white transition-all focus:ring-2 focus:ring-orange-500/10"
+            />
+          </div>
+          <div className="grid grid-cols-2 gap-2 shrink-0 md:flex">
+            <select
+              value={sortBy}
+              onChange={e => setSortBy(e.target.value)}
+              className="bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl py-2.5 px-3.5 text-xs outline-none text-slate-700 dark:text-slate-200 transition-all font-semibold cursor-pointer"
+            >
+              <option value="newest">Newest First</option>
+              <option value="oldest">Oldest First</option>
+            </select>
+            {viewType !== 'contacts' && (
+              <select
+                value={st}
+                onChange={e => setSt(e.target.value)}
+                className="bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl py-2.5 px-3.5 text-xs outline-none text-slate-700 dark:text-slate-200 transition-all font-semibold cursor-pointer"
+              >
+                <option value="">All Stages</option>
+                {filterStages.map(s => <option key={s.id} value={s.id}>{s.label}</option>)}
+              </select>
+            )}
+          </div>
         </div>
-        <div className="grid grid-cols-3 gap-2 shrink-0">
-          <select
-            value={st}
-            onChange={e => setSt(e.target.value)}
-            className="bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl py-2.5 px-3 text-xs outline-none text-slate-700 dark:text-slate-200 transition-all font-semibold"
-          >
-            <option value="">All Stages</option>
-            {STAGES.map(s => <option key={s.id} value={s.id}>{s.label}</option>)}
-          </select>
+
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 border-t border-slate-100 dark:border-slate-800/60 pt-3">
           <select
             value={ind}
             onChange={e => setInd(e.target.value)}
-            className="bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl py-2.5 px-3 text-xs outline-none text-slate-700 dark:text-slate-200 transition-all font-semibold"
+            className="bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl py-2.5 px-3 text-xs outline-none text-slate-700 dark:text-slate-200 transition-all font-semibold cursor-pointer"
           >
             <option value="">All Industries</option>
             {INDUSTRIES.map(i => <option key={i} value={i}>{i}</option>)}
@@ -223,10 +322,28 @@ export const LeadsView: React.FC<LeadsViewProps> = ({
           <select
             value={src}
             onChange={e => setSrc(e.target.value)}
-            className="bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl py-2.5 px-3 text-xs outline-none text-slate-700 dark:text-slate-200 transition-all font-semibold"
+            className="bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl py-2.5 px-3 text-xs outline-none text-slate-700 dark:text-slate-200 transition-all font-semibold cursor-pointer"
           >
             <option value="">All Sources</option>
             {SOURCES.map(s => <option key={s} value={s}>{s}</option>)}
+          </select>
+          <select
+            value={dateRange}
+            onChange={e => setDateRange(e.target.value)}
+            className="bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl py-2.5 px-3 text-xs outline-none text-slate-700 dark:text-slate-200 transition-all font-semibold cursor-pointer"
+          >
+            <option value="">All Time</option>
+            <option value="today">Today</option>
+            <option value="week">This Week</option>
+            <option value="month">This Month</option>
+          </select>
+          <select
+            value={assignedAgent}
+            onChange={e => setAssignedAgent(e.target.value)}
+            className="bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl py-2.5 px-3 text-xs outline-none text-slate-700 dark:text-slate-200 transition-all font-semibold cursor-pointer"
+          >
+            <option value="">All Agents</option>
+            {AGENTS.map(a => <option key={a} value={a}>{a}</option>)}
           </select>
         </div>
       </div>
@@ -286,7 +403,7 @@ export const LeadsView: React.FC<LeadsViewProps> = ({
                     {lead.industry}
                   </span>
                   <span className="px-2.5 py-0.5 rounded-full text-[9px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-400 uppercase tracking-wider">
-                    {lead.source}
+                    {lead.assignedUser || "Unassigned"}
                   </span>
                 </div>
 
@@ -469,16 +586,17 @@ export const LeadsView: React.FC<LeadsViewProps> = ({
                 <div className="space-y-1">
                   <label className="font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wide">Deal Value ({isUSD ? 'USD' : 'INR'})</label>
                   <input
-                    type="number"
-                    value={dealValue}
-                    onChange={e => setDealValue(Number(e.target.value))}
-                    placeholder="75000"
+                    type="text"
+                    inputMode="numeric"
+                    value={dealValueStr}
+                    onChange={handleDealValueChange}
+                    placeholder="e.g. 75,000"
                     className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 focus:border-orange-500 rounded-xl p-2.5 outline-none text-slate-800 dark:text-white transition-all"
                   />
                 </div>
               </div>
 
-              <div className="grid grid-cols-3 gap-4">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                 <div className="space-y-1">
                   <label className="font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wide">Source</label>
                   <select
@@ -497,6 +615,16 @@ export const LeadsView: React.FC<LeadsViewProps> = ({
                     className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl p-2.5 outline-none text-slate-800 dark:text-white font-semibold"
                   >
                     {STAGES.map(s => <option key={s.id} value={s.id}>{s.label}</option>)}
+                  </select>
+                </div>
+                <div className="space-y-1">
+                  <label className="font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wide">Assigned Agent</label>
+                  <select
+                    value={assignedUser}
+                    onChange={e => setAssignedUser(e.target.value)}
+                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl p-2.5 outline-none text-slate-800 dark:text-white font-semibold"
+                  >
+                    {AGENTS.map(a => <option key={a} value={a}>{a}</option>)}
                   </select>
                 </div>
                 <div className="space-y-1">

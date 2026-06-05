@@ -17,6 +17,7 @@ export interface Lead {
   lastContact: string
   nextFollowUp: string
   user_id?: string
+  assignedUser?: string
 }
 
 export interface Task {

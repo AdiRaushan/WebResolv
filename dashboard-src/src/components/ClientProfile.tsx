@@ -21,7 +21,7 @@ const STAGES = [
   { id: "new_lead",       label: "New Lead",       hex: "#8b5cf6" },
   { id: "contacted",      label: "Contacted",      hex: "#f59e0b" },
   { id: "interested",     label: "Interested",     hex: "#0ea5e9" },
-  { id: "demo_sent",      label: "Demo Sent",      hex: "#3b82f6" },
+  { id: "demo_scheduled", label: "Demo Scheduled", hex: "#3b82f6" },
   { id: "proposal_sent",  label: "Proposal Sent",  hex: "#a855f7" },
   { id: "follow_up",      label: "Follow Up",      hex: "#ec4899" },
   { id: "negotiation",    label: "Negotiation",    hex: "#f97316" },

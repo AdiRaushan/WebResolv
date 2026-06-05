@@ -13,14 +13,10 @@ const STAGES = [
   { id: "new_lead",       label: "New Lead",       hex: "#8b5cf6" },
   { id: "contacted",      label: "Contacted",      hex: "#f59e0b" },
   { id: "interested",     label: "Interested",     hex: "#0ea5e9" },
-  { id: "demo_sent",      label: "Demo Sent",      hex: "#3b82f6" },
+  { id: "demo_scheduled", label: "Demo Scheduled", hex: "#3b82f6" },
   { id: "proposal_sent",  label: "Proposal Sent",  hex: "#a855f7" },
   { id: "follow_up",      label: "Follow Up",      hex: "#ec4899" },
   { id: "negotiation",    label: "Negotiation",    hex: "#f97316" },
-  { id: "onboarding",     label: "Onboarding",     hex: "#14b8a6" },
-  { id: "active_client",  label: "Active Client",  hex: "#22c55e" },
-  { id: "completed",      label: "Completed",      hex: "#64748b" },
-  { id: "lost",           label: "Lost",           hex: "#ef4444" },
 ]
 
 const fmtDate = (d: string) => {
@@ -46,8 +42,11 @@ export const PipelineView: React.FC<PipelineViewProps> = ({
   }
 
   const handleDragEnd = () => {
-    setDraggedLead(null)
-    setOverColumn(null)
+    // Timeout to let the drop execute first
+    setTimeout(() => {
+      setDraggedLead(null)
+      setOverColumn(null)
+    }, 100)
   }
 
   const handleDrop = async (stageId: string) => {
@@ -86,7 +85,7 @@ export const PipelineView: React.FC<PipelineViewProps> = ({
                 }}
                 onDrop={() => handleDrop(s.id)}
                 onDragLeave={() => setOverColumn(null)}
-                className={`w-64 flex-shrink-0 rounded-3xl p-3 flex flex-col min-h-[500px] transition-all duration-200 border ${
+                className={`w-64 flex-shrink-0 rounded-3xl p-3 flex flex-col min-h-[480px] transition-all duration-200 border ${
                   isOver 
                     ? 'bg-orange-50/50 dark:bg-orange-500/5 border-orange-400 dark:border-orange-500/40 ring-2 ring-orange-500/10' 
                     : 'bg-slate-50 dark:bg-slate-900/40 border-slate-200 dark:border-slate-800/80'
@@ -130,7 +129,7 @@ export const PipelineView: React.FC<PipelineViewProps> = ({
                         }`}
                       >
                         <div className="flex justify-between items-start gap-2 mb-2">
-                          <p className="text-xs font-extrabold text-slate-800 dark:text-white leading-snug line-clamp-2">
+                          <p className="text-xs font-bold text-slate-800 dark:text-white leading-snug line-clamp-2">
                             {lead.businessName}
                           </p>
                           <div
@@ -184,6 +183,63 @@ export const PipelineView: React.FC<PipelineViewProps> = ({
               </div>
             )
           })}
+        </div>
+      </div>
+
+      {/* Won/Lost Drop Zones (Only displays when dragging a card) */}
+      <div className={`transition-all duration-350 transform ${draggedLead ? 'opacity-100 translate-y-0 max-h-36 mt-4' : 'opacity-0 translate-y-8 max-h-0 overflow-hidden'} grid grid-cols-1 md:grid-cols-3 gap-4 shrink-0`}>
+        {/* Drop Zone 1: Ongoing Clients */}
+        <div
+          onDragOver={e => {
+            e.preventDefault()
+            setOverColumn('active_client')
+          }}
+          onDragLeave={() => setOverColumn(null)}
+          onDrop={() => handleDrop('active_client')}
+          className={`border-2 border-dashed rounded-3xl flex flex-col items-center justify-center p-4 transition-all duration-200 ${
+            overColumn === 'active_client'
+              ? 'bg-emerald-500/10 border-emerald-500 text-emerald-500 scale-[1.02] shadow-lg shadow-emerald-500/10'
+              : 'bg-emerald-500/5 border-emerald-500/20 text-emerald-500/70 border-slate-300 dark:border-slate-800'
+          }`}
+        >
+          <span className="text-xs font-extrabold uppercase tracking-widest font-display">Move to Ongoing Clients</span>
+          <span className="text-[10px] opacity-75 font-semibold mt-1 font-mono">Status: Active Client (Won)</span>
+        </div>
+
+        {/* Drop Zone 2: Completed / Contacts */}
+        <div
+          onDragOver={e => {
+            e.preventDefault()
+            setOverColumn('completed')
+          }}
+          onDragLeave={() => setOverColumn(null)}
+          onDrop={() => handleDrop('completed')}
+          className={`border-2 border-dashed rounded-3xl flex flex-col items-center justify-center p-4 transition-all duration-200 ${
+            overColumn === 'completed'
+              ? 'bg-blue-500/10 border-blue-500 text-blue-500 scale-[1.02] shadow-lg shadow-blue-500/10'
+              : 'bg-blue-500/5 border-blue-500/20 text-blue-500/70 border-slate-300 dark:border-slate-800'
+          }`}
+        >
+          <span className="text-xs font-extrabold uppercase tracking-widest font-display">Move to Contacts (Completed)</span>
+          <span className="text-[10px] opacity-75 font-semibold mt-1 font-mono">Status: Completed & Fully Paid</span>
+        </div>
+
+        {/* Drop Zone 3: Lost */}
+        <div
+          onDragOver={e => {
+            e.preventDefault()
+            setOverColumn('lost')
+          }}
+          onDragLeave={() => setOverColumn(null)}
+          onDrop={() => handleDrop('lost')}
+          className={`border-2 border-dashed rounded-3xl flex flex-col items-center justify-center p-4 transition-all duration-200 ${
+            overColumn === 'lost'
+              ? 'bg-red-500/10 border-red-500 text-red-500 scale-[1.02] shadow-lg shadow-red-500/10'
+              : 'bg-red-500/5 border-red-500/20 text-red-500/70 border-slate-300 dark:border-slate-800'
+          }`}
+        >
+          <span className="text-xs font-extrabold uppercase tracking-widest font-display">Move to Lost</span>
+          <span className="text-[10px] opacity-75 font-semibold mt-1 font-mono">Status: Closed Lost</span>
         </div>
       </div>
     </div>

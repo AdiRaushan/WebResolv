@@ -2,7 +2,7 @@ import React from 'react'
 import type { Lead, Task, Activity } from '../types'
 import {
   Users, CheckCircle, Zap, Target, DollarSign, AlertCircle,
-  ArrowUpRight, Mail, PhoneCall, MessageCircle, Video, FileText, Calendar, Edit
+  Mail, PhoneCall, MessageCircle, Video, FileText, Calendar, Edit
 } from 'lucide-react'
 import {
   ComposedChart, Area, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
@@ -23,7 +23,7 @@ const STAGES = [
   { id: "new_lead",       label: "New Lead",       hex: "#8b5cf6" },
   { id: "contacted",      label: "Contacted",      hex: "#f59e0b" },
   { id: "interested",     label: "Interested",     hex: "#0ea5e9" },
-  { id: "demo_sent",      label: "Demo Sent",      hex: "#3b82f6" },
+  { id: "demo_scheduled", label: "Demo Scheduled", hex: "#3b82f6" },
   { id: "proposal_sent",  label: "Proposal Sent",  hex: "#a855f7" },
   { id: "follow_up",      label: "Follow Up",      hex: "#ec4899" },
   { id: "negotiation",    label: "Negotiation",    hex: "#f97316" },
@@ -84,9 +84,10 @@ export const DashboardOverview: React.FC<DashboardOverviewProps> = ({
   const todayStr = new Date().toISOString().split("T")[0]
   
   const total = leads.length
-  const active = leads.filter(l => l.status === "active_client").length
   const todayFollowUps = leads.filter(l => l.nextFollowUp === todayStr).length
-  const pipeVal = leads.filter(l => !["completed", "lost"].includes(l.status)).reduce((s, l) => s + (l.dealValue || 0), 0)
+  const pipeVal = leads.filter(l => !['onboarding', 'active_client', 'completed', 'lost'].includes(l.status)).reduce((s, l) => s + (l.dealValue || 0), 0)
+  const ongoingVal = leads.filter(l => ['onboarding', 'active_client'].includes(l.status)).reduce((s, l) => s + (l.dealValue || 0), 0)
+  const revenueVal = leads.filter(l => l.status === 'completed').reduce((s, l) => s + (l.dealValue || 0), 0)
   const overdueTasks = tasks.filter(t => t.status === "Overdue" || (t.dueDate && t.dueDate < todayStr && t.status !== "Completed")).length
 
   const upcomingLeads = [...leads]
@@ -145,26 +146,10 @@ export const DashboardOverview: React.FC<DashboardOverviewProps> = ({
             </div>
           </div>
           <h3 className="text-2xl font-black font-display text-slate-800 dark:text-white mt-3">{total}</h3>
-          <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-2 font-medium flex items-center gap-1 text-emerald-500">
-            <ArrowUpRight size={12} />
-            <span>+12% conversion</span>
-          </p>
+          <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-2 font-medium">All captured prospects</p>
         </div>
 
-        {/* Card 2: Active Clients */}
-        <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-5 shadow-sm relative overflow-hidden group">
-          <div className="absolute right-0 bottom-0 w-24 h-24 bg-emerald-500/5 dark:bg-emerald-500/10 rounded-full blur-2xl group-hover:scale-125 transition-transform duration-500" />
-          <div className="flex justify-between items-start">
-            <span className="text-xs font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500 font-mono">Clients</span>
-            <div className="p-2 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-2xl">
-              <CheckCircle size={16} />
-            </div>
-          </div>
-          <h3 className="text-2xl font-black font-display text-slate-800 dark:text-white mt-3">{active}</h3>
-          <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-2 font-medium">Onboarded & Live</p>
-        </div>
-
-        {/* Card 3: Pipeline Value */}
+        {/* Card 2: Pipeline Value */}
         <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-5 shadow-sm relative overflow-hidden group">
           <div className="absolute right-0 bottom-0 w-24 h-24 bg-purple-500/5 dark:bg-purple-500/10 rounded-full blur-2xl group-hover:scale-125 transition-transform duration-500" />
           <div className="flex justify-between items-start">
@@ -173,11 +158,28 @@ export const DashboardOverview: React.FC<DashboardOverviewProps> = ({
               <Target size={16} />
             </div>
           </div>
-          <h3 className="text-2xl font-black font-display text-slate-800 dark:text-white mt-3">{curSymbol}{(pipeVal / 1000).toFixed(0)}K</h3>
-          <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-2 font-medium">Weighted potential deal value</p>
+          <h3 className="text-2xl font-black font-display text-slate-800 dark:text-white mt-3">
+            {pipeVal >= 1000 ? `${curSymbol}${(pipeVal / 1000).toFixed(0)}K` : fmtCurrency(pipeVal)}
+          </h3>
+          <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-2 font-medium">Potential future revenue</p>
         </div>
 
-        {/* Card 4: Monthly Revenue */}
+        {/* Card 3: Ongoing Clients Value */}
+        <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-5 shadow-sm relative overflow-hidden group">
+          <div className="absolute right-0 bottom-0 w-24 h-24 bg-emerald-500/5 dark:bg-emerald-500/10 rounded-full blur-2xl group-hover:scale-125 transition-transform duration-500" />
+          <div className="flex justify-between items-start">
+            <span className="text-xs font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500 font-mono">Ongoing</span>
+            <div className="p-2 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-2xl">
+              <CheckCircle size={16} />
+            </div>
+          </div>
+          <h3 className="text-2xl font-black font-display text-slate-800 dark:text-white mt-3">
+            {ongoingVal >= 1000 ? `${curSymbol}${(ongoingVal / 1000).toFixed(0)}K` : fmtCurrency(ongoingVal)}
+          </h3>
+          <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-2 font-medium">Active contract value</p>
+        </div>
+
+        {/* Card 4: Total Revenue */}
         <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-5 shadow-sm relative overflow-hidden group">
           <div className="absolute right-0 bottom-0 w-24 h-24 bg-orange-500/5 dark:bg-orange-500/10 rounded-full blur-2xl group-hover:scale-125 transition-transform duration-500" />
           <div className="flex justify-between items-start">
@@ -186,11 +188,10 @@ export const DashboardOverview: React.FC<DashboardOverviewProps> = ({
               <DollarSign size={16} />
             </div>
           </div>
-          <h3 className="text-2xl font-black font-display text-slate-800 dark:text-white mt-3">{curSymbol}158K</h3>
-          <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-2 font-medium flex items-center gap-1 text-emerald-500">
-            <ArrowUpRight size={12} />
-            <span>+15% monthly growth</span>
-          </p>
+          <h3 className="text-2xl font-black font-display text-slate-800 dark:text-white mt-3">
+            {revenueVal >= 1000 ? `${curSymbol}${(revenueVal / 1000).toFixed(0)}K` : fmtCurrency(revenueVal)}
+          </h3>
+          <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-2 font-medium">Completed & fully earned</p>
         </div>
       </div>
 
