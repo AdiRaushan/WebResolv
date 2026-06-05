@@ -162,12 +162,28 @@ export const repository = {
       const dbObj = mapLeadToDb(lead)
       if (lead.id) {
         // Update
-        const { data, error } = await supabase.from('leads').update(dbObj).eq('id', lead.id).select().single()
+        let { data, error } = await supabase.from('leads').update(dbObj).eq('id', lead.id).select().single()
+        if (error && error.code === '42703') {
+          // Retry without assigned_user column
+          const retryObj = { ...dbObj }
+          delete (retryObj as any).assigned_user
+          const res = await supabase.from('leads').update(retryObj).eq('id', lead.id).select().single()
+          data = res.data
+          error = res.error
+        }
         if (!error && data) return mapLeadFromDb(data)
         console.error('Supabase update failed, falling back to Local Storage', error)
       } else {
         // Insert
-        const { data, error } = await supabase.from('leads').insert(dbObj).select().single()
+        let { data, error } = await supabase.from('leads').insert(dbObj).select().single()
+        if (error && error.code === '42703') {
+          // Retry without assigned_user column
+          const retryObj = { ...dbObj }
+          delete (retryObj as any).assigned_user
+          const res = await supabase.from('leads').insert(retryObj).select().single()
+          data = res.data
+          error = res.error
+        }
         if (!error && data) return mapLeadFromDb(data)
         console.error('Supabase insert failed, falling back to Local Storage', error)
       }
@@ -197,7 +213,8 @@ export const repository = {
 
   async updateLeadStatus(id: string, status: string): Promise<void> {
     if (isSupabaseConfigured && supabase) {
-      const { error } = await supabase.from('leads').update({ status }).eq('id', id)
+      const dbStatus = status === 'demo_scheduled' ? 'demo_sent' : status
+      const { error } = await supabase.from('leads').update({ status: dbStatus }).eq('id', id)
       if (!error) return
       console.error('Supabase status update failed, falling back to Local Storage', error)
     }
