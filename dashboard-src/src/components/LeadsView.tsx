@@ -10,6 +10,7 @@ interface LeadsViewProps {
   onSelectLead: (lead: Lead) => void
   onSaveLead: (lead: Omit<Lead, 'id'> & { id?: string }) => Promise<Lead>
   onDeleteLead: (id: string) => Promise<void>
+  fmtCurrency?: (n: number) => string
 }
 
 const STAGES = [
@@ -46,8 +47,10 @@ export const LeadsView: React.FC<LeadsViewProps> = ({
   leads,
   onSelectLead,
   onSaveLead,
-  onDeleteLead
+  onDeleteLead,
+  fmtCurrency = fmtINR
 }) => {
+  const isUSD = fmtCurrency(100).includes('$')
   const [q, setQ] = useState("")
   const [st, setSt] = useState("")
   const [ind, setInd] = useState("")
@@ -295,7 +298,7 @@ export const LeadsView: React.FC<LeadsViewProps> = ({
                   </div>
                   <div className="flex items-center gap-1.5 text-emerald-500 font-bold">
                     <DollarSign size={12} />
-                    <span>{fmtINR(lead.dealValue)}</span>
+                    <span>{fmtCurrency(lead.dealValue)}</span>
                   </div>
                   <div className="flex items-center gap-1.5 text-slate-500 dark:text-slate-400">
                     <Phone size={12} className="text-slate-400" />
@@ -464,7 +467,7 @@ export const LeadsView: React.FC<LeadsViewProps> = ({
                   />
                 </div>
                 <div className="space-y-1">
-                  <label className="font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wide">Deal Value (INR)</label>
+                  <label className="font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wide">Deal Value ({isUSD ? 'USD' : 'INR'})</label>
                   <input
                     type="number"
                     value={dealValue}

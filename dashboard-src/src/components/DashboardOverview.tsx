@@ -16,6 +16,7 @@ interface DashboardOverviewProps {
   onNav: (tab: string) => void
   onSelectLead: (lead: Lead) => void
   isDark: boolean
+  fmtCurrency?: (n: number) => string
 }
 
 const STAGES = [
@@ -75,8 +76,11 @@ export const DashboardOverview: React.FC<DashboardOverviewProps> = ({
   activities,
   onNav,
   onSelectLead,
-  isDark
+  isDark,
+  fmtCurrency = fmtINR
 }) => {
+  const isUSD = fmtCurrency(100).includes('$')
+  const curSymbol = isUSD ? '$' : '₹'
   const todayStr = new Date().toISOString().split("T")[0]
   
   const total = leads.length
@@ -169,7 +173,7 @@ export const DashboardOverview: React.FC<DashboardOverviewProps> = ({
               <Target size={16} />
             </div>
           </div>
-          <h3 className="text-2xl font-black font-display text-slate-800 dark:text-white mt-3">₹{(pipeVal / 1000).toFixed(0)}K</h3>
+          <h3 className="text-2xl font-black font-display text-slate-800 dark:text-white mt-3">{curSymbol}{(pipeVal / 1000).toFixed(0)}K</h3>
           <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-2 font-medium">Weighted potential deal value</p>
         </div>
 
@@ -182,7 +186,7 @@ export const DashboardOverview: React.FC<DashboardOverviewProps> = ({
               <DollarSign size={16} />
             </div>
           </div>
-          <h3 className="text-2xl font-black font-display text-slate-800 dark:text-white mt-3">₹158K</h3>
+          <h3 className="text-2xl font-black font-display text-slate-800 dark:text-white mt-3">{curSymbol}158K</h3>
           <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-2 font-medium flex items-center gap-1 text-emerald-500">
             <ArrowUpRight size={12} />
             <span>+15% monthly growth</span>
@@ -208,7 +212,7 @@ export const DashboardOverview: React.FC<DashboardOverviewProps> = ({
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" stroke={gridColor} />
                 <XAxis dataKey="month" tick={{ fontSize: 10, fill: tickColor }} axisLine={false} tickLine={false} />
-                <YAxis yAxisId="rev" tick={{ fontSize: 10, fill: tickColor }} axisLine={false} tickLine={false} tickFormatter={v => `₹${v/1000}K`} />
+                <YAxis yAxisId="rev" tick={{ fontSize: 10, fill: tickColor }} axisLine={false} tickLine={false} tickFormatter={v => `${curSymbol}${v/1000}K`} />
                 <YAxis yAxisId="lds" orientation="right" tick={{ fontSize: 10, fill: tickColor }} axisLine={false} tickLine={false} />
                 <Tooltip
                   contentStyle={{
@@ -219,7 +223,7 @@ export const DashboardOverview: React.FC<DashboardOverviewProps> = ({
                     fontSize: '11px'
                   }}
                   labelClassName="font-mono text-slate-400"
-                  formatter={(value: any, name: any) => name === "revenue" ? [fmtINR(value), "Revenue"] : [value, "Leads"]}
+                  formatter={(value: any, name: any) => name === "revenue" ? [fmtCurrency(value), "Revenue"] : [value, "Leads"]}
                 />
                 <Area yAxisId="rev" type="monotone" dataKey="revenue" stroke="#6366f1" strokeWidth={3} fill="url(#revenueGlow)" />
                 <Bar yAxisId="lds" dataKey="leads" fill={isDark ? "#1e293b" : "#f1f5f9"} radius={[4, 4, 0, 0]} barSize={12} />
@@ -313,7 +317,7 @@ export const DashboardOverview: React.FC<DashboardOverviewProps> = ({
                       <p className={`text-[10px] font-bold ${isToday ? 'text-amber-500 font-black' : 'text-slate-400 dark:text-slate-500'}`}>
                         {isToday ? 'TODAY' : fmtDate(lead.nextFollowUp)}
                       </p>
-                      <p className="text-[10px] font-bold text-emerald-500 mt-0.5">{fmtINR(lead.dealValue)}</p>
+                      <p className="text-[10px] font-bold text-emerald-500 mt-0.5">{fmtCurrency(lead.dealValue)}</p>
                     </div>
                   </div>
                 )

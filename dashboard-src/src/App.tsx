@@ -32,6 +32,25 @@ const CRMManager: React.FC = () => {
   const [isDark, setIsDark] = useState(true)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
+  // Currency Toggle State
+  const [currency, setCurrency] = useState<'INR' | 'USD'>(() => {
+    return (localStorage.getItem('wr_crm_currency') as 'INR' | 'USD') || 'INR'
+  })
+
+  const handleToggleCurrency = () => {
+    const next = currency === 'INR' ? 'USD' : 'INR'
+    setCurrency(next)
+    localStorage.setItem('wr_crm_currency', next)
+  }
+
+  const fmtCurrency = (n: number) => {
+    return new Intl.NumberFormat(currency === 'INR' ? "en-IN" : "en-US", {
+      style: "currency",
+      currency: currency,
+      maximumFractionDigits: 0
+    }).format(n)
+  }
+
   // Auth Session State
   const [userEmail, setUserEmail] = useState<string | null>(null)
   const [authChecked, setAuthChecked] = useState(false)
@@ -285,13 +304,22 @@ const CRMManager: React.FC = () => {
         {/* Sidebar Footer triggers */}
         <div className="space-y-3 pt-6 border-t border-slate-200 dark:border-slate-800/80">
           <div className="px-3 flex items-center justify-between text-[10px] text-slate-400 dark:text-slate-500 font-mono">
-            <span className="truncate max-w-[140px]">{userEmail}</span>
-            <button
-              onClick={() => setIsDark(!isDark)}
-              className="p-1 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg text-slate-500 transition-all cursor-pointer"
-            >
-              {isDark ? <Sun size={12} /> : <Moon size={12} />}
-            </button>
+            <span className="truncate max-w-[110px]">{userEmail}</span>
+            <div className="flex items-center gap-1.5">
+              <button
+                onClick={handleToggleCurrency}
+                className="px-1.5 py-0.5 hover:bg-slate-100 dark:hover:bg-slate-800 rounded font-bold border border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 text-[9px] cursor-pointer"
+                title="Toggle Currency"
+              >
+                {currency}
+              </button>
+              <button
+                onClick={() => setIsDark(!isDark)}
+                className="p-1 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg text-slate-500 transition-all cursor-pointer"
+              >
+                {isDark ? <Sun size={12} /> : <Moon size={12} />}
+              </button>
+            </div>
           </div>
 
           {!isSupabaseConfigured && (
@@ -362,10 +390,18 @@ const CRMManager: React.FC = () => {
 
               <div className="space-y-3 pt-6 border-t border-slate-200 dark:border-slate-800">
                 <div className="flex items-center justify-between text-[10px] text-slate-400 font-mono">
-                  <span className="truncate max-w-[150px]">{userEmail}</span>
-                  <button onClick={() => setIsDark(!isDark)} className="p-1 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg">
-                    {isDark ? <Sun size={12} /> : <Moon size={12} />}
-                  </button>
+                  <span className="truncate max-w-[130px]">{userEmail}</span>
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={handleToggleCurrency}
+                      className="px-1.5 py-0.5 hover:bg-slate-100 dark:hover:bg-slate-800 rounded font-bold border border-slate-200 dark:border-slate-800 text-[9px]"
+                    >
+                      {currency}
+                    </button>
+                    <button onClick={() => setIsDark(!isDark)} className="p-1 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg">
+                      {isDark ? <Sun size={12} /> : <Moon size={12} />}
+                    </button>
+                  </div>
                 </div>
                 {!isSupabaseConfigured && (
                   <button
@@ -397,6 +433,7 @@ const CRMManager: React.FC = () => {
               onNav={navigateTab}
               onSelectLead={handleSelectLeadProfile}
               isDark={isDark}
+              fmtCurrency={fmtCurrency}
             />
           )}
 
@@ -406,6 +443,7 @@ const CRMManager: React.FC = () => {
               onSelectLead={handleSelectLeadProfile}
               onSaveLead={saveLeadMutation.mutateAsync}
               onDeleteLead={deleteLeadMutation.mutateAsync}
+              fmtCurrency={fmtCurrency}
             />
           )}
 
@@ -414,6 +452,7 @@ const CRMManager: React.FC = () => {
               leads={leads}
               onStatusChange={(id, status) => saveLeadStatusMutation.mutateAsync({ id, status })}
               onSelectLead={handleSelectLeadProfile}
+              fmtCurrency={fmtCurrency}
             />
           )}
 
@@ -439,6 +478,7 @@ const CRMManager: React.FC = () => {
               onDeleteActivity={deleteActivityMutation.mutateAsync}
               onSaveTask={saveTaskMutation.mutateAsync}
               onDeleteTask={deleteTaskMutation.mutateAsync}
+              fmtCurrency={fmtCurrency}
             />
           )}
         </main>

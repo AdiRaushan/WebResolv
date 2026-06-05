@@ -6,6 +6,7 @@ interface PipelineViewProps {
   leads: Lead[]
   onStatusChange: (id: string, status: string) => Promise<void>
   onSelectLead: (lead: Lead) => void
+  fmtCurrency?: (n: number) => string
 }
 
 const STAGES = [
@@ -33,7 +34,8 @@ const fmtINR = (n: number) =>
 export const PipelineView: React.FC<PipelineViewProps> = ({
   leads,
   onStatusChange,
-  onSelectLead
+  onSelectLead,
+  fmtCurrency = fmtINR
 }) => {
   const [draggedLead, setDraggedLead] = useState<Lead | null>(null)
   const [overColumn, setOverColumn] = useState<string | null>(null)
@@ -99,7 +101,7 @@ export const PipelineView: React.FC<PipelineViewProps> = ({
                     </div>
                     {stageLeads.length > 0 && (
                       <p className="text-[10px] text-slate-400 dark:text-slate-500 mt-1 font-bold font-mono">
-                        {fmtINR(stageValue)}
+                        {fmtCurrency(stageValue)}
                       </p>
                     )}
                   </div>
@@ -142,7 +144,7 @@ export const PipelineView: React.FC<PipelineViewProps> = ({
                         <p className="text-[10px] text-slate-400 dark:text-slate-500 font-semibold mb-2">{lead.city || 'No City'}</p>
 
                         <div className="flex justify-between items-center border-t border-slate-100 dark:border-slate-800/40 pt-2 text-[10px]">
-                          <span className="font-extrabold text-emerald-500">{fmtINR(lead.dealValue)}</span>
+                          <span className="font-extrabold text-emerald-500">{fmtCurrency(lead.dealValue)}</span>
                           {lead.nextFollowUp && (
                             <span className={`flex items-center gap-1 font-bold ${isOverdue ? 'text-red-500' : 'text-slate-400 dark:text-slate-500'}`}>
                               <Calendar size={10} className={isOverdue ? 'text-red-400' : 'text-slate-400'} />

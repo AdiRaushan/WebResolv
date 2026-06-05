@@ -14,6 +14,7 @@ interface ClientProfileProps {
   onDeleteActivity: (id: string) => Promise<void>
   onSaveTask: (task: Omit<Task, 'id'> & { id?: string }) => Promise<Task>
   onDeleteTask: (id: string) => Promise<void>
+  fmtCurrency?: (n: number) => string
 }
 
 const STAGES = [
@@ -67,7 +68,8 @@ export const ClientProfile: React.FC<ClientProfileProps> = ({
   onSaveActivity,
   onDeleteActivity,
   onSaveTask,
-  onDeleteTask
+  onDeleteTask,
+  fmtCurrency = fmtINR
 }) => {
   const [tab, setTab] = useState<'timeline' | 'tasks' | 'files'>('timeline')
   const s = STAGES.find(x => x.id === lead.status) || STAGES[0]
@@ -171,7 +173,7 @@ export const ClientProfile: React.FC<ClientProfileProps> = ({
             <div className="flex items-center gap-4">
               <div className="text-right">
                 <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Estimated Value</p>
-                <p className="text-lg font-black text-emerald-500 mt-0.5">{fmtINR(lead.dealValue)}</p>
+                <p className="text-lg font-black text-emerald-500 mt-0.5">{fmtCurrency(lead.dealValue)}</p>
               </div>
               <div className="flex gap-1.5 shrink-0 border-l border-slate-200 dark:border-slate-800/80 pl-4">
                 <a
