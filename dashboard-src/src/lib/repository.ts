@@ -163,7 +163,7 @@ export const repository = {
       if (lead.id) {
         // Update
         let { data, error } = await supabase.from('leads').update(dbObj).eq('id', lead.id).select().single()
-        if (error && error.code === '42703') {
+        if (error && (error.code === '42703' || error.code === 'PGRST204' || error.message?.includes('assigned_user'))) {
           // Retry without assigned_user column
           const retryObj = { ...dbObj }
           delete (retryObj as any).assigned_user
@@ -176,7 +176,7 @@ export const repository = {
       } else {
         // Insert
         let { data, error } = await supabase.from('leads').insert(dbObj).select().single()
-        if (error && error.code === '42703') {
+        if (error && (error.code === '42703' || error.code === 'PGRST204' || error.message?.includes('assigned_user'))) {
           // Retry without assigned_user column
           const retryObj = { ...dbObj }
           delete (retryObj as any).assigned_user
