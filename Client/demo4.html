@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rs Designer Living | Home Renovation & Reshape</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* FAQ Accordion Transition */
+        .faq-content {
+            transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease-in-out;
+        }
+
+        /* Custom Hover Zoom for Portfolio & Cards */
+        .portfolio-zoom img {
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .portfolio-zoom:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Custom timeline line */
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 20px;
+            width: 2px;
+            background-color: #e2e8f0;
+        }
+
+        @media (min-width: 768px) {
+            .timeline-line::before {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+</head>
+
+<body class="min-h-screen bg-slate-50 text-slate-900 selection:bg-blue-100 overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <!-- Custom SVG Logo -->
+                <a href="#" class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-slate-900 rounded-xl flex items-center justify-center shadow-sm">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M4 21V5C4 4.44772 4.44772 4 5 4H13C15.7614 4 18 6.23858 18 9C18 10.9234 16.9134 12.5922 15.3262 13.4389L19.7071 19.2929C20.0976 19.8136 19.7262 21 19.0732 21H16.6393C16.3268 21 16.0357 20.8523 15.8453 20.5984L12 15.4722H6V21H4ZM6 6V13.4722H13C14.6569 13.4722 16 12.1291 16 10.4722C16 8.81536 14.6569 7.47222 13 7.47222H6V6Z"
+                                fill="white" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="text-lg font-bold tracking-tight text-slate-900 leading-tight">Rs Designer Living
+                        </h1>
+                        <p class="text-[10px] uppercase tracking-wider text-slate-500 font-semibold">Home Renovation &
+                            Reshape</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Desktop Links -->
+            <div class="hidden md:flex gap-8 text-sm font-medium text-slate-600">
+                <a href="#services" class="hover:text-slate-900 transition-colors">Specialties</a>
+                <a href="#about" class="hover:text-slate-900 transition-colors">About</a>
+                <a href="#portfolio" class="hover:text-slate-900 transition-colors">Portfolio</a>
+                <a href="#process" class="hover:text-slate-900 transition-colors">Our Process</a>
+                <a href="#reviews" class="hover:text-slate-900 transition-colors">Reviews</a>
+                <a href="#contact" class="hover:text-slate-900 transition-colors">Contact</a>
+            </div>
+
+            <!-- Header Buttons & Hamburger -->
+            <div class="flex items-center gap-4">
+                <a href="#contact"
+                    class="hidden sm:inline-block bg-slate-900 text-white px-5 py-2.5 rounded-full text-sm font-medium hover:bg-slate-800 transition-all shadow-sm">
+                    Get a Quote
+                </a>
+
+                <!-- Mobile Hamburger Button -->
+                <button id="mobile-menu-btn"
+                    class="md:hidden p-1.5 rounded-lg text-slate-700 hover:text-slate-900 hover:bg-slate-100 transition"
+                    aria-label="Toggle Menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Drawer Overlay -->
+    <div id="mobile-menu-overlay"
+        class="fixed inset-0 bg-slate-900/30 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-all duration-300">
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-menu-drawer"
+        class="fixed top-0 right-0 h-full w-[300px] bg-white z-50 shadow-2xl translate-x-full transition-transform duration-300 ease-in-out p-6 flex flex-col justify-between">
+        <div>
+            <!-- Close Button & Brand Header -->
+            <div class="flex items-center justify-between pb-6 border-b border-slate-100">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M4 21V5C4 4.44772 4.44772 4 5 4H13C15.7614 4 18 6.23858 18 9C18 10.9234 16.9134 12.5922 15.3262 13.4389L19.7071 19.2929C20.0976 19.8136 19.7262 21 19.0732 21H16.6393C16.3268 21 16.0357 20.8523 15.8453 20.5984L12 15.4722H6V21H4ZM6 6V13.4722H13C14.6569 13.4722 16 12.1291 16 10.4722C16 8.81536 14.6569 7.47222 13 7.47222H6V6Z"
+                                fill="white" />
+                        </svg>
+                    </div>
+                    <span class="font-bold text-slate-900 text-sm">Rs Designer Living</span>
+                </div>
+                <button id="mobile-menu-close"
+                    class="p-1 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Links -->
+            <div class="flex flex-col gap-4 py-8 text-base font-medium text-slate-650">
+                <a href="#services" class="hover:text-slate-900 transition-colors py-1.5">Specialties</a>
+                <a href="#about" class="hover:text-slate-900 transition-colors py-1.5">About</a>
+                <a href="#portfolio" class="hover:text-slate-900 transition-colors py-1.5">Portfolio</a>
+                <a href="#process" class="hover:text-slate-900 transition-colors py-1.5">Our Process</a>
+                <a href="#reviews" class="hover:text-slate-900 transition-colors py-1.5">Reviews</a>
+                <a href="#contact" class="hover:text-slate-900 transition-colors py-1.5">Contact</a>
+            </div>
+        </div>
+
+        <div>
+            <a href="#contact" id="mobile-menu-cta"
+                class="w-full text-center block bg-slate-900 text-white py-3 rounded-full text-sm font-medium hover:bg-slate-800 transition shadow-sm">
+                Get a Free Quote
+            </a>
+            <p class="text-center text-[11px] text-slate-400 mt-4">Quality Workmanship Guaranteed</p>
+        </div>
+    </div>
+
+    <!-- Visual Split Hero Section -->
+    <section class="pt-36 pb-24 px-6 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+        <!-- Left: Text Details -->
+        <div class="lg:col-span-6 text-left flex flex-col items-start">
+            <div
+                class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-xs font-semibold mb-6">
+                <svg class="w-3.5 h-3.5 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <polygon
+                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                </svg>
+                <span>5.0 Star Rated on Google</span>
+            </div>
+            <h2
+                class="text-4xl sm:text-6xl font-extrabold tracking-tight mb-6 text-slate-900 leading-tight text-balance">
+                Redefining spaces with <span class="text-slate-400">perfect design.</span>
+            </h2>
+            <p class="text-base sm:text-lg text-slate-500 mb-8 max-w-xl text-balance leading-relaxed">
+                Exceptional home interior and renovation services tailored to your vision. Led by Deepak and a dedicated
+                team, we blend aesthetics with structural functionality to create your dream home.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+                <a href="#contact"
+                    class="bg-slate-900 text-white px-8 py-4 rounded-full font-medium hover:bg-slate-800 transition-all flex items-center justify-center gap-2 shadow-lg shadow-slate-900/10">
+                    Start Your Project
+                    <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </a>
+                <a href="#portfolio"
+                    class="bg-white text-slate-900 px-8 py-4 rounded-full font-medium border border-slate-200 hover:border-slate-300 hover:bg-slate-50 transition-all shadow-sm flex items-center justify-center">
+                    View Our Portfolio
+                </a>
+            </div>
+        </div>
+
+        <!-- Right: Design Image Collage -->
+        <div class="lg:col-span-6 relative flex justify-center items-center">
+            <!-- Background Glow -->
+            <div class="absolute w-72 h-72 bg-blue-100/40 rounded-full blur-[100px] -z-10"></div>
+
+            <!-- Main Large Image -->
+            <div
+                class="relative w-full max-w-md aspect-[4/3] rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(15,23,42,0.08)] border border-slate-150 portfolio-zoom">
+                <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1000&q=80"
+                    alt="Luxury Living Room Interior" class="w-full h-full object-cover">
+            </div>
+
+            <!-- Overlapping Small Detail Image -->
+            <div
+                class="absolute -bottom-10 -left-6 w-40 aspect-square rounded-2xl overflow-hidden border-[6px] border-white shadow-xl hidden sm:block portfolio-zoom">
+                <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=400&q=80"
+                    alt="Modular Kitchen Finish Detail" class="w-full h-full object-cover">
+            </div>
+
+            <!-- Floating Activity Pill -->
+            <div
+                class="absolute -top-4 -right-4 bg-white text-slate-900 py-3 px-5 rounded-2xl shadow-lg border border-slate-100 text-xs font-semibold flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span>Deepak's Active Handovers</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust & Stats Section -->
+    <section class="border-y border-slate-200 bg-white py-12 px-6">
+        <div
+            class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-slate-100">
+            <div class="flex flex-col items-center pt-4 md:pt-0 hover:scale-[1.02] transition-transform duration-300">
+                <svg class="w-8 h-8 text-slate-400 mb-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path>
+                    <path d="m9 12 2 2 4-4"></path>
+                </svg>
+                <h3 class="font-semibold text-slate-900">Unmatchable Workmanship</h3>
+                <p class="text-sm text-slate-500 mt-1">Premium materials & execution</p>
+            </div>
+            <div class="flex flex-col items-center pt-8 md:pt-0 hover:scale-[1.02] transition-transform duration-300">
+                <svg class="w-8 h-8 text-slate-400 mb-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon
+                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                </svg>
+                <h3 class="font-semibold text-slate-900">5.0/5 Top Rated</h3>
+                <p class="text-sm text-slate-500 mt-1">Consistently perfect reviews</p>
+            </div>
+            <div class="flex flex-col items-center pt-8 md:pt-0 hover:scale-[1.02] transition-transform duration-300">
+                <svg class="w-8 h-8 text-slate-400 mb-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                <h3 class="font-semibold text-slate-900">Always on Schedule</h3>
+                <p class="text-sm text-slate-500 mt-1">Timely delivery & execution</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specialties / Services Section -->
+    <section id="services" class="py-24 px-6 max-w-7xl mx-auto scroll-mt-20">
+        <div class="text-center mb-16">
+            <span class="text-xs uppercase tracking-wider text-slate-500 font-bold mb-3 block">What We Do Best</span>
+            <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-slate-900">Our Core Specialties</h2>
+            <p class="text-slate-500 max-w-xl mx-auto text-balance">We offer complete end-to-end design and execution.
+                From layouts to the final light fixture, we build with precision.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Specialty 1 -->
+            <div
+                class="bg-white rounded-3xl border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.02)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden group">
+                <div>
+                    <!-- Visual Top Image Card Header -->
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=600&q=80"
+                            alt="Full Residential Interiors"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-900/10 to-transparent">
+                        </div>
+                        <div class="absolute bottom-4 left-6 flex items-center gap-3">
+                            <div
+                                class="w-10 h-10 rounded-xl bg-white/90 text-slate-900 flex items-center justify-center shadow-sm">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
+                                    </path>
+                                </svg>
+                            </div>
+                            <h3 class="text-base font-bold text-white tracking-tight">Full Residential Interiors</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-sm text-slate-500 leading-relaxed mb-4">
+                            Complete redesign of bedrooms, living zones, and dining spaces. We structure concepts around
+                            utility, ensuring a spatial flow unique to your family layout.
+                        </p>
+                    </div>
+                </div>
+                <div class="px-6 pb-6 pt-4 border-t border-slate-100 bg-slate-50/50">
+                    <ul class="space-y-2 text-xs font-semibold text-slate-700">
+                        <li class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-slate-900"></span> Living & Dining Makeovers
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-slate-900"></span> Bedroom Suites & Kids Rooms
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-slate-900"></span> Layout Planning & 3D Renders
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Specialty 2 -->
+            <div
+                class="bg-white rounded-3xl border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.02)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden group">
+                <div>
+                    <!-- Visual Top Image Card Header -->
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=600&q=80"
+                            alt="Modular Kitchens"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-900/10 to-transparent">
+                        </div>
+                        <div class="absolute bottom-4 left-6 flex items-center gap-3">
+                            <div
+                                class="w-10 h-10 rounded-xl bg-white/90 text-slate-900 flex items-center justify-center shadow-sm">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
+                                    </path>
+                                </svg>
+                            </div>
+                            <h3 class="text-base font-bold text-white tracking-tight">Ergonomic Modular Kitchens</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-sm text-slate-500 leading-relaxed mb-4">
+                            Custom multi-tier kitchens that balance maximum counter space and smart drawer fittings.
+                            Built with water-resistant boiling plywood (BWP) for ultimate longevity.
+                        </p>
+                    </div>
+                </div>
+                <div class="px-6 pb-6 pt-4 border-t border-slate-100 bg-slate-50/50">
+                    <ul class="space-y-2 text-xs font-semibold text-slate-700">
+                        <li class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-slate-900"></span> L-Shaped & Island Kitchens
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-slate-900"></span> Soft-Close Channels
+                            (Hettich/Blum)
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-slate-900"></span> Quartz & Premium Countertops
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Specialty 3 -->
+            <div
+                class="bg-white rounded-3xl border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.02)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden group">
+                <div>
+                    <!-- Visual Top Image Card Header -->
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=600&q=80"
+                            alt="Smart Wardrobes"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-900/10 to-transparent">
+                        </div>
+                        <div class="absolute bottom-4 left-6 flex items-center gap-3">
+                            <div
+                                class="w-10 h-10 rounded-xl bg-white/90 text-slate-900 flex items-center justify-center shadow-sm">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
+                                    </path>
+                                </svg>
+                            </div>
+                            <h3 class="text-base font-bold text-white tracking-tight">Smart Wardrobes & Storage</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-sm text-slate-500 leading-relaxed mb-4">
+                            Walk-in closets, sliding modular wardrobes, and customized storage cavities that fit your
+                            exact inventory requirements while matching wall elevations.
+                        </p>
+                    </div>
+                </div>
+                <div class="px-6 pb-6 pt-4 border-t border-slate-100 bg-slate-50/50">
+                    <ul class="space-y-2 text-xs font-semibold text-slate-700">
+                        <li class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-slate-900"></span> Floor-to-Ceiling Wardrobes
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-slate-900"></span> Sliding Doors & Glass Shutters
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-slate-900"></span> Integrated Internal LED Lighting
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Specialty 4 -->
+            <div
+                class="bg-white rounded-3xl border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.02)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden group">
+                <div>
+                    <!-- Visual Top Image Card Header -->
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?auto=format&fit=crop&w=600&q=80"
+                            alt="Civil Renovation"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-900/10 to-transparent">
+                        </div>
+                        <div class="absolute bottom-4 left-6 flex items-center gap-3">
+                            <div
+                                class="w-10 h-10 rounded-xl bg-white/90 text-slate-900 flex items-center justify-center shadow-sm">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <h3 class="text-base font-bold text-white tracking-tight">Civil Renovation & Reshaping</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-sm text-slate-500 leading-relaxed mb-4">
+                            Complete structural redesigning, including wall dismantling, tile/marble flooring
+                            replacement, plumbing rerouting, and custom electrical grid mapping.
+                        </p>
+                    </div>
+                </div>
+                <div class="px-6 pb-6 pt-4 border-t border-slate-100 bg-slate-50/50">
+                    <ul class="space-y-2 text-xs font-semibold text-slate-700">
+                        <li class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-slate-900"></span> Wall Demolition & Partitioning
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-slate-900"></span> Italian Marble & Tile Flooring
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-slate-900"></span> Full Bathroom Remodeling
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Specialty 5 -->
+            <div
+                class="bg-white rounded-3xl border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.02)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden group">
+                <div>
+                    <!-- Visual Top Image Card Header -->
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1565538810844-1e119d81a20c?auto=format&fit=crop&w=600&q=80"
+                            alt="Lighting & Ceiling"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-900/10 to-transparent">
+                        </div>
+                        <div class="absolute bottom-4 left-6 flex items-center gap-3">
+                            <div
+                                class="w-10 h-10 rounded-xl bg-white/90 text-slate-900 flex items-center justify-center shadow-sm">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <h3 class="text-base font-bold text-white tracking-tight">Lighting & Ceiling Design</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-sm text-slate-500 leading-relaxed mb-4">
+                            Architectural gypsum board false ceilings matching customized electrical lighting. We
+                            configure spotlights, LED cove lines, and magnetic profiles.
+                        </p>
+                    </div>
+                </div>
+                <div class="px-6 pb-6 pt-4 border-t border-slate-100 bg-slate-50/50">
+                    <ul class="space-y-2 text-xs font-semibold text-slate-700">
+                        <li class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-slate-900"></span> Gypsum & Grid Ceilings
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-slate-900"></span> Profile & Ambient Light Setup
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-slate-900"></span> Smart Automation Integration
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Specialty 6 -->
+            <div
+                class="bg-white rounded-3xl border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.02)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden group">
+                <div>
+                    <!-- Visual Top Image Card Header -->
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80"
+                            alt="Commercial Handovers"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-900/10 to-transparent">
+                        </div>
+                        <div class="absolute bottom-4 left-6 flex items-center gap-3">
+                            <div
+                                class="w-10 h-10 rounded-xl bg-white/90 text-slate-900 flex items-center justify-center shadow-sm">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4">
+                                    </path>
+                                </svg>
+                            </div>
+                            <h3 class="text-base font-bold text-white tracking-tight">Commercial Handovers</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-sm text-slate-500 leading-relaxed mb-4">
+                            Optimized designs for executive offices, boutique showrooms, and retail stores, creating
+                            layout concepts that drive client engagement.
+                        </p>
+                    </div>
+                </div>
+                <div class="px-6 pb-6 pt-4 border-t border-slate-100 bg-slate-50/50">
+                    <ul class="space-y-2 text-xs font-semibold text-slate-700">
+                        <li class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-slate-900"></span> Executive Suites & Meeting Rooms
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-slate-900"></span> Retail Showroom Interior Layout
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-slate-900"></span> Acoustic Ceiling & Partition
+                            Panels
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visual About Us Section -->
+    <section id="about" class="py-24 px-6 bg-white border-y border-slate-200 scroll-mt-20">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+
+            <!-- Left Image Block (6 Columns) -->
+            <div class="lg:col-span-6 relative">
+                <!-- Main Portrait Image -->
+                <div class="aspect-[3/4] rounded-3xl overflow-hidden shadow-xl border border-slate-100 portfolio-zoom">
+                    <img src="https://images.unsplash.com/photo-1618219908412-a29a1bb7b86e?auto=format&fit=crop&w=1000&q=80"
+                        alt="Luxury Interior Moodboard Sourcing" class="w-full h-full object-cover">
+                </div>
+                <!-- Float overlay badge -->
+                <div
+                    class="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-md p-6 rounded-2xl border border-slate-100 shadow-lg hidden sm:block">
+                    <p class="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 mb-1">Our Philosophy
+                    </p>
+                    <p class="font-bold text-slate-900 text-sm leading-snug">"Every home should be a physical reflection
+                        of its owner's personal history, customized with precision."</p>
+                </div>
+            </div>
+
+            <!-- Right Info Details (6 Columns) -->
+            <div class="lg:col-span-6 space-y-6">
+                <span class="text-xs uppercase tracking-wider text-slate-500 font-bold block">About Our Studio</span>
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 leading-tight">
+                    Crafting spaces that reflect your unique story.
+                </h2>
+                <p class="text-slate-600 leading-relaxed text-sm md:text-base">
+                    At Rs Designer Living, we believe home decoration is more than placing furniture—it is structural
+                    storytelling. Led by lead designer <span class="font-semibold text-slate-900">Deepak</span>, our
+                    studio handles everything from layout brainstorming to complete on-site carpentry, plumbing, and
+                    electrification.
+                </p>
+                <p class="text-slate-600 leading-relaxed text-sm md:text-base">
+                    Whether you desire a sleek minimalist layout in a high-rise apartment or a fully customized kitchen
+                    overhaul, we ensure that every square inch is optimized for daily life.
+                </p>
+
+                <div class="grid grid-cols-2 gap-6 pt-6 border-t border-slate-100">
+                    <div>
+                        <span class="text-3xl font-extrabold text-slate-900 block">500+</span>
+                        <span class="text-xs text-slate-500 font-medium uppercase tracking-wider">Completed Homes</span>
+                    </div>
+                    <div>
+                        <span class="text-3xl font-extrabold text-slate-900 block">15+ Yrs</span>
+                        <span class="text-xs text-slate-500 font-medium uppercase tracking-wider">Design
+                            Experience</span>
+                    </div>
+                </div>
+
+                <!-- Brand Strengths List -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6">
+                    <div class="flex items-start gap-2.5">
+                        <span class="text-lg">📐</span>
+                        <div>
+                            <h4 class="font-bold text-sm text-slate-900">Bespoke 3D Layouts</h4>
+                            <p class="text-xs text-slate-500">We construct visual mockups before executing works.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-2.5">
+                        <span class="text-lg">🛠️</span>
+                        <div>
+                            <h4 class="font-bold text-sm text-slate-900">Expertsite supervision</h4>
+                            <p class="text-xs text-slate-500">Milestone checklists reviewed on-site daily.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-2.5">
+                        <span class="text-lg">🏆</span>
+                        <div>
+                            <h4 class="font-bold text-sm text-slate-900">Branded Sourcing</h4>
+                            <p class="text-xs text-slate-500">Genuine modular fittings with multi-year warranty.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-2.5">
+                        <span class="text-lg">⏱️</span>
+                        <div>
+                            <h4 class="font-bold text-sm text-slate-900">Strict Timelines</h4>
+                            <p class="text-xs text-slate-500">Calendar schedule aligned with penalty guarantees.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Portfolio Section -->
+    <section id="portfolio" class="py-24 px-6 max-w-7xl mx-auto scroll-mt-20">
+        <div class="text-center mb-16">
+            <span class="text-xs uppercase tracking-wider text-slate-500 font-bold mb-3 block">Featured
+                Transformations</span>
+            <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-slate-900">Completed Design Work</h2>
+            <p class="text-slate-500 max-w-lg mx-auto text-balance">Explore a selection of our recent modular and
+                full-home renovation handovers.</p>
+
+            <!-- Filter Buttons -->
+            <div class="flex flex-wrap justify-center items-center gap-3 mt-10">
+                <button data-filter="all"
+                    class="portfolio-btn px-6 py-2 rounded-full text-xs font-semibold bg-slate-900 text-white shadow-sm transition-all duration-200">
+                    All Projects
+                </button>
+                <button data-filter="living-room"
+                    class="portfolio-btn px-6 py-2 rounded-full text-xs font-semibold bg-white text-slate-600 border border-slate-200 hover:border-slate-300 hover:bg-slate-50 shadow-sm transition-all duration-200">
+                    Living Rooms
+                </button>
+                <button data-filter="kitchen"
+                    class="portfolio-btn px-6 py-2 rounded-full text-xs font-semibold bg-white text-slate-600 border border-slate-200 hover:border-slate-300 hover:bg-slate-50 shadow-sm transition-all duration-200">
+                    Modular Kitchens
+                </button>
+                <button data-filter="bedroom"
+                    class="portfolio-btn px-6 py-2 rounded-full text-xs font-semibold bg-white text-slate-600 border border-slate-200 hover:border-slate-300 hover:bg-slate-50 shadow-sm transition-all duration-200">
+                    Bedrooms
+                </button>
+            </div>
+        </div>
+
+        <!-- Portfolio Items Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="portfolio-grid">
+            <!-- Project 1 (Living Room) -->
+            <div data-category="living-room"
+                class="portfolio-item bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.02)] transition-all duration-500 ease-in-out">
+                <div class="relative h-64 overflow-hidden portfolio-zoom">
+                    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80"
+                        alt="Minimal Living Room" class="w-full h-full object-cover">
+                    <div
+                        class="absolute top-4 left-4 bg-white/90 backdrop-blur-md text-slate-900 text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full">
+                        Living Room</div>
+                </div>
+                <div class="p-6">
+                    <h4 class="font-bold text-lg text-slate-900 mb-1.5">Modernist Warm Living Lounge</h4>
+                    <p class="text-xs text-slate-500 font-semibold mb-3">Vasant Kunj Apartment, New Delhi</p>
+                    <p class="text-sm text-slate-650 leading-relaxed">Bespoke TV panel units, designer profiles, and
+                        customized seating layout matching ambient LED ceiling highlights.</p>
+                </div>
+            </div>
+
+            <!-- Project 2 (Kitchen) -->
+            <div data-category="kitchen"
+                class="portfolio-item bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.02)] transition-all duration-500 ease-in-out">
+                <div class="relative h-64 overflow-hidden portfolio-zoom">
+                    <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=800&q=80"
+                        alt="Modern Kitchen" class="w-full h-full object-cover">
+                    <div
+                        class="absolute top-4 left-4 bg-white/90 backdrop-blur-md text-slate-900 text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full">
+                        Kitchen</div>
+                </div>
+                <div class="p-6">
+                    <h4 class="font-bold text-lg text-slate-900 mb-1.5">Sleek Parallel Acrylic Kitchen</h4>
+                    <p class="text-xs text-slate-500 font-semibold mb-3">DLF Phase 3, Gurugram</p>
+                    <p class="text-sm text-slate-650 leading-relaxed">Glossy acrylic modular shutters, built-in
+                        microwave housings, tandem units, and high-load capacity quartz countertops.</p>
+                </div>
+            </div>
+
+            <!-- Project 3 (Bedroom) -->
+            <div data-category="bedroom"
+                class="portfolio-item bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.02)] transition-all duration-500 ease-in-out">
+                <div class="relative h-64 overflow-hidden portfolio-zoom">
+                    <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=800&q=80"
+                        alt="Luxury Bedroom" class="w-full h-full object-cover">
+                    <div
+                        class="absolute top-4 left-4 bg-white/90 backdrop-blur-md text-slate-900 text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full">
+                        Bedroom</div>
+                </div>
+                <div class="p-6">
+                    <h4 class="font-bold text-lg text-slate-900 mb-1.5">Master Bedroom Suite Concept</h4>
+                    <p class="text-xs text-slate-500 font-semibold mb-3">Greater Kailash, New Delhi</p>
+                    <p class="text-sm text-slate-650 leading-relaxed">Velvet-finish headboard paneling, floor-to-ceiling
+                        sliding glass wardrobe shutting, and custom study desk integration.</p>
+                </div>
+            </div>
+
+            <!-- Project 4 (Living Room) -->
+            <div data-category="living-room"
+                class="portfolio-item bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.02)] transition-all duration-500 ease-in-out">
+                <div class="relative h-64 overflow-hidden portfolio-zoom">
+                    <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80"
+                        alt="Minimalist Sitting" class="w-full h-full object-cover">
+                    <div
+                        class="absolute top-4 left-4 bg-white/90 backdrop-blur-md text-slate-900 text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full">
+                        Living Room</div>
+                </div>
+                <div class="p-6">
+                    <h4 class="font-bold text-lg text-slate-900 mb-1.5">Scandinavian-Style Sitting Lounge</h4>
+                    <p class="text-xs text-slate-500 font-semibold mb-3">Noida Sector 62</p>
+                    <p class="text-sm text-slate-650 leading-relaxed">Matte wood accents, warm neutral partition walls,
+                        customized space lighting, and floating display shelves.</p>
+                </div>
+            </div>
+
+            <!-- Project 5 (Kitchen) -->
+            <div data-category="kitchen"
+                class="portfolio-item bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.02)] transition-all duration-500 ease-in-out">
+                <div class="relative h-64 overflow-hidden portfolio-zoom">
+                    <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80"
+                        alt="Luxury Kitchen" class="w-full h-full object-cover">
+                    <div
+                        class="absolute top-4 left-4 bg-white/90 backdrop-blur-md text-slate-900 text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full">
+                        Kitchen</div>
+                </div>
+                <div class="p-6">
+                    <h4 class="font-bold text-lg text-slate-900 mb-1.5">Classic Sage Green Shaker Kitchen</h4>
+                    <p class="text-xs text-slate-500 font-semibold mb-3">Dwarka Sector 10, New Delhi</p>
+                    <p class="text-sm text-slate-650 leading-relaxed">Pu-painted shaker cabinet doors, matching brass
+                        hardware details, tall pantry towers, and custom tile backsplashes.</p>
+                </div>
+            </div>
+
+            <!-- Project 6 (Bedroom) -->
+            <div data-category="bedroom"
+                class="portfolio-item bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.02)] transition-all duration-500 ease-in-out">
+                <div class="relative h-64 overflow-hidden portfolio-zoom">
+                    <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=800&q=80"
+                        alt="Cozy Bedroom" class="w-full h-full object-cover">
+                    <div
+                        class="absolute top-4 left-4 bg-white/90 backdrop-blur-md text-slate-900 text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full">
+                        Bedroom</div>
+                </div>
+                <div class="p-6">
+                    <h4 class="font-bold text-lg text-slate-900 mb-1.5">Teen Bedroom & Study Unit</h4>
+                    <p class="text-xs text-slate-500 font-semibold mb-3">Punjabi Bagh, New Delhi</p>
+                    <p class="text-sm text-slate-650 leading-relaxed">Vibrant accent highlights, space-saving hydraulic
+                        storage bed, and custom-molded overhead bookshelves.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How We Work / Process Section -->
+    <section id="process" class="py-24 px-6 bg-white border-y border-slate-200 scroll-mt-20">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20">
+                <span class="text-xs uppercase tracking-wider text-slate-500 font-bold mb-3 block">Step-By-Step
+                    Journey</span>
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-slate-900">Our Seamless Process</h2>
+                <p class="text-slate-500 max-w-xl mx-auto text-balance">We structure every renovation into five clean
+                    phases, ensuring transparent milestones from start to handover.</p>
+            </div>
+
+            <!-- Timeline Layout -->
+            <div class="relative timeline-line max-w-4xl mx-auto">
+
+                <!-- Step 1 -->
+                <div
+                    class="relative flex flex-col md:flex-row md:justify-between items-start md:items-center mb-16 md:even:flex-row-reverse group">
+                    <div class="hidden md:block w-[42%]"></div>
+                    <div
+                        class="absolute left-0 md:left-1/2 md:-translate-x-1/2 flex items-center justify-center w-10 h-10 rounded-full bg-slate-950 text-white font-bold text-sm z-10 shadow-md">
+                        01
+                    </div>
+                    <div
+                        class="pl-14 md:pl-0 md:w-[42%] bg-slate-50 p-6 md:p-8 rounded-3xl border border-slate-100 hover:shadow-lg transition-shadow duration-300">
+                        <h4 class="font-bold text-lg text-slate-900 mb-2">Initial Design Consultation</h4>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Deepak and our design managers meet at your site to take measurements, understand your
+                            aesthetic choices, and draft a primary project estimate.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div
+                    class="relative flex flex-col md:flex-row md:justify-between items-start md:items-center mb-16 md:even:flex-row-reverse group">
+                    <div class="hidden md:block w-[42%]"></div>
+                    <div
+                        class="absolute left-0 md:left-1/2 md:-translate-x-1/2 flex items-center justify-center w-10 h-10 rounded-full bg-slate-950 text-white font-bold text-sm z-10 shadow-md">
+                        02
+                    </div>
+                    <div
+                        class="pl-14 md:pl-0 md:w-[42%] bg-slate-50 p-6 md:p-8 rounded-3xl border border-slate-100 hover:shadow-lg transition-shadow duration-300">
+                        <h4 class="font-bold text-lg text-slate-900 mb-2">3D Renders & Technical Layouts</h4>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            We compile spatial 2D blueprints and high-fidelity 3D renderings of bedrooms, kitchens, and
+                            cabinetry. You approve designs before any wood is cut.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div
+                    class="relative flex flex-col md:flex-row md:justify-between items-start md:items-center mb-16 md:even:flex-row-reverse group">
+                    <div class="hidden md:block w-[42%]"></div>
+                    <div
+                        class="absolute left-0 md:left-1/2 md:-translate-x-1/2 flex items-center justify-center w-10 h-10 rounded-full bg-slate-950 text-white font-bold text-sm z-10 shadow-md">
+                        03
+                    </div>
+                    <div
+                        class="pl-14 md:pl-0 md:w-[42%] bg-slate-50 p-6 md:p-8 rounded-3xl border border-slate-100 hover:shadow-lg transition-shadow duration-300">
+                        <h4 class="font-bold text-lg text-slate-900 mb-2">Material Sourcing & Selection</h4>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            We visit our partner display experience stores together to touch and select laminate
+                            veneers, quartz counter tops, custom lighting profiles, and wall finishes.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div
+                    class="relative flex flex-col md:flex-row md:justify-between items-start md:items-center mb-16 md:even:flex-row-reverse group">
+                    <div class="hidden md:block w-[42%]"></div>
+                    <div
+                        class="absolute left-0 md:left-1/2 md:-translate-x-1/2 flex items-center justify-center w-10 h-10 rounded-full bg-slate-950 text-white font-bold text-sm z-10 shadow-md">
+                        04
+                    </div>
+                    <div
+                        class="pl-14 md:pl-0 md:w-[42%] bg-slate-50 p-6 md:p-8 rounded-3xl border border-slate-100 hover:shadow-lg transition-shadow duration-300">
+                        <h4 class="font-bold text-lg text-slate-900 mb-2">On-Site Execution & Supervision</h4>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Our vetted team of carpenters, electricians, and painters carry out work. Daily supervisor
+                            site logs keep you updated on progress remotely.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="relative flex flex-col md:flex-row md:justify-between items-start md:items-center group">
+                    <div class="hidden md:block w-[42%]"></div>
+                    <div
+                        class="absolute left-0 md:left-1/2 md:-translate-x-1/2 flex items-center justify-center w-10 h-10 rounded-full bg-slate-950 text-white font-bold text-sm z-10 shadow-md">
+                        05
+                    </div>
+                    <div
+                        class="pl-14 md:pl-0 md:w-[42%] bg-slate-50 p-6 md:p-8 rounded-3xl border border-slate-100 hover:shadow-lg transition-shadow duration-300">
+                        <h4 class="font-bold text-lg text-slate-900 mb-2">Deep Cleaning & Handover</h4>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Following a comprehensive quality checklist, we deep clean the entire space and hand over
+                            keys, certificates of authenticity, and warranties.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Accordion Section -->
+    <section id="faq" class="py-24 px-6 max-w-4xl mx-auto scroll-mt-20">
+        <div class="text-center mb-16">
+            <span class="text-xs uppercase tracking-wider text-slate-500 font-bold mb-3 block">Got Questions?</span>
+            <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-slate-900">Frequently Asked Questions
+            </h2>
+            <p class="text-slate-500 text-sm md:text-base">Everything you need to know about our interior execution
+                timelines, pricing, and warranties.</p>
+        </div>
+
+        <div class="space-y-4">
+            <!-- FAQ Item 1 -->
+            <div
+                class="faq-item bg-white rounded-3xl border border-slate-100 overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.01)] transition-all">
+                <button
+                    class="faq-header w-full px-8 py-6 flex items-center justify-between text-left focus:outline-none">
+                    <span class="font-bold text-slate-900 text-sm md:text-base">What is the typical timeline for a full
+                        3BHK home interior execution?</span>
+                    <span
+                        class="faq-icon w-5 h-5 flex items-center justify-center text-slate-500 transform transition-transform duration-300">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
+                    </span>
+                </button>
+                <div class="faq-content max-h-0 opacity-0 overflow-hidden transition-all duration-300">
+                    <div class="px-8 pb-6 text-sm text-slate-600 leading-relaxed border-t border-slate-50 pt-4">
+                        Typically, a comprehensive 3BHK interior execution project (modular kitchen, wardrobes, false
+                        ceilings, and wall paint) takes <strong>45 to 60 working days</strong> from the date of final 3D
+                        design approval. We commit to a penalty-backed timeline in our service contracts.
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Item 2 -->
+            <div
+                class="faq-item bg-white rounded-3xl border border-slate-100 overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.01)] transition-all">
+                <button
+                    class="faq-header w-full px-8 py-6 flex items-center justify-between text-left focus:outline-none">
+                    <span class="font-bold text-slate-900 text-sm md:text-base">Does Rs Designer Living handle civil
+                        renovations like wall demolitions and plumbing?</span>
+                    <span
+                        class="faq-icon w-5 h-5 flex items-center justify-center text-slate-500 transform transition-transform duration-300">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
+                    </span>
+                </button>
+                <div class="faq-content max-h-0 opacity-0 overflow-hidden transition-all duration-300">
+                    <div class="px-8 pb-6 text-sm text-slate-600 leading-relaxed border-t border-slate-50 pt-4">
+                        Yes! Unlike basic modular furniture teams, we have a qualified in-house civil squad. We
+                        regularly execute partition dismantling, bathroom plumbing rerouting, kitchen extension masonry,
+                        marble/tiling works, and complete electric grid updates.
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Item 3 -->
+            <div
+                class="faq-item bg-white rounded-3xl border border-slate-100 overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.01)] transition-all">
+                <button
+                    class="faq-header w-full px-8 py-6 flex items-center justify-between text-left focus:outline-none">
+                    <span class="font-bold text-slate-900 text-sm md:text-base">What kind of material warranties do you
+                        offer?</span>
+                    <span
+                        class="faq-icon w-5 h-5 flex items-center justify-center text-slate-500 transform transition-transform duration-300">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
+                    </span>
+                </button>
+                <div class="faq-content max-h-0 opacity-0 overflow-hidden transition-all duration-300">
+                    <div class="px-8 pb-6 text-sm text-slate-600 leading-relaxed border-t border-slate-50 pt-4">
+                        We provide a <strong>10-year warranty</strong> against core moisture damage and termite attacks
+                        on all BWP (Boiling Water Proof) modular plywood cabinets. Additionally, all functional hardware
+                        (hinges, slides, tandem drawers) carries their respective manufacturer warranties (Hettich,
+                        Blum, Hafele).
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Item 4 -->
+            <div
+                class="faq-item bg-white rounded-3xl border border-slate-100 overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.01)] transition-all">
+                <button
+                    class="faq-header w-full px-8 py-6 flex items-center justify-between text-left focus:outline-none">
+                    <span class="font-bold text-slate-900 text-sm md:text-base">Do you charge a consultation fee for the
+                        first site visit and layout estimate?</span>
+                    <span
+                        class="faq-icon w-5 h-5 flex items-center justify-center text-slate-500 transform transition-transform duration-300">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
+                    </span>
+                </button>
+                <div class="faq-content max-h-0 opacity-0 overflow-hidden transition-all duration-300">
+                    <div class="px-8 pb-6 text-sm text-slate-600 leading-relaxed border-t border-slate-50 pt-4">
+                        No. The first site visit, actual measurements, and initial spatial layout consultation are
+                        completely <strong>free of charge and non-binding</strong>. We will share a ballpark price
+                        estimate with you based on these measurements.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="py-24 px-6 max-w-7xl mx-auto scroll-mt-20">
+        <div class="text-center mb-16">
+            <span class="text-xs uppercase tracking-wider text-slate-500 font-bold mb-3 block">Testimonials</span>
+            <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">What Our Clients Say</h2>
+            <p class="text-slate-500">Real experiences from homeowners who trusted us with their spaces.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Review 1 -->
+            <div
+                class="bg-white p-8 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 flex flex-col h-full hover:shadow-[0_20px_45px_rgb(0,0,0,0.05)] transition-shadow duration-300">
+                <svg class="w-8 h-8 text-slate-200 mb-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path
+                        d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1.5.5 1.5 1.714Z">
+                    </path>
+                    <path
+                        d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.5c0 1.214.5 1.714 1.5 1.714Z">
+                    </path>
+                </svg>
+                <div class="flex gap-1 mb-4 text-yellow-400">
+                    <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <polygon
+                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                    </svg>
+                    <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <polygon
+                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                    </svg>
+                    <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <polygon
+                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                    </svg>
+                    <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <polygon
+                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                    </svg>
+                    <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <polygon
+                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                    </svg>
+                </div>
+                <p class="text-slate-650 leading-relaxed mb-6 flex-grow text-sm">
+                    "We have availed interior services from Rs Designer Living, we found their workmanship unmatchable.
+                    Perfect choice for home interior and renovation. Really appreciate their work. Deepak sir have give
+                    their best in designing as well as execution."
+                </p>
+                <div>
+                    <p class="font-semibold text-slate-900">Verified Client</p>
+                    <p class="text-sm text-slate-500">9 months ago</p>
+                </div>
+            </div>
+
+            <!-- Review 2 -->
+            <div
+                class="bg-slate-900 p-8 rounded-3xl shadow-xl shadow-slate-900/10 flex flex-col h-full text-white transform md:-translate-y-4 hover:scale-[1.01] transition-transform duration-300">
+                <svg class="w-8 h-8 text-slate-700 mb-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path
+                        d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1.5.5 1.5 1.714Z">
+                    </path>
+                    <path
+                        d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.5c0 1.214.5 1.714 1.5 1.714Z">
+                    </path>
+                </svg>
+                <div class="flex gap-1 mb-4 text-yellow-400">
+                    <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <polygon
+                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                    </svg>
+                    <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <polygon
+                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                    </svg>
+                    <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <polygon
+                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                    </svg>
+                    <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <polygon
+                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                    </svg>
+                    <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <polygon
+                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                    </svg>
+                </div>
+                <p class="text-slate-350 leading-relaxed mb-6 flex-grow font-medium text-sm">
+                    "I recently had the pleasure of working with Deepak ji for my interior design project, and i must
+                    say, the experience was outstanding. From the initial consultation to the final touches, the Rs
+                    Designer team showed great professionalism."
+                </p>
+                <div>
+                    <p class="font-semibold">Umashankar</p>
+                    <p class="text-sm text-slate-400">10 months ago</p>
+                </div>
+            </div>
+
+            <!-- Review 3 -->
+            <div
+                class="bg-white p-8 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 flex flex-col h-full hover:shadow-[0_20px_45px_rgb(0,0,0,0.05)] transition-shadow duration-300">
+                <svg class="w-8 h-8 text-slate-200 mb-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path
+                        d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1.5.5 1.5 1.714Z">
+                    </path>
+                    <path
+                        d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.5c0 1.214.5 1.714 1.5 1.714Z">
+                    </path>
+                </svg>
+                <div class="flex gap-1 mb-4 text-yellow-400">
+                    <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <polygon
+                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                    </svg>
+                    <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <polygon
+                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                    </svg>
+                    <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <polygon
+                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                    </svg>
+                    <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <polygon
+                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                    </svg>
+                    <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <polygon
+                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                    </svg>
+                </div>
+                <p class="text-slate-650 leading-relaxed mb-6 flex-grow text-sm">
+                    "Deepak & his team showcased exceptional dedication and creativity, delivering innovative design
+                    solutions tailored to our vision. Every element reflected a perfect blend of aesthetics and
+                    functionality."
+                </p>
+                <div>
+                    <p class="font-semibold text-slate-900">Verified Client</p>
+                    <p class="text-sm text-slate-500">3 months ago</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer & Contact -->
+    <footer id="contact" class="bg-white border-t border-slate-200 scroll-mt-20">
+        <div class="max-w-7xl mx-auto px-6 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold tracking-tight mb-4">Ready to reshape your home?</h2>
+                    <p class="text-slate-500 mb-8 max-w-md text-sm sm:text-base leading-relaxed">
+                        Get in touch with Deepak and the team today for a free consultation and bring your interior
+                        vision to life.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-3 text-slate-600">
+                            <svg class="w-5 h-5 text-slate-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            <span>Open until 9:00 PM</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-slate-600">
+                            <svg class="w-5 h-5 text-slate-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <polygon
+                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                            </svg>
+                            <span class="inline-flex items-center gap-2">LGBTQ+ friendly <span
+                                    class="bg-slate-100 text-slate-600 text-[10px] px-2 py-0.5 rounded-full uppercase tracking-wider font-bold">Attribute</span></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100">
+                    <form id="contact-form" class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-1">Name</label>
+                            <input type="text" id="contact-name"
+                                class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-slate-900/10 focus:border-slate-900 transition-all bg-white"
+                                placeholder="John Doe">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-1">Phone Number</label>
+                            <input type="tel" id="contact-phone"
+                                class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-slate-900/10 focus:border-slate-900 transition-all bg-white"
+                                placeholder="+91 99999 99999">
+                        </div>
+                        <button type="submit" id="contact-submit"
+                            class="w-full bg-slate-900 text-white px-4 py-3.5 rounded-xl font-medium hover:bg-slate-800 transition-all mt-2">
+                            Request Call Back
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div
+                class="mt-16 pt-8 border-t border-slate-100 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-slate-500">
+                <p>© 2026 Rs Designer Living, Home Renovation & Reshape co. All rights reserved.</p>
+                <p>Designed with precision.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast-success"
+        class="fixed bottom-5 right-5 bg-slate-950 text-white px-6 py-4 rounded-2xl shadow-xl z-50 flex items-center gap-3 translate-y-20 opacity-0 transition-all duration-300">
+        <div
+            class="w-8 h-8 rounded-full bg-emerald-500/15 flex items-center justify-center flex-shrink-0 text-emerald-400">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+        </div>
+        <div>
+            <p class="font-bold text-sm">Request Submitted!</p>
+            <p class="text-xs text-slate-400 mt-0.5">Deepak's team will contact you shortly.</p>
+        </div>
+    </div>
+
+    <!-- Scripting for Interactivity -->
+    <script>
+        // 1. Mobile navigation menu drawer toggles
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+        const mobileMenuDrawer = document.getElementById('mobile-menu-drawer');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        const mobileLinks = document.querySelectorAll('#mobile-menu-drawer a');
+
+        function openDrawer() {
+            mobileMenuOverlay.classList.remove('opacity-0', 'pointer-events-none');
+            mobileMenuDrawer.classList.remove('translate-x-full');
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function closeDrawer() {
+            mobileMenuOverlay.classList.add('opacity-0', 'pointer-events-none');
+            mobileMenuDrawer.classList.add('translate-x-full');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        mobileMenuBtn.addEventListener('click', openDrawer);
+        mobileMenuOverlay.addEventListener('click', closeDrawer);
+        mobileMenuClose.addEventListener('click', closeDrawer);
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', closeDrawer);
+        });
+
+        // 2. Interactive Portfolio tab filter switching
+        const portfolioButtons = document.querySelectorAll('.portfolio-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+        portfolioButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active styling from all tab buttons
+                portfolioButtons.forEach(b => {
+                    b.classList.remove('bg-slate-900', 'text-white');
+                    b.classList.add('bg-white', 'text-slate-650', 'border-slate-200');
+                });
+                // Add active styling to clicked button
+                btn.classList.add('bg-slate-900', 'text-white');
+                btn.classList.remove('bg-white', 'text-slate-650', 'border-slate-200');
+
+                const filter = btn.getAttribute('data-filter');
+
+                portfolioItems.forEach(item => {
+                    const category = item.getAttribute('data-category');
+                    if (filter === 'all' || category === filter) {
+                        // Fade in matched items
+                        item.classList.remove('hidden');
+                        setTimeout(() => {
+                            item.classList.remove('opacity-0', 'scale-95');
+                        }, 20);
+                    } else {
+                        // Fade out unmatched items
+                        item.classList.add('opacity-0', 'scale-95');
+                        setTimeout(() => {
+                            item.classList.add('hidden');
+                        }, 200);
+                    }
+                });
+            });
+        });
+
+        // 3. FAQ Accordion panel expanding
+        const faqHeaders = document.querySelectorAll('.faq-header');
+
+        faqHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                const content = header.nextElementSibling;
+                const icon = header.querySelector('.faq-icon');
+
+                // Toggle other FAQs closed (accordion behavior)
+                document.querySelectorAll('.faq-item').forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                        otherItem.querySelector('.faq-content').style.maxHeight = null;
+                        otherItem.querySelector('.faq-content').classList.add('opacity-0');
+                        otherItem.querySelector('.faq-icon').classList.remove('rotate-180');
+                    }
+                });
+
+                // Toggle current FAQ
+                if (item.classList.contains('active')) {
+                    item.classList.remove('active');
+                    content.style.maxHeight = null;
+                    content.classList.add('opacity-0');
+                    icon.classList.remove('rotate-180');
+                } else {
+                    item.classList.add('active');
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    content.classList.remove('opacity-0');
+                    icon.classList.add('rotate-180');
+                }
+            });
+        });
+
+        // 4. Form validation & Success Toast trigger
+        const contactForm = document.getElementById('contact-form');
+        const nameInput = document.getElementById('contact-name');
+        const phoneInput = document.getElementById('contact-phone');
+        const toastSuccess = document.getElementById('toast-success');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            let isFormValid = true;
+
+            // Simple validation check
+            if (!nameInput.value.trim()) {
+                nameInput.classList.add('border-red-500', 'focus:ring-red-100');
+                isFormValid = false;
+            } else {
+                nameInput.classList.remove('border-red-500', 'focus:ring-red-100');
+            }
+
+            if (!phoneInput.value.trim() || phoneInput.value.trim().length < 8) {
+                phoneInput.classList.add('border-red-500', 'focus:ring-red-100');
+                isFormValid = false;
+            } else {
+                phoneInput.classList.remove('border-red-500', 'focus:ring-red-100');
+            }
+
+            if (isFormValid) {
+                // Display Success Toast
+                toastSuccess.classList.remove('translate-y-20', 'opacity-0');
+                toastSuccess.classList.add('translate-y-0', 'opacity-100');
+
+                // Clear input values
+                nameInput.value = '';
+                phoneInput.value = '';
+
+                // Autohide Toast after 4 seconds
+                setTimeout(() => {
+                    toastSuccess.classList.remove('translate-y-0', 'opacity-100');
+                    toastSuccess.classList.add('translate-y-20', 'opacity-0');
+                }, 4000);
+            }
+        });
+    </script>
+
+</body>
+
+</html>
