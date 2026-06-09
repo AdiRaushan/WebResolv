@@ -1,0 +1,2190 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <title>WebResolv Internal SEO Knowledge Center</title>
+    <meta name="robots" content="noindex, nofollow" />
+
+    <!-- Dependencies -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/lucide@latest"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+
+    <style>
+        :root {
+            --bg-color: #050505;
+            --accent: #f97316;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            background-color: var(--bg-color);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        @media (min-width: 768px) {
+            body {
+                cursor: none;
+            }
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        .font-display {
+            font-family: "Space Grotesk", sans-serif;
+        }
+
+        /* Spotlight Tracker */
+        .spotlight {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            background: radial-gradient(600px circle at var(--x) var(--y),
+                    rgba(249, 115, 22, 0.1),
+                    transparent 45%);
+        }
+
+        /* Custom Cursor */
+        .cursor-dot,
+        .cursor-outline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 9999;
+            pointer-events: none;
+        }
+
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background: white;
+            mix-blend-mode: difference;
+        }
+
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 1.5px solid white;
+            mix-blend-mode: difference;
+            transition: width 0.2s, height 0.2s;
+        }
+
+        body:hover .cursor-outline {
+            width: 40px;
+            height: 40px;
+        }
+
+        button:hover~.cursor-outline,
+        a:hover~.cursor-outline,
+        .clickable:hover~.cursor-outline {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.15);
+            border-color: transparent;
+        }
+
+        /* Glass Cards */
+        .glass {
+            background: rgba(18, 18, 18, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass:hover {
+            background: rgba(26, 26, 26, 0.6);
+            border-color: rgba(249, 115, 22, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #050505;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #222;
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #333;
+        }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-orange-500 selection:text-white">
+    <!-- Visual Overlays -->
+    <div class="absolute inset-0 pointer-events-none z-[1] opacity-[0.02] mix-blend-screen"
+        style="background-image: url(&quot;data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;); background-color: rgba(249, 115, 22, 0.15);">
+    </div>
+    <div class="spotlight" id="spotlight"></div>
+    <div class="cursor-dot hidden md:block" id="cursor-dot"></div>
+    <div class="cursor-outline hidden md:block" id="cursor-outline"></div>
+
+    <h2 class="visually-hidden">Complete end-to-end SEO guide covering keyword research, on-page optimization, schema
+        markup, technical SEO, user engagement, lead generation, analytics tools, and backlink strategy</h2>
+
+    <main class="relative z-10 max-w-6xl mx-auto px-6 pt-16 pb-24">
+        <!-- Dashboard Header -->
+        <header class="mb-12 border-b border-white/5 pb-8 flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div>
+                <div class="flex items-center gap-3 mb-3">
+                    <span
+                        class="px-2.5 py-0.5 rounded-md bg-orange-500/10 border border-orange-500/20 text-orange-400 font-mono text-[9px] font-bold tracking-widest uppercase">
+                        Restricted Access
+                    </span>
+                    <span
+                        class="px-2.5 py-0.5 rounded-md bg-neutral-900 border border-white/5 text-gray-500 font-mono text-[9px] tracking-wider uppercase">
+                        Internal Resource
+                    </span>
+                </div>
+                <h1
+                    class="font-display font-black text-3xl sm:text-4xl text-white uppercase tracking-tighter leading-none mb-3">
+                    SEO Audit &amp; Playbook
+                </h1>
+                <p class="text-gray-400 text-xs sm:text-sm font-light leading-relaxed max-w-xl">
+                    Internal knowledge base and implementation guidelines for keyword research, technical SEO,
+                    structured data, conversion optimization, and backlinks.
+                </p>
+            </div>
+
+            <div class="flex items-center gap-2 font-mono text-[10px] text-gray-500">
+                <i data-lucide="shield-check" class="w-4 h-4 text-emerald-500"></i>
+                <span>SECURE RESELLER ENVIRONMENT</span>
+            </div>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="flex gap-2 flex-wrap mb-10 pb-4 border-b border-white/5 overflow-x-auto" id="nav">
+            <button
+                class="px-4 py-2 border rounded-full text-xs font-mono font-bold tracking-wide transition-all duration-200 clickable bg-orange-500/10 border-orange-500/30 text-orange-400"
+                data-t="kw">Keyword research</button>
+            <button
+                class="px-4 py-2 border rounded-full text-xs font-mono font-semibold tracking-wide transition-all duration-200 clickable border-white/5 text-gray-400 hover:text-white hover:border-white/20"
+                data-t="op">On-page SEO</button>
+            <button
+                class="px-4 py-2 border rounded-full text-xs font-mono font-semibold tracking-wide transition-all duration-200 clickable border-white/5 text-gray-400 hover:text-white hover:border-white/20"
+                data-t="sm">Schema markup</button>
+            <button
+                class="px-4 py-2 border rounded-full text-xs font-mono font-semibold tracking-wide transition-all duration-200 clickable border-white/5 text-gray-400 hover:text-white hover:border-white/20"
+                data-t="ts">Technical SEO</button>
+            <button
+                class="px-4 py-2 border rounded-full text-xs font-mono font-semibold tracking-wide transition-all duration-200 clickable border-white/5 text-gray-400 hover:text-white hover:border-white/20"
+                data-t="eg">Engagement</button>
+            <button
+                class="px-4 py-2 border rounded-full text-xs font-mono font-semibold tracking-wide transition-all duration-200 clickable border-white/5 text-gray-400 hover:text-white hover:border-white/20"
+                data-t="lg">Lead generation</button>
+            <button
+                class="px-4 py-2 border rounded-full text-xs font-mono font-semibold tracking-wide transition-all duration-200 clickable border-white/5 text-gray-400 hover:text-white hover:border-white/20"
+                data-t="tl">Tools &amp; analytics</button>
+            <button
+                class="px-4 py-2 border rounded-full text-xs font-mono font-semibold tracking-wide transition-all duration-200 clickable border-white/5 text-gray-400 hover:text-white hover:border-white/20"
+                data-t="bl">Backlinks</button>
+            <button
+                class="px-4 py-2 border rounded-full text-xs font-mono font-semibold tracking-wide transition-all duration-200 clickable border-white/5 text-gray-400 hover:text-white hover:border-white/20"
+                data-t="bs">Blog Structure</button>
+        </nav>
+
+        <!-- SECTION 1: KEYWORD RESEARCH -->
+        <div class="space-y-10" id="s-kw">
+            <p
+                class="text-sm text-gray-400 font-light leading-relaxed border-l-2 border-orange-500/40 pl-4 py-1 max-w-3xl">
+                Keyword research is the foundation of everything. Find what your audience actually searches for, match
+                your content to their intent, and build a targeting strategy before writing a single word.
+            </p>
+
+            <div>
+                <h3 class="font-display font-bold text-lg text-white mb-6 uppercase tracking-wider text-orange-500">Step
+                    1 — Understand search intent first</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="glass rounded-xl p-5 flex flex-col justify-between">
+                        <div>
+                            <div
+                                class="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center justify-center mb-4">
+                                <i data-lucide="search" class="w-4 h-4"></i>
+                            </div>
+                            <h4 class="font-display font-semibold text-sm text-white mb-2 uppercase tracking-wide">
+                                Informational</h4>
+                            <p class="text-xs text-gray-400 font-light leading-relaxed">User wants to learn. "What is
+                                web design?" — Target with blogs, guides, FAQs. High traffic, lower conversion intent.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="glass rounded-xl p-5 flex flex-col justify-between">
+                        <div>
+                            <div
+                                class="w-8 h-8 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center mb-4">
+                                <i data-lucide="git-compare" class="w-4 h-4"></i>
+                            </div>
+                            <h4 class="font-display font-semibold text-sm text-white mb-2 uppercase tracking-wide">
+                                Commercial</h4>
+                            <p class="text-xs text-gray-400 font-light leading-relaxed">User is comparing. "Best web
+                                design agencies Delhi" — Target with comparison pages. High conversion potential.</p>
+                        </div>
+                    </div>
+
+                    <div class="glass rounded-xl p-5 flex flex-col justify-between">
+                        <div>
+                            <div
+                                class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center mb-4">
+                                <i data-lucide="shopping-cart" class="w-4 h-4"></i>
+                            </div>
+                            <h4 class="font-display font-semibold text-sm text-white mb-2 uppercase tracking-wide">
+                                Transactional</h4>
+                            <p class="text-xs text-gray-400 font-light leading-relaxed">User wants to hire now. "Hire
+                                web designer Delhi" — Target with service pages. Highest intent, build these first.</p>
+                        </div>
+                    </div>
+
+                    <div class="glass rounded-xl p-5 flex flex-col justify-between">
+                        <div>
+                            <div
+                                class="w-8 h-8 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 flex items-center justify-center mb-4">
+                                <i data-lucide="map-pin" class="w-4 h-4"></i>
+                            </div>
+                            <h4 class="font-display font-semibold text-sm text-white mb-2 uppercase tracking-wide">
+                                Navigational</h4>
+                            <p class="text-xs text-gray-400 font-light leading-relaxed">User wants a specific brand.
+                                "Webresolv contact" — Optimise your brand name. You can't rank for competitors' brands.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="font-display font-bold text-lg text-white mb-6 uppercase tracking-wider text-orange-500">Step
+                    2 — How to find your focus keyword</h3>
+                <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <li class="glass rounded-xl p-5 flex gap-4">
+                        <div
+                            class="flex-shrink-0 w-6 h-6 rounded-md bg-orange-500/10 border border-orange-500/20 text-orange-400 font-mono text-[10px] font-bold flex items-center justify-center mt-0.5">
+                            1</div>
+                        <span class="text-xs text-gray-400 leading-relaxed font-light"><strong
+                                class="text-white font-semibold block mb-1">Seed keywords</strong> Start with 5–10 broad
+                            terms: "web design", "digital marketing", "SEO services", "website development Delhi". These
+                            are your starting points, not your targets.</span>
+                    </li>
+                    <li class="glass rounded-xl p-5 flex gap-4">
+                        <div
+                            class="flex-shrink-0 w-6 h-6 rounded-md bg-orange-500/10 border border-orange-500/20 text-orange-400 font-mono text-[10px] font-bold flex items-center justify-center mt-0.5">
+                            2</div>
+                        <span class="text-xs text-gray-400 leading-relaxed font-light"><strong
+                                class="text-white font-semibold block mb-1">Expand with tools</strong> Plug seeds into
+                            Google Keyword Planner, Ahrefs, or SEMrush. Harvest related keywords, questions, and "People
+                            Also Ask" variations. These are real search variations.</span>
+                    </li>
+                    <li class="glass rounded-xl p-5 flex gap-4">
+                        <div
+                            class="flex-shrink-0 w-6 h-6 rounded-md bg-orange-500/10 border border-orange-500/20 text-orange-400 font-mono text-[10px] font-bold flex items-center justify-center mt-0.5">
+                            3</div>
+                        <span class="text-xs text-gray-400 leading-relaxed font-light"><strong
+                                class="text-white font-semibold block mb-1">Check keyword difficulty (KD)</strong>
+                            New/small site: target KD 0–30. Established DA 30+ site: up to KD 50. Never target KD 80+
+                            early. You will not rank. Pivot to long-tail variations.</span>
+                    </li>
+                    <li class="glass rounded-xl p-5 flex gap-4">
+                        <div
+                            class="flex-shrink-0 w-6 h-6 rounded-md bg-orange-500/10 border border-orange-500/20 text-orange-400 font-mono text-[10px] font-bold flex items-center justify-center mt-0.5">
+                            4</div>
+                        <span class="text-xs text-gray-400 leading-relaxed font-light"><strong
+                                class="text-white font-semibold block mb-1">Validate search volume</strong> Minimum
+                            50–100/mo for local niche terms. 500–1,000+ for broader terms. A 50/mo transactional keyword
+                            beats a 5,000/mo informational one for revenue.</span>
+                    </li>
+                    <li class="glass rounded-xl p-5 flex gap-4">
+                        <div
+                            class="flex-shrink-0 w-6 h-6 rounded-md bg-orange-500/10 border border-orange-500/20 text-orange-400 font-mono text-[10px] font-bold flex items-center justify-center mt-0.5">
+                            5</div>
+                        <span class="text-xs text-gray-400 leading-relaxed font-light"><strong
+                                class="text-white font-semibold block mb-1">Check the SERP manually</strong> Google your
+                            keyword. If page 1 is all major brands, pivot to a long-tail. If it's blog posts and small
+                            sites, you can compete. The SERP tells you what Google wants.</span>
+                    </li>
+                    <li class="glass rounded-xl p-5 flex gap-4">
+                        <div
+                            class="flex-shrink-0 w-6 h-6 rounded-md bg-orange-500/10 border border-orange-500/20 text-orange-400 font-mono text-[10px] font-bold flex items-center justify-center mt-0.5">
+                            6</div>
+                        <span class="text-xs text-gray-400 leading-relaxed font-light"><strong
+                                class="text-white font-semibold block mb-1">Spy on competitors</strong> Use Ahrefs or
+                            SEMrush to see exactly what keywords your competitors rank for. Find gaps — keywords they
+                            rank for that you haven't targeted yet.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="font-display font-bold text-lg text-white mb-6 uppercase tracking-wider text-orange-500">
+                    Short-tail vs long-tail</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="glass rounded-xl p-6 border-l-4 border-amber-500 bg-amber-500/[0.01]">
+                        <h4 class="font-display font-bold text-sm text-amber-400 mb-2 uppercase tracking-wide">
+                            Short-tail (head keywords)</h4>
+                        <p class="text-xs text-gray-400 font-light leading-relaxed">
+                            1–2 words. High volume, high KD, broad intent. "web design" = 50k searches, KD 85. Use
+                            sparingly on home/pillar pages only. Hard to rank without strong domain authority.
+                        </p>
+                    </div>
+                    <div class="glass rounded-xl p-6 border-l-4 border-emerald-500 bg-emerald-500/[0.01]">
+                        <h4 class="font-display font-bold text-sm text-emerald-400 mb-2 uppercase tracking-wide">
+                            Long-tail keywords</h4>
+                        <p class="text-xs text-gray-400 font-light leading-relaxed">
+                            3+ words. Lower volume, low KD, clear intent. "web design agency small business Delhi" = 200
+                            searches, KD 20. Easy to rank, high conversion. Target these aggressively across all pages.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="font-display font-bold text-lg text-white mb-6 uppercase tracking-wider text-orange-500">Free
+                    keyword research workflow</h3>
+                <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <li class="glass rounded-xl p-4 flex items-start gap-3">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0"></i>
+                        <span class="text-xs text-gray-400 font-light leading-normal">Google your seed keyword → scrape
+                            "People Also Ask" and "Related Searches" at bottom. Free goldmine of exact long-tail phrases
+                            people search.</span>
+                    </li>
+                    <li class="glass rounded-xl p-4 flex items-start gap-3">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0"></i>
+                        <span class="text-xs text-gray-400 font-light leading-normal">Use Google Autocomplete — type
+                            your keyword + each letter of the alphabet. Every suggestion is a real search
+                            pattern.</span>
+                    </li>
+                    <li class="glass rounded-xl p-4 flex items-start gap-3">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0"></i>
+                        <span class="text-xs text-gray-400 font-light leading-normal">Check Google Search Console for
+                            queries already sending traffic. Find positions 5–20 — those are fastest wins. Improve those
+                            pages and push them to page 1.</span>
+                    </li>
+                    <li class="glass rounded-xl p-4 flex items-start gap-3">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0"></i>
+                        <span class="text-xs text-gray-400 font-light leading-normal">Build a keyword map — assign ONE
+                            primary keyword per page + 3–5 secondary/LSI keywords. Never target the same keyword on two
+                            pages (keyword cannibalization kills rankings).</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="glass border-l-4 border-orange-500 bg-orange-500/[0.01] rounded-xl p-5">
+                <p class="text-xs text-orange-400 font-light leading-relaxed">
+                    <strong
+                        class="text-white font-bold block mb-1 uppercase tracking-wider font-mono text-[10px]">Priority
+                        formula:</strong>
+                    Best keywords score high on business value (does this bring paying clients?) + transactional intent
+                    + manageable KD for your current domain authority + enough volume to matter. Optimise for revenue,
+                    not traffic vanity metrics.
+                </p>
+            </div>
+        </div>
+
+        <!-- SECTION 2: ON-PAGE SEO -->
+        <div class="space-y-10 hidden" id="s-op">
+            <p
+                class="text-sm text-gray-400 font-light leading-relaxed border-l-2 border-orange-500/40 pl-4 py-1 max-w-3xl">
+                On-page SEO is every element you control directly on the page — from HTML structure to your content.
+                Nail these and you give Google every signal it needs to rank you correctly for the right queries.
+            </p>
+
+            <div>
+                <h3 class="font-display font-bold text-lg text-white mb-6 uppercase tracking-wider text-orange-500">
+                    Anatomy of a perfectly optimised page</h3>
+                <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <li class="glass rounded-xl p-5 flex gap-4">
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-lg bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center mt-0.5">
+                            <i data-lucide="tag" class="w-4 h-4"></i>
+                        </div>
+                        <span class="text-xs text-gray-400 leading-relaxed font-light"><strong
+                                class="text-white font-semibold block mb-1">Title tag</strong> 50–60 chars. Focus
+                            keyword near the start. Format: "Focus Keyword | Brand Name". E.g. "Web Design Agency Delhi
+                            | Webresolv". Every page needs a unique title — never duplicate.</span>
+                    </li>
+                    <li class="glass rounded-xl p-5 flex gap-4">
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-lg bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center mt-0.5">
+                            <i data-lucide="file-text" class="w-4 h-4"></i>
+                        </div>
+                        <span class="text-xs text-gray-400 leading-relaxed font-light"><strong
+                                class="text-white font-semibold block mb-1">Meta description</strong> 150–160 chars. Not
+                            a direct ranking factor but controls CTR heavily. Include keyword, clear value prop, call to
+                            action. "Delhi's top web design agency. Fast sites, SEO-ready. Get a free quote
+                            today."</span>
+                    </li>
+                    <li class="glass rounded-xl p-5 flex gap-4">
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-lg bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center mt-0.5">
+                            <i data-lucide="heading" class="w-4 h-4"></i>
+                        </div>
+                        <span class="text-xs text-gray-400 leading-relaxed font-light"><strong
+                                class="text-white font-semibold block mb-1">H1 tag</strong> One per page only. Contains
+                            your focus keyword naturally. This is the page's title as Google reads it. "Affordable Web
+                            Design Services in Delhi" — do not repeat the same H1 across pages.</span>
+                    </li>
+                    <li class="glass rounded-xl p-5 flex gap-4">
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-lg bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center mt-0.5">
+                            <i data-lucide="git-branch" class="w-4 h-4"></i>
+                        </div>
+                        <span class="text-xs text-gray-400 leading-relaxed font-light"><strong
+                                class="text-white font-semibold block mb-1">H2 / H3 structure</strong> H2s are section
+                            headers, include secondary keywords. H3s are sub-points within H2 sections. This hierarchy
+                            helps Google understand content depth and earns featured snippets.</span>
+                    </li>
+                    <li class="glass rounded-xl p-5 flex gap-4">
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-lg bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center mt-0.5">
+                            <i data-lucide="align-left" class="w-4 h-4"></i>
+                        </div>
+                        <span class="text-xs text-gray-400 leading-relaxed font-light"><strong
+                                class="text-white font-semibold block mb-1">First 100 words</strong> Mention your focus
+                            keyword in the opening paragraph. Google weights early occurrence heavily. Answer the query
+                            or state the topic immediately — don't warm up for 300 words.</span>
+                    </li>
+                    <li class="glass rounded-xl p-5 flex gap-4">
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-lg bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center mt-0.5">
+                            <i data-lucide="link" class="w-4 h-4"></i>
+                        </div>
+                        <span class="text-xs text-gray-400 leading-relaxed font-light"><strong
+                                class="text-white font-semibold block mb-1">URL slug</strong> Short, lowercase,
+                            hyphenated, keyword-included. /web-design-delhi not /page?id=43. Under 60 chars. Never
+                            change a live URL without a 301 redirect — you'll lose all its ranking equity.</span>
+                    </li>
+                    <li class="glass rounded-xl p-5 flex gap-4">
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-lg bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center mt-0.5">
+                            <i data-lucide="image" class="w-4 h-4"></i>
+                        </div>
+                        <span class="text-xs text-gray-400 leading-relaxed font-light"><strong
+                                class="text-white font-semibold block mb-1">Image alt text</strong> Describe every image
+                            with keyword-relevant alt text. alt="web design portfolio Delhi 2025". Helps Google index
+                            images and contributes to topical relevance signals.</span>
+                    </li>
+                    <li class="glass rounded-xl p-5 flex gap-4">
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-lg bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center mt-0.5">
+                            <i data-lucide="arrow-left-right" class="w-4 h-4"></i>
+                        </div>
+                        <span class="text-xs text-gray-400 leading-relaxed font-light"><strong
+                                class="text-white font-semibold block mb-1">Internal links</strong> Link to 3–5 related
+                            pages within your site using descriptive anchor text (not "click here"). Distributes ranking
+                            authority (PageRank) across your site and helps Google discover all your pages.</span>
+                    </li>
+                    <li class="glass rounded-xl p-5 flex gap-4">
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-lg bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center mt-0.5">
+                            <i data-lucide="external-link" class="w-4 h-4"></i>
+                        </div>
+                        <span class="text-xs text-gray-400 leading-relaxed font-light"><strong
+                                class="text-white font-semibold block mb-1">External links</strong> Link out to 1–2
+                            authoritative sources (Google, a reputable study, industry org). Signals you've done
+                            research and your content is credible. Many people avoid this — don't.</span>
+                    </li>
+                    <li class="glass rounded-xl p-5 flex gap-4">
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-lg bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center mt-0.5">
+                            <i data-lucide="ruler" class="w-4 h-4"></i>
+                        </div>
+                        <span class="text-xs text-gray-400 leading-relaxed font-light"><strong
+                                class="text-white font-semibold block mb-1">Content length</strong> Match what already
+                            ranks. Check the average word count of page 1 results for your keyword. For competitive
+                            queries: 1,500–2,500 words. Local service pages: 800–1,200 can be enough. Quality beats
+                            length every time.</span>
+                    </li>
+                    <li class="glass rounded-xl p-5 flex gap-4">
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-lg bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center mt-0.5">
+                            <i data-lucide="percent" class="w-4 h-4"></i>
+                        </div>
+                        <span class="text-xs text-gray-400 leading-relaxed font-light"><strong
+                                class="text-white font-semibold block mb-1">Keyword density</strong> 1–2% is fine. Don't
+                            stuff. Use LSI (related) keywords naturally throughout. Google's language models understand
+                            synonyms and context — write naturally for humans, not keyword bots.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="glass border-l-4 border-orange-500 bg-orange-500/[0.01] rounded-xl p-5">
+                <p class="text-xs text-orange-400 font-light leading-relaxed">
+                    <strong class="text-white font-bold block mb-1 uppercase tracking-wider font-mono text-[10px]">LSI
+                        keywords:</strong>
+                    Terms Google associates with your main keyword. For "web design Delhi", LSI includes: UI/UX design,
+                    responsive website, mobile-friendly, website development India, WordPress developer, landing page
+                    design. Use these naturally — they signal topical authority and help you avoid over-optimising one
+                    exact phrase.
+                </p>
+            </div>
+
+            <div>
+                <h3 class="font-display font-bold text-lg text-white mb-6 uppercase tracking-wider text-orange-500">
+                    Content quality checklist (E-E-A-T)</h3>
+                <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <li class="glass rounded-xl p-4 flex items-start gap-3">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0"></i>
+                        <span class="text-xs text-gray-400 font-light leading-normal">Answers the full query — if
+                            someone searches "web design cost India", your page must actually give them real
+                            numbers</span>
+                    </li>
+                    <li class="glass rounded-xl p-4 flex items-start gap-3">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0"></i>
+                        <span class="text-xs text-gray-400 font-light leading-normal">100% original — never copy
+                            competitor content. Google's Helpful Content System penalises duplicate/scraped content with
+                            site-wide ranking drops</span>
+                    </li>
+                    <li class="glass rounded-xl p-4 flex items-start gap-3">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0"></i>
+                        <span class="text-xs text-gray-400 font-light leading-normal">Refresh every 6–12 months — update
+                            dates, stats, examples. Fresh content signals relevance for time-sensitive queries</span>
+                    </li>
+                    <li class="glass rounded-xl p-4 flex items-start gap-3">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0"></i>
+                        <span class="text-xs text-gray-400 font-light leading-normal">E-E-A-T signals — author bio with
+                            credentials, real client results, case studies, a photo of you. Google trusts a real expert
+                            over an anonymous page</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- SECTION 3: SCHEMA MARKUP -->
+        <div class="space-y-10 hidden" id="s-sm">
+            <p
+                class="text-sm text-gray-400 font-light leading-relaxed border-l-2 border-orange-500/40 pl-4 py-1 max-w-3xl">
+                Schema markup is code you add to pages that tells Google exactly what your content means — not just the
+                words, but the entity. It unlocks rich results in SERPs that dramatically increase your click-through
+                rate without needing to rank higher.
+            </p>
+
+            <div class="glass border-l-4 border-orange-500 bg-orange-500/[0.01] rounded-xl p-5">
+                <p class="text-xs text-orange-400 font-light leading-relaxed">
+                    <strong class="text-white font-bold block mb-1 uppercase tracking-wider font-mono text-[10px]">Why
+                        this matters for your agency:</strong>
+                    With schema, your result can show star ratings, FAQ dropdowns, business hours, pricing, and more —
+                    taking 3× the SERP real estate. More visibility → more clicks → better CTR signal → better rankings.
+                    It's a compounding advantage.
+                </p>
+            </div>
+
+            <div>
+                <h3 class="font-display font-bold text-lg text-white mb-6 uppercase tracking-wider text-orange-500">
+                    Schema types you need for a web design agency</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="glass rounded-xl p-5 flex flex-col justify-between">
+                        <div>
+                            <h4
+                                class="font-display font-semibold text-sm text-white mb-2 uppercase tracking-wide text-orange-400">
+                                LocalBusiness / Org</h4>
+                            <p class="text-[11px] text-gray-400 font-light leading-relaxed">Name, address, phone, hours,
+                                logo, socials. Appears in Google's Knowledge Panel. Essential for local search rankings.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="glass rounded-xl p-5 flex flex-col justify-between">
+                        <div>
+                            <h4
+                                class="font-display font-semibold text-sm text-white mb-2 uppercase tracking-wide text-orange-400">
+                                Service</h4>
+                            <p class="text-[11px] text-gray-400 font-light leading-relaxed">Describes your services
+                                explicitly — name, description, provider, area served. Helps Google categorise what you
+                                offer.</p>
+                        </div>
+                    </div>
+                    <div class="glass rounded-xl p-5 flex flex-col justify-between">
+                        <div>
+                            <h4
+                                class="font-display font-semibold text-sm text-white mb-2 uppercase tracking-wide text-orange-400">
+                                FAQPage</h4>
+                            <p class="text-[11px] text-gray-400 font-light leading-relaxed">FAQ sections expand directly
+                                in SERPs. Huge SERP footprint advantage. Use on every service page with genuine Q&amp;A.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="glass rounded-xl p-5 flex flex-col justify-between">
+                        <div>
+                            <h4
+                                class="font-display font-semibold text-sm text-white mb-2 uppercase tracking-wide text-orange-400">
+                                AggregateRating</h4>
+                            <p class="text-[11px] text-gray-400 font-light leading-relaxed">Shows star ratings in search
+                                results. Pull from real Google Reviews shown on-page with structured data.</p>
+                        </div>
+                    </div>
+                    <div class="glass rounded-xl p-5 flex flex-col justify-between">
+                        <div>
+                            <h4
+                                class="font-display font-semibold text-sm text-white mb-2 uppercase tracking-wide text-orange-400">
+                                BlogPosting</h4>
+                            <p class="text-[11px] text-gray-400 font-light leading-relaxed">For blog content. Includes
+                                author, dates. Helps Google understand freshness and real authorship E-E-A-T signals.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="glass rounded-xl p-5 flex flex-col justify-between">
+                        <div>
+                            <h4
+                                class="font-display font-semibold text-sm text-white mb-2 uppercase tracking-wide text-orange-400">
+                                BreadcrumbList</h4>
+                            <p class="text-[11px] text-gray-400 font-light leading-relaxed">Shows hierarchy in SERP
+                                (Home › Services › Web Design). Improves navigation signals and CTR with better
+                                presentation.</p>
+                        </div>
+                    </div>
+                    <div class="glass rounded-xl p-5 flex flex-col justify-between">
+                        <div>
+                            <h4
+                                class="font-display font-semibold text-sm text-white mb-2 uppercase tracking-wide text-orange-400">
+                                Person</h4>
+                            <p class="text-[11px] text-gray-400 font-light leading-relaxed">Your name, expertise, social
+                                links. For a solo agency, Google trusts a real expert over an anonymous business entity.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="glass rounded-xl p-5 flex flex-col justify-between">
+                        <div>
+                            <h4
+                                class="font-display font-semibold text-sm text-white mb-2 uppercase tracking-wide text-orange-400">
+                                WebSite</h4>
+                            <p class="text-[11px] text-gray-400 font-light leading-relaxed">Enables a search box
+                                directly in your Google listing. Add siteLinksSearchBox schema once you have brand
+                                recognition.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="font-display font-bold text-lg text-white mb-6 uppercase tracking-wider text-orange-500">
+                    Implementation — JSON-LD (the correct method)</h3>
+                <p class="text-xs text-gray-400 mb-4 font-light">Add inside <code
+                        class="bg-white/5 px-1.5 py-0.5 rounded text-orange-400">&lt;script type="application/ld+json"&gt;</code>
+                    in your <code class="bg-white/5 px-1.5 py-0.5 rounded text-orange-400">&lt;head&gt;</code>. No
+                    plugin needed, works on any platform.</p>
+
+                <div class="grid grid-cols-1 gap-6">
+                    <!-- Code Editor Box 1 -->
+                    <div class="rounded-xl overflow-hidden border border-white/5 bg-[#0a0a0a]">
+                        <div
+                            class="flex items-center justify-between px-4 py-2.5 bg-neutral-900 border-b border-white/5">
+                            <div class="flex items-center gap-1.5">
+                                <span class="w-3 h-3 rounded-full bg-red-500/80"></span>
+                                <span class="w-3 h-3 rounded-full bg-yellow-500/80"></span>
+                                <span class="w-3 h-3 rounded-full bg-green-500/80"></span>
+                            </div>
+                            <span class="text-[10px] font-mono text-gray-500">LocalBusiness Schema</span>
+                        </div>
+                        <pre class="p-5 overflow-x-auto text-[11px] font-mono text-gray-400 leading-normal"><code>{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Webresolv",
+  "url": "https://webresolv.com",
+  "telephone": "+91-XXXXXXXXXX",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Delhi",
+    "addressCountry": "IN"
+  },
+  "openingHours": "Mo-Fr 09:00-18:00",
+  "sameAs": ["https://linkedin.com/in/...", "https://instagram.com/webresolv"]
+}</code></pre>
+                    </div>
+
+                    <!-- Code Editor Box 2 -->
+                    <div class="rounded-xl overflow-hidden border border-white/5 bg-[#0a0a0a]">
+                        <div
+                            class="flex items-center justify-between px-4 py-2.5 bg-neutral-900 border-b border-white/5">
+                            <div class="flex items-center gap-1.5">
+                                <span class="w-3 h-3 rounded-full bg-red-500/80"></span>
+                                <span class="w-3 h-3 rounded-full bg-yellow-500/80"></span>
+                                <span class="w-3 h-3 rounded-full bg-green-500/80"></span>
+                            </div>
+                            <span class="text-[10px] font-mono text-gray-500">FAQPage Schema</span>
+                        </div>
+                        <pre class="p-5 overflow-x-auto text-[11px] font-mono text-gray-400 leading-normal"><code>{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "How much does web design cost in India?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Web design in India costs ₹15,000–₹2,00,000 depending on complexity..."
+    }
+  }]
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="font-display font-bold text-lg text-white mb-6 uppercase tracking-wider text-orange-500">
+                    Validate &amp; test your schema</h3>
+                <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <li class="glass rounded-xl p-5 flex gap-4">
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-lg bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center mt-0.5">
+                            <i data-lucide="wrench" class="w-4 h-4"></i>
+                        </div>
+                        <span class="text-xs text-gray-400 leading-relaxed font-light"><strong
+                                class="text-white font-semibold block mb-1">Rich Results Test</strong>
+                            search.google.com/test/rich-results — validates schema and previews how your rich result
+                            will look in SERPs. Run this every time you add schema.</span>
+                    </li>
+                    <li class="glass rounded-xl p-5 flex gap-4">
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-lg bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center mt-0.5">
+                            <i data-lucide="check" class="w-4 h-4"></i>
+                        </div>
+                        <span class="text-xs text-gray-400 leading-relaxed font-light"><strong
+                                class="text-white font-semibold block mb-1">Schema.org Validator</strong>
+                            validator.schema.org — checks for errors and warnings in your structured data
+                            properties.</span>
+                    </li>
+                    <li class="glass rounded-xl p-5 flex gap-4">
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-lg bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center mt-0.5">
+                            <i data-lucide="chrome" class="w-4 h-4"></i>
+                        </div>
+                        <span class="text-xs text-gray-400 leading-relaxed font-light"><strong
+                                class="text-white font-semibold block mb-1">Google Search Console Enhancements</strong>
+                            Shows rich result errors and which pages are affected. Check this monthly to catch broken
+                            schema early.</span>
+                    </li>
+                    <li class="glass rounded-xl p-5 flex gap-4">
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-lg bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center mt-0.5">
+                            <i data-lucide="tool" class="w-4 h-4"></i>
+                        </div>
+                        <span class="text-xs text-gray-400 leading-relaxed font-light"><strong
+                                class="text-white font-semibold block mb-1">Merkle Schema Generator</strong>
+                            technicalseo.com/tools/schema-markup-generator — GUI tool for generating correct JSON-LD
+                            without hand-coding it.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- SECTION 4: TECHNICAL SEO -->
+        <div class="space-y-10 hidden" id="s-ts">
+            <p
+                class="text-sm text-gray-400 font-light leading-relaxed border-l-2 border-orange-500/40 pl-4 py-1 max-w-3xl">
+                Technical SEO ensures Google can actually find, crawl, understand, and index your site. You can write
+                perfect content and it simply won't rank if the technical foundation is broken underneath it.
+            </p>
+
+            <div>
+                <h3 class="font-display font-bold text-lg text-white mb-6 uppercase tracking-wider text-orange-500">Core
+                    Web Vitals — Google's ranking factors</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="glass rounded-xl p-5">
+                        <div class="flex items-center justify-between mb-4">
+                            <span
+                                class="text-[9px] text-orange-500 uppercase font-mono font-bold tracking-wider">Loading
+                                Metric</span>
+                            <span
+                                class="px-2 py-0.5 rounded text-[8px] bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-bold">LCP</span>
+                        </div>
+                        <h4 class="font-display font-semibold text-sm text-white mb-2 uppercase">Largest Contentful
+                            Paint</h4>
+                        <p class="text-xs text-gray-400 font-light leading-relaxed">
+                            How long until the largest element loads. <strong>Target: under 2.5 seconds.</strong> Fixed
+                            by optimising images, upgrading hosting, or using a CDN.
+                        </p>
+                    </div>
+
+                    <div class="glass rounded-xl p-5">
+                        <div class="flex items-center justify-between mb-4">
+                            <span
+                                class="text-[9px] text-orange-500 uppercase font-mono font-bold tracking-wider">Interactivity
+                                Metric</span>
+                            <span
+                                class="px-2 py-0.5 rounded text-[8px] bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-bold">INP</span>
+                        </div>
+                        <h4 class="font-display font-semibold text-sm text-white mb-2 uppercase">Interaction to Next
+                            Paint</h4>
+                        <p class="text-xs text-gray-400 font-light leading-relaxed">
+                            How fast the page responds to user interactions. <strong>Target: under 200ms.</strong>
+                            Caused by heavy JavaScript blocking the main thread.
+                        </p>
+                    </div>
+
+                    <div class="glass rounded-xl p-5">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-[9px] text-orange-500 uppercase font-mono font-bold tracking-wider">Visual
+                                Stability Metric</span>
+                            <span
+                                class="px-2 py-0.5 rounded text-[8px] bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-bold">CLS</span>
+                        </div>
+                        <h4 class="font-display font-semibold text-sm text-white mb-2 uppercase">Cumulative Layout Shift
+                        </h4>
+                        <p class="text-xs text-gray-400 font-light leading-relaxed">
+                            How much the page jumps as it loads. <strong>Target: under 0.1.</strong> Fix by specifying
+                            width and height on images and embeds.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="font-display font-bold text-lg text-white mb-6 uppercase tracking-wider text-orange-500">
+                    Technical SEO master checklist</h3>
+                <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <li class="glass rounded-xl p-5 flex gap-4">
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center mt-0.5">
+                            <i data-lucide="lock" class="w-4 h-4"></i>
+                        </div>
+                        <span class="text-xs text-gray-400 leading-relaxed font-light"><strong
+                                class="text-white font-semibold block mb-1">HTTPS (SSL)</strong> Non-negotiable. Google
+                            gives ranking credit and browsers warn users on HTTP sites. Free SSL via Let's Encrypt on
+                            any host.</span>
+                    </li>
+                    <li class="glass rounded-xl p-5 flex gap-4">
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center mt-0.5">
+                            <i data-lucide="smartphone" class="w-4 h-4"></i>
+                        </div>
+                        <span class="text-xs text-gray-400 leading-relaxed font-light"><strong
+                                class="text-white font-semibold block mb-1">Mobile-first indexing</strong> Google
+                            primarily indexes your mobile version. Test with Google's Mobile-Friendly Test. If your
+                            mobile site is bad, your rankings are bad everywhere.</span>
+                    </li>
+                    <li class="glass rounded-xl p-5 flex gap-4">
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center mt-0.5">
+                            <i data-lucide="network" class="w-4 h-4"></i>
+                        </div>
+                        <span class="text-xs text-gray-400 leading-relaxed font-light"><strong
+                                class="text-white font-semibold block mb-1">XML Sitemap</strong> Submit to Google Search
+                            Console at yoursite.com/sitemap.xml. Lists all indexable pages. Regenerate whenever you add
+                            significant pages.</span>
+                    </li>
+                    <li class="glass rounded-xl p-5 flex gap-4">
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center mt-0.5">
+                            <i data-lucide="bot" class="w-4 h-4"></i>
+                        </div>
+                        <span class="text-xs text-gray-400 leading-relaxed font-light"><strong
+                                class="text-white font-semibold block mb-1">Robots.txt</strong> Block crawlers from
+                            admin pages, checkout, thank-you pages, login. Never accidentally block CSS/JS files —
+                            Google needs those to render your pages.</span>
+                    </li>
+                    <li class="glass rounded-xl p-5 flex gap-4">
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center mt-0.5">
+                            <i data-lucide="copy" class="w-4 h-4"></i>
+                        </div>
+                        <span class="text-xs text-gray-400 leading-relaxed font-light"><strong
+                                class="text-white font-semibold block mb-1">Canonical tags</strong> &lt;link
+                            rel="canonical"&gt; prevents duplicate content issues when the same content exists at
+                            multiple URLs (www/non-www, trailing slash, HTTP/HTTPS variants).</span>
+                    </li>
+                    <li class="glass rounded-xl p-5 flex gap-4">
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center mt-0.5">
+                            <i data-lucide="image" class="w-4 h-4"></i>
+                        </div>
+                        <span class="text-xs text-gray-400 leading-relaxed font-light"><strong
+                                class="text-white font-semibold block mb-1">Image optimisation</strong> Use WebP format.
+                            Compress all images under 100KB. Lazy-load below-the-fold images. Name files descriptively:
+                            web-design-portfolio-delhi.webp not IMG_0043.jpg.</span>
+                    </li>
+                    <li class="glass rounded-xl p-5 flex gap-4">
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center mt-0.5">
+                            <i data-lucide="zap" class="w-4 h-4"></i>
+                        </div>
+                        <span class="text-xs text-gray-400 leading-relaxed font-light"><strong
+                                class="text-white font-semibold block mb-1">Page speed</strong> Target 90+ on PageSpeed
+                            Insights mobile. Enable caching, minify CSS/JS, use Cloudflare (free CDN), reduce TTFB under
+                            200ms. Speed is now a direct ranking signal.</span>
+                    </li>
+                    <li class="glass rounded-xl p-5 flex gap-4">
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center mt-0.5">
+                            <i data-lucide="link-2-off" class="w-4 h-4"></i>
+                        </div>
+                        <span class="text-xs text-gray-400 leading-relaxed font-light"><strong
+                                class="text-white font-semibold block mb-1">Fix broken links</strong> Run Screaming Frog
+                            quarterly. Find all 404 errors and either fix the links or add 301 redirects. Broken links
+                            waste crawl budget and hurt user experience.</span>
+                    </li>
+                    <li class="glass rounded-xl p-5 flex gap-4">
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center mt-0.5">
+                            <i data-lucide="navigation" class="w-4 h-4"></i>
+                        </div>
+                        <span class="text-xs text-gray-400 leading-relaxed font-light"><strong
+                                class="text-white font-semibold block mb-1">Flat site architecture</strong> Every
+                            important page reachable in 3 clicks from homepage. Deeper pages get less crawl priority.
+                            Don't bury your best service pages under multiple levels of navigation.</span>
+                    </li>
+                    <li class="glass rounded-xl p-5 flex gap-4">
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center mt-0.5">
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </div>
+                        <span class="text-xs text-gray-400 leading-relaxed font-light"><strong
+                                class="text-white font-semibold block mb-1">301 redirects</strong> Whenever you rename
+                            or delete a URL, add a permanent redirect to the new location. Chain of redirects (A→B→C)
+                            wastes crawl budget — make direct redirects (A→C).</span>
+                    </li>
+                    <li class="glass rounded-xl p-5 flex gap-4">
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center mt-0.5">
+                            <i data-lucide="code" class="w-4 h-4"></i>
+                        </div>
+                        <span class="text-xs text-gray-400 leading-relaxed font-light"><strong
+                                class="text-white font-semibold block mb-1">Semantic HTML</strong> Proper heading
+                            hierarchy (H1→H2→H3), no skipped levels, descriptive nav labels. Clean markup helps crawlers
+                            and screen readers interpret your content structure.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="glass border-l-4 border-orange-500 bg-orange-500/[0.01] rounded-xl p-5">
+                <p class="text-xs text-orange-400 font-light leading-relaxed">
+                    <strong class="text-white font-bold block mb-1 uppercase tracking-wider font-mono text-[10px]">Crawl
+                        budget tip:</strong>
+                    For sites under 500 pages it's rarely an issue. For larger sites, block filtered URLs, paginated
+                    archives, and admin paths via robots.txt so Google's crawl budget is spent on your
+                    revenue-generating pages, not pagination noise.
+                </p>
+            </div>
+        </div>
+
+        <!-- SECTION 5: ENGAGEMENT -->
+        <div class="space-y-10 hidden" id="s-eg">
+            <p
+                class="text-sm text-gray-400 font-light leading-relaxed border-l-2 border-orange-500/40 pl-4 py-1 max-w-3xl">
+                Google watches how users interact after clicking. High dwell time, low pogo-sticking, strong CTR — these
+                tell Google your content satisfies search intent. Over time they directly push your rankings up.
+            </p>
+
+            <div>
+                <h3 class="font-display font-bold text-lg text-white mb-6 uppercase tracking-wider text-orange-500">
+                    Behavioural signals Google tracks</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="glass rounded-xl p-5 flex flex-col justify-between">
+                        <div>
+                            <h4
+                                class="font-display font-semibold text-sm text-white mb-2 uppercase tracking-wide text-orange-400">
+                                CTR</h4>
+                            <p class="text-[11px] text-gray-400 font-light leading-relaxed">
+                                % who click your result. Higher CTR tells Google your title/description is the best
+                                answer. Low CTR pages lose rankings over time.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="glass rounded-xl p-5 flex flex-col justify-between">
+                        <div>
+                            <h4
+                                class="font-display font-semibold text-sm text-white mb-2 uppercase tracking-wide text-orange-400">
+                                Dwell time</h4>
+                            <p class="text-[11px] text-gray-400 font-light leading-relaxed">
+                                How long someone stays after clicking from Google. Longer = better. Users leaving in 5
+                                seconds signals your content failed to satisfy the query.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="glass rounded-xl p-5 flex flex-col justify-between">
+                        <div>
+                            <h4
+                                class="font-display font-semibold text-sm text-white mb-2 uppercase tracking-wide text-orange-400">
+                                Pogo-sticking</h4>
+                            <p class="text-[11px] text-gray-400 font-light leading-relaxed">
+                                User clicks your result, bounces back to Google, and clicks a competitor. Hard negative
+                                signal. Fix by answering the query clearly and fast.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="glass rounded-xl p-5 flex flex-col justify-between">
+                        <div>
+                            <h4
+                                class="font-display font-semibold text-sm text-white mb-2 uppercase tracking-wide text-orange-400">
+                                Return visits</h4>
+                            <p class="text-[11px] text-gray-400 font-light leading-relaxed">
+                                Users coming back signals quality and trust. Email newsletters and strong content bring
+                                people back. Repeat visits improve brand authority signals.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="font-display font-bold text-lg text-white mb-6 uppercase tracking-wider text-orange-500">How
+                    to increase CTR from SERPs</h3>
+                <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <li class="glass rounded-xl p-5 flex gap-4">
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-lg bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center mt-0.5">
+                            <i data-lucide="pencil" class="w-4 h-4"></i>
+                        </div>
+                        <span class="text-xs text-gray-400 leading-relaxed font-light"><strong
+                                class="text-white font-semibold block mb-1">Numbers and brackets in titles</strong> "7
+                            Web Design Trends in India [2025]" outperforms "Web Design Trends". Specificity signals
+                            quality to users scanning results.</span>
+                    </li>
+                    <li class="glass rounded-xl p-5 flex gap-4">
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-lg bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center mt-0.5">
+                            <i data-lucide="pencil" class="w-4 h-4"></i>
+                        </div>
+                        <span class="text-xs text-gray-400 leading-relaxed font-light"><strong
+                                class="text-white font-semibold block mb-1">Action CTAs in meta descriptions</strong>
+                            End with action phrases. "See our portfolio →" or "Get a free quote" increases clicks vs
+                            flat descriptions. Meta descriptions are your ad copy.</span>
+                    </li>
+                    <li class="glass rounded-xl p-5 flex gap-4">
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-lg bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center mt-0.5">
+                            <i data-lucide="star" class="w-4 h-4"></i>
+                        </div>
+                        <span class="text-xs text-gray-400 leading-relaxed font-light"><strong
+                                class="text-white font-semibold block mb-1">Rich results from schema</strong> Stars, FAQ
+                            dropdowns, breadcrumbs in your SERP listing double your visual footprint. Users click the
+                            bigger result. This is the fastest CTR win available.</span>
+                    </li>
+                    <li class="glass rounded-xl p-5 flex gap-4">
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-lg bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center mt-0.5">
+                            <i data-lucide="clock" class="w-4 h-4"></i>
+                        </div>
+                        <span class="text-xs text-gray-400 leading-relaxed font-light"><strong
+                                class="text-white font-semibold block mb-1">Show freshness</strong> "Updated June 2025"
+                            in the title or meta increases CTR because users trust recent results over undated content,
+                            especially for "best" and "top" queries.</span>
+                    </li>
+                    <li class="glass rounded-xl p-5 flex gap-4">
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-lg bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center mt-0.5">
+                            <i data-lucide="bar-chart-3" class="w-4 h-4"></i>
+                        </div>
+                        <span class="text-xs text-gray-400 leading-relaxed font-light"><strong
+                                class="text-white font-semibold block mb-1">A/B test your titles</strong> In GSC, find
+                            pages with position 5–15 but low CTR. Rewrite the title tag and watch CTR change over 2–4
+                            weeks. It's free rank movement.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="font-display font-bold text-lg text-white mb-6 uppercase tracking-wider text-orange-500">
+                    Reducing bounce rate and increasing dwell time</h3>
+                <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <li class="glass rounded-xl p-4 flex items-start gap-3">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0"></i>
+                        <span class="text-xs text-gray-400 font-light leading-normal">Answer the query in the first 2–3
+                            sentences. Don't warm up for 200 words. Users instantly hit back if they don't see the
+                            answer they came for.</span>
+                    </li>
+                    <li class="glass rounded-xl p-4 flex items-start gap-3">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0"></i>
+                        <span class="text-xs text-gray-400 font-light leading-normal">Add a table of contents with jump
+                            links on long content. Encourages exploration and users staying in the page instead of
+                            bouncing.</span>
+                    </li>
+                    <li class="glass rounded-xl p-4 flex items-start gap-3">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0"></i>
+                        <span class="text-xs text-gray-400 font-light leading-normal">Embed videos and interactive
+                            elements. Even a 2-minute explainer adds 2+ minutes of dwell time. Google treats
+                            video-enriched pages as higher quality.</span>
+                    </li>
+                    <li class="glass rounded-xl p-4 flex items-start gap-3">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0"></i>
+                        <span class="text-xs text-gray-400 font-light leading-normal">Contextual internal links — "You
+                            might also like" or inline text links keep users moving through your site. The longer they
+                            stay in your ecosystem, the stronger your signals.</span>
+                    </li>
+                    <li class="glass rounded-xl p-4 flex items-start gap-3">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0"></i>
+                        <span class="text-xs text-gray-400 font-light leading-normal">Match content format to query
+                            intent. "Best design tools" searchers want a scannable list, not an essay. If page 1 is all
+                            listicles, write a listicle, not a long-form guide.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="glass border-l-4 border-orange-500 bg-orange-500/[0.01] rounded-xl p-5">
+                    <p class="text-xs text-orange-400 font-light leading-relaxed">
+                        <strong
+                            class="text-white font-bold block mb-1 uppercase tracking-wider font-mono text-[10px]">Featured
+                            snippets (Position Zero):</strong>
+                        Get ~8% CTR even above position 1. To target them: find queries you rank positions 4–10 for, add
+                        a concise direct answer (40–60 words) immediately after an H2 question heading, use structured
+                        formats — numbered lists, tables, short definitions. Google pulls snippets from well-structured,
+                        clearly-answered content.
+                    </p>
+                </div>
+                <div class="glass border-l-4 border-orange-500 bg-orange-500/[0.01] rounded-xl p-5">
+                    <p class="text-xs text-orange-400 font-light leading-relaxed">
+                        <strong
+                            class="text-white font-bold block mb-1 uppercase tracking-wider font-mono text-[10px]">E-E-A-T
+                            trust signals:</strong>
+                        Build it via author bios with credentials, real client results and case studies, mentions from
+                        industry publications, a photo of you on the About page, published Google Reviews, and a clear
+                        privacy policy + contact page. This is Google's trust framework for ranking decisions.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 6: LEAD GENERATION -->
+        <div class="space-y-10 hidden" id="s-lg">
+            <p
+                class="text-sm text-gray-400 font-light leading-relaxed border-l-2 border-orange-500/40 pl-4 py-1 max-w-3xl">
+                SEO traffic is worthless without conversion. Here's how to turn organic visitors into enquiries, quote
+                requests, and paying clients for your web design and marketing agency.
+            </p>
+
+            <div>
+                <h3 class="font-display font-bold text-lg text-white mb-6 uppercase tracking-wider text-orange-500">
+                    Keyword strategy built for leads, not just traffic</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="glass rounded-xl p-5 flex flex-col justify-between">
+                        <div>
+                            <div
+                                class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center mb-4">
+                                <i data-lucide="map-pin" class="w-4 h-4"></i>
+                            </div>
+                            <h4 class="font-display font-semibold text-sm text-white mb-2 uppercase tracking-wide">Local
+                                keywords</h4>
+                            <p class="text-xs text-gray-400 font-light leading-relaxed">"[service] + [city]" targets.
+                                "Web design agency Delhi", "SEO services Noida". Create location pages with unique
+                                content.</p>
+                        </div>
+                    </div>
+
+                    <div class="glass rounded-xl p-5 flex flex-col justify-between">
+                        <div>
+                            <div
+                                class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center mb-4">
+                                <i data-lucide="wallet" class="w-4 h-4"></i>
+                            </div>
+                            <h4 class="font-display font-semibold text-sm text-white mb-2 uppercase tracking-wide">
+                                Pricing keywords</h4>
+                            <p class="text-xs text-gray-400 font-light leading-relaxed">"Web design cost India 2025" —
+                                highest buying intent. Build pricing page. Visitors actively compare.</p>
+                        </div>
+                    </div>
+
+                    <div class="glass rounded-xl p-5 flex flex-col justify-between">
+                        <div>
+                            <div
+                                class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center mb-4">
+                                <i data-lucide="git-compare" class="w-4 h-4"></i>
+                            </div>
+                            <h4 class="font-display font-semibold text-sm text-white mb-2 uppercase tracking-wide">
+                                Comparison</h4>
+                            <p class="text-xs text-gray-400 font-light leading-relaxed">"Best web design agency Delhi" —
+                                users mid-decision. Write comparisons that position your agency favourably.</p>
+                        </div>
+                    </div>
+
+                    <div class="glass rounded-xl p-5 flex flex-col justify-between">
+                        <div>
+                            <div
+                                class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center mb-4">
+                                <i data-lucide="help-circle" class="w-4 h-4"></i>
+                            </div>
+                            <h4 class="font-display font-semibold text-sm text-white mb-2 uppercase tracking-wide">"How
+                                to hire"</h4>
+                            <p class="text-xs text-gray-400 font-light leading-relaxed">"How to hire a web designer
+                                India" — user is ready. Answer fully, then position yourself as the solution.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="font-display font-bold text-lg text-white mb-6 uppercase tracking-wider text-orange-500">
+                    Converting SEO traffic into actual leads</h3>
+                <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <li class="glass rounded-xl p-5 flex gap-4">
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-lg bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center mt-0.5">
+                            <i data-lucide="form-input" class="w-4 h-4"></i>
+                        </div>
+                        <span class="text-xs text-gray-400 leading-relaxed font-light"><strong
+                                class="text-white font-semibold block mb-1">CTA above the fold on service pages</strong>
+                            "Get a free consultation" or "Request a quote" form visible without any scrolling. If users
+                            have to scroll to find contact, many won't bother.</span>
+                    </li>
+                    <li class="glass rounded-xl p-5 flex gap-4">
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-lg bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center mt-0.5">
+                            <i data-lucide="gift" class="w-4 h-4"></i>
+                        </div>
+                        <span class="text-xs text-gray-400 leading-relaxed font-light"><strong
+                                class="text-white font-semibold block mb-1">Lead magnets on blog posts</strong>
+                            "Download our free website audit checklist" in exchange for email. Captures visitors who
+                            aren't ready to hire yet. Nurture them via email.</span>
+                    </li>
+                    <li class="glass rounded-xl p-5 flex gap-4">
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center mt-0.5">
+                            <i data-lucide="message-square" class="w-4 h-4"></i>
+                        </div>
+                        <span class="text-xs text-gray-400 leading-relaxed font-light"><strong
+                                class="text-white font-semibold block mb-1">WhatsApp chat button</strong> A sticky
+                            WhatsApp button on your site converts hesitant visitors. Indian clients strongly prefer
+                            WhatsApp over forms. Tawk.to or a simple wa.me link works.</span>
+                    </li>
+                    <li class="glass rounded-xl p-5 flex gap-4">
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-lg bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center mt-0.5">
+                            <i data-lucide="star" class="w-4 h-4"></i>
+                        </div>
+                        <span class="text-xs text-gray-400 leading-relaxed font-light"><strong
+                                class="text-white font-semibold block mb-1">Social proof above the fold</strong> Client
+                            logos, Google Review stars, "50+ projects delivered". Reduces friction before users even
+                            read your content. Trust signals convert.</span>
+                    </li>
+                    <li class="glass rounded-xl p-5 flex gap-4">
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-lg bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center mt-0.5">
+                            <i data-lucide="map" class="w-4 h-4"></i>
+                        </div>
+                        <span class="text-xs text-gray-400 leading-relaxed font-light"><strong
+                                class="text-white font-semibold block mb-1">Google Business Profile (GBP)</strong>
+                            Essential for local SEO. Fully optimise your GBP listing with services, photos, regular
+                            posts, and Q&amp;A. Drives calls and Map conversions.</span>
+                    </li>
+                    <li class="glass rounded-xl p-5 flex gap-4">
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-lg bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center mt-0.5">
+                            <i data-lucide="filter" class="w-4 h-4"></i>
+                        </div>
+                        <span class="text-xs text-gray-400 leading-relaxed font-light"><strong
+                                class="text-white font-semibold block mb-1">Dedicated landing pages</strong> Don't send
+                            all SEO traffic to home page. Create /web-design-delhi, /seo-services-delhi,
+                            /digital-marketing-noida. Targets specific cluster &amp; CTA.</span>
+                    </li>
+                    <li class="glass rounded-xl p-5 flex gap-4">
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-lg bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center mt-0.5">
+                            <i data-lucide="mail" class="w-4 h-4"></i>
+                        </div>
+                        <span class="text-xs text-gray-400 leading-relaxed font-light"><strong
+                                class="text-white font-semibold block mb-1">Blog → service CTA</strong> End every blog
+                            post with a relevant CTA. "Need a website built? Let's talk." Informational traffic converts
+                            when you guide it.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="font-display font-bold text-lg text-white mb-6 uppercase tracking-wider text-orange-500">
+                    Local SEO for consistent lead flow</h3>
+                <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <li class="glass rounded-xl p-4 flex items-start gap-3">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0"></i>
+                        <span class="text-xs text-gray-400 font-light leading-normal">Fully complete GBP — every field,
+                            every service category, 10+ photos, weekly posts, respond to reviews within 24 hours</span>
+                    </li>
+                    <li class="glass rounded-xl p-4 flex items-start gap-3">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0"></i>
+                        <span class="text-xs text-gray-400 font-light leading-normal">Consistent NAP (Name, Address,
+                            Phone) across website, GBP, Justdial, Sulekha, IndiaMART, Clutch.co, and all industry
+                            directories</span>
+                    </li>
+                    <li class="glass rounded-xl p-4 flex items-start gap-3">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0"></i>
+                        <span class="text-xs text-gray-400 font-light leading-normal">Actively collect Google Reviews —
+                            ask every happy client directly. Reviews directly determine Local Pack (map results) ranking
+                            position</span>
+                    </li>
+                    <li class="glass rounded-xl p-4 flex items-start gap-3">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0"></i>
+                        <span class="text-xs text-gray-400 font-light leading-normal">Create a location page for each
+                            area you serve with unique content per page (Delhi, Noida, Gurugram, etc.) — don't use the
+                            same copy</span>
+                    </li>
+                    <li class="glass rounded-xl p-4 flex items-start gap-3">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0"></i>
+                        <span class="text-xs text-gray-400 font-light leading-normal">Embed Google Maps on your contact
+                            page — signals location relevance to Google's local ranking algorithm</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- SECTION 7: TOOLS & ANALYTICS -->
+        <div class="space-y-6 hidden" id="s-tl">
+            <p
+                class="text-sm text-gray-400 font-light leading-relaxed border-l-2 border-orange-500/40 pl-4 py-1 max-w-3xl mb-10">
+                These are the tools that do the heavy lifting. Know exactly what each one is for and how they fit your
+                workflow — don't pay for tools you're not using at their full capacity.
+            </p>
+
+            <h3 class="font-display font-bold text-lg text-white mb-6 uppercase tracking-wider text-orange-500">Free
+                tools — use these before anything else</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Tool Card 1 -->
+                <div class="glass rounded-xl p-5 flex items-start gap-4">
+                    <div
+                        class="flex-shrink-0 w-10 h-10 rounded-lg bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center">
+                        <i data-lucide="chrome" class="w-5 h-5"></i>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1">
+                            <h4 class="font-display font-bold text-sm text-white">Google Search Console (GSC)</h4>
+                            <span
+                                class="px-2 py-0.5 rounded text-[8px] bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-mono font-bold uppercase">Free</span>
+                        </div>
+                        <p class="text-xs text-gray-400 font-light leading-relaxed mb-2">
+                            <strong>Role:</strong> Shows queries your site ranks for, impressions, clicks, CTR, crawl
+                            errors, Core Web Vitals issues, indexing status, and manual penalties.
+                        </p>
+                        <p class="text-[11px] text-gray-500 leading-normal border-t border-white/5 pt-2">
+                            <strong>Weekly use:</strong> find pages with position 5–15 and low CTR — rewrite their
+                            titles. Find crawl errors — fix them. Submit new pages for faster indexing.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Tool Card 2 -->
+                <div class="glass rounded-xl p-5 flex items-start gap-4">
+                    <div
+                        class="flex-shrink-0 w-10 h-10 rounded-lg bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center">
+                        <i data-lucide="trending-up" class="w-5 h-5"></i>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1">
+                            <h4 class="font-display font-bold text-sm text-white">Google Analytics 4 (GA4)</h4>
+                            <span
+                                class="px-2 py-0.5 rounded text-[8px] bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-mono font-bold uppercase">Free</span>
+                        </div>
+                        <p class="text-xs text-gray-400 font-light leading-relaxed mb-2">
+                            <strong>Role:</strong> All user behaviour — traffic sources, page performance, session
+                            duration, conversion events.
+                        </p>
+                        <p class="text-[11px] text-gray-500 leading-normal border-t border-white/5 pt-2">
+                            <strong>Critical setup:</strong> configure conversion events for form submissions, WhatsApp
+                            clicks. Identify which SEO pages convert to enquiries vs traffic vanity metrics.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Tool Card 3 -->
+                <div class="glass rounded-xl p-5 flex items-start gap-4">
+                    <div
+                        class="flex-shrink-0 w-10 h-10 rounded-lg bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center">
+                        <i data-lucide="zap" class="w-5 h-5"></i>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1">
+                            <h4 class="font-display font-bold text-sm text-white">PageSpeed Insights</h4>
+                            <span
+                                class="px-2 py-0.5 rounded text-[8px] bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-mono font-bold uppercase">Free</span>
+                        </div>
+                        <p class="text-xs text-gray-400 font-light leading-relaxed mb-2">
+                            <strong>Role:</strong> Audits Core Web Vitals (LCP, INP, CLS), TTFB, and overall
+                            performance. Provides specific fix recommendations with severity ratings.
+                        </p>
+                        <p class="text-[11px] text-gray-500 leading-normal border-t border-white/5 pt-2">
+                            <strong>Run it:</strong> after every major site change and monthly to catch regressions.
+                            Target 90+ mobile and desktop separately.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Tool Card 4 -->
+                <div class="glass rounded-xl p-5 flex items-start gap-4">
+                    <div
+                        class="flex-shrink-0 w-10 h-10 rounded-lg bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center">
+                        <i data-lucide="wrench" class="w-5 h-5"></i>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1">
+                            <h4 class="font-display font-bold text-sm text-white">Rich Results Test</h4>
+                            <span
+                                class="px-2 py-0.5 rounded text-[8px] bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-mono font-bold uppercase">Free</span>
+                        </div>
+                        <p class="text-xs text-gray-400 font-light leading-relaxed mb-2">
+                            <strong>Role:</strong> Validates schema markup and previews how rich results (FAQ, stars,
+                            breadcrumbs) appear in SERPs.
+                        </p>
+                        <p class="text-[11px] text-gray-500 leading-normal border-t border-white/5 pt-2">
+                            <strong>Run it:</strong> every time you add or change schema on any page. Also surfaces
+                            errors blocking your rich results from showing.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="font-display font-bold text-lg text-white mt-12 mb-6 uppercase tracking-wider text-orange-500">
+                Freemium / paid tools</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Paid Card 1 -->
+                <div class="glass rounded-xl p-5 flex items-start gap-4">
+                    <div
+                        class="flex-shrink-0 w-10 h-10 rounded-lg bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center">
+                        <i data-lucide="line-chart" class="w-5 h-5"></i>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1">
+                            <h4 class="font-display font-bold text-sm text-white">Ubersuggest</h4>
+                            <span
+                                class="px-2 py-0.5 rounded text-[8px] bg-blue-500/10 border border-blue-500/20 text-blue-400 font-mono font-bold uppercase">Freemium</span>
+                        </div>
+                        <p class="text-xs text-gray-400 font-light leading-relaxed">
+                            <strong>Role:</strong> Keyword research (volume, KD, CPC), competitor analysis, backlink
+                            checker, site audit. Free tier: 3 searches/day. <strong>Best for:</strong> quick keyword
+                            validation and seeing what competitors rank for.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Paid Card 2 -->
+                <div class="glass rounded-xl p-5 flex items-start gap-4">
+                    <div
+                        class="flex-shrink-0 w-10 h-10 rounded-lg bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center">
+                        <i data-lucide="globe" class="w-5 h-5"></i>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1">
+                            <h4 class="font-display font-bold text-sm text-white">Ahrefs</h4>
+                            <span
+                                class="px-2 py-0.5 rounded text-[8px] bg-amber-500/10 border border-amber-500/20 text-amber-400 font-mono font-bold uppercase">Paid
+                                ~$99/mo</span>
+                        </div>
+                        <p class="text-xs text-gray-400 font-light leading-relaxed">
+                            <strong>Role:</strong> Best backlink analysis in the industry, keyword research with click
+                            data, rank tracking, site audit, content gap analysis, competitor intelligence. <strong>Best
+                                for:</strong> building your backlink strategy.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Paid Card 3 -->
+                <div class="glass rounded-xl p-5 flex items-start gap-4">
+                    <div
+                        class="flex-shrink-0 w-10 h-10 rounded-lg bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center">
+                        <i data-lucide="layout-grid" class="w-5 h-5"></i>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1">
+                            <h4 class="font-display font-bold text-sm text-white">SEMrush</h4>
+                            <span
+                                class="px-2 py-0.5 rounded text-[8px] bg-amber-500/10 border border-amber-500/20 text-amber-400 font-mono font-bold uppercase">Paid
+                                ~$120/mo</span>
+                        </div>
+                        <p class="text-xs text-gray-400 font-light leading-relaxed">
+                            <strong>Role:</strong> Stronger than Ahrefs on competitor research, PPC/paid search data,
+                            content marketing, and social monitoring. Better all-in-one if you run ads. Pick one paid
+                            tool, do not buy both.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Paid Card 4 -->
+                <div class="glass rounded-xl p-5 flex items-start gap-4">
+                    <div
+                        class="flex-shrink-0 w-10 h-10 rounded-lg bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center">
+                        <i data-lucide="bug" class="w-5 h-5"></i>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1">
+                            <h4 class="font-display font-bold text-sm text-white">Screaming Frog</h4>
+                            <span
+                                class="px-2 py-0.5 rounded text-[8px] bg-blue-500/10 border border-blue-500/20 text-blue-400 font-mono font-bold uppercase">Freemium</span>
+                        </div>
+                        <p class="text-xs text-gray-400 font-light leading-relaxed">
+                            <strong>Role:</strong> Crawls site and surfaces technical issues — broken links, duplicate
+                            titles, redirect chains, missing alt text, missing H1s. Free tier: up to 500 URLs.
+                            <strong>Run it:</strong> quarterly and after changes.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Paid Card 5 -->
+                <div class="glass rounded-xl p-5 flex items-start gap-4">
+                    <div
+                        class="flex-shrink-0 w-10 h-10 rounded-lg bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center">
+                        <i data-lucide="eye" class="w-5 h-5"></i>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1">
+                            <h4 class="font-display font-bold text-sm text-white">Hotjar</h4>
+                            <span
+                                class="px-2 py-0.5 rounded text-[8px] bg-blue-500/10 border border-blue-500/20 text-blue-400 font-mono font-bold uppercase">Freemium</span>
+                        </div>
+                        <p class="text-xs text-gray-400 font-light leading-relaxed">
+                            <strong>Role:</strong> Heatmaps and session recordings. See exactly where users click, how
+                            far they scroll, and where they leave. <strong>Use it:</strong> when a high-traffic page
+                            isn't converting.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass border-l-4 border-orange-500 bg-orange-500/[0.01] rounded-xl p-5 mt-6">
+                <p class="text-xs text-orange-400 font-light leading-relaxed">
+                    <strong
+                        class="text-white font-bold block mb-1 uppercase tracking-wider font-mono text-[10px]">Minimal
+                        free stack to start:</strong>
+                    Google Search Console + GA4 + Ubersuggest + Screaming Frog (free) covers 80% of your SEO needs at
+                    zero cost. Add Ahrefs/SEMrush once you're managing multiple clients and need volume or deep
+                    competitor intelligence.
+                </p>
+            </div>
+        </div>
+
+        <!-- SECTION 8: BACKLINKS -->
+        <div class="space-y-10 hidden" id="s-bl">
+            <p
+                class="text-sm text-gray-400 font-light leading-relaxed border-l-2 border-orange-500/40 pl-4 py-1 max-w-3xl">
+                Backlinks are votes of confidence from other websites. One link from a high-authority relevant site
+                tells Google more about your trustworthiness than 1,000 low-quality links. Quality is the only thing
+                that matters here.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- DO Grid Box -->
+                <div class="glass rounded-2xl p-6 border-t-2 border-emerald-500/50 bg-emerald-500/[0.01]">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div
+                            class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center">
+                            <i data-lucide="check-circle" class="w-4 h-4"></i>
+                        </div>
+                        <h3 class="font-display font-black text-sm text-white uppercase tracking-wider">DO — White hat
+                            tactics</h3>
+                    </div>
+
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3 border-b border-white/5 pb-3 last:border-b-0 last:pb-0">
+                            <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 mt-1 flex-shrink-0"></i>
+                            <span class="text-xs text-gray-400 font-light leading-relaxed"><strong
+                                    class="text-white font-semibold">Guest posting</strong> Write genuinely useful
+                                articles for real industry blogs (design, startup, SMB). Contextual link from real
+                                editorial content. Only on sites with actual audiences.</span>
+                        </li>
+                        <li class="flex items-start gap-3 border-b border-white/5 pb-3 last:border-b-0 last:pb-0">
+                            <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 mt-1 flex-shrink-0"></i>
+                            <span class="text-xs text-gray-400 font-light leading-relaxed"><strong
+                                    class="text-white font-semibold">HARO (Help A Reporter Out)</strong> Respond to
+                                journalist queries on web design/digital marketing. Get quoted with a backlink from news
+                                sites. Completely free, high DA links.</span>
+                        </li>
+                        <li class="flex items-start gap-3 border-b border-white/5 pb-3 last:border-b-0 last:pb-0">
+                            <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 mt-1 flex-shrink-0"></i>
+                            <span class="text-xs text-gray-400 font-light leading-relaxed"><strong
+                                    class="text-white font-semibold">Resource page link building</strong> Find "top web
+                                design resources" pages and pitch your content for inclusion. Email the owner with a
+                                genuine value prop.</span>
+                        </li>
+                        <li class="flex items-start gap-3 border-b border-white/5 pb-3 last:border-b-0 last:pb-0">
+                            <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 mt-1 flex-shrink-0"></i>
+                            <span class="text-xs text-gray-400 font-light leading-relaxed"><strong
+                                    class="text-white font-semibold">Broken link building</strong> Find broken outbound
+                                links on relevant sites via Ahrefs. Create content that replaces the dead resource.
+                                Email the site owner — they'll thank you.</span>
+                        </li>
+                        <li class="flex items-start gap-3 border-b border-white/5 pb-3 last:border-b-0 last:pb-0">
+                            <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 mt-1 flex-shrink-0"></i>
+                            <span class="text-xs text-gray-400 font-light leading-relaxed"><strong
+                                    class="text-white font-semibold">Client backlinks</strong> Ask clients to link to
+                                you in their site footer or "Built by" section. Real contextual links from legitimate
+                                business sites.</span>
+                        </li>
+                        <li class="flex items-start gap-3 border-b border-white/5 pb-3 last:border-b-0 last:pb-0">
+                            <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 mt-1 flex-shrink-0"></i>
+                            <span class="text-xs text-gray-400 font-light leading-relaxed"><strong
+                                    class="text-white font-semibold">Quality directories</strong> Clutch.co, GoodFirms,
+                                DesignRush, Justdial, IndiaMART, Crunchbase, LinkedIn company page. Relevant and trusted
+                                citations.</span>
+                        </li>
+                        <li class="flex items-start gap-3 border-b border-white/5 pb-3 last:border-b-0 last:pb-0">
+                            <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 mt-1 flex-shrink-0"></i>
+                            <span class="text-xs text-gray-400 font-light leading-relaxed"><strong
+                                    class="text-white font-semibold">Create linkable assets</strong> Original research,
+                                free tools, comprehensive guides, industry data. Content so useful others naturally link
+                                to it without you asking.</span>
+                        </li>
+                        <li class="flex items-start gap-3 border-b border-white/5 pb-3 last:border-b-0 last:pb-0">
+                            <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 mt-1 flex-shrink-0"></i>
+                            <span class="text-xs text-gray-400 font-light leading-relaxed"><strong
+                                    class="text-white font-semibold">Digital PR</strong> Publish a data study or take a
+                                strong public position. Pitch to tech journalists and business publications. High DA
+                                editorial links.</span>
+                        </li>
+                        <li class="flex items-start gap-3 last:border-b-0 last:pb-0">
+                            <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 mt-1 flex-shrink-0"></i>
+                            <span class="text-xs text-gray-400 font-light leading-relaxed"><strong
+                                    class="text-white font-semibold">Podcast appearances</strong> Appear on
+                                startup/business/design podcasts. Show notes almost always include a link to your
+                                site.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- DON'T Grid Box -->
+                <div class="glass rounded-2xl p-6 border-t-2 border-red-500/50 bg-red-500/[0.01]">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div
+                            class="w-8 h-8 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 flex items-center justify-center">
+                            <i data-lucide="x-circle" class="w-4 h-4"></i>
+                        </div>
+                        <h3 class="font-display font-black text-sm text-white uppercase tracking-wider">DON'T — Black /
+                            grey hat</h3>
+                    </div>
+
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3 border-b border-white/5 pb-3 last:border-b-0 last:pb-0">
+                            <i data-lucide="x" class="w-3.5 h-3.5 text-red-500 mt-1 flex-shrink-0"></i>
+                            <span class="text-xs text-gray-400 font-light leading-relaxed"><strong
+                                    class="text-white font-semibold">Buying links</strong> Fiverr backlink packages, "DA
+                                50+ links for $10" services. Google's spam algorithm detects purchased link patterns.
+                                Manual penalty = site removed.</span>
+                        </li>
+                        <li class="flex items-start gap-3 border-b border-white/5 pb-3 last:border-b-0 last:pb-0">
+                            <i data-lucide="x" class="w-3.5 h-3.5 text-red-500 mt-1 flex-shrink-0"></i>
+                            <span class="text-xs text-gray-400 font-light leading-relaxed"><strong
+                                    class="text-white font-semibold">Private Blog Networks (PBNs)</strong> Links from
+                                networks of fake sites. Google deindexes entire PBN networks regularly. Catastrophic and
+                                permanent when caught.</span>
+                        </li>
+                        <li class="flex items-start gap-3 border-b border-white/5 pb-3 last:border-b-0 last:pb-0">
+                            <i data-lucide="x" class="w-3.5 h-3.5 text-red-500 mt-1 flex-shrink-0"></i>
+                            <span class="text-xs text-gray-400 font-light leading-relaxed"><strong
+                                    class="text-white font-semibold">Comment spam</strong> Dropping links in blog
+                                comments. These are nofollow (zero SEO value) and mark you as a spammer with the
+                                platform and with Google.</span>
+                        </li>
+                        <li class="flex items-start gap-3 border-b border-white/5 pb-3 last:border-b-0 last:pb-0">
+                            <i data-lucide="x" class="w-3.5 h-3.5 text-red-500 mt-1 flex-shrink-0"></i>
+                            <span class="text-xs text-gray-400 font-light leading-relaxed"><strong
+                                    class="text-white font-semibold">Link farms / web rings</strong> Groups of sites
+                                that exist only to link to each other. Google has been algorithmically devaluing these
+                                since Penguin 2012.</span>
+                        </li>
+                        <li class="flex items-start gap-3 border-b border-white/5 pb-3 last:border-b-0 last:pb-0">
+                            <i data-lucide="x" class="w-3.5 h-3.5 text-red-500 mt-1 flex-shrink-0"></i>
+                            <span class="text-xs text-gray-400 font-light leading-relaxed"><strong
+                                    class="text-white font-semibold">Exact-match anchor stuffing</strong> Every backlink
+                                using "web design agency Delhi" is unnatural. Vary: brand name, bare URL, generic,
+                                descriptive phrases.</span>
+                        </li>
+                        <li class="flex items-start gap-3 border-b border-white/5 pb-3 last:border-b-0 last:pb-0">
+                            <i data-lucide="x" class="w-3.5 h-3.5 text-red-500 mt-1 flex-shrink-0"></i>
+                            <span class="text-xs text-gray-400 font-light leading-relaxed"><strong
+                                    class="text-white font-semibold">Mass directory blasts</strong> Submitting to 500
+                                low-quality directories via automated tools. Low-authority irrelevant citations are
+                                ignored or hurt you.</span>
+                        </li>
+                        <li class="flex items-start gap-3 border-b border-white/5 pb-3 last:border-b-0 last:pb-0">
+                            <i data-lucide="x" class="w-3.5 h-3.5 text-red-500 mt-1 flex-shrink-0"></i>
+                            <span class="text-xs text-gray-400 font-light leading-relaxed"><strong
+                                    class="text-white font-semibold">Reciprocal schemes</strong> Systematic "I'll link
+                                to you if you link to me" reciprocal link structures at scale. Exchange programmes
+                                trigger spam filters.</span>
+                        </li>
+                        <li class="flex items-start gap-3 last:border-b-0 last:pb-0">
+                            <i data-lucide="x" class="w-3.5 h-3.5 text-red-500 mt-1 flex-shrink-0"></i>
+                            <span class="text-xs text-gray-400 font-light leading-relaxed"><strong
+                                    class="text-white font-semibold">Thin guest posts</strong> Churning out 300-word
+                                articles just to get a link placed. Google flags these as manipulative link schemes.
+                                Guest post where you'd be proud of the work.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="font-display font-bold text-lg text-white mb-6 uppercase tracking-wider text-orange-500">
+                    Backlink quality metrics to check before outreach</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="glass rounded-xl p-5 flex flex-col justify-between">
+                        <div>
+                            <h4
+                                class="font-display font-semibold text-sm text-white mb-2 uppercase tracking-wide text-orange-400">
+                                Domain Rating / DA</h4>
+                            <p class="text-[11px] text-gray-400 font-light leading-relaxed">Ahrefs DR or Moz DA. Target
+                                links from sites DR/DA 30+. One DR 70 link beats 100 DR 10 links. The higher the better.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="glass rounded-xl p-5 flex flex-col justify-between">
+                        <div>
+                            <h4
+                                class="font-display font-semibold text-sm text-white mb-2 uppercase tracking-wide text-orange-400">
+                                Topical relevance</h4>
+                            <p class="text-[11px] text-gray-400 font-light leading-relaxed">A link from a web design
+                                blog is worth 5× more than a link from a travel site, even at the same DR. Relevance
+                                multiplies authority.</p>
+                        </div>
+                    </div>
+                    <div class="glass rounded-xl p-5 flex flex-col justify-between">
+                        <div>
+                            <h4
+                                class="font-display font-semibold text-sm text-white mb-2 uppercase tracking-wide text-orange-400">
+                                Organic traffic</h4>
+                            <p class="text-[11px] text-gray-400 font-light leading-relaxed">The linking site should have
+                                real organic traffic. Check in Ahrefs. Sites with zero traffic may be deindexed or link
+                                farms. Traffic = trust.</p>
+                        </div>
+                    </div>
+                    <div class="glass rounded-xl p-5 flex flex-col justify-between">
+                        <div>
+                            <h4
+                                class="font-display font-semibold text-sm text-white mb-2 uppercase tracking-wide text-orange-400">
+                                Dofollow / Nofollow</h4>
+                            <p class="text-[11px] text-gray-400 font-light leading-relaxed">Dofollow passes ranking
+                                authority. Nofollow (social, forums) doesn't directly — but still drives real traffic
+                                and brand mentions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass border-l-4 border-orange-500 bg-orange-500/[0.01] rounded-xl p-5">
+                <p class="text-xs text-orange-400 font-light leading-relaxed">
+                    <strong
+                        class="text-white font-bold block mb-1 uppercase tracking-wider font-mono text-[10px]">Disavow
+                        toxic links:</strong>
+                    If you've ever bought links or received spammy links, use Google's Disavow Tool in Search Console.
+                    Only do this if you have clear evidence of a spam pattern — incorrectly disavowing good links hurts
+                    rankings. Use Ahrefs' toxicity checker first to identify genuinely harmful links before disavowing
+                    anything.
+                </p>
+            </div>
+        </div>
+
+        <!-- SECTION 9: BLOG STRUCTURE -->
+        <div class="space-y-10 hidden" id="s-bs">
+            <p
+                class="text-sm text-gray-400 font-light leading-relaxed border-l-2 border-orange-500/40 pl-4 py-1 max-w-3xl">
+                A structured, repeatable framework for creating blog posts that satisfy Google's Helpful Content
+                guidelines, score high on Rank Math's SEO checklist, and turn organic visitors into active agency leads.
+            </p>
+
+            <div>
+                <h3 class="font-display font-bold text-lg text-white mb-6 uppercase tracking-wider text-orange-500">How
+                    to Create Blogs — Step-by-Step Workflow</h3>
+                <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <li class="glass rounded-xl p-5 flex flex-col justify-between">
+                        <div>
+                            <div
+                                class="w-6 h-6 rounded-md bg-orange-500/10 border border-orange-500/20 text-orange-400 font-mono text-[10px] font-bold flex items-center justify-center mb-3">
+                                1</div>
+                            <h4 class="font-display font-semibold text-xs text-white mb-1 uppercase tracking-wide">
+                                Keyword &amp; Intent Selection</h4>
+                            <p class="text-[11px] text-gray-400 font-light leading-relaxed">Choose one primary target
+                                keyword with low KD (under 30) and clear commercial/transactional intent. Map out 3-5
+                                LSI terms.</p>
+                        </div>
+                    </li>
+                    <li class="glass rounded-xl p-5 flex flex-col justify-between">
+                        <div>
+                            <div
+                                class="w-6 h-6 rounded-md bg-orange-500/10 border border-orange-500/20 text-orange-400 font-mono text-[10px] font-bold flex items-center justify-center mb-3">
+                                2</div>
+                            <h4 class="font-display font-semibold text-xs text-white mb-1 uppercase tracking-wide">Competitor
+                                Content Mapping</h4>
+                            <p class="text-[11px] text-gray-400 font-light leading-relaxed">Search the keyword. Read the top 3
+                                ranking articles. Note their average length, heading structures, and gaps you can cover better.
+                            </p>
+                        </div>
+                    </li>
+                    <li class="glass rounded-xl p-5 flex flex-col justify-between">
+                        <div>
+                            <div
+                                class="w-6 h-6 rounded-md bg-orange-500/10 border border-orange-500/20 text-orange-400 font-mono text-[10px] font-bold flex items-center justify-center mb-3">
+                                3</div>
+                            <h4 class="font-display font-semibold text-xs text-white mb-1 uppercase tracking-wide">Structured
+                                Drafting</h4>
+                            <p class="text-[11px] text-gray-400 font-light leading-relaxed">Write in short paragraphs (2-3 sentences
+                                max) to improve mobile readability. Place focus keyword in the first 100 words.</p>
+                        </div>
+                    </li>
+                    <li class="glass rounded-xl p-5 flex flex-col justify-between">
+                        <div>
+                            <div
+                                class="w-6 h-6 rounded-md bg-orange-500/10 border border-orange-500/20 text-orange-400 font-mono text-[10px] font-bold flex items-center justify-center mb-3">
+                                4</div>
+                            <h4 class="font-display font-semibold text-xs text-white mb-1 uppercase tracking-wide">Slug &amp; Meta
+                                Configuration</h4>
+                            <p class="text-[11px] text-gray-400 font-light leading-relaxed">Define a short URL slug using the focus
+                                keyword. Draft a meta description (150-160 characters) with a clear, value-driven CTA.</p>
+                        </div>
+                    </li>
+                    <li class="glass rounded-xl p-5 flex flex-col justify-between">
+                        <div>
+                            <div
+                                class="w-6 h-6 rounded-md bg-orange-500/10 border border-orange-500/20 text-orange-400 font-mono text-[10px] font-bold flex items-center justify-center mb-3">
+                                5</div>
+                            <h4 class="font-display font-semibold text-xs text-white mb-1 uppercase tracking-wide">Schema Data
+                                Generation</h4>
+                            <p class="text-[11px] text-gray-400 font-light leading-relaxed">Generate JSON-LD BlogPosting schema. Map
+                                metadata fields for search date published, modified, and keyword properties.</p>
+                        </div>
+                    </li>
+                    <li class="glass rounded-xl p-5 flex flex-col justify-between">
+                        <div>
+                            <div
+                                class="w-6 h-6 rounded-md bg-orange-500/10 border border-orange-500/20 text-orange-400 font-mono text-[10px] font-bold flex items-center justify-center mb-3">
+                                6</div>
+                            <h4 class="font-display font-semibold text-xs text-white mb-1 uppercase tracking-wide">Checklist
+                                Validation</h4>
+                            <p class="text-[11px] text-gray-400 font-light leading-relaxed">Verify optimization using the Rank Math
+                                guidelines, aiming for a green SEO score (80+) before hitting publish.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="font-display font-bold text-lg text-white mb-6 uppercase tracking-wider text-orange-500">Best
+                    Approach — Blog Structure &amp; Silo Strategy</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="glass rounded-xl p-5 flex gap-4">
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-lg bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center mt-0.5">
+                            <i data-lucide="heading" class="w-4 h-4"></i>
+                        </div>
+                        <span class="text-xs text-gray-400 leading-relaxed font-light"><strong
+                                class="text-white font-semibold block mb-1">SEO Title &amp; H1 Hook</strong> Use the
+                            focus keyword near the start. Increase CTR by including specific numbers, brackets, and
+                            target search dates (e.g. "Old vs New Tax Regime Guide [June 2026]"). Only one H1 per
+                            post.</span>
+                    </div>
+
+                    <div class="glass rounded-xl p-5 flex gap-4">
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-lg bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center mt-0.5">
+                            <i data-lucide="calendar" class="w-4 h-4"></i>
+                        </div>
+                        <span class="text-xs text-gray-400 leading-relaxed font-light"><strong
+                                class="text-white font-semibold block mb-1">Search Date &amp; Freshness</strong> Always
+                            state a "Last Updated / Reviewed" date at the top of the blog content. This satisfies search
+                            date queries and signals to Google's crawlers that the page is maintained. Ensure the
+                            visible date aligns with your schema's <code
+                                class="bg-white/5 text-orange-400 px-1 py-0.5 rounded text-[10px]">dateModified</code>
+                            property.</span>
+                    </div>
+
+                    <div class="glass rounded-xl p-5 flex gap-4">
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-lg bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center mt-0.5">
+                            <i data-lucide="link" class="w-4 h-4"></i>
+                        </div>
+                        <span class="text-xs text-gray-400 leading-relaxed font-light"><strong
+                                class="text-white font-semibold block mb-1">URL Slug Optimization</strong> Keep URL
+                            slugs clean, lowercase, and hyphenated containing only the focus keyword (e.g., <code
+                                class="bg-white/5 text-orange-400 px-1 py-0.5 rounded text-[10px]">/blog/old-vs-new-regime-2026</code>).
+                            Do not include categories, dates, or numbers unless part of the keyword. Avoid changing
+                            slugs post-launch.</span>
+                    </div>
+
+                    <div class="glass rounded-xl p-5 flex gap-4">
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-lg bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center mt-0.5">
+                            <i data-lucide="folder" class="w-4 h-4"></i>
+                        </div>
+                        <span class="text-xs text-gray-400 leading-relaxed font-light"><strong
+                                class="text-white font-semibold block mb-1">Silo Architecture (Categories &amp;
+                                Tags)</strong> Group posts logically under parent Categories (e.g. "Tax Planning"). Use
+                            Tags (e.g. "ITR Filing", "Form 16") to capture granular topics. Internal link articles in
+                            the same category (silo linking) to establish topical relevance.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="font-display font-bold text-lg text-white mb-6 uppercase tracking-wider text-orange-500">Dos
+                    &amp; Don'ts of Blog Creation</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- DOs -->
+                    <div class="glass rounded-2xl p-6 border-t-2 border-emerald-500/50 bg-emerald-500/[0.01]">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div
+                                class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center">
+                                <i data-lucide="check-circle" class="w-4 h-4"></i>
+                            </div>
+                            <h4 class="font-display font-black text-sm text-white uppercase tracking-wider">DO —
+                                Standard requirements</h4>
+                        </div>
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3 border-b border-white/5 pb-3 last:border-b-0 last:pb-0">
+                                <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 mt-1 flex-shrink-0"></i>
+                                <span class="text-xs text-gray-400 font-light leading-relaxed"><strong
+                                        class="text-white font-semibold">First 100 words</strong> Naturally include the
+                                    target focus keyword in the opening paragraph. Answer the search query early.</span>
+                            </li>
+                            <li class="flex items-start gap-3 border-b border-white/5 pb-3 last:border-b-0 last:pb-0">
+                                <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 mt-1 flex-shrink-0"></i>
+                                <span class="text-xs text-gray-400 font-light leading-relaxed"><strong
+                                        class="text-white font-semibold">Image Alt Text</strong> Write Alt text for all
+                                    images, incorporating secondary/LSI keywords. Keep descriptions natural.</span>
+                            </li>
+                            <li class="flex items-start gap-3 border-b border-white/5 pb-3 last:border-b-0 last:pb-0">
+                                <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 mt-1 flex-shrink-0"></i>
+                                <span class="text-xs text-gray-400 font-light leading-relaxed"><strong
+                                        class="text-white font-semibold">Descriptive Anchors</strong> Link internally
+                                    using natural context terms. Link "old vs new tax regime table" instead of "click
+                                    here".</span>
+                            </li>
+                            <li class="flex items-start gap-3 last:border-b-0 last:pb-0">
+                                <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 mt-1 flex-shrink-0"></i>
+                                <span class="text-xs text-gray-400 font-light leading-relaxed"><strong
+                                        class="text-white font-semibold">Call to Actions</strong> Include a relevant,
+                                    high-converting CTA (such as email magnet or WhatsApp inquiry link) at the end of
+                                    each post.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- DONTs -->
+                    <div class="glass rounded-2xl p-6 border-t-2 border-red-500/50 bg-red-500/[0.01]">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div
+                                class="w-8 h-8 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 flex items-center justify-center">
+                                <i data-lucide="x-circle" class="w-4 h-4"></i>
+                            </div>
+                            <h4 class="font-display font-black text-sm text-white uppercase tracking-wider">DON'T — Spam
+                                &amp; errors to avoid</h4>
+                        </div>
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3 border-b border-white/5 pb-3 last:border-b-0 last:pb-0">
+                                <i data-lucide="x" class="w-3.5 h-3.5 text-red-500 mt-1 flex-shrink-0"></i>
+                                <span class="text-xs text-gray-400 font-light leading-relaxed"><strong
+                                        class="text-white font-semibold">Keyword stuffing</strong> Do not repeat
+                                    keywords obsessively. Keep keyword density under 1.5% to avoid search classification
+                                    penalties.</span>
+                            </li>
+                            <li class="flex items-start gap-3 border-b border-white/5 pb-3 last:border-b-0 last:pb-0">
+                                <i data-lucide="x" class="w-3.5 h-3.5 text-red-500 mt-1 flex-shrink-0"></i>
+                                <span class="text-xs text-gray-400 font-light leading-relaxed"><strong
+                                        class="text-white font-semibold">Raw AI generation</strong> Do not copy-paste
+                                    raw ChatGPT output. Google's Helpful Content System penalises low-value, unedited AI
+                                    content.</span>
+                            </li>
+                            <li class="flex items-start gap-3 border-b border-white/5 pb-3 last:border-b-0 last:pb-0">
+                                <i data-lucide="x" class="w-3.5 h-3.5 text-red-500 mt-1 flex-shrink-0"></i>
+                                <span class="text-xs text-gray-400 font-light leading-relaxed"><strong
+                                        class="text-white font-semibold">Slug modifications</strong> Never change a slug
+                                    once published without adding a 301 redirect. Breaking the link destroys existing
+                                    indexing equity.</span>
+                            </li>
+                            <li class="flex items-start gap-3 last:border-b-0 last:pb-0">
+                                <i data-lucide="x" class="w-3.5 h-3.5 text-red-500 mt-1 flex-shrink-0"></i>
+                                <span class="text-xs text-gray-400 font-light leading-relaxed"><strong
+                                        class="text-white font-semibold">Keyword cannibalization</strong> Avoid
+                                    optimizing multiple posts for the exact same focus keyword. Create a keyword map to
+                                    keep them distinct.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="font-display font-bold text-lg text-white mb-6 uppercase tracking-wider text-orange-500">Rank
+                    Math Checklist &amp; SEO Score Guidelines</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="glass rounded-xl p-5 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span
+                                    class="text-[9px] text-orange-500 uppercase font-mono font-bold tracking-wider">SEO
+                                    Target</span>
+                                <span
+                                    class="px-2 py-0.5 rounded text-[8px] bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-bold font-mono">80+/100</span>
+                            </div>
+                            <h4 class="font-display font-semibold text-sm text-white mb-2 uppercase">Score 80+ (Green)
+                            </h4>
+                            <p class="text-xs text-gray-400 font-light leading-relaxed">
+                                The standard threshold for a highly optimized post. Indicates excellent keyword
+                                visibility and page structure to search crawlers.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="glass rounded-xl p-5 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span
+                                    class="text-[9px] text-orange-500 uppercase font-mono font-bold tracking-wider">Setup
+                                    Requirements</span>
+                                <span
+                                    class="px-2 py-0.5 rounded text-[8px] bg-blue-500/10 border border-blue-500/20 text-blue-400 font-bold font-mono">Checklist</span>
+                            </div>
+                            <h4 class="font-display font-semibold text-sm text-white mb-2 uppercase">Content Checklist
+                            </h4>
+                            <p class="text-xs text-gray-400 font-light leading-relaxed">
+                                Ensure focus keyword is present in: SEO Title (near start), Meta Description, H1
+                                Heading, URL Slug, H2/H3 subheadings, and first 10% of text block.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="glass rounded-xl p-5 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-[9px] text-orange-500 uppercase font-mono font-bold tracking-wider">UX
+                                    Signal</span>
+                                <span
+                                    class="px-2 py-0.5 rounded text-[8px] bg-purple-500/10 border border-purple-500/20 text-purple-400 font-bold font-mono">Dwell
+                                    Time</span>
+                            </div>
+                            <h4 class="font-display font-semibold text-sm text-white mb-2 uppercase">Readability
+                            </h4>
+                            <p class="text-xs text-gray-400 font-light leading-relaxed">
+                                Keep sentences readable. Break large text blocks into lists. Embed images, infographics,
+                                and a table of contents to maximize reader dwell time.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="font-display font-bold text-lg text-white mb-6 uppercase tracking-wider text-orange-500">
+                    Focus Keyword &amp; BlogPosting Schema Markup</h3>
+                <p class="text-xs text-gray-400 mb-4 font-light">Add inside <code
+                        class="bg-white/5 text-orange-400 px-1.5 py-0.5 rounded">&lt;head&gt;</code> script tag. Keep
+                    date fields updated to verify publication and modified timestamps.</p>
+
+                <div class="rounded-xl overflow-hidden border border-white/5 bg-[#0a0a0a]">
+                    <div class="flex items-center justify-between px-4 py-2.5 bg-neutral-900 border-b border-white/5">
+                        <div class="flex items-center gap-1.5">
+                            <span class="w-3 h-3 rounded-full bg-red-500/80"></span>
+                            <span class="w-3 h-3 rounded-full bg-yellow-500/80"></span>
+                            <span class="w-3 h-3 rounded-full bg-green-500/80"></span>
+                        </div>
+                        <span class="text-[10px] font-mono text-gray-500">BlogPosting JSON-LD Structured Data</span>
+                    </div>
+                    <pre class="p-5 overflow-x-auto text-[11px] font-mono text-gray-400 leading-normal"><code>{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://webresolv.com/blog/old-vs-new-tax-regime-2026"
+  },
+  "headline": "Old vs New Tax Regime 2026: Which One Actually Saves You More?",
+  "description": "Compare slab rates and deduction options between old and new regimes in 2026 to optimize your tax savings.",
+  "image": "https://webresolv.com/images/blog/tax-regime-2026.webp",  
+  "author": {
+    "@type": "Person",
+    "name": "WebResolv Editorial",
+    "url": "https://webresolv.com/about"
+  },  
+  "publisher": {
+    "@type": "Organization",
+    "name": "WebResolv",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://webresolv.com/favicon.svg"
+    }
+  },
+  "datePublished": "2026-06-01T08:00:00+05:30",
+  "dateModified": "2026-06-09T12:00:00+05:30"
+}</code></pre>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Simple Internal Footer -->
+    <footer
+        class="border-t border-white/5 py-8 text-center text-[10px] text-gray-600 font-mono tracking-wider relative z-10">
+        INTERNAL DOCUMENT &bull; AUTHORIZED WEBRESOLV RESELLER ACCESS ONLY &bull; WEBRESOLV STUDIO &copy; 2026
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Initialize Lucide Icons
+            lucide.createIcons();
+
+            // Spotlight Tracker
+            const spotlight = document.getElementById("spotlight");
+            const cursorDot = document.getElementById("cursor-dot");
+            const cursorOutline = document.getElementById("cursor-outline");
+
+            window.addEventListener("mousemove", (e) => {
+                const x = e.clientX;
+                const y = e.clientY;
+                spotlight.style.setProperty("--x", `${x}px`);
+                spotlight.style.setProperty("--y", `${y}px`);
+                cursorDot.style.left = `${x}px`;
+                cursorDot.style.top = `${y}px`;
+                cursorOutline.animate(
+                    { left: `${x}px`, top: `${y}px` },
+                    { duration: 500, fill: "forwards" }
+                );
+            });
+
+            // Tabs Navigation Logic
+            const tabs = document.querySelectorAll("#nav button");
+            const sections = document.querySelectorAll("main > div");
+
+            function showTab(tabId) {
+                tabs.forEach(btn => {
+                    if (btn.getAttribute("data-t") === tabId) {
+                        btn.className = "px-4 py-2 border rounded-full text-xs font-mono font-bold tracking-wide transition-all duration-200 clickable bg-orange-500/10 border-orange-500/30 text-orange-400";
+                    } else {
+                        btn.className = "px-4 py-2 border rounded-full text-xs font-mono font-semibold tracking-wide transition-all duration-200 clickable border-white/5 text-gray-400 hover:text-white hover:border-white/20";
+                    }
+                });
+
+                sections.forEach(sec => {
+                    if (sec.id === "s-" + tabId) {
+                        sec.classList.remove("hidden");
+                    } else {
+                        sec.classList.add("hidden");
+                    }
+                });
+
+                // Refresh Lucide Icons (in case some were hidden)
+                lucide.createIcons();
+            }
+
+            tabs.forEach(btn => {
+                btn.addEventListener("click", () => {
+                    showTab(btn.getAttribute("data-t"));
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

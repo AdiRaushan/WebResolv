@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <title>MY TAXATION — June 2026 Blog Strategy | WebResolv Research</title>
+    <meta name="description" content="10 high-traffic blog topics for MY TAXATION researched by WebResolv. Form 16, regime comparison, ITR filing season strategy." />
+    <meta name="robots" content="noindex, nofollow" />
+
+    <!-- CDN Dependencies -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/lucide@latest"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <style>
+        :root {
+            --bg-color: #050505;
+            --accent: #f97316;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            background-color: var(--bg-color);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        @media (min-width: 768px) {
+            body {
+                cursor: none;
+            }
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        .font-display {
+            font-family: "Space Grotesk", sans-serif;
+        }
+
+        /* Spotlight Overlay */
+        .spotlight {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            background: radial-gradient(600px circle at var(--x) var(--y),
+                    rgba(249, 115, 22, 0.12),
+                    transparent 45%);
+        }
+
+        /* Custom Cursor */
+        .cursor-dot,
+        .cursor-outline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 9999;
+            pointer-events: none;
+        }
+
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background: white;
+            mix-blend-mode: difference;
+        }
+
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 1.5px solid white;
+            mix-blend-mode: difference;
+            transition: width 0.2s, height 0.2s;
+        }
+
+        body:hover .cursor-outline {
+            width: 40px;
+            height: 40px;
+        }
+
+        a:hover~.cursor-outline,
+        button:hover~.cursor-outline,
+        .clickable:hover~.cursor-outline {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.15);
+            border-color: transparent;
+        }
+
+        /* Glass Cards */
+        .glass {
+            background: rgba(18, 18, 18, 0.5);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .glass:hover {
+            background: rgba(26, 26, 26, 0.7);
+            border-color: rgba(249, 115, 22, 0.25);
+            transform: translateY(-4px);
+            box-shadow: 0 15px 30px -10px rgba(249, 115, 22, 0.08);
+        }
+
+        /* Reveal Animation on Scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Search Volume Progress Bars */
+        .bar-track {
+            flex: 1;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            width: 0; /* Animated on reveal */
+            transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-orange-500 selection:text-white">
+    <!-- Visual Overlays -->
+    <div class="absolute inset-0 pointer-events-none z-[1] opacity-[0.02] mix-blend-screen"
+        style="background-image: url(&quot;data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;); background-color: rgba(249, 115, 22, 0.15);">
+    </div>
+    <div class="spotlight" id="spotlight"></div>
+    <div class="cursor-dot hidden md:block" id="cursor-dot"></div>
+    <div class="cursor-outline hidden md:block" id="cursor-outline"></div>
+
+    <!-- Navigation Header -->
+    <nav id="top-nav"
+        class="fixed top-0 w-full z-40 px-4 md:px-6 py-4 md:py-6 flex justify-between items-center mix-blend-difference text-white transition-all duration-500">
+        <a href="../index.html"
+            class="font-display font-bold text-lg md:text-xl tracking-tighter hover:text-orange-500 transition-colors clickable">
+            WebResolv<span class="text-orange-500">.</span>
+        </a>
+
+        <!-- Right Side Actions -->
+        <div class="flex items-center gap-2 md:gap-3">
+            <a href="mailto:webresolv16@gmail.com"
+                class="glass px-3 md:px-6 py-1.5 md:py-2 rounded-full text-[10px] md:text-xs font-bold hover:bg-white hover:text-black hover:border-white transition-all clickable touch-manipulation">START
+                PROJECT</a>
+
+            <a href="https://wa.me/919217671611" target="_blank" rel="noopener noreferrer"
+                class="glass px-3 md:px-6 py-1.5 md:py-2 rounded-full text-[10px] md:text-xs font-bold hover:bg-[#25D366] hover:text-black hover:border-[#25D366] transition-all clickable touch-manipulation flex items-center gap-1.5">
+                <i data-lucide="message-circle" class="w-3.5 h-3.5 md:w-4 h-4 text-[#25D366]"></i>
+                <span>WHATSAPP</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="relative z-10 max-w-6xl mx-auto px-6 pt-36 pb-24">
+        
+        <!-- Header Section -->
+        <header class="reveal mb-16 border-b border-white/5 pb-10">
+            <span class="text-[10px] text-orange-500 uppercase tracking-[0.25em] font-mono font-bold block mb-3">/ RESEARCH &amp; STRATEGY DISPATCH</span>
+            <h1 class="font-display font-black text-4xl sm:text-5xl md:text-6xl text-white tracking-tighter uppercase leading-none mb-6">
+                June 2026 — 10 high-traffic blog topics for MY TAXATION
+            </h1>
+            <p class="text-gray-400 text-sm sm:text-base font-light leading-relaxed max-w-2xl">
+                Researched against ClearTax, Tax2Win, TaxGuru + Google search patterns. None overlap with your existing 10 posts.
+            </p>
+        </header>
+
+        <!-- Stats Row -->
+        <section class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 reveal">
+            <div class="glass rounded-xl p-4 flex flex-col justify-between">
+                <div>
+                    <span class="text-[8px] text-orange-500 uppercase tracking-widest font-mono font-bold block mb-1">Peak Window</span>
+                    <span class="font-display text-xl font-black text-white leading-none">Jun 15</span>
+                </div>
+                <span class="text-[9px] text-gray-500 mt-3 leading-normal">Form 16 deadline triggers searches</span>
+            </div>
+
+            <div class="glass rounded-xl p-4 flex flex-col justify-between">
+                <div>
+                    <span class="text-[8px] text-orange-500 uppercase tracking-widest font-mono font-bold block mb-1">Filing Deadline</span>
+                    <span class="font-display text-xl font-black text-white leading-none">Jul 31</span>
+                </div>
+                <span class="text-[9px] text-gray-500 mt-3 leading-normal">ITR-1 &amp; ITR-2 due date</span>
+            </div>
+
+            <div class="glass rounded-xl p-4 flex flex-col justify-between">
+                <div>
+                    <span class="text-[8px] text-orange-500 uppercase tracking-widest font-mono font-bold block mb-1">Tax Season Lift</span>
+                    <span class="font-display text-xl font-black text-white leading-none">3–5×</span>
+                </div>
+                <span class="text-[9px] text-gray-500 mt-3 leading-normal">vs. off-season traffic</span>
+            </div>
+
+            <div class="glass rounded-xl p-4 flex flex-col justify-between">
+                <div>
+                    <span class="text-[8px] text-orange-500 uppercase tracking-widest font-mono font-bold block mb-1">Biggest Shift</span>
+                    <span class="font-display text-xl font-black text-white leading-none">New Act</span>
+                </div>
+                <span class="text-[9px] text-gray-500 mt-3 leading-normal">Income Tax Act 2025 live</span>
+            </div>
+        </section>
+
+        <!-- Topics List Section -->
+        <section class="mb-16">
+            <h2 class="text-[9px] text-gray-500 uppercase tracking-[0.2em] font-bold mb-6">Topics ranked by estimated June search volume</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Topic #1 -->
+                <div class="glass rounded-2xl p-5 hover:border-orange-500/30 transition-all duration-300 relative overflow-hidden group reveal flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-start gap-3 mb-4">
+                            <div class="flex-shrink-0 w-9 h-9 rounded-xl bg-orange-500/10 border border-orange-500/20 text-orange-500 font-display font-black text-sm flex items-center justify-center">
+                                #1
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-base md:text-lg font-black text-white font-display uppercase tracking-tight leading-tight group-hover:text-orange-500 transition-colors duration-300">
+                                    Old vs New Tax Regime 2026: Which One Actually Saves You More? (With Real Salary Examples)
+                                </h3>
+                            </div>
+                        </div>
+                        
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            <span class="px-2.5 py-0.5 text-[8px] uppercase tracking-wider font-bold rounded-full bg-red-500/10 border border-red-500/20 text-red-400">🔥 Fire</span>
+                            <span class="px-2.5 py-0.5 text-[8px] uppercase tracking-wider font-bold rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400">Income Tax Filing</span>
+                            <span class="px-2.5 py-0.5 text-[8px] uppercase tracking-wider font-bold rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400">~3–5L/month</span>
+                        </div>
+
+                        <div class="flex items-center gap-3 mb-4 bg-neutral-900/30 p-3 rounded-lg border border-white/[0.02]">
+                            <span class="text-[9px] text-gray-500 font-bold uppercase tracking-wider whitespace-nowrap">Volume</span>
+                            <div class="bar-track">
+                                <div class="bar-fill bg-red-500" data-width="100%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="text-xs text-gray-400 font-light leading-relaxed pt-4 border-t border-white/5 mt-auto">
+                        <strong class="text-white font-semibold block mb-1.5 text-[10px] uppercase tracking-wider font-mono text-orange-500">Why June:</strong>
+                        This is perennially the #1 or #2 searched tax topic in India during filing season. With the Income Tax Act 2025 now live, confusion is at an all-time high — new section numbers, updated slab rates, changed HRA city list. ClearTax's page on this gets millions of visits. People need updated examples for ₹8L, ₹12L, ₹15L, ₹25L salary brackets. <span class="text-white font-medium">Angle:</span> include a simple calculator table + which regime is better at each income level.
+                    </p>
+                </div>
+
+                <!-- Topic #2 -->
+                <div class="glass rounded-2xl p-5 hover:border-orange-500/30 transition-all duration-300 relative overflow-hidden group reveal flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-start gap-3 mb-4">
+                            <div class="flex-shrink-0 w-9 h-9 rounded-xl bg-orange-500/10 border border-orange-500/20 text-orange-500 font-display font-black text-sm flex items-center justify-center">
+                                #2
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-base md:text-lg font-black text-white font-display uppercase tracking-tight leading-tight group-hover:text-orange-500 transition-colors duration-300">
+                                    Form 16 for FY 2025-26: How to Download It, Read Part A &amp; B, and File ITR Without Errors
+                                </h3>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            <span class="px-2.5 py-0.5 text-[8px] uppercase tracking-wider font-bold rounded-full bg-red-500/10 border border-red-500/20 text-red-400">🔥 Fire</span>
+                            <span class="px-2.5 py-0.5 text-[8px] uppercase tracking-wider font-bold rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400">Income Tax Filing</span>
+                            <span class="px-2.5 py-0.5 text-[8px] uppercase tracking-wider font-bold rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400">~2–3L/month</span>
+                        </div>
+
+                        <div class="flex items-center gap-3 mb-4 bg-neutral-900/30 p-3 rounded-lg border border-white/[0.02]">
+                            <span class="text-[9px] text-gray-500 font-bold uppercase tracking-wider whitespace-nowrap">Volume</span>
+                            <div class="bar-track">
+                                <div class="bar-fill bg-red-500" data-width="95%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="text-xs text-gray-400 font-light leading-relaxed pt-4 border-t border-white/5 mt-auto">
+                        <strong class="text-white font-semibold block mb-1.5 text-[10px] uppercase tracking-wider font-mono text-orange-500">Why June:</strong>
+                        Employers MUST issue Form 16 by June 15, 2026. The moment employees receive it, lakhs search "what is Form 16", "how to read Form 16", "Form 16 Part A vs Part B". Under the Income Tax Act 2025, Form 16 is renamed Form 130 for Tax Year 2026-27 — but still called Form 16 for AY 2026-27 (FY 2025-26), creating enormous confusion. This is a can't-miss topic for June. Cover: download steps, what Part A and B mean, common errors to check, and how to use it in ITR filing.
+                    </p>
+                </div>
+
+                <!-- Topic #3 -->
+                <div class="glass rounded-2xl p-5 hover:border-orange-500/30 transition-all duration-300 relative overflow-hidden group reveal flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-start gap-3 mb-4">
+                            <div class="flex-shrink-0 w-9 h-9 rounded-xl bg-orange-500/10 border border-orange-500/20 text-orange-500 font-display font-black text-sm flex items-center justify-center">
+                                #3
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-base md:text-lg font-black text-white font-display uppercase tracking-tight leading-tight group-hover:text-orange-500 transition-colors duration-300">
+                                    Income Tax Refund 2026: How to Check Status, Speed It Up, and Fix Refund Failures
+                                </h3>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            <span class="px-2.5 py-0.5 text-[8px] uppercase tracking-wider font-bold rounded-full bg-red-500/10 border border-red-500/20 text-red-400">🔥 Fire</span>
+                            <span class="px-2.5 py-0.5 text-[8px] uppercase tracking-wider font-bold rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400">Income Tax Filing</span>
+                            <span class="px-2.5 py-0.5 text-[8px] uppercase tracking-wider font-bold rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400">~1–2.5L/month</span>
+                        </div>
+
+                        <div class="flex items-center gap-3 mb-4 bg-neutral-900/30 p-3 rounded-lg border border-white/[0.02]">
+                            <span class="text-[9px] text-gray-500 font-bold uppercase tracking-wider whitespace-nowrap">Volume</span>
+                            <div class="bar-track">
+                                <div class="bar-fill bg-red-500" data-width="88%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="text-xs text-gray-400 font-light leading-relaxed pt-4 border-t border-white/5 mt-auto">
+                        <strong class="text-white font-semibold block mb-1.5 text-[10px] uppercase tracking-wider font-mono text-orange-500">Why June-July:</strong>
+                        "Income tax refund status" is consistently among the top 5 searched tax keywords in India from June through September. People who file early (June) want their refund fast. Cover: how to pre-validate bank account, link Aadhaar, check status on portal, typical processing times, and what to do when refund fails or is smaller than expected.
+                    </p>
+                </div>
+
+                <!-- Topic #4 -->
+                <div class="glass rounded-2xl p-5 hover:border-orange-500/30 transition-all duration-300 relative overflow-hidden group reveal flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-start gap-3 mb-4">
+                            <div class="flex-shrink-0 w-9 h-9 rounded-xl bg-orange-500/10 border border-orange-500/20 text-orange-500 font-display font-black text-sm flex items-center justify-center">
+                                #4
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-base md:text-lg font-black text-white font-display uppercase tracking-tight leading-tight group-hover:text-orange-500 transition-colors duration-300">
+                                    Capital Gains Tax FY 2025-26: New LTCG &amp; STCG Rates on Stocks, Mutual Funds, and Property — Explained
+                                </h3>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            <span class="px-2.5 py-0.5 text-[8px] uppercase tracking-wider font-bold rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400">🔥 Hot</span>
+                            <span class="px-2.5 py-0.5 text-[8px] uppercase tracking-wider font-bold rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400">Income Tax Filing</span>
+                            <span class="px-2.5 py-0.5 text-[8px] uppercase tracking-wider font-bold rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400">~80k–2L/month</span>
+                        </div>
+
+                        <div class="flex items-center gap-3 mb-4 bg-neutral-900/30 p-3 rounded-lg border border-white/[0.02]">
+                            <span class="text-[9px] text-gray-500 font-bold uppercase tracking-wider whitespace-nowrap">Volume</span>
+                            <div class="bar-track">
+                                <div class="bar-fill bg-amber-500" data-width="80%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="text-xs text-gray-400 font-light leading-relaxed pt-4 border-t border-white/5 mt-auto">
+                        <strong class="text-white font-semibold block mb-1.5 text-[10px] uppercase tracking-wider font-mono text-orange-500">Why June:</strong>
+                        Budget 2024 changed LTCG to 12.5% (removed indexation on property), STCG to 20%, and ₹1.25L exemption limit. Millions of equity investors and property sellers need clarity when filing. Cover all 3 asset classes — equity/MF, debt funds, and real estate — in one comprehensive post. Include ITR-2 schedule CG filing guidance.
+                    </p>
+                </div>
+
+                <!-- Topic #5 -->
+                <div class="glass rounded-2xl p-5 hover:border-orange-500/30 transition-all duration-300 relative overflow-hidden group reveal flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-start gap-3 mb-4">
+                            <div class="flex-shrink-0 w-9 h-9 rounded-xl bg-orange-500/10 border border-orange-500/20 text-orange-500 font-display font-black text-sm flex items-center justify-center">
+                                #5
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-base md:text-lg font-black text-white font-display uppercase tracking-tight leading-tight group-hover:text-orange-500 transition-colors duration-300">
+                                    Income Tax Act 2025 vs 1961: 8 Key Changes That Affect Your ITR Filing for AY 2026-27
+                                </h3>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            <span class="px-2.5 py-0.5 text-[8px] uppercase tracking-wider font-bold rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400">🔥 Hot</span>
+                            <span class="px-2.5 py-0.5 text-[8px] uppercase tracking-wider font-bold rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400">Government Updates</span>
+                            <span class="px-2.5 py-0.5 text-[8px] uppercase tracking-wider font-bold rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400">~60k–1.5L/month</span>
+                        </div>
+
+                        <div class="flex items-center gap-3 mb-4 bg-neutral-900/30 p-3 rounded-lg border border-white/[0.02]">
+                            <span class="text-[9px] text-gray-500 font-bold uppercase tracking-wider whitespace-nowrap">Volume</span>
+                            <div class="bar-track">
+                                <div class="bar-fill bg-amber-500" data-width="74%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="text-xs text-gray-400 font-light leading-relaxed pt-4 border-t border-white/5 mt-auto">
+                        <strong class="text-white font-semibold block mb-1.5 text-[10px] uppercase tracking-wider font-mono text-orange-500">Why June 2026 only:</strong>
+                        This is a one-time peak. The New Income Tax Act 2025 replaced the 1961 Act on April 1, 2026 — but for AY 2026-27 filing, the 1961 Act still applies. This causes massive confusion. Searches like "new income tax act 2025 changes", "new act sections", "Form 16 renamed" are spiking heavily right now. Cover: what changed vs what didn't, section number changes, and what taxpayers must know for this year's filing.
+                    </p>
+                </div>
+
+                <!-- Topic #6 -->
+                <div class="glass rounded-2xl p-5 hover:border-orange-500/30 transition-all duration-300 relative overflow-hidden group reveal flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-start gap-3 mb-4">
+                            <div class="flex-shrink-0 w-9 h-9 rounded-xl bg-orange-500/10 border border-orange-500/20 text-orange-500 font-display font-black text-sm flex items-center justify-center">
+                                #6
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-base md:text-lg font-black text-white font-display uppercase tracking-tight leading-tight group-hover:text-orange-500 transition-colors duration-300">
+                                    AIS vs Form 26AS vs TIS: What to Check and Fix Before Filing Your ITR 2026
+                                </h3>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            <span class="px-2.5 py-0.5 text-[8px] uppercase tracking-wider font-bold rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400">🔥 Hot</span>
+                            <span class="px-2.5 py-0.5 text-[8px] uppercase tracking-wider font-bold rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400">Income Tax Filing</span>
+                            <span class="px-2.5 py-0.5 text-[8px] uppercase tracking-wider font-bold rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400">~40k–80k/month</span>
+                        </div>
+
+                        <div class="flex items-center gap-3 mb-4 bg-neutral-900/30 p-3 rounded-lg border border-white/[0.02]">
+                            <span class="text-[9px] text-gray-500 font-bold uppercase tracking-wider whitespace-nowrap">Volume</span>
+                            <div class="bar-track">
+                                <div class="bar-fill bg-amber-500" data-width="66%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="text-xs text-gray-400 font-light leading-relaxed pt-4 border-t border-white/5 mt-auto">
+                        <strong class="text-white font-semibold block mb-1.5 text-[10px] uppercase tracking-wider font-mono text-orange-500">Why June:</strong>
+                        The ITR portal now pre-fills data from AIS. Mismatches between AIS, 26AS, TIS and actual income are the #1 reason for IT notices. Most taxpayers don't know the difference between these 3 documents. Cover: what each statement shows, how to download, how to spot discrepancies, and how to raise a correction before filing. This is a gap no existing blog on your site covers.
+                    </p>
+                </div>
+
+                <!-- Topic #7 -->
+                <div class="glass rounded-2xl p-5 hover:border-orange-500/30 transition-all duration-300 relative overflow-hidden group reveal flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-start gap-3 mb-4">
+                            <div class="flex-shrink-0 w-9 h-9 rounded-xl bg-orange-500/10 border border-orange-500/20 text-orange-500 font-display font-black text-sm flex items-center justify-center">
+                                #7
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-base md:text-lg font-black text-white font-display uppercase tracking-tight leading-tight group-hover:text-orange-500 transition-colors duration-300">
+                                    F&amp;O Tax Filing 2026: How Futures &amp; Options Traders Should File ITR-3 (Turnover, Audit Limits &amp; Loss Set-Off)
+                                </h3>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            <span class="px-2.5 py-0.5 text-[8px] uppercase tracking-wider font-bold rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">Warm</span>
+                            <span class="px-2.5 py-0.5 text-[8px] uppercase tracking-wider font-bold rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400">Income Tax Filing</span>
+                            <span class="px-2.5 py-0.5 text-[8px] uppercase tracking-wider font-bold rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400">~50k–1.2L/month</span>
+                        </div>
+
+                        <div class="flex items-center gap-3 mb-4 bg-neutral-900/30 p-3 rounded-lg border border-white/[0.02]">
+                            <span class="text-[9px] text-gray-500 font-bold uppercase tracking-wider whitespace-nowrap">Volume</span>
+                            <div class="bar-track">
+                                <div class="bar-fill bg-emerald-500" data-width="70%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="text-xs text-gray-400 font-light leading-relaxed pt-4 border-t border-white/5 mt-auto">
+                        <strong class="text-white font-semibold block mb-1.5 text-[10px] uppercase tracking-wider font-mono text-orange-500">Why June:</strong>
+                        India has 3+ crore active F&amp;O traders. After SEBI's 2024 F&amp;O restrictions, even more retail investors are confused about tax. F&amp;O income is business income (not capital gains), requires ITR-3, has specific turnover calculation rules, and triggers audit if loss is declared. ClearTax has massive traffic on F&amp;O guides. This is a high-intent audience that tends to hire CAs — direct lead gen for MY TAXATION.
+                    </p>
+                </div>
+
+                <!-- Topic #8 -->
+                <div class="glass rounded-2xl p-5 hover:border-orange-500/30 transition-all duration-300 relative overflow-hidden group reveal flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-start gap-3 mb-4">
+                            <div class="flex-shrink-0 w-9 h-9 rounded-xl bg-orange-500/10 border border-orange-500/20 text-orange-500 font-display font-black text-sm flex items-center justify-center">
+                                #8
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-base md:text-lg font-black text-white font-display uppercase tracking-tight leading-tight group-hover:text-orange-500 transition-colors duration-300">
+                                    Crypto &amp; Bitcoin Tax in India 2026: How to Report VDA Income in ITR-2 / ITR-3 Under Schedule VDA
+                                </h3>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            <span class="px-2.5 py-0.5 text-[8px] uppercase tracking-wider font-bold rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">Warm</span>
+                            <span class="px-2.5 py-0.5 text-[8px] uppercase tracking-wider font-bold rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400">Income Tax Filing</span>
+                            <span class="px-2.5 py-0.5 text-[8px] uppercase tracking-wider font-bold rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400">~40k–1L/month</span>
+                        </div>
+
+                        <div class="flex items-center gap-3 mb-4 bg-neutral-900/30 p-3 rounded-lg border border-white/[0.02]">
+                            <span class="text-[9px] text-gray-500 font-bold uppercase tracking-wider whitespace-nowrap">Volume</span>
+                            <div class="bar-track">
+                                <div class="bar-fill bg-emerald-500" data-width="64%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="text-xs text-gray-400 font-light leading-relaxed pt-4 border-t border-white/5 mt-auto">
+                        <strong class="text-white font-semibold block mb-1.5 text-[10px] uppercase tracking-wider font-mono text-orange-500">Why June:</strong>
+                        Crores of Indian crypto investors must report under Schedule VDA. The 30% flat tax, 1% TDS on transfers, no loss set-off rule — all create huge confusion. GST now also applies to platform fees (from July 2025). Searches spike in June-July as filers try to figure out ITR-2 vs ITR-3 for crypto, how to match Form 26AS TDS entries, and whether losses on one coin can offset another. High-value, high-complexity audience for MY TAXATION.
+                    </p>
+                </div>
+
+                <!-- Topic #9 -->
+                <div class="glass rounded-2xl p-5 hover:border-orange-500/30 transition-all duration-300 relative overflow-hidden group reveal flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-start gap-3 mb-4">
+                            <div class="flex-shrink-0 w-9 h-9 rounded-xl bg-orange-500/10 border border-orange-500/20 text-orange-500 font-display font-black text-sm flex items-center justify-center">
+                                #9
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-base md:text-lg font-black text-white font-display uppercase tracking-tight leading-tight group-hover:text-orange-500 transition-colors duration-300">
+                                    NRI ITR Filing 2026: Which Form to Use, July 31 Deadline, DTAA Benefits &amp; TDS on Property Sales
+                                </h3>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            <span class="px-2.5 py-0.5 text-[8px] uppercase tracking-wider font-bold rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">Warm</span>
+                            <span class="px-2.5 py-0.5 text-[8px] uppercase tracking-wider font-bold rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400">Income Tax Filing</span>
+                            <span class="px-2.5 py-0.5 text-[8px] uppercase tracking-wider font-bold rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400">~30k–70k/month</span>
+                        </div>
+
+                        <div class="flex items-center gap-3 mb-4 bg-neutral-900/30 p-3 rounded-lg border border-white/[0.02]">
+                            <span class="text-[9px] text-gray-500 font-bold uppercase tracking-wider whitespace-nowrap">Volume</span>
+                            <div class="bar-track">
+                                <div class="bar-fill bg-emerald-500" data-width="55%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="text-xs text-gray-400 font-light leading-relaxed pt-4 border-t border-white/5 mt-auto">
+                        <strong class="text-white font-semibold block mb-1.5 text-[10px] uppercase tracking-wider font-mono text-orange-500">Why June:</strong>
+                        NRIs must file by July 31 for ITR-2. They search from abroad in June for: residency status determination, ITR-2 vs ITR-3 choice, DTAA benefits to avoid double taxation, TDS refund claims on property sales (buyers must deduct 12.5%), and the new Income Tax Rules 2026 NRI compliance rules. Typically a high-value client type for CA services — strong lead gen potential for MY TAXATION.
+                    </p>
+                </div>
+
+                <!-- Topic #10 -->
+                <div class="glass rounded-2xl p-5 hover:border-orange-500/30 transition-all duration-300 relative overflow-hidden group reveal flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-start gap-3 mb-4">
+                            <div class="flex-shrink-0 w-9 h-9 rounded-xl bg-orange-500/10 border border-orange-500/20 text-orange-500 font-display font-black text-sm flex items-center justify-center">
+                                #10
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-base md:text-lg font-black text-white font-display uppercase tracking-tight leading-tight group-hover:text-orange-500 transition-colors duration-300">
+                                    Section 54 &amp; 54F: How to Save Capital Gains Tax on Property Sale in 2026 After Indexation Was Removed
+                                </h3>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            <span class="px-2.5 py-0.5 text-[8px] uppercase tracking-wider font-bold rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">Warm</span>
+                            <span class="px-2.5 py-0.5 text-[8px] uppercase tracking-wider font-bold rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400">Tax Planning</span>
+                            <span class="px-2.5 py-0.5 text-[8px] uppercase tracking-wider font-bold rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400">~40k–90k/month</span>
+                        </div>
+
+                        <div class="flex items-center gap-3 mb-4 bg-neutral-900/30 p-3 rounded-lg border border-white/[0.02]">
+                            <span class="text-[9px] text-gray-500 font-bold uppercase tracking-wider whitespace-nowrap">Volume</span>
+                            <div class="bar-track">
+                                <div class="bar-fill bg-emerald-500" data-width="58%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="text-xs text-gray-400 font-light leading-relaxed pt-4 border-t border-white/5 mt-auto">
+                        <strong class="text-white font-semibold block mb-1.5 text-[10px] uppercase tracking-wider font-mono text-orange-500">Why June:</strong>
+                        Budget 2024 removed indexation on property sales, massively increasing capital gains tax exposure. Section 54 (reinvestment in property) and Section 54F (reinvestment in residential property) are now the primary legal tax saving tools for property sellers. With property sales booming in India, this topic gets strong searches from people filing ITR-2 with capital gains from FY 2025-26 property transactions.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Divider Line -->
+        <div class="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent my-12"></div>
+
+        <!-- Strategic Notes Box -->
+        <section class="reveal">
+            <h2 class="font-display font-black text-xl md:text-2xl text-white tracking-tight uppercase mb-6">Strategic notes for MY TAXATION</h2>
+            <div class="glass rounded-2xl p-5 md:p-6 border-l-4 border-orange-500 relative overflow-hidden bg-[#0a0a0a]/50">
+                <div class="absolute inset-0 pointer-events-none z-0" style="background: radial-gradient(circle at 0% 0%, rgba(249, 115, 22, 0.04), transparent 50%);"></div>
+                <div class="relative z-10 space-y-5">
+                    <div class="flex items-start gap-3">
+                        <div class="flex-shrink-0 w-7 h-7 rounded-lg bg-orange-500/10 border border-orange-500/20 flex items-center justify-center mt-0.5">
+                            <i data-lucide="sparkles" class="w-3.5 h-3.5 text-orange-500"></i>
+                        </div>
+                        <div>
+                            <strong class="text-white font-semibold block mb-0.5 text-xs">Lead gen angle:</strong>
+                            <span class="text-xs text-gray-400 font-light leading-relaxed">Topics #7 (F&amp;O), #8 (Crypto), and #9 (NRI) are lower volume but extremely high conversion — these audiences always need a CA. End each post with a WhatsApp CTA.</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-3">
+                        <div class="flex-shrink-0 w-7 h-7 rounded-lg bg-orange-500/10 border border-orange-500/20 flex items-center justify-center mt-0.5">
+                            <i data-lucide="calendar" class="w-3.5 h-3.5 text-orange-500"></i>
+                        </div>
+                        <div>
+                            <strong class="text-white font-semibold block mb-0.5 text-xs">Publish order:</strong>
+                            <span class="text-xs text-gray-400 font-light leading-relaxed">Post #2 (Form 16) on or before June 15, post #1 (Old vs New regime) and #3 (Refund) by June 20, then remaining topics through June 30.</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-3">
+                        <div class="flex-shrink-0 w-7 h-7 rounded-lg bg-orange-500/10 border border-orange-500/20 flex items-center justify-center mt-0.5">
+                            <i data-lucide="trending-up" class="w-3.5 h-3.5 text-orange-500"></i>
+                        </div>
+                        <div>
+                            <strong class="text-white font-semibold block mb-0.5 text-xs">Competitor gap:</strong>
+                            <span class="text-xs text-gray-400 font-light leading-relaxed">ClearTax and Tax2Win cover #1–#6 well. But #7–#10 are less covered on smaller CA firm sites — MY TAXATION can dominate these with expert-angle content.</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-3">
+                        <div class="flex-shrink-0 w-7 h-7 rounded-lg bg-orange-500/10 border border-orange-500/20 flex items-center justify-center mt-0.5">
+                            <i data-lucide="link" class="w-3.5 h-3.5 text-orange-500"></i>
+                        </div>
+                        <div>
+                            <strong class="text-white font-semibold block mb-0.5 text-xs">Internal linking:</strong>
+                            <span class="text-xs text-gray-400 font-light leading-relaxed">Link #4 (Capital Gains) → #10 (Section 54), and #6 (AIS mismatch) → your existing IT Notice blog. Strong interlinking boosts both rankings.</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-3">
+                        <div class="flex-shrink-0 w-7 h-7 rounded-lg bg-orange-500/10 border border-orange-500/20 flex items-center justify-center mt-0.5">
+                            <i data-lucide="edit-3" class="w-3.5 h-3.5 text-orange-500"></i>
+                        </div>
+                        <div>
+                            <strong class="text-white font-semibold block mb-0.5 text-xs">Title format that converts:</strong>
+                            <span class="text-xs text-gray-400 font-light leading-relaxed">"How to X in 2026" and "X: Complete Guide for AY 2026-27" consistently outperform generic titles in Indian tax SERPs. Include the year and AY in every H1.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact" class="relative bg-black text-white pt-32 pb-24 px-6 overflow-hidden border-t border-white/10">
+        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80vw] h-[400px] bg-orange-600/10 blur-[100px] rounded-full pointer-events-none"></div>
+        <div class="relative z-10 max-w-7xl mx-auto flex flex-col items-center text-center">
+            <p class="text-orange-500 tracking-widest uppercase text-xs font-bold mb-6 animate-pulse">Stop Thinking. Start Building.</p>
+            <a href="mailto:webresolv16@gmail.com" class="clickable group relative block transition-transform hover:scale-105 duration-500">
+                <h2 class="text-[12vw] sm:text-[10vw] leading-none font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-700 group-hover:to-orange-500 transition-all duration-500 cursor-pointer">
+                    LET'S TALK
+                </h2>
+            </a>
+            <p class="text-gray-500 text-xs font-mono tracking-widest uppercase mt-6">WEBRESOLV STRATEGY DISPATCH FOR MY TAXATION</p>
+            
+            <div class="mt-24 flex flex-col md:flex-row justify-between items-center w-full gap-6 border-t border-white/10 pt-8">
+                <p class="text-gray-600 text-sm">© 2026 WebResolv Studio. <span class="text-neutral-800 mx-2">|</span> <a href="../dashboard.html" class="text-gray-600 hover:text-orange-500 transition-colors">Admin Console</a></p>
+                <div class="flex gap-8">
+                    <a href="https://x.com/webresolv" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors text-sm uppercase tracking-wider font-bold">Twitter</a>
+                    <a href="https://www.instagram.com/webresolv/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors text-sm uppercase tracking-wider font-bold">Instagram</a>
+                    <a href="https://linkedin.com/company/webresolv" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors text-sm uppercase tracking-wider font-bold">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Initialize Lucide Icons
+            lucide.createIcons();
+
+            // Spotlight Tracker
+            const spotlight = document.getElementById("spotlight");
+            const cursorDot = document.getElementById("cursor-dot");
+            const cursorOutline = document.getElementById("cursor-outline");
+
+            window.addEventListener("mousemove", (e) => {
+                const x = e.clientX;
+                const y = e.clientY;
+                spotlight.style.setProperty("--x", `${x}px`);
+                spotlight.style.setProperty("--y", `${y}px`);
+                cursorDot.style.left = `${x}px`;
+                cursorDot.style.top = `${y}px`;
+                cursorOutline.animate(
+                    { left: `${x}px`, top: `${y}px` },
+                    { duration: 500, fill: "forwards" }
+                );
+            });
+
+            // Top Navbar Blur on Scroll
+            const topNav = document.getElementById("top-nav");
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 50) {
+                    topNav.classList.add("bg-[#050505]/80", "backdrop-blur-lg", "border-b", "border-white/5", "py-3");
+                    topNav.classList.remove("py-4", "md:py-6", "mix-blend-difference");
+                } else {
+                    topNav.classList.remove("bg-[#050505]/80", "backdrop-blur-lg", "border-b", "border-white/5", "py-3");
+                    topNav.classList.add("py-4", "md:py-6", "mix-blend-difference");
+                }
+            });
+
+            // Reveal Animation on Scroll using Intersection Observer
+            const revealElements = document.querySelectorAll(".reveal");
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("active");
+                            
+                            // Animate search volume progress bars inside the card
+                            const progressBars = entry.target.querySelectorAll(".bar-fill");
+                            progressBars.forEach(bar => {
+                                const targetWidth = bar.getAttribute("data-width");
+                                bar.style.width = targetWidth;
+                            });
+                        }
+                    });
+                },
+                { threshold: 0.1 }
+            );
+            revealElements.forEach((el) => observer.observe(el));
+        });
+    </script>
+</body>
+
+</html>
