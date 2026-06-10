@@ -1,0 +1,1753 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunil K Khanna & Co | Chartered Accountants in Gurgaon</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter & Outfit & Playfair Display -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@1,400;1,600;1,700&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .font-serif-italic {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+        }
+
+        /* Gradient & Animation effects */
+        .blue-gradient-bg {
+            background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%);
+        }
+
+        .hero-glow {
+            box-shadow: 0 0 80px 20px rgba(37, 99, 235, 0.08);
+        }
+
+        /* Lightbox transitions */
+        .lightbox-active {
+            opacity: 1 !important;
+            pointer-events: auto !important;
+        }
+
+        /* Accordion transition */
+        .faq-content {
+            transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease-in-out;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen bg-slate-50 text-slate-800 selection:bg-blue-100 selection:text-blue-900 overflow-x-hidden">
+
+    <!-- Sticky Navbar (Floating Dark Glassmorphism) -->
+    <nav
+        class="fixed top-4 left-1/2 -translate-x-1/2 w-[92%] max-w-7xl z-50 bg-slate-950/80 backdrop-blur-md border border-white/10 rounded-2xl shadow-xl transition-all duration-300">
+        <div class="px-6 py-3 flex items-center justify-between">
+            <!-- Logo Section -->
+            <a href="#" class="flex items-center gap-3 group">
+                <!-- Custom CA Shield SVG Logo -->
+                <div
+                    class="w-11 h-11 bg-blue-600 text-white rounded-xl flex items-center justify-center shadow-md shadow-blue-500/10 group-hover:bg-blue-700 transition-colors">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Shield Outline -->
+                        <path d="M12 2L4 5V11C4 16.52 7.42 21.64 12 23C16.58 21.64 20 16.52 20 11V5L12 2Z"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            fill="rgba(255,255,255,0.05)" />
+                        <!-- Inner Balance scales detail / CA symbol -->
+                        <path d="M9 10H15M9 10C9 12.5 10 14.5 12 14.5M15 10C15 12.5 14 14.5 12 14.5M12 7V17M10 17H14"
+                            stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-sm sm:text-base font-bold tracking-tight text-white leading-tight">Sunil K Khanna &
+                        Co.</h1>
+                    <p class="text-[9px] uppercase tracking-wider text-amber-400 font-extrabold">Chartered Accountants
+                    </p>
+                </div>
+            </a>
+
+            <!-- Desktop Links -->
+            <div
+                class="hidden lg:flex items-center gap-8 text-xs font-semibold uppercase tracking-wider text-slate-300">
+                <a href="#about" class="hover:text-white transition-colors">About</a>
+                <a href="#services" class="hover:text-white transition-colors">Services</a>
+                <a href="#case-studies" class="hover:text-white transition-colors">Case Studies</a>
+                <a href="#reviews" class="hover:text-white transition-colors">Reviews</a>
+                <a href="#gallery" class="hover:text-white transition-colors">Gallery</a>
+                <a href="#blog" class="hover:text-white transition-colors">Insights</a>
+                <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+            </div>
+
+            <!-- Call Action CTA -->
+            <div class="flex items-center gap-4">
+                <a href="tel:+919810108931"
+                    class="hidden sm:flex items-center gap-2 bg-white/10 text-white px-4 py-2.5 rounded-full text-xs font-semibold hover:bg-white/20 transition-all border border-white/15">
+                    <svg class="w-3.5 h-3.5 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path
+                            d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+                    </svg>
+                    <span>+91 98101 08931</span>
+                </a>
+
+                <!-- Mobile Menu Hamburger -->
+                <button id="mobile-menu-btn"
+                    class="lg:hidden p-2 rounded-lg text-slate-300 hover:text-white hover:bg-white/10 transition"
+                    aria-label="Toggle Menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Drawer Overlay -->
+    <div id="mobile-menu-overlay"
+        class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-all duration-300">
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-menu-drawer"
+        class="fixed top-0 right-0 h-full w-[300px] bg-white z-50 shadow-2xl translate-x-full transition-transform duration-300 ease-in-out p-6 flex flex-col justify-between">
+        <div>
+            <!-- Close Button & Brand -->
+            <div class="flex items-center justify-between pb-6 border-b border-slate-100">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-blue-600 text-white rounded-lg flex items-center justify-center">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                    </div>
+                    <span class="font-bold text-blue-950 text-sm">Sunil K Khanna & Co.</span>
+                </div>
+                <button id="mobile-menu-close"
+                    class="p-1.5 rounded-lg text-slate-400 hover:text-slate-900 hover:bg-slate-50 transition">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Links -->
+            <div class="flex flex-col gap-4 py-8 text-base font-medium text-slate-650">
+                <a href="#about" class="hover:text-blue-600 transition-colors py-1">About</a>
+                <a href="#services" class="hover:text-blue-600 transition-colors py-1">Services</a>
+                <a href="#case-studies" class="hover:text-blue-600 transition-colors py-1">Case Studies</a>
+                <a href="#reviews" class="hover:text-blue-600 transition-colors py-1">Reviews</a>
+                <a href="#gallery" class="hover:text-blue-600 transition-colors py-1">Gallery</a>
+                <a href="#blog" class="hover:text-blue-600 transition-colors py-1">Insights</a>
+                <a href="#contact" class="hover:text-blue-600 transition-colors py-1">Contact</a>
+            </div>
+        </div>
+
+        <div>
+            <a href="tel:+919810108931"
+                class="w-full text-center flex items-center justify-center gap-2 bg-blue-600 text-white py-3 rounded-full text-sm font-semibold hover:bg-blue-700 transition shadow-sm mb-4">
+                <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path
+                        d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+                </svg>
+                <span>Call +91 98101 08931</span>
+            </a>
+            <p class="text-center text-[11px] text-slate-400">Distinguished Accounting & Tax Experts</p>
+        </div>
+    </div>
+
+    <!-- Hero Section (Tall, Dark Transparent Overlay, Gold Accents) -->
+    <section class="pt-48 pb-32 px-6 relative overflow-hidden border-b border-slate-950 isolate">
+        <!-- Solid background color layer under the image -->
+        <div class="absolute inset-0 bg-[#06080c] -z-30"></div>
+        <!-- Background Image with Black Opacity -->
+        <div class="absolute inset-0 bg-cover bg-center opacity-[0.22] -z-20"
+            style="background-image: url('https://images.unsplash.com/photo-1669042490014-6a1b76025e0c?q=80&w=1121&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+        </div>
+        <!-- Deep Black & Dark Blue Gradient Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-r from-[#030508]/95 via-[#030508]/85 to-transparent -z-10"></div>
+        <!-- Subtle gold/amber blur glow -->
+        <div class="absolute top-1/2 -left-40 w-96 h-96 bg-amber-500/5 rounded-full blur-[120px] -z-10"></div>
+
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                <!-- Left Info Panel -->
+                <div class="lg:col-span-7 space-y-6 text-left">
+                    <h2 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-none">
+                        Powering <span
+                            class="font-serif-italic text-amber-400 font-normal">Financial</span><br>Excellence
+                        —<br>Worldwide
+                    </h2>
+
+                    <p class="text-sm sm:text-base text-white leading-relaxed max-w-xl">
+                        Sunil K. Khanna & Co. is a distinguished accounting firm offering meticulous financial audits,
+                        precise tax preparation, and global NRI fund remittance solutions.
+                    </p>
+
+                    <div class="flex flex-wrap gap-4 pt-2">
+                        <a href="#contact"
+                            class="bg-amber-500 hover:bg-amber-600 text-slate-950 px-6 py-3 rounded-lg font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-lg shadow-amber-500/10">
+                            Book Free Consultation <span>→</span>
+                        </a>
+                        <a href="#services"
+                            class="border border-white/20 hover:border-white/40 text-white px-6 py-3 rounded-lg font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center">
+                            Explore Services
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Lead Generation Form (Translucent Card with Opacity) -->
+                <div class="lg:col-span-5 relative">
+                    <!-- Glowing background panel -->
+                    <div class="absolute inset-0 bg-amber-500/5 rounded-3xl blur-2xl -z-10"></div>
+
+                    <div
+                        class="w-full max-w-md bg-slate-950/45 border border-white/10 backdrop-blur-md rounded-2xl p-6 md:p-8 space-y-4 shadow-2xl relative overflow-hidden">
+                        <div class="flex items-center gap-3 pb-4 mb-4 border-b border-white/10">
+                            <div
+                                class="w-8 h-8 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-base font-bold text-white leading-tight">Free Consultation</h3>
+                                <p class="text-[10px] text-slate-400">Respond within 24 hours</p>
+                            </div>
+                        </div>
+
+                        <!-- Lead Gen Form -->
+                        <form id="hero-lead-form" class="space-y-3.5" onsubmit="handleHeroLeadSubmit(event)">
+                            <div>
+                                <input type="text" id="hero-name" required
+                                    class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-white placeholder-slate-450 focus:outline-none focus:border-amber-400 transition text-xs"
+                                    placeholder="Full Name">
+                            </div>
+
+                            <div>
+                                <input type="tel" id="hero-phone" required
+                                    class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-white placeholder-slate-450 focus:outline-none focus:border-amber-400 transition text-xs"
+                                    placeholder="Phone Number">
+                            </div>
+
+                            <div>
+                                <input type="email" id="hero-email" required
+                                    class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-white placeholder-slate-450 focus:outline-none focus:border-amber-400 transition text-xs"
+                                    placeholder="Work Email">
+                            </div>
+
+                            <div>
+                                <select id="hero-service"
+                                    class="w-full bg-[#121824] border border-white/10 rounded-xl px-4 py-2.5 text-slate-300 focus:outline-none focus:border-amber-400 transition text-xs select-dark">
+                                    <option value="ITR Filing" class="bg-[#121824] text-white">ITR Filing & Tax Refund
+                                    </option>
+                                    <option value="GST & ITC" class="bg-[#121824] text-white">GST & Input Tax Credit
+                                        (ITC)</option>
+                                    <option value="NRI Remittance" class="bg-[#121824] text-white">NRI Remittance
+                                        (15CA-CB)</option>
+                                    <option value="Statutory Audit" class="bg-[#121824] text-white">Financial &
+                                        Statutory Audit</option>
+                                    <option value="Startup registration" class="bg-[#121824] text-white">Startup
+                                        Registration & setup</option>
+                                    <option value="Bookkeeping" class="bg-[#121824] text-white">Corporate Bookkeeping &
+                                        Accounts</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <textarea id="hero-message" rows="2"
+                                    class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-white placeholder-slate-450 focus:outline-none focus:border-amber-400 transition text-xs"
+                                    placeholder="Tell us about your requirements..."></textarea>
+                            </div>
+
+                            <button type="submit"
+                                class="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold py-3 rounded-xl transition text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg shadow-amber-500/10">
+                                GET STARTED NOW <span>→</span>
+                            </button>
+                        </form>
+
+                        <div
+                            class="flex justify-center items-center gap-4 pt-2 text-[9px] text-slate-400 uppercase tracking-widest font-semibold">
+                            <span class="flex items-center gap-1.5"><span class="text-emerald-400">🛡</span>
+                                Secure</span>
+                            <span class="flex items-center gap-1.5"><span class="text-emerald-400">⚡</span> 24hr
+                                Response</span>
+                            <span class="flex items-center gap-1.5"><span class="text-emerald-400">🌐</span>
+                                Global</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats & Social Proof Row (Positioned at bottom of Hero, Small Bar) -->
+            <div
+                class="mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                <div class="flex flex-wrap gap-8 md:gap-16">
+                    <div class="space-y-1">
+                        <span class="text-3xl font-extrabold text-white block tracking-tight">5.0 ★</span>
+                        <span class="text-[9px] text-slate-400 font-bold uppercase tracking-wider block">Google
+                            Rating</span>
+                    </div>
+                    <div class="space-y-1 border-l border-white/10 pl-6 md:pl-16">
+                        <span class="text-3xl font-extrabold text-white block tracking-tight">15+ Yrs</span>
+                        <span class="text-[9px] text-slate-400 font-bold uppercase tracking-wider block">Expert CA
+                            Practice</span>
+                    </div>
+                    <div class="space-y-1 border-l border-white/10 pl-6 md:pl-16">
+                        <span class="text-3xl font-extrabold text-white block tracking-tight">100%</span>
+                        <span class="text-[9px] text-slate-400 font-bold uppercase tracking-wider block">Compliance
+                            Record</span>
+                    </div>
+                </div>
+
+                <!-- Avatars trust element -->
+                <div class="flex items-center gap-3">
+                    <div class="flex -space-x-2">
+                        <img class="w-8 h-8 rounded-full border-2 border-slate-950 object-cover"
+                            src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&h=100&q=80"
+                            alt="Client 1">
+                        <img class="w-8 h-8 rounded-full border-2 border-slate-950 object-cover"
+                            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&h=100&q=80"
+                            alt="Client 2">
+                        <img class="w-8 h-8 rounded-full border-2 border-slate-950 object-cover"
+                            src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=100&h=100&q=80"
+                            alt="Client 3">
+                        <div
+                            class="w-8 h-8 rounded-full border-2 border-slate-950 bg-amber-500 text-slate-950 flex items-center justify-center text-[10px] font-extrabold">
+                            +29</div>
+                    </div>
+                    <div>
+                        <span class="text-[10px] text-slate-400 font-bold uppercase tracking-wider block">Verified
+                            Ratings</span>
+                        <span class="text-xs text-slate-350 font-medium">Trusted by businesses in Gurgaon</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 px-6 bg-slate-50/50 scroll-mt-20">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+            <!-- Left image collage -->
+            <div class="lg:col-span-6 relative">
+                <div class="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border border-blue-50/50">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1000&q=80"
+                        alt="CA Consulting Team Office Meeting" class="w-full h-full object-cover">
+                </div>
+                <!-- Float block -->
+                <div
+                    class="absolute -bottom-6 -right-6 bg-blue-900 text-white p-6 rounded-2xl shadow-xl hidden sm:block border border-blue-850/20 max-w-[280px]">
+                    <p class="text-[10px] font-extrabold uppercase tracking-widest text-blue-300 mb-1">Our Objective</p>
+                    <p class="text-xs font-semibold leading-relaxed">
+                        To navigate structural tax complexities, securing maximum benefits and complete audit safety for
+                        companies & NRI taxpayers.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Right details -->
+            <div class="lg:col-span-6 space-y-6">
+                <span class="text-xs uppercase tracking-wider text-blue-600 font-extrabold block">Corporate Bio</span>
+                <h3 class="text-3xl md:text-4xl font-bold tracking-tight text-blue-950 leading-tight">
+                    Distinguished Partner in Accounting and Financial Management.
+                </h3>
+                <p class="text-slate-650 leading-relaxed text-sm md:text-base">
+                    Sunil K. Khanna & co. is a distinguished accounting firm offering comprehensive financial and legal
+                    services. Our team of expert chartered accountants provides meticulous financial audits, precise tax
+                    preparation, and insightful consulting to help your business thrive.
+                </p>
+                <p class="text-slate-650 leading-relaxed text-sm md:text-base">
+                    We are committed to delivering exceptional service and strategic solutions tailored to your unique
+                    needs, ensuring your financial health and compliance are in expert hands. Trust us to be your
+                    dedicated partner in navigating the complexities of accounting and financial management.
+                </p>
+
+                <!-- Core Pillars list -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-slate-200">
+                    <div class="flex items-start gap-3">
+                        <span class="text-blue-600 text-xl font-bold">✓</span>
+                        <div>
+                            <h4 class="font-bold text-sm text-slate-800">Precision Financial Auditing</h4>
+                            <p class="text-xs text-slate-400">Strict compliance to statutory schedules & regulations.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="text-blue-600 text-xl font-bold">✓</span>
+                        <div>
+                            <h4 class="font-bold text-sm text-slate-800">Fast Tax Refund Filing</h4>
+                            <p class="text-xs text-slate-400">Meticulous tracking of ITR filings and deductions.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="text-blue-600 text-xl font-bold">✓</span>
+                        <div>
+                            <h4 class="font-bold text-sm text-slate-800">NRI 15CA-CB Remittances</h4>
+                            <p class="text-xs text-slate-400">Prompt coordination with Indian & international bank
+                                units.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="text-blue-600 text-xl font-bold">✓</span>
+                        <div>
+                            <h4 class="font-bold text-sm text-slate-800">Structured GST & ITC</h4>
+                            <p class="text-xs text-slate-400">Clean input tax credit matching and GSTR resolution.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid Section -->
+    <section id="services" class="py-24 px-6 bg-white scroll-mt-20">
+        <div class="text-center mb-16">
+            <span class="text-xs uppercase tracking-wider text-blue-600 font-extrabold mb-3 block">Expertise
+                Areas</span>
+            <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-blue-950">Comprehensive Financial & Legal
+                Services</h2>
+            <p class="text-slate-500 max-w-xl mx-auto">
+                Our team provides specialized regulatory solutions designed to keep your business fully compliant while
+                optimizing financial growth.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            <!-- Service 1: ITR -->
+            <div
+                class="bg-slate-50 hover:bg-blue-50/35 border border-slate-100 hover:border-blue-200 rounded-3xl p-8 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
+                <div class="space-y-4">
+                    <div
+                        class="w-12 h-12 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 14l2-2 4 4m0-7v.01M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-blue-950">ITR & Income Tax Return Filing</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">
+                        Expert filing of ITR-1 to ITR-7 for salaried individuals, businesses, HUF, and partnerships. We
+                        resolve complex tax queries and ensure prompt income tax refunds.
+                    </p>
+                </div>
+                <div
+                    class="mt-6 pt-4 border-t border-slate-100 flex justify-between items-center text-xs font-semibold text-slate-400">
+                    <span>Individual & Corporate</span>
+                    <a href="#contact" class="text-blue-600 hover:underline">File Now →</a>
+                </div>
+            </div>
+
+            <!-- Service 2: GST & ITC -->
+            <div
+                class="bg-slate-50 hover:bg-blue-50/35 border border-slate-100 hover:border-blue-200 rounded-3xl p-8 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
+                <div class="space-y-4">
+                    <div
+                        class="w-12 h-12 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-blue-950">GST Compliance & ITC Audits</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">
+                        End-to-end GST support: registration, GSTR monthly returns, annual filings, representation in
+                        audits, and structured reconciliation to secure **Input Tax Credit (ITC)**.
+                    </p>
+                </div>
+                <div
+                    class="mt-6 pt-4 border-t border-slate-100 flex justify-between items-center text-xs font-semibold text-slate-400">
+                    <span>Returns & Reconciliations</span>
+                    <a href="#contact" class="text-blue-600 hover:underline">Reconcile →</a>
+                </div>
+            </div>
+
+            <!-- Service 3: NRI Fund Remittance -->
+            <div
+                class="bg-slate-50 hover:bg-blue-50/35 border border-slate-100 hover:border-blue-200 rounded-3xl p-8 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
+                <div class="space-y-4">
+                    <div
+                        class="w-12 h-12 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-blue-950">NRI repatriation (Form 15CA-CB)</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">
+                        Comprehensive consultation for NRI income, property sale fund repatriation, issuance of CA 15CA
+                        and 15CB certifications, and proactive coordination with bank personnel.
+                    </p>
+                </div>
+                <div
+                    class="mt-6 pt-4 border-t border-slate-100 flex justify-between items-center text-xs font-semibold text-slate-400">
+                    <span>FEMA Compliance</span>
+                    <a href="#contact" class="text-blue-600 hover:underline">Remit Funds →</a>
+                </div>
+            </div>
+
+            <!-- Service 4: Audits -->
+            <div
+                class="bg-slate-50 hover:bg-blue-50/35 border border-slate-100 hover:border-blue-200 rounded-3xl p-8 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
+                <div class="space-y-4">
+                    <div
+                        class="w-12 h-12 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-blue-950">Meticulous Financial Audit</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">
+                        Independent statutory audits, tax audits (under Section 44AB), and internal financial controls
+                        evaluation to ensure compliance, transparency, and risk reduction.
+                    </p>
+                </div>
+                <div
+                    class="mt-6 pt-4 border-t border-slate-100 flex justify-between items-center text-xs font-semibold text-slate-400">
+                    <span>Statutory & Tax Audit</span>
+                    <a href="#contact" class="text-blue-600 hover:underline">Request Audit →</a>
+                </div>
+            </div>
+
+            <!-- Service 5: Startup Incorporation -->
+            <div
+                class="bg-slate-50 hover:bg-blue-50/35 border border-slate-100 hover:border-blue-200 rounded-3xl p-8 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
+                <div class="space-y-4">
+                    <div
+                        class="w-12 h-12 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-blue-950">Startup Registration & Setup</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">
+                        Hassle-free incorporation: Private Limited Company registration, LLP formation, MSME/Udyam
+                        setups, PAN/TAN registration, and regulatory onboarding support.
+                    </p>
+                </div>
+                <div
+                    class="mt-6 pt-4 border-t border-slate-100 flex justify-between items-center text-xs font-semibold text-slate-400">
+                    <span>Company & LLP Incorporation</span>
+                    <a href="#contact" class="text-blue-600 hover:underline">Register Startup →</a>
+                </div>
+            </div>
+
+            <!-- Service 6: Bookkeeping -->
+            <div
+                class="bg-slate-50 hover:bg-blue-50/35 border border-slate-100 hover:border-blue-200 rounded-3xl p-8 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
+                <div class="space-y-4">
+                    <div
+                        class="w-12 h-12 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-blue-950">Bookkeeping & Accounting</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">
+                        Meticulous day-to-day accounts outsourcing. We manage ledger balances, prepare monthly
+                        P&L/Balance Sheets, compile payroll checklists, and assure legal compliance.
+                    </p>
+                </div>
+                <div
+                    class="mt-6 pt-4 border-t border-slate-100 flex justify-between items-center text-xs font-semibold text-slate-400">
+                    <span>Corporate Outsourcing</span>
+                    <a href="#contact" class="text-blue-600 hover:underline">Outsource →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section id="case-studies" class="py-24 px-6 bg-slate-50 border-y border-blue-50/60 scroll-mt-20">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-xs uppercase tracking-wider text-blue-600 font-extrabold mb-3 block">Success
+                    Stories</span>
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-blue-950">Small Case Studies</h2>
+                <p class="text-slate-500 max-w-xl mx-auto">
+                    Real-world scenarios showing how our proactive solutions resolve compliance bottlenecks and save tax
+                    expenses for clients.
+                </p>
+            </div>
+
+            <!-- Case Study Tabs Container -->
+            <div class="bg-white rounded-3xl border border-blue-100 p-6 md:p-10 shadow-xl">
+                <!-- Tab Headers -->
+                <div
+                    class="flex flex-wrap border-b border-slate-100 pb-6 gap-2 md:gap-4 justify-start sm:justify-center">
+                    <button onclick="switchCase(0)"
+                        class="case-tab-btn px-5 py-2.5 rounded-full text-xs md:text-sm font-semibold transition-all duration-200 bg-blue-600 text-white shadow-sm">
+                        NRI Repatriation
+                    </button>
+                    <button onclick="switchCase(1)"
+                        class="case-tab-btn px-5 py-2.5 rounded-full text-xs md:text-sm font-semibold transition-all duration-200 text-slate-500 hover:text-slate-900 bg-slate-50 hover:bg-slate-100">
+                        GST Refund (ITC)
+                    </button>
+                    <button onclick="switchCase(2)"
+                        class="case-tab-btn px-5 py-2.5 rounded-full text-xs md:text-sm font-semibold transition-all duration-200 text-slate-500 hover:text-slate-900 bg-slate-50 hover:bg-slate-100">
+                        Startup Setup
+                    </button>
+                    <button onclick="switchCase(3)"
+                        class="case-tab-btn px-5 py-2.5 rounded-full text-xs md:text-sm font-semibold transition-all duration-200 text-slate-500 hover:text-slate-900 bg-slate-50 hover:bg-slate-100">
+                        NRI Refund Issue
+                    </button>
+                </div>
+
+                <!-- Tab Panels -->
+                <div class="pt-8">
+                    <!-- Panel 0: NRI Remittance -->
+                    <div class="case-panel block space-y-6">
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                            <div class="lg:col-span-7 space-y-4">
+                                <span
+                                    class="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider">NRI
+                                    Fund Remittance</span>
+                                <h3 class="text-2xl font-bold text-blue-950">Hassle-Free India to UK Fund Repatriation
+                                </h3>
+                                <p class="text-sm text-slate-650 leading-relaxed">
+                                    An NRI client sold a residential property in Gurgaon and needed to repatriate sales
+                                    proceeds to the United Kingdom. Navigating domestic bank requirements and legal
+                                    certification was a primary blocker.
+                                </p>
+                                <div
+                                    class="space-y-2.5 text-sm text-slate-600 bg-slate-50 p-4 rounded-xl border border-slate-100">
+                                    <p><strong>CA Intervention:</strong> Issued Form 15CA & 15CB certifications
+                                        single-handedly, verifying tax liabilities on the capital gains, and coordinated
+                                        directly with bank personnel in India to satisfy capital account guidelines.</p>
+                                    <p><strong>Financial Impact:</strong> Completed the repatriation successfully in 48
+                                        working hours, securing a compliant, penalty-free international transfer.</p>
+                                </div>
+                            </div>
+                            <div class="lg:col-span-5 aspect-[4/3] rounded-2xl overflow-hidden border border-slate-100">
+                                <img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=600&q=80"
+                                    alt="Foreign currency wire transfer calculations"
+                                    class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Panel 1: GST Refund -->
+                    <div class="case-panel hidden space-y-6">
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                            <div class="lg:col-span-7 space-y-4">
+                                <span
+                                    class="bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider">GST
+                                    Audit & Recovery</span>
+                                <h3 class="text-2xl font-bold text-blue-950">₹2.4M Input Tax Credit (ITC) Recovery</h3>
+                                <p class="text-sm text-slate-650 leading-relaxed">
+                                    A Gurgaon-based logistics operator faced severe mismatch warnings between GSTR-2B
+                                    purchase reports and input credits claimed, locking substantial operating cash.
+                                </p>
+                                <div
+                                    class="space-y-2.5 text-sm text-slate-600 bg-slate-50 p-4 rounded-xl border border-slate-100">
+                                    <p><strong>CA Intervention:</strong> Conducted a meticulous cross-reconciliation of
+                                        supplier bills spanning 18 months, identified default vendors, and led
+                                        representations before GST authorities.</p>
+                                    <p><strong>Financial Impact:</strong> Restored ₹2,400,000 in blocked credit balances
+                                        within 30 days of audit compilation.</p>
+                                </div>
+                            </div>
+                            <div class="lg:col-span-5 aspect-[4/3] rounded-2xl overflow-hidden border border-slate-100">
+                                <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=600&q=80"
+                                    alt="GST tax forms and ledger calculations" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Panel 2: Startup setup -->
+                    <div class="case-panel hidden space-y-6">
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                            <div class="lg:col-span-7 space-y-4">
+                                <span
+                                    class="bg-purple-50 text-purple-700 px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider">Startup
+                                    Onboarding</span>
+                                <h3 class="text-2xl font-bold text-blue-950">Accelerated Pvt Ltd Setup & Tax Setup</h3>
+                                <p class="text-sm text-slate-650 leading-relaxed">
+                                    An early-stage SaaS startup required quick Private Limited incorporation to close an
+                                    equity funding round with seed investors.
+                                </p>
+                                <div
+                                    class="space-y-2.5 text-sm text-slate-600 bg-slate-50 p-4 rounded-xl border border-slate-100">
+                                    <p><strong>CA Intervention:</strong> Fast-tracked name approvals, drafted articles
+                                        of incorporation, coordinated with Ministry of Corporate Affairs, and issued tax
+                                        IDs (PAN, TAN, GST) concurrently.</p>
+                                    <p><strong>Financial Impact:</strong> Company incorporated in 5 business days,
+                                        allowing the client to execute the investment contract on schedule.</p>
+                                </div>
+                            </div>
+                            <div class="lg:col-span-5 aspect-[4/3] rounded-2xl overflow-hidden border border-slate-100">
+                                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80"
+                                    alt="Tech startup team collaborating in office" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Panel 3: NRI Refund -->
+                    <div class="case-panel hidden space-y-6">
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                            <div class="lg:col-span-7 space-y-4">
+                                <span
+                                    class="bg-amber-50 text-amber-700 px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider">ITR
+                                    Dispute Resolution</span>
+                                <h3 class="text-2xl font-bold text-blue-950">Resolving Long-Pending NRI Tax Refunds</h3>
+                                <p class="text-sm text-slate-650 leading-relaxed">
+                                    An overseas taxpayer had overpaid withholding tax (TDS) on domestic interest
+                                    payouts, but their refund request was locked by the Income Tax Department due to
+                                    verification disputes.
+                                </p>
+                                <div
+                                    class="space-y-2.5 text-sm text-slate-600 bg-slate-50 p-4 rounded-xl border border-slate-100">
+                                    <p><strong>CA Intervention:</strong> Rectified historical filing disclosures,
+                                        submitted verified foreign tax residency certs, and represented the dispute
+                                        before ward commissioners online.</p>
+                                    <p><strong>Financial Impact:</strong> Resolved the verification discrepancy,
+                                        securing a prompt direct-bank refund of ₹450,000 + accumulated interest.</p>
+                                </div>
+                            </div>
+                            <div class="lg:col-span-5 aspect-[4/3] rounded-2xl overflow-hidden border border-slate-100">
+                                <img src="https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=600&q=80"
+                                    alt="Financial statement charts and calculator" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Google Reviews / Testimonials -->
+    <section id="reviews" class="py-24 px-6 bg-white scroll-mt-20">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <span
+                    class="text-xs uppercase tracking-wider text-blue-600 font-extrabold mb-3 block">Testimonials</span>
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-blue-950">Reviews from Google</h2>
+                <div class="flex items-center justify-center gap-2">
+                    <span class="text-yellow-500 flex">
+                        <!-- 5 Stars -->
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                            <polygon
+                                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                        </svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                            <polygon
+                                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                        </svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                            <polygon
+                                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                        </svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                            <polygon
+                                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                        </svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                            <polygon
+                                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                        </svg>
+                    </span>
+                    <span class="text-sm font-bold text-slate-800">5.0 Star average across 29 Client Reviews</span>
+                </div>
+            </div>
+
+            <!-- Review Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Review 1: Ruchika G -->
+                <div
+                    class="bg-slate-50 border border-slate-100 hover:border-blue-100 hover:bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between h-full">
+                    <div class="space-y-4">
+                        <!-- Quote Icon & Rating -->
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-200 text-4xl font-serif">“</span>
+                            <div class="flex gap-0.5 text-yellow-400">
+                                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                                    <polygon
+                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                                </svg>
+                                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                                    <polygon
+                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                                </svg>
+                                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                                    <polygon
+                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                                </svg>
+                                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                                    <polygon
+                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                                </svg>
+                                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                                    <polygon
+                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                                </svg>
+                            </div>
+                        </div>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Contacted them for startup registration services! Their expertise and attention to detail
+                            were instrumental in guiding us through the complexities of the registration process. I
+                            highly recommend them to any startup in need of reliable and professional registration
+                            services. They truly go above and beyond for their clients.
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-6 mt-6 border-t border-slate-100">
+                        <div
+                            class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-sm">
+                            RG</div>
+                        <div>
+                            <h4 class="font-bold text-sm text-slate-800">Ruchika G</h4>
+                            <p class="text-xs text-slate-400">Verified Startup Founder</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2: Sk R -->
+                <div
+                    class="bg-blue-900 border border-blue-800 text-white rounded-3xl p-8 shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col justify-between h-full transform md:-translate-y-4">
+                    <div class="space-y-4">
+                        <!-- Quote Icon & Rating -->
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-400 text-4xl font-serif">“</span>
+                            <div class="flex gap-0.5 text-yellow-400">
+                                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                                    <polygon
+                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                                </svg>
+                                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                                    <polygon
+                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                                </svg>
+                                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                                    <polygon
+                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                                </svg>
+                                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                                    <polygon
+                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                                </svg>
+                                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                                    <polygon
+                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                                </svg>
+                            </div>
+                        </div>
+                        <p class="text-sm text-blue-100 leading-relaxed font-medium">
+                            I'm extremely satisfied with Ms. Jyoti’s assistance in repatriating funds from India to the
+                            UK. From issuing 15CA-CB to coordinating proactively with bank personnel in India, She did
+                            it all single handedly and ensured a smooth & quick transaction process. Trustworthy and
+                            efficient, I highly recommend their services for hassle-free fund remittance.
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-6 mt-6 border-t border-blue-800">
+                        <div
+                            class="w-10 h-10 rounded-full bg-white text-blue-900 flex items-center justify-center font-bold text-sm">
+                            SR</div>
+                        <div>
+                            <h4 class="font-bold text-sm">Sk R</h4>
+                            <p class="text-xs text-blue-300">Overseas Remitter (UK)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3: DEVIL G -->
+                <div
+                    class="bg-slate-50 border border-slate-100 hover:border-blue-100 hover:bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between h-full">
+                    <div class="space-y-4">
+                        <!-- Quote Icon & Rating -->
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-200 text-4xl font-serif">“</span>
+                            <div class="flex gap-0.5 text-yellow-400">
+                                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                                    <polygon
+                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                                </svg>
+                                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                                    <polygon
+                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                                </svg>
+                                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                                    <polygon
+                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                                </svg>
+                                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                                    <polygon
+                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                                </svg>
+                                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                                    <polygon
+                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                                </svg>
+                            </div>
+                        </div>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            I contacted them for my NRI Income Tax Return and I must say that it was a wise decision.
+                            Their specialization in Income Tax Refund ensured that I received my refund promptly and
+                            hassle-free. They are combination of Professionalism with expertise which makes them my top
+                            recommendation for tax services.
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-6 mt-6 border-t border-slate-100">
+                        <div
+                            class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-sm">
+                            DG</div>
+                        <div>
+                            <h4 class="font-bold text-sm text-slate-800">DEVIL G</h4>
+                            <p class="text-xs text-slate-400">Verified NRI Client</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Gallery Section -->
+    <section id="gallery" class="py-24 px-6 bg-slate-50 border-t border-blue-50/50 scroll-mt-20">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-xs uppercase tracking-wider text-blue-600 font-extrabold mb-3 block">Corporate
+                    Workspace</span>
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-blue-950">Office & Professional
+                    Gallery</h2>
+                <p class="text-slate-500 max-w-xl mx-auto">
+                    Take a look at our prime location, meeting rooms, and professional consulting environment in Gurgaon
+                    Sector 54.
+                </p>
+            </div>
+
+            <!-- Gallery Filter Buttons -->
+            <div class="flex flex-wrap justify-center items-center gap-3 mb-10">
+                <button onclick="filterGallery('all')"
+                    class="gallery-filter-btn px-6 py-2 rounded-full text-xs font-semibold bg-blue-600 text-white shadow-sm transition-all duration-200">
+                    All Photos
+                </button>
+                <button onclick="filterGallery('office')"
+                    class="gallery-filter-btn px-6 py-2 rounded-full text-xs font-semibold bg-white text-slate-600 border border-slate-200 hover:border-slate-300 hover:bg-slate-50 transition-all duration-200">
+                    Consulting Office
+                </button>
+                <button onclick="filterGallery('team')"
+                    class="gallery-filter-btn px-6 py-2 rounded-full text-xs font-semibold bg-white text-slate-600 border border-slate-200 hover:border-slate-300 hover:bg-slate-50 transition-all duration-200">
+                    Team Workspace
+                </button>
+                <button onclick="filterGallery('location')"
+                    class="gallery-filter-btn px-6 py-2 rounded-full text-xs font-semibold bg-white text-slate-600 border border-slate-200 hover:border-slate-300 hover:bg-slate-50 transition-all duration-200">
+                    Emaar Palm Spring
+                </button>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="gallery-grid">
+                <!-- Photo 1: Office Desk -->
+                <div class="gallery-item group relative overflow-hidden rounded-2xl aspect-[4/3] bg-white border border-slate-100 shadow-sm cursor-pointer hover:shadow-xl transition-all"
+                    data-category="office" onclick="openLightbox(0)">
+                    <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=600&q=80"
+                        alt="Private Consulting Desk"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <div class="text-white">
+                            <span
+                                class="text-[10px] font-bold uppercase tracking-wider text-blue-350 bg-blue-900/50 px-2 py-0.5 rounded">Office</span>
+                            <h4 class="font-bold text-sm mt-1">Private Consulting Desk</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photo 2: Meeting Room -->
+                <div class="gallery-item group relative overflow-hidden rounded-2xl aspect-[4/3] bg-white border border-slate-100 shadow-sm cursor-pointer hover:shadow-xl transition-all"
+                    data-category="office" onclick="openLightbox(1)">
+                    <img src="https://images.unsplash.com/photo-1431540015161-0bf868a2d407?auto=format&fit=crop&w=600&q=80"
+                        alt="Corporate Conference Room"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <div class="text-white">
+                            <span
+                                class="text-[10px] font-bold uppercase tracking-wider text-blue-350 bg-blue-900/50 px-2 py-0.5 rounded">Office</span>
+                            <h4 class="font-bold text-sm mt-1">Conference & Audit Boardroom</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photo 3: Emaar Building -->
+                <div class="gallery-item group relative overflow-hidden rounded-2xl aspect-[4/3] bg-white border border-slate-100 shadow-sm cursor-pointer hover:shadow-xl transition-all"
+                    data-category="location" onclick="openLightbox(2)">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80"
+                        alt="Emaar Palm Spring Plaza External"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <div class="text-white">
+                            <span
+                                class="text-[10px] font-bold uppercase tracking-wider text-blue-350 bg-blue-900/50 px-2 py-0.5 rounded">Location</span>
+                            <h4 class="font-bold text-sm mt-1">Emaar Palm Spring Plaza - Sector 54</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photo 4: Accountant Desk -->
+                <div class="gallery-item group relative overflow-hidden rounded-2xl aspect-[4/3] bg-white border border-slate-100 shadow-sm cursor-pointer hover:shadow-xl transition-all"
+                    data-category="team" onclick="openLightbox(3)">
+                    <img src="https://images.unsplash.com/photo-1554224154-26032ffc0d07?auto=format&fit=crop&w=600&q=80"
+                        alt="Client Tax Auditing Files"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <div class="text-white">
+                            <span
+                                class="text-[10px] font-bold uppercase tracking-wider text-blue-350 bg-blue-900/50 px-2 py-0.5 rounded">Team</span>
+                            <h4 class="font-bold text-sm mt-1">Audit Sourcing & File Assessment</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photo 5: Digital Tools -->
+                <div class="gallery-item group relative overflow-hidden rounded-2xl aspect-[4/3] bg-white border border-slate-100 shadow-sm cursor-pointer hover:shadow-xl transition-all"
+                    data-category="team" onclick="openLightbox(4)">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80"
+                        alt="Digital Bookkeeping Systems"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <div class="text-white">
+                            <span
+                                class="text-[10px] font-bold uppercase tracking-wider text-blue-350 bg-blue-900/50 px-2 py-0.5 rounded">Team</span>
+                            <h4 class="font-bold text-sm mt-1">Digital Ledger Review</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photo 6: Lobby Reception -->
+                <div class="gallery-item group relative overflow-hidden rounded-2xl aspect-[4/3] bg-white border border-slate-100 shadow-sm cursor-pointer hover:shadow-xl transition-all"
+                    data-category="location" onclick="openLightbox(5)">
+                    <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=600&q=80"
+                        alt="Emaar Plaza Executive Lounge"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <div class="text-white">
+                            <span
+                                class="text-[10px] font-bold uppercase tracking-wider text-blue-350 bg-blue-900/50 px-2 py-0.5 rounded">Location</span>
+                            <h4 class="font-bold text-sm mt-1">Executive Entrance Lobby</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Custom Lightbox Modal -->
+    <div id="lightbox-modal"
+        class="fixed inset-0 bg-slate-950/95 backdrop-blur-md z-[100] flex flex-col justify-between p-6 opacity-0 pointer-events-none transition-all duration-300">
+        <!-- Top Controls -->
+        <div class="flex justify-between items-center w-full max-w-5xl mx-auto text-white">
+            <span id="lightbox-counter" class="text-xs font-bold text-slate-450 uppercase tracking-widest">Image 1 of
+                6</span>
+            <button onclick="closeLightbox()"
+                class="p-2 rounded-full bg-white/10 hover:bg-white/20 transition text-white"
+                aria-label="Close Lightbox">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Center Image View -->
+        <div class="flex items-center justify-between w-full max-w-6xl mx-auto flex-grow my-4">
+            <!-- Prev Button -->
+            <button onclick="navigateLightbox(-1)"
+                class="p-3 rounded-full bg-white/5 hover:bg-white/10 text-white transition-all mr-2 md:mr-6"
+                aria-label="Previous Image">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" />
+                </svg>
+            </button>
+
+            <!-- Active Large Image inside wrapper -->
+            <div class="relative max-w-full max-h-[70vh] flex flex-col items-center justify-center">
+                <img id="lightbox-img" src="" alt=""
+                    class="max-w-full max-h-[65vh] object-contain rounded-lg shadow-2xl border border-white/5">
+                <p id="lightbox-caption" class="text-center text-slate-300 text-sm mt-4 font-medium max-w-md"></p>
+            </div>
+
+            <!-- Next Button -->
+            <button onclick="navigateLightbox(1)"
+                class="p-3 rounded-full bg-white/5 hover:bg-white/10 text-white transition-all ml-2 md:ml-6"
+                aria-label="Next Image">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Bottom details placeholder -->
+        <div class="w-full text-center text-[10px] text-slate-500 tracking-wider">
+            Sunil K Khanna & Co | Office Spaces
+        </div>
+    </div>
+
+    <!-- Insights / Blog Section -->
+    <section id="blog" class="py-24 px-6 bg-white border-y border-blue-50/60 scroll-mt-20">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-xs uppercase tracking-wider text-blue-600 font-extrabold mb-3 block">Tax
+                    Library</span>
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-blue-950">Blogs & Compliance Insights
+                </h2>
+                <p class="text-slate-500 max-w-xl mx-auto">
+                    Stay updated on income tax changes, audit procedures, and regulatory deadlines issued by financial
+                    departments in India.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Blog 1 -->
+                <div
+                    class="bg-slate-50 border border-slate-100 hover:border-blue-100 hover:bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <!-- Header banner image -->
+                        <div
+                            class="h-48 relative overflow-hidden bg-blue-900 flex items-center justify-center text-white p-6">
+                            <div class="absolute inset-0 bg-gradient-to-tr from-blue-950 to-blue-800 opacity-90"></div>
+                            <span class="z-10 text-center font-bold text-lg leading-snug tracking-tight">Who is Required
+                                to File ITR? Know Before You Miss the Deadline!</span>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <div class="flex items-center justify-between text-xs text-slate-400 font-semibold">
+                                <span>Income Tax Return</span>
+                                <span>June 10, 2026</span>
+                            </div>
+                            <p class="text-sm text-slate-500 leading-relaxed">
+                                Filing your Income Tax Return (ITR) is mandatory in several situations—even if your
+                                taxable income falls below the default exemption slab limit. Know the thresholds before
+                                you miss deadlines.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 border-t border-slate-100 flex items-center justify-between mt-4">
+                        <span class="text-xs text-slate-400">By Admin Office</span>
+                        <button onclick="openBlogModal(0)" class="text-xs font-bold text-blue-600 hover:underline">Read
+                            Article →</button>
+                    </div>
+                </div>
+
+                <!-- Blog 2 -->
+                <div
+                    class="bg-slate-50 border border-slate-100 hover:border-blue-100 hover:bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <!-- Header banner image -->
+                        <div
+                            class="h-48 relative overflow-hidden bg-blue-900 flex items-center justify-center text-white p-6">
+                            <div class="absolute inset-0 bg-gradient-to-tr from-blue-950 to-blue-800 opacity-90"></div>
+                            <span class="z-10 text-center font-bold text-lg leading-snug tracking-tight">Can the Income
+                                Tax Department Check Your Bank Account?</span>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <div class="flex items-center justify-between text-xs text-slate-400 font-semibold">
+                                <span>Tax Department</span>
+                                <span>June 4, 2026</span>
+                            </div>
+                            <p class="text-sm text-slate-500 leading-relaxed">
+                                Many taxpayers believe their bank transactions remain private unless they are under
+                                investigation. We review the Automated Information System (AIS) linkages that log credit
+                                and transfer totals.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 border-t border-slate-100 flex items-center justify-between mt-4">
+                        <span class="text-xs text-slate-400">By Admin Office</span>
+                        <button onclick="openBlogModal(1)" class="text-xs font-bold text-blue-600 hover:underline">Read
+                            Article →</button>
+                    </div>
+                </div>
+
+                <!-- Blog 3 -->
+                <div
+                    class="bg-slate-50 border border-slate-100 hover:border-blue-100 hover:bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <!-- Header banner image -->
+                        <div
+                            class="h-48 relative overflow-hidden bg-blue-900 flex items-center justify-center text-white p-6">
+                            <div class="absolute inset-0 bg-gradient-to-tr from-blue-950 to-blue-800 opacity-90"></div>
+                            <span class="z-10 text-center font-bold text-lg leading-snug tracking-tight">Why File Your
+                                ITR Before the Due Date? Benefits Explained</span>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <div class="flex items-center justify-between text-xs text-slate-400 font-semibold">
+                                <span>ITR Filing Advantages</span>
+                                <span>June 4, 2026</span>
+                            </div>
+                            <p class="text-sm text-slate-500 leading-relaxed">
+                                Filing your Income Tax Return (ITR) on time offers several important benefits: Claim tax
+                                refunds quickly, carry forward capital losses, and avoid late penalty assessments under
+                                Section 234F.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 border-t border-slate-100 flex items-center justify-between mt-4">
+                        <span class="text-xs text-slate-400">By Admin Office</span>
+                        <button onclick="openBlogModal(2)" class="text-xs font-bold text-blue-600 hover:underline">Read
+                            Article →</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Read Overlay Modal -->
+    <div id="blog-modal"
+        class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[100] flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all duration-300">
+        <div
+            class="bg-white rounded-3xl border border-blue-100 w-full max-w-2xl overflow-hidden shadow-2xl flex flex-col max-h-[85vh]">
+            <div class="bg-blue-950 text-white p-6 flex justify-between items-start">
+                <div>
+                    <span id="blog-modal-cat"
+                        class="text-[10px] font-extrabold uppercase tracking-widest text-blue-300">ITR Filing</span>
+                    <h3 id="blog-modal-title" class="text-xl font-bold mt-1 leading-snug">ITR Details</h3>
+                </div>
+                <button onclick="closeBlogModal()"
+                    class="p-1.5 rounded-lg bg-white/10 hover:bg-white/20 transition text-white">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div class="p-8 overflow-y-auto space-y-4 text-sm text-slate-650 leading-relaxed" id="blog-modal-content">
+                <!-- Content injected dynamically -->
+            </div>
+            <div
+                class="bg-slate-50 p-4 border-t border-slate-100 flex justify-between items-center text-xs text-slate-400">
+                <span id="blog-modal-date">June 10, 2026</span>
+                <span>Sunil K Khanna & Co | CA Gurgaon</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact & Location Section -->
+    <section id="contact" class="py-24 px-6 bg-slate-50 scroll-mt-20">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            <!-- Left Info Panel -->
+            <div class="lg:col-span-5 space-y-8">
+                <div>
+                    <span class="text-xs uppercase tracking-wider text-blue-600 font-extrabold mb-3 block">Get In
+                        Touch</span>
+                    <h2 class="text-3xl font-bold tracking-tight text-blue-950">Contact Information</h2>
+                    <p class="text-slate-500 mt-2 text-sm">
+                        Connect with Sunil K. Khanna & Co. for auditing setups, GST filing queries, or NRI remittance
+                        consultations.
+                    </p>
+                </div>
+
+                <!-- Phone, Address, Hours -->
+                <div class="space-y-5">
+                    <a href="tel:+919810108931"
+                        class="flex items-start gap-4 p-4 bg-white border border-slate-100 rounded-2xl hover:shadow-md transition-shadow group">
+                        <div
+                            class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center flex-shrink-0 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                            <svg class="w-5 h-5 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path
+                                    d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <span class="text-[10px] uppercase tracking-wider text-slate-400 font-bold block">Call or
+                                WhatsApp</span>
+                            <span class="text-sm font-bold text-slate-800">+91 98101 08931</span>
+                        </div>
+                    </a>
+
+                    <a href="https://maps.google.com/?q=1202A,+Emaar+Palm+Spring+Plaza,+Sector+54+Gurgaon+122001"
+                        target="_blank"
+                        class="flex items-start gap-4 p-4 bg-white border border-slate-100 rounded-2xl hover:shadow-md transition-shadow group">
+                        <div
+                            class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center flex-shrink-0 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <span class="text-[10px] uppercase tracking-wider text-slate-400 font-bold block">Office
+                                Address</span>
+                            <span class="text-sm font-semibold text-slate-800 leading-snug block">
+                                1202A, Emaar Palm Spring Plaza, Sector 54, Opposite Metro Station 53-54, Gurgaon, 122001
+                            </span>
+                        </div>
+                    </a>
+
+                    <div class="p-4 bg-white border border-slate-100 rounded-2xl">
+                        <div class="flex items-center gap-3 mb-3 pb-2 border-b border-slate-100">
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                            <span
+                                class="text-xs font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded-full uppercase tracking-wider">Open
+                                24 Hours</span>
+                        </div>
+                        <ul class="grid grid-cols-2 gap-y-1.5 gap-x-4 text-xs font-semibold text-slate-600">
+                            <li class="flex items-center justify-between"><span>Monday:</span> <span
+                                    class="text-blue-600">Open 24h</span></li>
+                            <li class="flex items-center justify-between"><span>Friday:</span> <span
+                                    class="text-blue-600">Open 24h</span></li>
+                            <li class="flex items-center justify-between"><span>Tuesday:</span> <span
+                                    class="text-blue-600">Open 24h</span></li>
+                            <li class="flex items-center justify-between"><span>Saturday:</span> <span
+                                    class="text-blue-600">Open 24h</span></li>
+                            <li class="flex items-center justify-between"><span>Wednesday:</span> <span
+                                    class="text-blue-600">Open 24h</span></li>
+                            <li class="flex items-center justify-between"><span>Sunday:</span> <span
+                                    class="text-blue-600">Open 24h</span></li>
+                            <li class="flex items-center justify-between"><span>Thursday:</span> <span
+                                    class="text-blue-600">Open 24h</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Contact Form & Interactive Map -->
+            <div class="lg:col-span-7 space-y-6">
+                <!-- Enquiry Form Card -->
+                <div class="bg-white border border-blue-100 rounded-3xl p-8 shadow-xl">
+                    <h3 class="text-lg font-bold text-blue-950 mb-4 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                        </svg>
+                        Submit Consultation Request
+                    </h3>
+                    <form id="enquiry-form" class="space-y-4" onsubmit="handleEnquirySubmit(event)">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Full
+                                    Name</label>
+                                <input type="text" id="form-name" required
+                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-600/10 focus:border-blue-600 transition bg-white text-sm"
+                                    placeholder="e.g. Devil G.">
+                            </div>
+                            <div>
+                                <label
+                                    class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Phone
+                                    Number</label>
+                                <input type="tel" id="form-phone" required
+                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-600/10 focus:border-blue-600 transition bg-white text-sm"
+                                    placeholder="e.g. +91 98101 XXXXX">
+                            </div>
+                        </div>
+                        <div>
+                            <label
+                                class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Consultation
+                                Service</label>
+                            <select id="form-service"
+                                class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-600/10 focus:border-blue-600 transition bg-white text-sm text-slate-700">
+                                <option value="ITR Filing">ITR Filing & Tax Refund Processing</option>
+                                <option value="GST advisory">GST Return & ITC Advisory</option>
+                                <option value="NRI Remittance">NRI Remittance & Form 15CA-CB</option>
+                                <option value="Statutory Audit">Financial Audit & Corporate Assurance</option>
+                                <option value="Startup registration">Startup & Business Incorporation</option>
+                                <option value="Bookkeeping">Outsourced Corporate Bookkeeping</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Message
+                                Detail</label>
+                            <textarea id="form-message" rows="3"
+                                class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-600/10 focus:border-blue-600 transition bg-white text-sm text-slate-700"
+                                placeholder="Please describe your query here..."></textarea>
+                        </div>
+                        <button type="submit" id="form-submit-btn"
+                            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3.5 rounded-xl transition shadow-md shadow-blue-500/15 text-sm flex items-center justify-center gap-2">
+                            Request Callback
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Google Map Embed visualization -->
+                <div
+                    class="w-full h-72 rounded-3xl overflow-hidden border border-slate-200 shadow-lg relative bg-slate-100">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3509.3149673839257!2d77.1009808!3d28.4550005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d18e5ffaaaaab%3A0x67de1889dcba2ea7!2sEmaar%20Palm%20Spring%20Plaza!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                        class="w-full h-full border-0 absolute inset-0" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-blue-950 text-slate-300 border-t border-blue-900 px-6 py-16">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 text-sm">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-blue-600 text-white rounded-lg flex items-center justify-center font-bold">
+                    CA
+                </div>
+                <div>
+                    <h4 class="font-bold text-white text-base">Sunil K Khanna & Co.</h4>
+                    <p class="text-[10px] text-slate-400 uppercase tracking-widest font-semibold">Chartered Accountants
+                        in Gurgaon</p>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="flex flex-wrap gap-6 text-xs font-semibold text-slate-400">
+                <a href="#about" class="hover:text-white transition-colors">About</a>
+                <a href="#services" class="hover:text-white transition-colors">Services</a>
+                <a href="#case-studies" class="hover:text-white transition-colors">Case Studies</a>
+                <a href="#reviews" class="hover:text-white transition-colors">Reviews</a>
+                <a href="#gallery" class="hover:text-white transition-colors">Gallery</a>
+                <a href="#blog" class="hover:text-white transition-colors">Insights</a>
+            </div>
+
+            <!-- Social Links & Powered By -->
+            <div class="flex flex-col items-end gap-2 text-right">
+                <div class="flex gap-4">
+                    <a href="#" class="text-slate-400 hover:text-white text-xs font-semibold">Facebook</a>
+                    <a href="#" class="text-slate-400 hover:text-white text-xs font-semibold">Instagram</a>
+                </div>
+                <p class="text-[11px] text-slate-500">
+                    © 2026 Sunil K Khanna & Co. | <a href="#" class="hover:underline">Privacy Policy</a> | <a href="#"
+                        class="hover:underline">Regulations</a>
+                </p>
+                <p class="text-[10px] text-slate-600">
+                    Powered by <a href="https://localo.com" target="_blank"
+                        class="hover:underline text-slate-500 font-medium">Localo</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Success Toast Pop-up -->
+    <div id="toast-success"
+        class="fixed bottom-6 right-6 bg-slate-900 text-white px-5 py-4 rounded-2xl shadow-2xl z-50 flex items-center gap-3 translate-y-20 opacity-0 transition-all duration-300">
+        <div
+            class="w-8 h-8 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-400 flex-shrink-0">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+            </svg>
+        </div>
+        <div>
+            <p class="font-bold text-xs">Request Handed Over!</p>
+            <p class="text-[11px] text-slate-400 mt-0.5">We will call you back within 15 minutes.</p>
+        </div>
+    </div>
+
+    <!-- Scripts for Interactivity -->
+    <script>
+        // 1. Mobile Menu Drawer logic
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const menuOverlay = document.getElementById('mobile-menu-overlay');
+        const menuDrawer = document.getElementById('mobile-menu-drawer');
+        const menuClose = document.getElementById('mobile-menu-close');
+        const menuLinks = document.querySelectorAll('#mobile-menu-drawer a');
+
+        function openMenu() {
+            menuOverlay.classList.remove('opacity-0', 'pointer-events-none');
+            menuDrawer.classList.remove('translate-x-full');
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function closeMenu() {
+            menuOverlay.classList.add('opacity-0', 'pointer-events-none');
+            menuDrawer.classList.add('translate-x-full');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        menuBtn.addEventListener('click', openMenu);
+        menuOverlay.addEventListener('click', closeMenu);
+        menuClose.addEventListener('click', closeMenu);
+        menuLinks.forEach(link => link.addEventListener('click', closeMenu));
+
+
+        // 2. Case Studies Tab switcher logic
+        const caseTabs = document.querySelectorAll('.case-tab-btn');
+        const casePanels = document.querySelectorAll('.case-panel');
+
+        function switchCase(index) {
+            // Remove active styles from tabs
+            caseTabs.forEach(tab => {
+                tab.classList.remove('bg-blue-600', 'text-white', 'shadow-sm');
+                tab.classList.add('text-slate-500', 'hover:text-slate-900', 'bg-slate-50', 'hover:bg-slate-100');
+            });
+            // Add active styles to clicked tab
+            caseTabs[index].classList.add('bg-blue-600', 'text-white', 'shadow-sm');
+            caseTabs[index].classList.remove('text-slate-500', 'hover:text-slate-900', 'bg-slate-50', 'hover:bg-slate-100');
+
+            // Toggle Panels visibility
+            casePanels.forEach((panel, idx) => {
+                if (idx === index) {
+                    panel.classList.remove('hidden');
+                    panel.classList.add('block');
+                } else {
+                    panel.classList.remove('block');
+                    panel.classList.add('hidden');
+                }
+            });
+        }
+
+
+        // 3. Office Gallery Filtering logic
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const galleryBtns = document.querySelectorAll('.gallery-filter-btn');
+
+        // Store photos references for lightbox navigation
+        let activeGalleryPhotos = [];
+
+        function compileActivePhotos() {
+            activeGalleryPhotos = [];
+            galleryItems.forEach(item => {
+                if (!item.classList.contains('hidden')) {
+                    const img = item.querySelector('img');
+                    activeGalleryPhotos.push({
+                        src: img.src,
+                        alt: img.alt,
+                        caption: item.querySelector('h4') ? item.querySelector('h4').textContent : img.alt
+                    });
+                }
+            });
+        }
+
+        function filterGallery(category) {
+            // Update button UI
+            galleryBtns.forEach(btn => {
+                if (btn.getAttribute('onclick').includes(`'${category}'`)) {
+                    btn.classList.add('bg-blue-600', 'text-white', 'shadow-sm');
+                    btn.classList.remove('bg-white', 'text-slate-650', 'border-slate-200');
+                } else {
+                    btn.classList.remove('bg-blue-600', 'text-white', 'shadow-sm');
+                    btn.classList.add('bg-white', 'text-slate-650', 'border-slate-200');
+                }
+            });
+
+            // Filter items
+            galleryItems.forEach(item => {
+                const itemCat = item.getAttribute('data-category');
+                if (category === 'all' || itemCat === category) {
+                    item.classList.remove('hidden');
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+
+            compileActivePhotos();
+        }
+
+        // Initialize active photos list on load
+        compileActivePhotos();
+
+
+        // 4. Custom Gallery Lightbox logic
+        const lightboxModal = document.getElementById('lightbox-modal');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+        const lightboxCounter = document.getElementById('lightbox-counter');
+        let lightboxIndex = 0;
+
+        function openLightbox(itemIndex) {
+            // Find coordinates of clicked item in compiled active list
+            const clickedImg = galleryItems[itemIndex].querySelector('img').src;
+            lightboxIndex = activeGalleryPhotos.findIndex(photo => photo.src === clickedImg);
+            if (lightboxIndex === -1) lightboxIndex = 0;
+
+            updateLightboxContent();
+            lightboxModal.classList.add('lightbox-active');
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function closeLightbox() {
+            lightboxModal.classList.remove('lightbox-active');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        function navigateLightbox(direction) {
+            lightboxIndex += direction;
+            if (lightboxIndex >= activeGalleryPhotos.length) {
+                lightboxIndex = 0;
+            } else if (lightboxIndex < 0) {
+                lightboxIndex = activeGalleryPhotos.length - 1;
+            }
+            updateLightboxContent();
+        }
+
+        function updateLightboxContent() {
+            const currentPhoto = activeGalleryPhotos[lightboxIndex];
+            if (currentPhoto) {
+                lightboxImg.src = currentPhoto.src;
+                lightboxImg.alt = currentPhoto.alt;
+                lightboxCaption.textContent = currentPhoto.caption;
+                lightboxCounter.textContent = `Image ${lightboxIndex + 1} of ${activeGalleryPhotos.length}`;
+            }
+        }
+
+        // Key board escape for closing lightbox
+        document.addEventListener('keydown', (e) => {
+            if (lightboxModal.classList.contains('lightbox-active')) {
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowRight') navigateLightbox(1);
+                if (e.key === 'ArrowLeft') navigateLightbox(-1);
+            }
+        });
+
+
+        // 5. Blog Posts Modal logic
+        const blogModal = document.getElementById('blog-modal');
+        const blogModalTitle = document.getElementById('blog-modal-title');
+        const blogModalCat = document.getElementById('blog-modal-cat');
+        const blogModalDate = document.getElementById('blog-modal-date');
+        const blogModalContent = document.getElementById('blog-modal-content');
+
+        const blogData = [
+            {
+                title: "Who is Required to File ITR? Know Before You Miss the Deadline!",
+                category: "Income Tax Return",
+                date: "June 10, 2026",
+                content: `
+                    <p class="font-semibold text-slate-800">Filing your Income Tax Return (ITR) is mandatory in several situations—even if your total taxable income is below the threshold.</p>
+                    <p>Understanding who is legally required to file is crucial to avoid penalty assessments under Section 234F. Key criteria include:</p>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li><strong>Gross Total Income exceeds the Basic Exemption Limit:</strong> If your annual gross income exceeds ₹2.5 Lakhs (old regime) or ₹3 Lakhs (new regime) before deductions.</li>
+                        <li><strong>Foreign Assets:</strong> Any resident individual holding foreign bank accounts, shares, property, or signing authority overseas.</li>
+                        <li><strong>High Electricity Consumption:</strong> If you paid an electricity bill exceeding ₹1 Lakh in aggregate during the FY.</li>
+                        <li><strong>Foreign Travel Expenses:</strong> If you spent over ₹2 Lakhs for yourself or another individual for travel abroad.</li>
+                        <li><strong>Business turnover thresholds:</strong> Sales or gross receipts exceeding ₹60 Lakhs, or professional income exceeding ₹10 Lakhs.</li>
+                    </ul>
+                    <p>Filing early helps in prompt processing of <strong>Income Tax Refunds</strong> and builds clean financial history for visa or credit approvals.</p>
+                `
+            },
+            {
+                title: "Can the Income Tax Department Check Your Bank Account?",
+                category: "Tax Regulations",
+                date: "June 4, 2026",
+                content: `
+                    <p class="font-semibold text-slate-800">Many taxpayers assume their bank statements are strictly confidential unless their file is selected for an auditing inquiry. This is incorrect.</p>
+                    <p>The Income Tax Department of India has launched comprehensive linkages to record transactions via the <strong>Annual Information Statement (AIS)</strong> and Tax Information System (TIS).</p>
+                    <p>Under reporting systems, banking companies are legally obligated to submit Statement of Financial Transactions (SFT) reports for:</p>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li>Cash deposits or withdrawals exceeding ₹10 Lakhs annually in savings accounts.</li>
+                        <li>Credit card payments made in cash exceeding ₹1 Lakh, or over ₹10 Lakhs via online remittances.</li>
+                        <li>Purchase of mutual funds, shares, or bonds exceeding ₹10 Lakhs.</li>
+                        <li>High value immovable property purchases or sales exceeding ₹30 Lakhs.</li>
+                    </ul>
+                    <p>Our audit team strongly advises reconciliation of AIS summaries with Form 26AS prior to submitting ITR filings to prevent mismatches and system notices.</p>
+                `
+            },
+            {
+                title: "Why File Your ITR Before the Due Date?",
+                category: "Tax Guidelines",
+                date: "June 4, 2026",
+                content: `
+                    <p class="font-semibold text-slate-800">Filing your Income Tax Return on time is not just about avoiding legal disputes; it offers substantial financial advantages.</p>
+                    <p>Here is why early tax filing remains a wise decision:</p>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li><strong>Prompt Refund Processing:</strong> The tax department processes returns in the sequence received. Filing early ensures your tax refund gets processed and credited to your bank account quickly.</li>
+                        <li><strong>Carry Forward Losses:</strong> You cannot carry forward business losses, capital losses (long/short term), or other income losses if you file after the due date.</li>
+                        <li><strong>Avoid Section 234F Fees:</strong> Late filings attract mandatory penalties of up to ₹5,000, along with monthly interest penalties on outstanding liabilities.</li>
+                        <li><strong>Smooth Loan Approvals:</strong> Lenders require 3 consecutive years of ITRs. Promptly filed returns indicate financial stability, easing credit approvals.</li>
+                    </ul>
+                    <p>Do not wait for July deadlines. Get in touch with our team for tax auditing and prompt ITR preparation today.</p>
+                `
+            }
+        ];
+
+        function openBlogModal(index) {
+            const data = blogData[index];
+            if (data) {
+                blogModalTitle.textContent = data.title;
+                blogModalCat.textContent = data.category;
+                blogModalDate.textContent = data.date;
+                blogModalContent.innerHTML = data.content;
+                blogModal.classList.add('lightbox-active');
+                document.body.classList.add('overflow-hidden');
+            }
+        }
+
+        function closeBlogModal() {
+            blogModal.classList.remove('lightbox-active');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        // Close blog modal on ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && blogModal.classList.contains('lightbox-active')) {
+                closeBlogModal();
+            }
+        });
+
+
+        // 6. Form Submission & Success Toast logic
+        const toast = document.getElementById('toast-success');
+
+        function handleEnquirySubmit(event) {
+            event.preventDefault();
+
+            // Collect info
+            const name = document.getElementById('form-name').value;
+            const phone = document.getElementById('form-phone').value;
+            const service = document.getElementById('form-service').value;
+
+            if (name.trim() && phone.trim()) {
+                // Show Success Toast
+                toast.classList.remove('translate-y-20', 'opacity-0');
+                toast.classList.add('translate-y-0', 'opacity-100');
+
+                // Clear fields
+                document.getElementById('form-name').value = '';
+                document.getElementById('form-phone').value = '';
+                document.getElementById('form-message').value = '';
+
+                // Hide Toast after 4 seconds
+                setTimeout(() => {
+                    toast.classList.remove('translate-y-0', 'opacity-100');
+                    toast.classList.add('translate-y-20', 'opacity-0');
+                }, 4000);
+            }
+        }
+
+        function handleHeroLeadSubmit(event) {
+            event.preventDefault();
+
+            // Collect info
+            const name = document.getElementById('hero-name').value;
+            const phone = document.getElementById('hero-phone').value;
+            const email = document.getElementById('hero-email').value;
+            const service = document.getElementById('hero-service').value;
+
+            if (name.trim() && phone.trim() && email.trim()) {
+                // Show Success Toast
+                toast.classList.remove('translate-y-20', 'opacity-0');
+                toast.classList.add('translate-y-0', 'opacity-100');
+
+                // Clear fields
+                document.getElementById('hero-name').value = '';
+                document.getElementById('hero-phone').value = '';
+                document.getElementById('hero-email').value = '';
+                document.getElementById('hero-message').value = '';
+
+                // Hide Toast after 4 seconds
+                setTimeout(() => {
+                    toast.classList.remove('translate-y-0', 'opacity-100');
+                    toast.classList.add('translate-y-20', 'opacity-0');
+                }, 4000);
+            }
+        }
+    </script>
+</body>
+
+</html>
