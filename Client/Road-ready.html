@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Road Ready Driving School | Learn Driving With Confidence</title>
+    <meta name="description"
+        content="Learn driving with confidence. Certified instructors, dual-control cars, practical road training, and flexible timings in Delhi. Red & White premium training.">
+
+    <!-- Google Fonts: Poppins (Headings) & Inter (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Tailwind CSS CDN & Config -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        poppins: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            red: '#DC2626',
+                            redHover: '#B91C1C',
+                            redLight: '#FEF2F2',
+                            dark: '#0F172A',
+                            grayBg: '#F8FAFC',
+                            slate: '#475569'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <style>
+        ::selection {
+            background-color: #DC2626;
+            color: #ffffff;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #F1F5F9;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #CBD5E1;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94A3B8;
+        }
+
+        /* FAQ Transition */
+        .faq-answer {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.3s ease-out;
+        }
+
+        .faq-answer.open {
+            grid-template-rows: 1fr;
+        }
+
+        .faq-answer>div {
+            overflow: hidden;
+        }
+
+        .faq-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-btn.active .faq-icon {
+            transform: rotate(180deg);
+            color: #DC2626;
+        }
+
+        /* Pulse Animation for CTA & WhatsApp */
+        @keyframes custom-pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4);
+            }
+
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+        }
+
+        .whatsapp-pulse {
+            animation: custom-pulse 2s infinite;
+        }
+    </style>
+</head>
+
+<body class="font-sans text-brand-dark bg-white overflow-x-hidden relative">
+
+    <!-- HEADER / NAVIGATION -->
+    <nav id="navbar"
+        class="fixed w-full z-50 top-0 bg-white/0 backdrop-blur-none border-b border-transparent transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-3 cursor-pointer group">
+                <div class="bg-brand-red/10 p-1.5 rounded-xl group-hover:scale-105 transition-transform duration-300">
+                    <img src="Screenshot_2026-07-03_152045-removebg-preview.png" alt="Road Ready Logo"
+                        class="h-10 w-auto object-contain">
+                </div>
+                <div>
+                    <h1 id="nav-logo-text"
+                        class="text-xl font-black text-white leading-tight tracking-tight font-poppins transition-colors duration-300">
+                        ROAD<span class="text-brand-red">READY</span>
+                    </h1>
+                    <p id="nav-logo-sub"
+                        class="text-[9px] uppercase tracking-widest text-gray-300 font-bold transition-colors duration-300">
+                        Driving School</p>
+                </div>
+            </a>
+
+            <!-- Navigation Links -->
+            <div id="nav-links"
+                class="hidden md:flex space-x-8 font-semibold text-sm text-gray-200 transition-colors duration-300">
+                <a href="#why-choose"
+                    class="hover:text-brand-red transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-brand-red hover:after:w-full after:transition-all">Why
+                    Us</a>
+                <a href="#fleet"
+                    class="hover:text-brand-red transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-brand-red hover:after:w-full after:transition-all">Our
+                    Fleet</a>
+                <a href="#courses"
+                    class="hover:text-brand-red transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-brand-red hover:after:w-full after:transition-all">Courses</a>
+                <a href="#reviews"
+                    class="hover:text-brand-red transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-brand-red hover:after:w-full after:transition-all">Reviews</a>
+                <a href="#faq"
+                    class="hover:text-brand-red transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-brand-red hover:after:w-full after:transition-all">FAQ</a>
+            </div>
+
+            <!-- Call-to-Action -->
+            <div class="flex items-center gap-4">
+                <a href="tel:+918178465755" id="nav-phone"
+                    class="hidden sm:flex items-center gap-2 text-white hover:text-brand-red font-bold transition-colors">
+                    <i class="ph-bold ph-phone-call text-lg"></i>
+                    <span>+91 81784 65755</span>
+                </a>
+                <a href="#hero-form"
+                    class="bg-brand-red hover:bg-brand-redHover text-white px-6 py-2.5 rounded-full font-bold text-sm transition-all shadow-[0_8px_20px_rgba(220,38,38,0.25)] hover:shadow-[0_8px_25px_rgba(220,38,38,0.35)] hover:-translate-y-0.5 inline-block">
+                    Book Trial
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION WITH INTEGRATED REGISTRATION FORM (100vh parallax background) -->
+    <section
+        class="relative min-h-screen w-full flex flex-col justify-between pt-24 pb-8 px-6 overflow-hidden bg-cover bg-center bg-no-repeat bg-fixed"
+        style="background-image: url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&q=80&w=1920');">
+        <!-- Dark Gradient Overlay for high-end feel and contrast -->
+        <div class="absolute inset-0 bg-gradient-to-r from-gray-950 via-gray-950/85 to-gray-900/60 z-0"></div>
+
+        <div class="max-w-7xl mx-auto w-full grid lg:grid-cols-12 gap-12 items-center relative z-10 my-auto py-6">
+
+            <!-- Left Column: Copy & Details -->
+            <div class="lg:col-span-7 space-y-6">
+                <div
+                    class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-red/20 text-white text-xs font-semibold tracking-wide border border-brand-red/30 backdrop-blur-sm">
+                    <span class="w-2 h-2 rounded-full bg-brand-red animate-pulse"></span>
+                    Govt. Certified Driving Instructors
+                </div>
+
+                <h1
+                    class="text-4xl sm:text-5xl md:text-6xl font-black text-white font-poppins leading-[1.1] tracking-tight">
+                    Master The Roads With <br>
+                    <span class="text-brand-red">Confidence & Safety</span>
+                </h1>
+
+                <p class="text-lg text-gray-300 leading-relaxed max-w-xl">
+                    Get premium, personal driving lessons tailored to your skill level. From first-time starters to
+                    highway navigation, our certified professionals ensure you learn the right way.
+                </p>
+
+                <!-- Value Props Grid -->
+                <div class="grid grid-cols-2 gap-6 pt-4 max-w-lg">
+                    <div class="flex items-center gap-3">
+                        <div class="bg-brand-red/20 p-2.5 rounded-lg text-brand-red">
+                            <i class="ph-bold ph-steering-wheel text-xl"></i>
+                        </div>
+                        <div>
+                            <p class="font-bold text-white text-sm leading-tight">Dual-Control Safety</p>
+                            <p class="text-xs text-gray-400">Certified training fleet</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="bg-brand-red/20 p-2.5 rounded-lg text-brand-red">
+                            <i class="ph-bold ph-map-pin-line text-xl"></i>
+                        </div>
+                        <div>
+                            <p class="font-bold text-white text-sm leading-tight">Free Pickup & Drop</p>
+                            <p class="text-xs text-gray-400">From home or office</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="bg-brand-red/20 p-2.5 rounded-lg text-brand-red">
+                            <i class="ph-bold ph-calendar text-xl"></i>
+                        </div>
+                        <div>
+                            <p class="font-bold text-white text-sm leading-tight">Flexible Batches</p>
+                            <p class="text-xs text-gray-400">Weekdays & weekends</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="bg-brand-red/20 p-2.5 rounded-lg text-brand-red">
+                            <i class="ph-bold ph-user-check text-xl"></i>
+                        </div>
+                        <div>
+                            <p class="font-bold text-white text-sm leading-tight">Female Trainers</p>
+                            <p class="text-xs text-gray-400">Available upon request</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Google Rating Badge -->
+                <div class="flex items-center gap-3 pt-4 border-t border-white/10">
+                    <div class="flex text-yellow-400 text-lg">
+                        <i class="ph-fill ph-star"></i>
+                        <i class="ph-fill ph-star"></i>
+                        <i class="ph-fill ph-star"></i>
+                        <i class="ph-fill ph-star"></i>
+                        <i class="ph-fill ph-star"></i>
+                    </div>
+                    <p class="text-sm font-bold text-white">4.9 / 5.0 Rating <span
+                            class="font-normal text-gray-400 text-xs ml-1">(Based on 450+ Google Reviews)</span></p>
+                </div>
+            </div>
+
+            <!-- Right Column: Registration Form -->
+            <div id="hero-form" class="lg:col-span-5 relative">
+                <!-- Outer Decorative Frame -->
+                <div
+                    class="absolute -inset-1 bg-gradient-to-r from-brand-red to-red-400 rounded-3xl blur-xl opacity-30">
+                </div>
+
+                <div class="relative bg-white rounded-3xl shadow-2xl border border-gray-100 p-8">
+                    <h3 class="text-2xl font-bold text-brand-dark font-poppins mb-2">Book Your First Class</h3>
+                    <p class="text-sm text-brand-slate mb-6">Schedule your trial lesson with our certified trainers.</p>
+
+                    <form class="space-y-4"
+                        onsubmit="event.preventDefault(); alert('Thank you! Our driving coordinator will contact you in the next 1 hour.');">
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-brand-slate mb-1">Full
+                                Name</label>
+                            <input type="text" required
+                                class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand-red focus:ring-2 focus:ring-brand-red/10 outline-none transition-all text-sm text-brand-dark"
+                                placeholder="E.g., John Doe">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-brand-slate mb-1">Phone
+                                Number</label>
+                            <input type="tel" required
+                                class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand-red focus:ring-2 focus:ring-brand-red/10 outline-none transition-all text-sm text-brand-dark"
+                                placeholder="E.g., +91 98765 43210">
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label
+                                    class="block text-xs font-bold uppercase tracking-wider text-brand-slate mb-1">Course
+                                    Level</label>
+                                <select
+                                    class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand-red focus:ring-2 focus:ring-brand-red/10 outline-none transition-all bg-white text-sm text-brand-dark">
+                                    <option>Beginner (15 Days)</option>
+                                    <option>Refresher (7 Days)</option>
+                                    <option>Advanced (5 Days)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label
+                                    class="block text-xs font-bold uppercase tracking-wider text-brand-slate mb-1">Transmission</label>
+                                <select
+                                    class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand-red focus:ring-2 focus:ring-brand-red/10 outline-none transition-all bg-white text-sm text-brand-dark">
+                                    <option>Manual Gear</option>
+                                    <option>Automatic Gear</option>
+                                    <option>No Preference</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label
+                                class="block text-xs font-bold uppercase tracking-wider text-brand-slate mb-1">Preferred
+                                Training Time</label>
+                            <div class="grid grid-cols-3 gap-2">
+                                <label
+                                    class="cursor-pointer border border-gray-200 rounded-lg p-2.5 text-center block hover:border-brand-red transition-all">
+                                    <input type="radio" name="timing" value="Morning" checked class="hidden peer">
+                                    <span class="text-xs font-bold text-brand-dark block">Morning</span>
+                                    <span class="text-[9px] text-brand-slate block">6AM - 10AM</span>
+                                </label>
+                                <label
+                                    class="cursor-pointer border border-gray-200 rounded-lg p-2.5 text-center block hover:border-brand-red transition-all">
+                                    <input type="radio" name="timing" value="Afternoon" class="hidden peer">
+                                    <span class="text-xs font-bold text-brand-dark block">Afternoon</span>
+                                    <span class="text-[9px] text-brand-slate block">12PM - 4PM</span>
+                                </label>
+                                <label
+                                    class="cursor-pointer border border-gray-200 rounded-lg p-2.5 text-center block hover:border-brand-red transition-all">
+                                    <input type="radio" name="timing" value="Evening" class="hidden peer">
+                                    <span class="text-xs font-bold text-brand-dark block">Evening</span>
+                                    <span class="text-[9px] text-brand-slate block">4PM - 8PM</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <button type="submit"
+                            class="w-full bg-brand-red hover:bg-brand-redHover text-white py-4 rounded-xl font-bold text-base transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 mt-2 flex items-center justify-center gap-2">
+                            <i class="ph-bold ph-calendar-check text-xl"></i>
+                            Book Free Demo Class
+                        </button>
+
+                        <p class="text-[11px] text-center text-brand-slate mt-2">
+                            *No payment required today. Cancel or reschedule anytime.
+                        </p>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- INTEGRATED STATS BAR (Smaller metrics, transparent borders) -->
+        <div
+            class="max-w-7xl mx-auto w-full border-t border-white/10 pt-6 pb-2 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-0 text-center z-10 relative">
+            <div class="px-4">
+                <p class="text-xl md:text-2xl font-bold text-white font-poppins">15k+</p>
+                <p class="text-[9px] uppercase tracking-wider text-gray-300 font-semibold mt-0.5">Licensed Drivers</p>
+            </div>
+            <div class="px-4 md:border-l md:border-white/10">
+                <p class="text-xl md:text-2xl font-bold text-white font-poppins">25+</p>
+                <p class="text-[9px] uppercase tracking-wider text-gray-300 font-semibold mt-0.5">Dual-Control Fleet</p>
+            </div>
+            <div class="px-4 md:border-l md:border-white/10">
+                <p class="text-xl md:text-2xl font-bold text-white font-poppins">99.8%</p>
+                <p class="text-[9px] uppercase tracking-wider text-gray-300 font-semibold mt-0.5">First-Try Pass</p>
+            </div>
+            <div class="px-4 md:border-l md:border-white/10">
+                <p class="text-xl md:text-2xl font-bold text-white font-poppins">450+</p>
+                <p class="text-[9px] uppercase tracking-wider text-gray-300 font-semibold mt-0.5">5-Star Reviews</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY CHOOSE US -->
+    <section id="why-choose" class="py-20 bg-brand-grayBg px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 gsap-scroll-up">
+                <span class="text-sm font-bold uppercase tracking-wider text-brand-red">Safety First</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-brand-dark font-poppins mt-2">Why Learn With Road Ready?
+                </h2>
+                <p class="text-brand-slate max-w-2xl mx-auto mt-4">We combine modern training techniques with
+                    safety-first standards to create confident, responsible drivers.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Card 1 -->
+                <div
+                    class="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group border border-gray-100">
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-brand-red/10 text-brand-red flex items-center justify-center mb-6 group-hover:bg-brand-red group-hover:text-white transition-colors duration-300">
+                        <i class="ph-bold ph-users text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-brand-dark mb-2">Certified Experts</h3>
+                    <p class="text-brand-slate text-sm leading-relaxed">Our trainers are licensed, professional, highly
+                        patient, and specialize in beginner driver anxiety.</p>
+                </div>
+                <!-- Card 2 -->
+                <div
+                    class="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group border border-gray-100">
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-brand-red/10 text-brand-red flex items-center justify-center mb-6 group-hover:bg-brand-red group-hover:text-white transition-colors duration-300">
+                        <i class="ph-bold ph-shield-check text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-brand-dark mb-2">Dual-Control Fleet</h3>
+                    <p class="text-brand-slate text-sm leading-relaxed">Every training vehicle features safety-certified
+                        dual brakes and clutch controls for absolute peace of mind.</p>
+                </div>
+                <!-- Card 3 -->
+                <div
+                    class="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group border border-gray-100">
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-brand-red/10 text-brand-red flex items-center justify-center mb-6 group-hover:bg-brand-red group-hover:text-white transition-colors duration-300">
+                        <i class="ph-bold ph-clock text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-brand-dark mb-2">Flexible Timings</h3>
+                    <p class="text-brand-slate text-sm leading-relaxed">Choose schedules that suit you. We offer batches
+                        from 6:00 AM to 8:00 PM, including weekends.</p>
+                </div>
+                <!-- Card 4 -->
+                <div
+                    class="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group border border-gray-100">
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-brand-red/10 text-brand-red flex items-center justify-center mb-6 group-hover:bg-brand-red group-hover:text-white transition-colors duration-300">
+                        <i class="ph-bold ph-house-line text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-brand-dark mb-2">Doorstep Pick & Drop</h3>
+                    <p class="text-brand-slate text-sm leading-relaxed">Skip the travel hassle. We pick you up and drop
+                        you back at your home, office, or college coordinates.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VEHICLE GALLERY SECTION -->
+    <section id="fleet" class="py-20 bg-white px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12 gsap-scroll-up">
+                <span class="text-sm font-bold uppercase tracking-wider text-brand-red">Our Modern Fleet</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-brand-dark font-poppins mt-2">Well-Maintained Training
+                    Vehicles</h2>
+                <p class="text-brand-slate max-w-2xl mx-auto mt-4">Learn to drive in modern, fully air-conditioned
+                    hatchbacks, sedans, and SUVs configured with professional safety controls.</p>
+            </div>
+
+            <!-- Fleet Filter Controls -->
+            <div class="flex justify-center flex-wrap gap-3 mb-10">
+                <button onclick="filterFleet('all')"
+                    class="fleet-filter-btn px-6 py-2 rounded-full font-bold text-sm bg-brand-red text-white transition-all shadow-sm">All
+                    Fleet</button>
+                <button onclick="filterFleet('manual')"
+                    class="fleet-filter-btn px-6 py-2 rounded-full font-bold text-sm bg-gray-100 hover:bg-gray-200 text-brand-dark transition-all">Manual
+                    Gear</button>
+                <button onclick="filterFleet('automatic')"
+                    class="fleet-filter-btn px-6 py-2 rounded-full font-bold text-sm bg-gray-100 hover:bg-gray-200 text-brand-dark transition-all">Automatic
+                    Gear</button>
+                <button onclick="filterFleet('premium')"
+                    class="fleet-filter-btn px-6 py-2 rounded-full font-bold text-sm bg-gray-100 hover:bg-gray-200 text-brand-dark transition-all">Premium
+                    Sedan</button>
+            </div>
+
+            <!-- Fleet Cards Grid -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8" id="fleet-grid">
+
+                <!-- Vehicle Card 1 -->
+                <div class="fleet-card bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all border border-gray-100 group"
+                    data-gear="manual">
+                    <div class="relative overflow-hidden aspect-[4/3] bg-gray-100">
+                        <img src="https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&q=80&w=600"
+                            alt="Suzuki Swift Manual"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span
+                            class="absolute top-4 left-4 bg-brand-red text-white text-[11px] font-black tracking-widest uppercase px-3 py-1 rounded-full">Manual</span>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold text-brand-dark">Suzuki Swift LXi</h4>
+                        <p class="text-xs text-brand-slate mt-1">Excellent compact hatchback for learners to master
+                            narrow city streets.</p>
+                        <div class="flex flex-wrap gap-2 mt-4">
+                            <span
+                                class="bg-gray-50 border border-gray-100 text-brand-slate text-[11px] font-medium px-2.5 py-1 rounded-lg flex items-center gap-1"><i
+                                    class="ph-bold ph-shield-check text-brand-red"></i> Dual Controls</span>
+                            <span
+                                class="bg-gray-50 border border-gray-100 text-brand-slate text-[11px] font-medium px-2.5 py-1 rounded-lg flex items-center gap-1"><i
+                                    class="ph-bold ph-wind text-brand-red"></i> Air Conditioned</span>
+                            <span
+                                class="bg-gray-50 border border-gray-100 text-brand-slate text-[11px] font-medium px-2.5 py-1 rounded-lg flex items-center gap-1"><i
+                                    class="ph-bold ph-gauge text-brand-red"></i> Power Steering</span>
+                        </div>
+                        <a href="#hero-form"
+                            class="block text-center mt-6 py-3 rounded-xl border border-brand-red hover:bg-brand-red hover:text-white text-brand-red font-bold text-sm transition-all">Book
+                            with Swift</a>
+                    </div>
+                </div>
+
+                <!-- Vehicle Card 2 -->
+                <div class="fleet-card bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all border border-gray-100 group"
+                    data-gear="automatic">
+                    <div class="relative overflow-hidden aspect-[4/3] bg-gray-100">
+                        <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&q=80&w=600"
+                            alt="Hyundai i20 Automatic"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span
+                            class="absolute top-4 left-4 bg-brand-red text-white text-[11px] font-black tracking-widest uppercase px-3 py-1 rounded-full">Automatic</span>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold text-brand-dark">Hyundai i20 AMT</h4>
+                        <p class="text-xs text-brand-slate mt-1">Superb premium hatchback. The gold standard for
+                            automatic gear transmission training.</p>
+                        <div class="flex flex-wrap gap-2 mt-4">
+                            <span
+                                class="bg-gray-50 border border-gray-100 text-brand-slate text-[11px] font-medium px-2.5 py-1 rounded-lg flex items-center gap-1"><i
+                                    class="ph-bold ph-shield-check text-brand-red"></i> Dual Controls</span>
+                            <span
+                                class="bg-gray-50 border border-gray-100 text-brand-slate text-[11px] font-medium px-2.5 py-1 rounded-lg flex items-center gap-1"><i
+                                    class="ph-bold ph-wind text-brand-red"></i> Air Conditioned</span>
+                            <span
+                                class="bg-gray-50 border border-gray-100 text-brand-slate text-[11px] font-medium px-2.5 py-1 rounded-lg flex items-center gap-1"><i
+                                    class="ph-bold ph-sparkles text-brand-red"></i> Rear Camera</span>
+                        </div>
+                        <a href="#hero-form"
+                            class="block text-center mt-6 py-3 rounded-xl border border-brand-red hover:bg-brand-red hover:text-white text-brand-red font-bold text-sm transition-all">Book
+                            with i20</a>
+                    </div>
+                </div>
+
+                <!-- Vehicle Card 3 -->
+                <div class="fleet-card bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all border border-gray-100 group"
+                    data-gear="premium">
+                    <div class="relative overflow-hidden aspect-[4/3] bg-gray-100">
+                        <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&q=80&w=600"
+                            alt="Maruti Dzire Sedan"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span
+                            class="absolute top-4 left-4 bg-brand-red text-white text-[11px] font-black tracking-widest uppercase px-3 py-1 rounded-full">Premium
+                            Sedan</span>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold text-brand-dark">Maruti Suzuki Dzire</h4>
+                        <p class="text-xs text-brand-slate mt-1">Sedan length training. Essential for mastering parking
+                            dimensions and longitudinal judgment.</p>
+                        <div class="flex flex-wrap gap-2 mt-4">
+                            <span
+                                class="bg-gray-50 border border-gray-100 text-brand-slate text-[11px] font-medium px-2.5 py-1 rounded-lg flex items-center gap-1"><i
+                                    class="ph-bold ph-shield-check text-brand-red"></i> Dual Controls</span>
+                            <span
+                                class="bg-gray-50 border border-gray-100 text-brand-slate text-[11px] font-medium px-2.5 py-1 rounded-lg flex items-center gap-1"><i
+                                    class="ph-bold ph-wind text-brand-red"></i> Air Conditioned</span>
+                            <span
+                                class="bg-gray-50 border border-gray-100 text-brand-slate text-[11px] font-medium px-2.5 py-1 rounded-lg flex items-center gap-1"><i
+                                    class="ph-bold ph-squares-four text-brand-red"></i> Rear Sensors</span>
+                        </div>
+                        <a href="#hero-form"
+                            class="block text-center mt-6 py-3 rounded-xl border border-brand-red hover:bg-brand-red hover:text-white text-brand-red font-bold text-sm transition-all">Book
+                            with Dzire</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- COURSES TAILORED FOR YOU -->
+    <section id="courses" class="py-20 bg-brand-grayBg px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 gsap-scroll-up">
+                <span class="text-sm font-bold uppercase tracking-wider text-brand-red">Course Selection</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-brand-dark font-poppins mt-2">Packages Structured For
+                    Everyone</h2>
+                <p class="text-brand-slate max-w-2xl mx-auto mt-4">Choose from customized packages depending on your
+                    previous steering wheel familiarity.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+
+                <!-- Refresher Course -->
+                <div
+                    class="bg-white p-8 rounded-[2rem] border border-gray-100 shadow-sm flex flex-col hover:shadow-xl transition-all duration-300">
+                    <div class="flex justify-between items-start mb-6">
+                        <div>
+                            <span
+                                class="bg-gray-100 text-brand-dark text-xs font-bold px-3 py-1 rounded-full">Refresher</span>
+                            <h3 class="text-2xl font-bold text-brand-dark mt-2 font-poppins">7-Day Polish</h3>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-3xl font-black text-brand-red font-poppins">₹3,500</p>
+                            <p class="text-[10px] text-brand-slate font-bold uppercase">7 Sessions</p>
+                        </div>
+                    </div>
+
+                    <p class="text-sm text-brand-slate mb-6 pb-6 border-b border-gray-100">Best for learners who have a
+                        license or basic steering knowledge but lack confidence in peak hours.</p>
+
+                    <ul class="space-y-4 mb-8 flex-grow">
+                        <li class="flex items-center gap-3 text-sm text-brand-dark"><i
+                                class="ph-fill ph-check-circle text-brand-red text-lg"></i> 7 Days Practical (1
+                            hour/day)</li>
+                        <li class="flex items-center gap-3 text-sm text-brand-dark"><i
+                                class="ph-fill ph-check-circle text-brand-red text-lg"></i> Tight Spot Parallel Parking
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-brand-dark"><i
+                                class="ph-fill ph-check-circle text-brand-red text-lg"></i> Heavy Traffic Navigation
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-brand-dark"><i
+                                class="ph-fill ph-check-circle text-brand-red text-lg"></i> Reverse & U-Turn Training
+                        </li>
+                    </ul>
+
+                    <a href="#hero-form"
+                        class="text-center block w-full py-3.5 rounded-xl font-bold text-sm bg-gray-100 hover:bg-gray-200 text-brand-dark transition-all">Select
+                        Refresher</a>
+                </div>
+
+                <!-- Beginner Course (Highlighted) -->
+                <div
+                    class="bg-white p-8 rounded-[2rem] border-2 border-brand-red shadow-xl flex flex-col relative md:-translate-y-4">
+                    <span
+                        class="absolute -top-4 left-1/2 -translate-x-1/2 bg-brand-red text-white text-xs font-black tracking-widest uppercase px-4 py-1.5 rounded-full">Most
+                        Popular</span>
+
+                    <div class="flex justify-between items-start mb-6">
+                        <div>
+                            <span
+                                class="bg-brand-red/10 text-brand-red text-xs font-bold px-3 py-1 rounded-full">Zero-to-Hero</span>
+                            <h3 class="text-2xl font-bold text-brand-dark mt-2 font-poppins">15-Day Expert</h3>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-3xl font-black text-brand-red font-poppins">₹6,000</p>
+                            <p class="text-[10px] text-brand-slate font-bold uppercase">15 Sessions</p>
+                        </div>
+                    </div>
+
+                    <p class="text-sm text-brand-slate mb-6 pb-6 border-b border-gray-100">Tailored specifically for
+                        first-time drivers with absolutely zero prior steering experience.</p>
+
+                    <ul class="space-y-4 mb-8 flex-grow">
+                        <li class="flex items-center gap-3 text-sm text-brand-dark font-bold"><i
+                                class="ph-fill ph-check-circle text-brand-red text-lg"></i> 15 Days Practical (1
+                            hour/day)</li>
+                        <li class="flex items-center gap-3 text-sm text-brand-dark"><i
+                                class="ph-fill ph-check-circle text-brand-red text-lg"></i> Basic Cockpit Controls &
+                            Engine Basics</li>
+                        <li class="flex items-center gap-3 text-sm text-brand-dark"><i
+                                class="ph-fill ph-check-circle text-brand-red text-lg"></i> Clutch-Gear Balance
+                            (Hills/Traffic)</li>
+                        <li class="flex items-center gap-3 text-sm text-brand-dark"><i
+                                class="ph-fill ph-check-circle text-brand-red text-lg"></i> Detailed RTO Rules & Signage
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-brand-dark"><i
+                                class="ph-fill ph-check-circle text-brand-red text-lg"></i> License Test Preparation
+                        </li>
+                    </ul>
+
+                    <a href="#hero-form"
+                        class="text-center block w-full py-3.5 rounded-xl font-bold text-sm bg-brand-red hover:bg-brand-redHover text-white shadow-md hover:shadow-xl transition-all">Select
+                        Beginner</a>
+                </div>
+
+                <!-- Advanced Course -->
+                <div
+                    class="bg-white p-8 rounded-[2rem] border border-gray-100 shadow-sm flex flex-col hover:shadow-xl transition-all duration-300">
+                    <div class="flex justify-between items-start mb-6">
+                        <div>
+                            <span class="bg-gray-100 text-brand-dark text-xs font-bold px-3 py-1 rounded-full">Highway
+                                Specialist</span>
+                            <h3 class="text-2xl font-bold text-brand-dark mt-2 font-poppins">5-Day Advanced</h3>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-3xl font-black text-brand-red font-poppins">₹3,000</p>
+                            <p class="text-[10px] text-brand-slate font-bold uppercase">5 Long Sessions</p>
+                        </div>
+                    </div>
+
+                    <p class="text-sm text-brand-slate mb-6 pb-6 border-b border-gray-100">Perfect for license holders
+                        who want to acquire advanced high-speed expressway and night driving expertise.</p>
+
+                    <ul class="space-y-4 mb-8 flex-grow">
+                        <li class="flex items-center gap-3 text-sm text-brand-dark"><i
+                                class="ph-fill ph-check-circle text-brand-red text-lg"></i> 5 Long Sessions (90
+                            mins/day)</li>
+                        <li class="flex items-center gap-3 text-sm text-brand-dark"><i
+                                class="ph-fill ph-check-circle text-brand-red text-lg"></i> Expressway Driving & Lane
+                            Merging</li>
+                        <li class="flex items-center gap-3 text-sm text-brand-dark"><i
+                                class="ph-fill ph-check-circle text-brand-red text-lg"></i> Night Traffic & Dynamic
+                            Headlight Judgment</li>
+                        <li class="flex items-center gap-3 text-sm text-brand-dark"><i
+                                class="ph-fill ph-check-circle text-brand-red text-lg"></i> Emergency Brake Controls
+                        </li>
+                    </ul>
+
+                    <a href="#hero-form"
+                        class="text-center block w-full py-3.5 rounded-xl font-bold text-sm bg-gray-100 hover:bg-gray-200 text-brand-dark transition-all">Select
+                        Advanced</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- STEP-BY-STEP LEARNING PROCESS -->
+    <section class="py-20 bg-white px-6 overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 gsap-scroll-up">
+                <span class="text-sm font-bold uppercase tracking-wider text-brand-red">Your Path</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-brand-dark font-poppins mt-2">How It Works</h2>
+                <p class="text-brand-slate max-w-2xl mx-auto mt-4">We've structured our learning program in 5 systematic
+                    phases to take you from a complete beginner to a road expert.</p>
+            </div>
+
+            <div class="relative gsap-scroll-up">
+                <!-- Desktop connecting line -->
+                <div class="hidden md:block absolute top-10 left-0 w-full h-[3px] bg-gray-100 z-0"></div>
+
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-8 relative z-10">
+
+                    <!-- Step 1 -->
+                    <div class="flex flex-col items-center text-center">
+                        <div
+                            class="w-20 h-20 rounded-full bg-white border-4 border-gray-50 shadow-md flex items-center justify-center mb-4 relative hover:border-brand-red transition-all duration-300 group">
+                            <i
+                                class="ph-bold ph-clipboard-text text-3xl text-brand-slate group-hover:text-brand-red transition-colors"></i>
+                            <div
+                                class="absolute -top-2 -right-2 w-7 h-7 bg-brand-red text-white text-xs font-bold rounded-full flex items-center justify-center border-2 border-white shadow-sm">
+                                1</div>
+                        </div>
+                        <h4 class="font-bold text-brand-dark text-base">Select Batch & Book</h4>
+                        <p class="text-xs text-brand-slate mt-1 max-w-[160px]">Register online or call us. Choose manual
+                            or automatic fleet.</p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="flex flex-col items-center text-center">
+                        <div
+                            class="w-20 h-20 rounded-full bg-white border-4 border-gray-50 shadow-md flex items-center justify-center mb-4 relative hover:border-brand-red transition-all duration-300 group">
+                            <i
+                                class="ph-bold ph-map-pin text-3xl text-brand-slate group-hover:text-brand-red transition-colors"></i>
+                            <div
+                                class="absolute -top-2 -right-2 w-7 h-7 bg-brand-red text-white text-xs font-bold rounded-full flex items-center justify-center border-2 border-white shadow-sm">
+                                2</div>
+                        </div>
+                        <h4 class="font-bold text-brand-dark text-base">Doorstep Pickup</h4>
+                        <p class="text-xs text-brand-slate mt-1 max-w-[160px]">Trainer reaches your coordinates.
+                            Complete cockpit orientation.</p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="flex flex-col items-center text-center">
+                        <div
+                            class="w-20 h-20 rounded-full bg-white border-4 border-gray-50 shadow-md flex items-center justify-center mb-4 relative hover:border-brand-red transition-all duration-300 group">
+                            <i
+                                class="ph-bold ph-steering-wheel text-3xl text-brand-slate group-hover:text-brand-red transition-colors"></i>
+                            <div
+                                class="absolute -top-2 -right-2 w-7 h-7 bg-brand-red text-white text-xs font-bold rounded-full flex items-center justify-center border-2 border-white shadow-sm">
+                                3</div>
+                        </div>
+                        <h4 class="font-bold text-brand-dark text-base">Ground Training</h4>
+                        <p class="text-xs text-brand-slate mt-1 max-w-[160px]">Master the clutch-brake balance and steer
+                            controls on open tracks.</p>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="flex flex-col items-center text-center">
+                        <div
+                            class="w-20 h-20 rounded-full bg-white border-4 border-gray-50 shadow-md flex items-center justify-center mb-4 relative hover:border-brand-red transition-all duration-300 group">
+                            <i
+                                class="ph-bold ph-road-horizon text-3xl text-brand-slate group-hover:text-brand-red transition-colors"></i>
+                            <div
+                                class="absolute -top-2 -right-2 w-7 h-7 bg-brand-red text-white text-xs font-bold rounded-full flex items-center justify-center border-2 border-white shadow-sm">
+                                4</div>
+                        </div>
+                        <h4 class="font-bold text-brand-dark text-base">Real Traffic & U-turns</h4>
+                        <p class="text-xs text-brand-slate mt-1 max-w-[160px]">Learn lane switching, parking, and
+                            dynamic intersection navigation.</p>
+                    </div>
+
+                    <!-- Step 5 -->
+                    <div class="flex flex-col items-center text-center">
+                        <div
+                            class="w-20 h-20 rounded-full bg-white border-4 border-gray-50 shadow-md flex items-center justify-center mb-4 relative hover:border-brand-red transition-all duration-300 group">
+                            <i
+                                class="ph-bold ph-identification-card text-3xl text-brand-slate group-hover:text-brand-red transition-colors"></i>
+                            <div
+                                class="absolute -top-2 -right-2 w-7 h-7 bg-brand-red text-white text-xs font-bold rounded-full flex items-center justify-center border-2 border-white shadow-sm">
+                                5</div>
+                        </div>
+                        <h4 class="font-bold text-brand-dark text-base">Pass RTO Test</h4>
+                        <p class="text-xs text-brand-slate mt-1 max-w-[160px]">Undergo pre-test check and successfully
+                            secure your permanent license.</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GOOGLE REVIEWS SECTION -->
+    <section id="reviews" class="py-20 bg-brand-red text-white relative overflow-hidden">
+        <!-- Abstract Background Shape -->
+        <div
+            class="absolute top-0 right-0 w-[600px] h-[600px] bg-white/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2 -z-10">
+        </div>
+        <div
+            class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-white/5 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2 -z-10">
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+
+                <!-- Left Details: Summary Rating -->
+                <div class="lg:col-span-4 space-y-6">
+                    <div class="flex items-center gap-3">
+                        <!-- Google Logo Vector Markup -->
+                        <div class="bg-white p-2 rounded-xl">
+                            <svg class="w-8 h-8" viewBox="0 0 24 24">
+                                <path fill="#4285F4"
+                                    d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                                <path fill="#34A853"
+                                    d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                                <path fill="#FBBC05"
+                                    d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22c-.43-.63-.74-1.34-.74-2.09c0-.75.31-1.46.74-2.09l-2.85-2.22c-.75 1.49-1.18 3.16-1.18 4.94s.43 3.45 1.18 4.94z" />
+                                <path fill="#EA4335"
+                                    d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-sm text-red-100 font-semibold leading-tight">Student reviews on</p>
+                            <h3 class="text-xl font-bold tracking-tight font-poppins">Google Maps Rating</h3>
+                        </div>
+                    </div>
+
+                    <div class="flex items-baseline gap-2">
+                        <span class="text-6xl font-black font-poppins">4.9</span>
+                        <span class="text-lg text-red-200">/ 5.0</span>
+                    </div>
+
+                    <div class="flex text-yellow-400 text-2xl">
+                        <i class="ph-fill ph-star"></i>
+                        <i class="ph-fill ph-star"></i>
+                        <i class="ph-fill ph-star"></i>
+                        <i class="ph-fill ph-star"></i>
+                        <i class="ph-fill ph-star"></i>
+                    </div>
+
+                    <p class="text-red-100 text-sm leading-relaxed">
+                        Verified student reviews show our focus on patience, clean safety guidelines, and direct
+                        instructor feedback.
+                    </p>
+
+                    <div class="pt-4">
+                        <a href="https://maps.google.com" target="_blank"
+                            class="inline-flex items-center gap-2 bg-white text-brand-red px-6 py-3 rounded-xl font-bold text-sm shadow-md hover:bg-red-50 transition-colors">
+                            <i class="ph-bold ph-pencil-simple-line"></i> Write a Google Review
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Details: Reviews Grid -->
+                <div class="lg:col-span-8 grid sm:grid-cols-2 gap-6">
+
+                    <!-- Review 1 -->
+                    <div
+                        class="bg-white text-brand-dark p-6 rounded-3xl shadow-lg border border-red-500/10 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start">
+                                <div class="flex text-yellow-500 text-sm mb-3">
+                                    <i class="ph-fill ph-star"></i>
+                                    <i class="ph-fill ph-star"></i>
+                                    <i class="ph-fill ph-star"></i>
+                                    <i class="ph-fill ph-star"></i>
+                                    <i class="ph-fill ph-star"></i>
+                                </div>
+                                <span class="text-brand-slate text-[10px] font-bold">1 week ago</span>
+                            </div>
+                            <p class="text-brand-dark font-medium italic text-xs leading-relaxed">
+                                "The trainers are exceptionally patient! I had severe road anxiety. They trained me
+                                slowly on ground rules first, and within 10 days I was driving confidently in Palam
+                                traffic. Doorstep pick-up is a lifesaver."
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-3 pt-4 mt-4 border-t border-gray-100">
+                            <div
+                                class="w-9 h-9 rounded-full bg-red-100 text-brand-red flex items-center justify-center font-black text-sm">
+                                A</div>
+                            <div>
+                                <h5 class="text-xs font-bold flex items-center gap-1">Aditi Sharma <i
+                                        class="ph-fill ph-seal-check text-brand-red text-xs"></i></h5>
+                                <p class="text-[9px] text-brand-slate font-bold uppercase tracking-wider">Dwarka, Delhi
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review 2 -->
+                    <div
+                        class="bg-white text-brand-dark p-6 rounded-3xl shadow-lg border border-red-500/10 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start">
+                                <div class="flex text-yellow-500 text-sm mb-3">
+                                    <i class="ph-fill ph-star"></i>
+                                    <i class="ph-fill ph-star"></i>
+                                    <i class="ph-fill ph-star"></i>
+                                    <i class="ph-fill ph-star"></i>
+                                    <i class="ph-fill ph-star"></i>
+                                </div>
+                                <span class="text-brand-slate text-[10px] font-bold">3 weeks ago</span>
+                            </div>
+                            <p class="text-brand-dark font-medium italic text-xs leading-relaxed">
+                                "Best driving school in Dwarka Sector 1 area. Instructors are professional, don't
+                                scream, and teach excellent defensive driving rules. Dual brake controls made me feel
+                                extremely secure during first traffic runs."
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-3 pt-4 mt-4 border-t border-gray-100">
+                            <div
+                                class="w-9 h-9 rounded-full bg-red-100 text-brand-red flex items-center justify-center font-black text-sm">
+                                R</div>
+                            <div>
+                                <h5 class="text-xs font-bold flex items-center gap-1">Raman Malhotra <i
+                                        class="ph-fill ph-seal-check text-brand-red text-xs"></i></h5>
+                                <p class="text-[9px] text-brand-slate font-bold uppercase tracking-wider">Palam Road,
+                                    Delhi</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review 3 -->
+                    <div
+                        class="bg-white text-brand-dark p-6 rounded-3xl shadow-lg border border-red-500/10 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start">
+                                <div class="flex text-yellow-500 text-sm mb-3">
+                                    <i class="ph-fill ph-star"></i>
+                                    <i class="ph-fill ph-star"></i>
+                                    <i class="ph-fill ph-star"></i>
+                                    <i class="ph-fill ph-star"></i>
+                                    <i class="ph-fill ph-star"></i>
+                                </div>
+                                <span class="text-brand-slate text-[10px] font-bold">1 month ago</span>
+                            </div>
+                            <p class="text-brand-dark font-medium italic text-xs leading-relaxed">
+                                "Took the 7-day Refresher course on their automatic i20. Instructor explained complex
+                                intersections and reverse parallel parking in details. Truly value for money. Very
+                                polite coordinators."
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-3 pt-4 mt-4 border-t border-gray-100">
+                            <div
+                                class="w-9 h-9 rounded-full bg-red-100 text-brand-red flex items-center justify-center font-black text-sm">
+                                K</div>
+                            <div>
+                                <h5 class="text-xs font-bold flex items-center gap-1">Karan Johar <i
+                                        class="ph-fill ph-seal-check text-brand-red text-xs"></i></h5>
+                                <p class="text-[9px] text-brand-slate font-bold uppercase tracking-wider">Local Guide
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review 4 -->
+                    <div
+                        class="bg-white text-brand-dark p-6 rounded-3xl shadow-lg border border-red-500/10 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start">
+                                <div class="flex text-yellow-500 text-sm mb-3">
+                                    <i class="ph-fill ph-star"></i>
+                                    <i class="ph-fill ph-star"></i>
+                                    <i class="ph-fill ph-star"></i>
+                                    <i class="ph-fill ph-star"></i>
+                                    <i class="ph-fill ph-star"></i>
+                                </div>
+                                <span class="text-brand-slate text-[10px] font-bold">2 months ago</span>
+                            </div>
+                            <p class="text-brand-dark font-medium italic text-xs leading-relaxed">
+                                "As a working professional, weekend batches were extremely convenient. The trainers were
+                                highly professional. Recommended this to my entire office team."
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-3 pt-4 mt-4 border-t border-gray-100">
+                            <div
+                                class="w-9 h-9 rounded-full bg-red-100 text-brand-red flex items-center justify-center font-black text-sm">
+                                M</div>
+                            <div>
+                                <h5 class="text-xs font-bold flex items-center gap-1">Megha Gupta <i
+                                        class="ph-fill ph-seal-check text-brand-red text-xs"></i></h5>
+                                <p class="text-[9px] text-brand-slate font-bold uppercase tracking-wider">Vijay Enclave,
+                                    Delhi</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ ACCORDION -->
+    <section id="faq" class="py-20 bg-brand-grayBg px-6">
+        <div class="max-w-3xl mx-auto">
+            <div class="text-center mb-12 gsap-scroll-up">
+                <span class="text-sm font-bold uppercase tracking-wider text-brand-red">Got Questions?</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-brand-dark font-poppins mt-2">Frequently Asked Queries
+                </h2>
+            </div>
+
+            <div class="space-y-4 gsap-scroll-up" id="faq-container">
+
+                <!-- Q1 -->
+                <div
+                    class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-md">
+                    <button
+                        class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center font-bold text-brand-dark hover:text-brand-red">
+                        <span>How many practical classes are there in the beginner course?</span>
+                        <i class="ph-bold ph-caret-down text-lg text-brand-slate faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="px-6 pb-5 text-sm text-brand-slate leading-relaxed border-t border-gray-50 pt-2">
+                            The Beginner Course contains 15 practical on-road training sessions (1 hour daily). It
+                            covers basic cockpit controls, steering orientation, reverse controls, parallel parking, and
+                            license preparation.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q2 -->
+                <div
+                    class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-md">
+                    <button
+                        class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center font-bold text-brand-dark hover:text-brand-red">
+                        <span>Are the training cars equipped with safety controls?</span>
+                        <i class="ph-bold ph-caret-down text-lg text-brand-slate faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="px-6 pb-5 text-sm text-brand-slate leading-relaxed border-t border-gray-50 pt-2">
+                            Yes, absolutely. Every car in our fleet is fully configured with professional dual-brake and
+                            dual-clutch pedals. The certified instructor sitting next to you maintains absolute
+                            secondary control of the car at all times to prevent any mishap.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q3 -->
+                <div
+                    class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-md">
+                    <button
+                        class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center font-bold text-brand-dark hover:text-brand-red">
+                        <span>Do you provide pick-up and drop-off facility?</span>
+                        <i class="ph-bold ph-caret-down text-lg text-brand-slate faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="px-6 pb-5 text-sm text-brand-slate leading-relaxed border-t border-gray-50 pt-2">
+                            Yes. We provide free doorstep pick-up and drop facility anywhere in our active limits
+                            (including Dabri, Palam Road, Vijay Enclave, Mahavir Enclave, Dwarka Sector 1, etc.). The
+                            trainer arrives at your home or office address to begin each session.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q4 -->
+                <div
+                    class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-md">
+                    <button
+                        class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center font-bold text-brand-dark hover:text-brand-red">
+                        <span>Can I request a female driving instructor?</span>
+                        <i class="ph-bold ph-caret-down text-lg text-brand-slate faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="px-6 pb-5 text-sm text-brand-slate leading-relaxed border-t border-gray-50 pt-2">
+                            Yes, we have certified female trainers on our team. You can request a female instructor when
+                            filling out the booking form or when our customer coordinator reaches out to confirm your
+                            slot.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q5 -->
+                <div
+                    class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-md">
+                    <button
+                        class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center font-bold text-brand-dark hover:text-brand-red">
+                        <span>Do you help with securing a permanent driving license?</span>
+                        <i class="ph-bold ph-caret-down text-lg text-brand-slate faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="px-6 pb-5 text-sm text-brand-slate leading-relaxed border-t border-gray-50 pt-2">
+                            We provide comprehensive preparation for the official RTO driving test. During your last few
+                            classes, we will guide you on the specific tracks, test turns, and parallel parking metrics
+                            required to comfortably pass your test.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- DETAILED FOOTER -->
+    <footer class="bg-brand-dark text-gray-300 pt-16 pb-8 px-6 border-t-4 border-brand-red">
+        <div
+            class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-slate-800">
+
+            <!-- Column 1: Info & Logo -->
+            <div class="space-y-4">
+                <a href="#" class="flex items-center gap-3 cursor-pointer group">
+                    <div class="bg-white p-1 rounded-xl">
+                        <img src="./car_logo_transparent.png" alt="Road Ready Logo" class="h-10 w-auto object-contain">
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-black text-white leading-tight tracking-tight font-poppins">
+                            ROAD<span class="text-brand-red">READY</span>
+                        </h4>
+                        <p class="text-[8px] uppercase tracking-widest text-gray-400 font-bold">Driving School</p>
+                    </div>
+                </a>
+                <p class="text-xs text-gray-400 leading-relaxed pr-4">
+                    Empowering students across Delhi with safe, defensive driving techniques. Fully certified driving
+                    curriculum with highly experienced dual-control instructors.
+                </p>
+                <div class="flex gap-3 pt-2">
+                    <a href="#"
+                        class="w-8 h-8 rounded-full bg-slate-800 hover:bg-brand-red hover:text-white flex items-center justify-center transition-colors text-gray-300"><i
+                            class="ph-bold ph-facebook-logo"></i></a>
+                    <a href="#"
+                        class="w-8 h-8 rounded-full bg-slate-800 hover:bg-brand-red hover:text-white flex items-center justify-center transition-colors text-gray-300"><i
+                            class="ph-bold ph-instagram-logo"></i></a>
+                    <a href="#"
+                        class="w-8 h-8 rounded-full bg-slate-800 hover:bg-brand-red hover:text-white flex items-center justify-center transition-colors text-gray-300"><i
+                            class="ph-bold ph-youtube-logo"></i></a>
+                    <a href="#"
+                        class="w-8 h-8 rounded-full bg-slate-800 hover:bg-brand-red hover:text-white flex items-center justify-center transition-colors text-gray-300"><i
+                            class="ph-bold ph-twitter-logo"></i></a>
+                </div>
+            </div>
+
+            <!-- Column 2: Quick Links -->
+            <div>
+                <h5
+                    class="text-white font-bold font-poppins text-sm uppercase tracking-wider mb-4 border-b border-brand-red pb-1.5 w-16">
+                    Links</h5>
+                <ul class="space-y-2.5 text-xs">
+                    <li><a href="#" class="hover:text-white hover:underline transition-all flex items-center gap-1.5"><i
+                                class="ph ph-caret-right text-brand-red"></i> Home</a></li>
+                    <li><a href="#why-choose"
+                            class="hover:text-white hover:underline transition-all flex items-center gap-1.5"><i
+                                class="ph ph-caret-right text-brand-red"></i> Why Choose Us</a></li>
+                    <li><a href="#fleet"
+                            class="hover:text-white hover:underline transition-all flex items-center gap-1.5"><i
+                                class="ph ph-caret-right text-brand-red"></i> Training Fleet</a></li>
+                    <li><a href="#courses"
+                            class="hover:text-white hover:underline transition-all flex items-center gap-1.5"><i
+                                class="ph ph-caret-right text-brand-red"></i> Driving Packages</a></li>
+                    <li><a href="#reviews"
+                            class="hover:text-white hover:underline transition-all flex items-center gap-1.5"><i
+                                class="ph ph-caret-right text-brand-red"></i> Student Reviews</a></li>
+                    <li><a href="#faq"
+                            class="hover:text-white hover:underline transition-all flex items-center gap-1.5"><i
+                                class="ph ph-caret-right text-brand-red"></i> FAQ Queries</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Active Regions -->
+            <div>
+                <h5
+                    class="text-white font-bold font-poppins text-sm uppercase tracking-wider mb-4 border-b border-brand-red pb-1.5 w-20">
+                    Regions</h5>
+                <ul class="space-y-2 text-xs text-gray-400">
+                    <li class="flex items-center gap-2"><i class="ph-bold ph-map-pin text-brand-red"></i> Dabri-Palam
+                        Road</li>
+                    <li class="flex items-center gap-2"><i class="ph-bold ph-map-pin text-brand-red"></i> Vijay Enclave
+                    </li>
+                    <li class="flex items-center gap-2"><i class="ph-bold ph-map-pin text-brand-red"></i> Mahavir
+                        Enclave</li>
+                    <li class="flex items-center gap-2"><i class="ph-bold ph-map-pin text-brand-red"></i> Dwarka Sector
+                        1</li>
+                    <li class="flex items-center gap-2"><i class="ph-bold ph-map-pin text-brand-red"></i> Janakpuri
+                        Metro limits</li>
+                    <li class="flex items-center gap-2"><i class="ph-bold ph-map-pin text-brand-red"></i> Uttam Nagar
+                        adjacent</li>
+                </ul>
+            </div>
+
+            <!-- Column 4: Contact Information -->
+            <div class="space-y-3">
+                <h5
+                    class="text-white font-bold font-poppins text-sm uppercase tracking-wider mb-4 border-b border-brand-red pb-1.5 w-24">
+                    Contacts</h5>
+                <div class="space-y-3 text-xs text-gray-400">
+                    <div class="flex items-start gap-2.5">
+                        <i class="ph-bold ph-map-pin text-brand-red text-base mt-0.5"></i>
+                        <p class="leading-relaxed">
+                            Road Ready Driving School,<br>
+                            Dabri–Palam Road, Vijay Enclave,<br>
+                            Mahavir Enclave, Dwarka Sector 1,<br>
+                            Delhi – 110045
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-2.5">
+                        <i class="ph-bold ph-phone text-brand-red text-base"></i>
+                        <p class="font-bold text-white text-sm">+91 81784 65755</p>
+                    </div>
+                    <div class="flex items-center gap-2.5">
+                        <i class="ph-bold ph-envelope-simple text-brand-red text-base"></i>
+                        <p>info@roadreadydrivingschool.in</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Bottom Footer bar -->
+        <div
+            class="max-w-7xl mx-auto pt-6 flex flex-col md:flex-row items-center justify-between text-xs text-gray-500">
+            <p>&copy; 2026 Road Ready Driving School. All rights reserved.</p>
+            <div class="flex space-x-6 mt-4 md:mt-0">
+                <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                <a href="#" class="hover:text-white transition-colors">RTO Guidelines</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FLOATING WHATSAPP ICON (BOTTOM-RIGHT) -->
+    <a href="https://wa.me/918178465755?text=Hi%2C%20I%20am%20interested%20in%20booking%20driving%20lessons%20with%20Road%20Ready%20Driving%20School."
+        target="_blank"
+        class="fixed bottom-6 right-6 bg-[#25D366] text-white p-4 rounded-full shadow-[0_8px_30px_rgba(37,211,102,0.4)] hover:-translate-y-1 transition-all z-50 group whatsapp-pulse">
+        <i class="ph-bold ph-whatsapp-logo text-3xl group-hover:scale-110 transition-transform"></i>
+    </a>
+
+    <!-- GSAP & ScrollTrigger Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <!-- Vanilla Javascript Logic -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            // 1. Sticky Navbar Transition
+            const navbar = document.getElementById('navbar');
+            const navLogoText = document.getElementById('nav-logo-text');
+            const navLogoSub = document.getElementById('nav-logo-sub');
+            const navLinks = document.getElementById('nav-links');
+            const navPhone = document.getElementById('nav-phone');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > (window.innerHeight - 80)) {
+                    navbar.classList.add('bg-white', 'shadow-md', 'py-1');
+                    navbar.classList.remove('bg-white/0', 'backdrop-blur-none', 'border-transparent');
+
+                    if (navLogoText) {
+                        navLogoText.classList.remove('text-white');
+                        navLogoText.classList.add('text-brand-dark');
+                    }
+                    if (navLogoSub) {
+                        navLogoSub.classList.remove('text-gray-300');
+                        navLogoSub.classList.add('text-brand-slate');
+                    }
+                    if (navLinks) {
+                        navLinks.classList.remove('text-gray-200');
+                        navLinks.classList.add('text-brand-slate');
+                    }
+                    if (navPhone) {
+                        navPhone.classList.remove('text-white');
+                        navPhone.classList.add('text-brand-dark');
+                    }
+                } else {
+                    navbar.classList.remove('bg-white', 'shadow-md', 'py-1');
+                    navbar.classList.add('bg-white/0', 'backdrop-blur-none', 'border-transparent');
+
+                    if (navLogoText) {
+                        navLogoText.classList.add('text-white');
+                        navLogoText.classList.remove('text-brand-dark');
+                    }
+                    if (navLogoSub) {
+                        navLogoSub.classList.add('text-gray-300');
+                        navLogoSub.classList.remove('text-brand-slate');
+                    }
+                    if (navLinks) {
+                        navLinks.classList.add('text-gray-200');
+                        navLinks.classList.remove('text-brand-slate');
+                    }
+                    if (navPhone) {
+                        navPhone.classList.add('text-white');
+                        navPhone.classList.remove('text-brand-dark');
+                    }
+                }
+            });
+
+            // 2. FAQ Accordion Logic
+            const faqButtons = document.querySelectorAll('.faq-btn');
+            faqButtons.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const isActive = this.classList.contains('active');
+
+                    // Close all active FAQs
+                    document.querySelectorAll('.faq-btn').forEach(b => {
+                        b.classList.remove('active');
+                        b.nextElementSibling.classList.remove('open');
+                    });
+
+                    // If the clicked one wasn't active, expand it
+                    if (!isActive) {
+                        this.classList.add('active');
+                        this.nextElementSibling.classList.add('open');
+                    }
+                });
+            });
+
+            // 3. GSAP ScrollReveal Animations
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Animate scroll headings and components
+            const revealElements = document.querySelectorAll(".gsap-scroll-up");
+            revealElements.forEach((el) => {
+                gsap.from(el, {
+                    scrollTrigger: {
+                        trigger: el,
+                        start: "top 85%",
+                        toggleActions: "play none none reverse"
+                    },
+                    y: 40,
+                    opacity: 0,
+                    duration: 0.8,
+                    ease: "power3.out"
+                });
+            });
+        });
+
+        // 4. Fleet Filtering Logic
+        function filterFleet(category) {
+            const cards = document.querySelectorAll('.fleet-card');
+            const buttons = document.querySelectorAll('.fleet-filter-btn');
+
+            // Adjust button active colors
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-brand-red', 'text-white');
+                btn.classList.add('bg-gray-100', 'text-brand-dark', 'hover:bg-gray-200');
+            });
+
+            // Highlight current button
+            const clickedBtn = event.currentTarget;
+            clickedBtn.classList.remove('bg-gray-100', 'text-brand-dark', 'hover:bg-gray-200');
+            clickedBtn.classList.add('bg-brand-red', 'text-white');
+
+            // Toggle card visibility with transition
+            cards.forEach(card => {
+                const gearType = card.getAttribute('data-gear');
+                if (category === 'all' || gearType === category) {
+                    card.style.display = 'block';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'scale(1)';
+                    }, 50);
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
