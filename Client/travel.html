@@ -1,0 +1,1492 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sachdeva Travel | Premium Luxury Transportation & Tours in Delhi</title>
+    <meta name="description"
+        content="Premium taxi, luxury tempo traveller, Force Urbania, and airport transfers across India. Operating since 2004. Real-time booking.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS CDN & Config -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#F4B400',
+                        primaryHover: '#DCA200',
+                        dark: '#121212',
+                        light: '#F9FAFB',
+                        charcoal: '#1E1E1E'
+                    },
+                    fontFamily: {
+                        heading: ['Poppins', 'sans-serif'],
+                        body: ['Inter', 'sans-serif']
+                    },
+                    boxShadow: {
+                        'premium': '0 8px 30px rgba(0,0,0,0.06)',
+                        'premium-dark': '0 8px 30px rgba(0,0,0,0.4)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        ::selection {
+            background-color: #F4B400;
+            color: #121212;
+        }
+
+        /* Glassmorphism */
+        .glass-header {
+            background: rgba(18, 18, 18, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .glass-dark {
+            background: rgba(18, 18, 18, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(244, 180, 0, 0.2);
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #F4B400, #FFE57F);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Custom scrollbar for fleet & destinations */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Swiper overrides */
+        .swiper-pagination-bullet {
+            background: rgba(255, 255, 255, 0.4) !important;
+            opacity: 1 !important;
+        }
+
+        .swiper-pagination-bullet-active {
+            background: #F4B400 !important;
+            width: 24px !important;
+            border-radius: 4px !important;
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+
+<body class="font-body bg-light text-gray-800 antialiased overflow-x-hidden relative">
+
+    <!-- NAVIGATION HEADER -->
+    <header class="fixed w-full z-50 transition-all duration-300 py-4" id="navbar">
+        <div class="container mx-auto px-6 lg:px-12 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="bg-primary/10 p-2 rounded-xl group-hover:scale-105 transition-transform duration-300">
+                    <svg width="32" height="32" viewBox="0 0 100 100" class="text-primary fill-current">
+                        <path d="M50,5 C25,5 5,25 5,50 C5,75 25,95 50,95 C75,95 95,75 95,50 C95,25 75,5 50,5 Z"
+                            opacity="0.15" />
+                        <path
+                            d="M65,30 C65,22 55,20 50,20 C40,20 35,25 35,35 C35,45 65,50 65,65 C65,75 55,80 50,80 C40,80 32,72 35,60"
+                            fill="none" stroke="#F4B400" stroke-width="8" stroke-linecap="round" />
+                        <circle cx="50" cy="20" r="5" fill="#F4B400" />
+                        <path
+                            d="M25,65 L30,55 L45,55 L50,65 L70,65 C73,65 75,67 75,70 L75,75 L20,75 L20,70 C20,67 22,65 25,65 Z"
+                            fill="#FFFFFF" />
+                    </svg>
+                </div>
+                <div>
+                    <span
+                        class="font-heading font-extrabold text-xl tracking-wider text-white uppercase transition-colors"
+                        id="nav-brand-text">
+                        Sachdeva<span class="text-primary font-normal">Travel</span>
+                    </span>
+                    <p class="text-[7.5px] uppercase tracking-widest text-gray-300 font-bold" id="nav-brand-sub">Premium
+                        Transport Services</p>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Menu -->
+            <nav class="hidden lg:flex items-center space-x-8 text-xs font-semibold uppercase tracking-wider text-gray-300"
+                id="nav-menu">
+                <a href="#services" class="hover:text-primary transition-colors">Services</a>
+                <a href="#fleet" class="hover:text-primary transition-colors">Our Fleet</a>
+                <a href="#destinations" class="hover:text-primary transition-colors">Destinations</a>
+                <a href="#stories" class="hover:text-primary transition-colors">Travel Stories</a>
+                <a href="#faq" class="hover:text-primary transition-colors">FAQ</a>
+                <a href="#contact" class="hover:text-primary transition-colors">Contact</a>
+            </nav>
+
+            <!-- Call & Action CTA -->
+            <div class="hidden lg:flex items-center gap-6">
+                <a href="tel:+919876543210"
+                    class="text-white hover:text-primary text-sm font-semibold transition-colors flex items-center gap-2"
+                    id="nav-phone">
+                    <i class="fa-solid fa-phone text-primary"></i>
+                    <span>+91 98765 43210</span>
+                </a>
+                <a href="#contact"
+                    class="bg-primary hover:bg-primaryHover text-dark font-heading font-bold text-xs uppercase tracking-wider px-6 py-3 rounded-md transition-all shadow-sm">
+                    Book Journey
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button class="lg:hidden text-white text-2xl focus:outline-none" onclick="toggleMobileMenu()">
+                <i class="fa-solid fa-bars" id="menu-icon"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobile-menu"
+            class="hidden lg:hidden w-full bg-dark border-t border-white/5 mt-4 px-6 py-6 space-y-4 text-sm font-semibold text-gray-300 uppercase tracking-wider">
+            <a href="#services" onclick="toggleMobileMenu()" class="block hover:text-primary py-1">Services</a>
+            <a href="#fleet" onclick="toggleMobileMenu()" class="block hover:text-primary py-1">Our Fleet</a>
+            <a href="#destinations" onclick="toggleMobileMenu()" class="block hover:text-primary py-1">Destinations</a>
+            <a href="#stories" onclick="toggleMobileMenu()" class="block hover:text-primary py-1">Travel Stories</a>
+            <a href="#faq" onclick="toggleMobileMenu()" class="block hover:text-primary py-1">FAQ</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block hover:text-primary py-1">Contact</a>
+            <div class="pt-4 border-t border-white/15 flex flex-col gap-4">
+                <a href="tel:+919876543210" class="text-white hover:text-primary flex items-center gap-2">
+                    <i class="fa-solid fa-phone text-primary"></i>
+                    <span>+91 98765 43210</span>
+                </a>
+                <a href="#contact" onclick="toggleMobileMenu()"
+                    class="text-center bg-primary text-dark py-3 rounded-md font-heading font-bold text-xs uppercase tracking-wider">
+                    Book Now
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION WITH SLIDER & FLUID SEARCH FILTER FORM -->
+    <section class="relative min-h-screen w-full bg-dark flex flex-col justify-between overflow-hidden">
+
+        <!-- Swiper Background Slider -->
+        <div class="swiper heroSwiper absolute inset-0 w-full h-full z-0">
+            <div class="swiper-wrapper">
+
+                <!-- Slide 1 -->
+                <div class="swiper-slide relative bg-cover bg-center"
+                    style="background-image: url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1920&q=80');">
+                    <div class="absolute inset-0 bg-gradient-to-b from-dark/85 via-dark/70 to-dark/95"></div>
+                    <div
+                        class="container mx-auto px-6 h-full flex flex-col justify-center items-center text-center pb-24">
+                        <span
+                            class="inline-block py-2 px-6 rounded-full bg-primary text-dark text-xs font-black tracking-widest uppercase mb-6 shadow-xl">
+                            Est. 2004 • Premium Car & Coach Rental
+                        </span>
+                        <h2
+                            class="font-heading text-5xl sm:text-7xl md:text-8xl font-black text-white leading-none tracking-tight max-w-5xl drop-shadow-[0_4px_20px_rgba(0,0,0,0.85)]">
+                            Travel in <span class="text-gradient">Luxury.</span><br>Explore with Peace of Mind.
+                        </h2>
+                        <p
+                            class="text-gray-100 text-sm sm:text-base md:text-lg max-w-2xl mt-6 font-medium leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]">
+                            Pristine luxury Sedans, executive Innova SUVs, Force Urbania and high-end Tempo Travellers
+                            for outstation tours and corporate travel across India.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="swiper-slide relative bg-cover bg-center"
+                    style="background-image: url('https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?auto=format&fit=crop&w=1920&q=80');">
+                    <div class="absolute inset-0 bg-gradient-to-b from-dark/85 via-dark/70 to-dark/95"></div>
+                    <div
+                        class="container mx-auto px-6 h-full flex flex-col justify-center items-center text-center pb-24">
+                        <span
+                            class="inline-block py-2 px-6 rounded-full bg-primary text-dark text-xs font-black tracking-widest uppercase mb-6 shadow-xl">
+                            Business Class On Wheels
+                        </span>
+                        <h2
+                            class="font-heading text-5xl sm:text-7xl md:text-8xl font-black text-white leading-none tracking-tight max-w-5xl drop-shadow-[0_4px_20px_rgba(0,0,0,0.85)]">
+                            Elite <span class="text-gradient">Force Urbania</span><br>& Tempo Travellers.
+                        </h2>
+                        <p
+                            class="text-gray-100 text-sm sm:text-base md:text-lg max-w-2xl mt-6 font-medium leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]">
+                            Ultra-premium group charters equipped with reclining leather seats, individual AC vents,
+                            high roof clearance, and state-of-the-art entertainment.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="swiper-slide relative bg-cover bg-center"
+                    style="background-image: url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1920&q=80');">
+                    <div class="absolute inset-0 bg-gradient-to-b from-dark/85 via-dark/70 to-dark/95"></div>
+                    <div
+                        class="container mx-auto px-6 h-full flex flex-col justify-center items-center text-center pb-24">
+                        <span
+                            class="inline-block py-2 px-6 rounded-full bg-primary text-dark text-xs font-black tracking-widest uppercase mb-6 shadow-xl">
+                            Safe & Sanitized Chauffeur Journeys
+                        </span>
+                        <h2
+                            class="font-heading text-5xl sm:text-7xl md:text-8xl font-black text-white leading-none tracking-tight max-w-5xl drop-shadow-[0_4px_20px_rgba(0,0,0,0.85)]">
+                            Corporate & Outstation<br><span class="text-gradient">Travel Specialist</span>
+                        </h2>
+                        <p
+                            class="text-gray-100 text-sm sm:text-base md:text-lg max-w-2xl mt-6 font-medium leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]">
+                            Experienced, verified drivers serving major institutions, high-profile corporate delegates,
+                            wedding transport, and tour groups across India.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+            <!-- Swiper Pagination Bullets -->
+            <div class="swiper-pagination z-20 pb-36 md:pb-32"></div>
+        </div>
+
+        <!-- FLOATING TRAVEL FILTER FORM (Modern, glassmorphic layout) -->
+        <div class="w-full max-w-6xl mx-auto px-6 relative z-30 mb-8 mt-auto">
+            <div class="glass-dark rounded-2xl p-6 md:p-8 shadow-2xl relative">
+                <!-- Trip Type Tab Selectors -->
+                <div class="flex flex-wrap gap-2 mb-6">
+                    <button onclick="switchTripTab('round')" id="tab-round"
+                        class="trip-tab-btn text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded bg-primary text-dark transition-all">Outstation
+                        Round Trip</button>
+                    <button onclick="switchTripTab('oneway')" id="tab-oneway"
+                        class="trip-tab-btn text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded bg-white/10 text-white hover:bg-white/15 transition-all">Outstation
+                        One Way</button>
+                    <button onclick="switchTripTab('local')" id="tab-local"
+                        class="trip-tab-btn text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded bg-white/10 text-white hover:bg-white/15 transition-all">Local
+                        Hourly Rental</button>
+                    <button onclick="switchTripTab('airport')" id="tab-airport"
+                        class="trip-tab-btn text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded bg-white/10 text-white hover:bg-white/15 transition-all">Airport
+                        Transfer</button>
+                </div>
+
+                <!-- Form Inputs -->
+                <form onsubmit="event.preventDefault(); window.location.hash='#contact'; textAlert();"
+                    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 items-end">
+                    <div>
+                        <label class="block text-[10px] font-bold uppercase text-gray-400 mb-1.5 tracking-wider">Pickup
+                            Location</label>
+                        <div class="relative">
+                            <i class="fa-solid fa-location-dot absolute left-3 top-3.5 text-primary text-sm"></i>
+                            <input type="text" required id="form-pickup"
+                                class="w-full pl-9 pr-4 py-3 rounded bg-white/10 border border-white/15 text-white placeholder-gray-400 focus:outline-none focus:border-primary text-xs"
+                                placeholder="E.g., Delhi NCR / IGI Airport">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-[10px] font-bold uppercase text-gray-400 mb-1.5 tracking-wider"
+                            id="drop-label">Drop Destination</label>
+                        <div class="relative">
+                            <i class="fa-solid fa-location-crosshairs absolute left-3 top-3.5 text-primary text-sm"></i>
+                            <input type="text" required id="form-drop"
+                                class="w-full pl-9 pr-4 py-3 rounded bg-white/10 border border-white/15 text-white placeholder-gray-400 focus:outline-none focus:border-primary text-xs"
+                                placeholder="E.g., Jaipur / Manali / Rishikesh">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label
+                            class="block text-[10px] font-bold uppercase text-gray-400 mb-1.5 tracking-wider">Departure
+                            Date</label>
+                        <div class="relative">
+                            <i class="fa-regular fa-calendar-days absolute left-3 top-3.5 text-primary text-sm"></i>
+                            <input type="date" required id="form-date"
+                                class="w-full pl-9 pr-4 py-3 rounded bg-white/10 border border-white/15 text-white focus:outline-none focus:border-primary text-xs">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-[10px] font-bold uppercase text-gray-400 mb-1.5 tracking-wider">Vehicle
+                            Class</label>
+                        <div class="relative">
+                            <i class="fa-solid fa-car absolute left-3 top-3.5 text-primary text-sm"></i>
+                            <select id="form-vehicle"
+                                class="w-full pl-9 pr-4 py-3 rounded bg-white/10 border border-white/15 text-white focus:outline-none focus:border-primary text-xs appearance-none bg-dark/95">
+                                <option value="Urbania">Force Urbania (10-17 Seats)</option>
+                                <option value="Tempo">Tempo Traveller (9-26 Seats)</option>
+                                <option value="Innova">Premium SUV (Innova Crysta)</option>
+                                <option value="Sedan">Luxury Sedan (Dzire / Etios)</option>
+                                <option value="Bus">Mini Bus (27-40 Seats)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <button type="submit"
+                            class="w-full bg-primary hover:bg-primaryHover text-dark font-heading font-bold text-xs uppercase tracking-widest py-3.5 rounded transition-all shadow-md flex items-center justify-center gap-2">
+                            <span>Check Fares</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRUSTED STATS BAR -->
+    <section class="border-b border-gray-200 py-10 bg-white">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div>
+                <p class="text-3xl md:text-4xl font-extrabold text-dark font-heading">20+</p>
+                <p class="text-xs uppercase tracking-wider text-gray-500 font-semibold mt-1.5">Years Journeying</p>
+            </div>
+            <div>
+                <p class="text-3xl md:text-4xl font-extrabold text-dark font-heading">10k+</p>
+                <p class="text-xs uppercase tracking-wider text-gray-500 font-semibold mt-1.5">Happy Travelers</p>
+            </div>
+            <div>
+                <p class="text-3xl md:text-4xl font-extrabold text-dark font-heading">50+</p>
+                <p class="text-xs uppercase tracking-wider text-gray-500 font-semibold mt-1.5">Sanitized Fleet</p>
+            </div>
+            <div>
+                <p class="text-3xl md:text-4xl font-extrabold text-dark font-heading">4.7★</p>
+                <p class="text-xs uppercase tracking-wider text-gray-500 font-semibold mt-1.5">Google Maps Rating</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="py-24 bg-white relative">
+        <div class="container mx-auto px-6 lg:px-12">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span
+                    class="text-xs font-bold uppercase tracking-widest text-primary bg-dark px-4 py-1.5 rounded-full">Our
+                    Operations</span>
+                <h2 class="font-heading text-3xl md:text-4xl font-bold text-dark mt-4">Premium Transportation Services
+                </h2>
+                <div class="w-12 h-1 bg-primary mx-auto mt-4"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Service 1 -->
+                <div
+                    class="bg-light rounded-xl p-8 border border-gray-200/60 hover:shadow-premium transition-all duration-300 group">
+                    <div
+                        class="w-12 h-12 bg-dark rounded-lg flex items-center justify-center text-primary text-xl mb-6 group-hover:scale-105 transition-transform duration-300">
+                        <i class="fa-solid fa-plane-arrival"></i>
+                    </div>
+                    <h3 class="font-heading text-lg font-bold text-dark mb-2">Airport Transfers</h3>
+                    <p class="text-gray-600 text-xs leading-relaxed mb-6">Punctual pickups & drops to and from IGI Delhi
+                        Airport with flat rates.</p>
+                    <a href="#contact"
+                        class="text-xs font-bold text-primary group-hover:text-dark uppercase tracking-wider transition-colors">Book
+                        Now <i class="fa-solid fa-angle-right ml-1"></i></a>
+                </div>
+
+                <!-- Service 2 -->
+                <div
+                    class="bg-light rounded-xl p-8 border border-gray-200/60 hover:shadow-premium transition-all duration-300 group">
+                    <div
+                        class="w-12 h-12 bg-dark rounded-lg flex items-center justify-center text-primary text-xl mb-6 group-hover:scale-105 transition-transform duration-300">
+                        <i class="fa-solid fa-van-shuttle"></i>
+                    </div>
+                    <h3 class="font-heading text-lg font-bold text-dark mb-2">Tempo Traveller</h3>
+                    <p class="text-gray-600 text-xs leading-relaxed mb-6">9 to 26 seater premium force travellers for
+                        family picnics and group outstation trips.</p>
+                    <a href="#contact"
+                        class="text-xs font-bold text-primary group-hover:text-dark uppercase tracking-wider transition-colors">Book
+                        Now <i class="fa-solid fa-angle-right ml-1"></i></a>
+                </div>
+
+                <!-- Service 3 -->
+                <div
+                    class="bg-light rounded-xl p-8 border border-gray-200/60 hover:shadow-premium transition-all duration-300 group">
+                    <div
+                        class="w-12 h-12 bg-dark rounded-lg flex items-center justify-center text-primary text-xl mb-6 group-hover:scale-105 transition-transform duration-300">
+                        <i class="fa-solid fa-bus-simple"></i>
+                    </div>
+                    <h3 class="font-heading text-lg font-bold text-dark mb-2">Force Urbania</h3>
+                    <p class="text-gray-600 text-xs leading-relaxed mb-6">Ultra-luxury 10-17 seater Urbania van for
+                        business delegates and private family tours.</p>
+                    <a href="#contact"
+                        class="text-xs font-bold text-primary group-hover:text-dark uppercase tracking-wider transition-colors">Book
+                        Now <i class="fa-solid fa-angle-right ml-1"></i></a>
+                </div>
+
+                <!-- Service 4 -->
+                <div
+                    class="bg-light rounded-xl p-8 border border-gray-200/60 hover:shadow-premium transition-all duration-300 group">
+                    <div
+                        class="w-12 h-12 bg-dark rounded-lg flex items-center justify-center text-primary text-xl mb-6 group-hover:scale-105 transition-transform duration-300">
+                        <i class="fa-solid fa-ring"></i>
+                    </div>
+                    <h3 class="font-heading text-lg font-bold text-dark mb-2">Wedding Transport</h3>
+                    <p class="text-gray-600 text-xs leading-relaxed mb-6">Elite convoy logistics for the bride, groom,
+                        and wedding guests in premium SUVs.</p>
+                    <a href="#contact"
+                        class="text-xs font-bold text-primary group-hover:text-dark uppercase tracking-wider transition-colors">Book
+                        Now <i class="fa-solid fa-angle-right ml-1"></i></a>
+                </div>
+
+                <!-- Service 5 -->
+                <div
+                    class="bg-light rounded-xl p-8 border border-gray-200/60 hover:shadow-premium transition-all duration-300 group">
+                    <div
+                        class="w-12 h-12 bg-dark rounded-lg flex items-center justify-center text-primary text-xl mb-6 group-hover:scale-105 transition-transform duration-300">
+                        <i class="fa-solid fa-briefcase"></i>
+                    </div>
+                    <h3 class="font-heading text-lg font-bold text-dark mb-2">Corporate Travel</h3>
+                    <p class="text-gray-600 text-xs leading-relaxed mb-6">Efficient transportation contracts, corporate
+                        transfers with easy monthly billing plans.</p>
+                    <a href="#contact"
+                        class="text-xs font-bold text-primary group-hover:text-dark uppercase tracking-wider transition-colors">Book
+                        Now <i class="fa-solid fa-angle-right ml-1"></i></a>
+                </div>
+
+                <!-- Service 6 -->
+                <div
+                    class="bg-light rounded-xl p-8 border border-gray-200/60 hover:shadow-premium transition-all duration-300 group">
+                    <div
+                        class="w-12 h-12 bg-dark rounded-lg flex items-center justify-center text-primary text-xl mb-6 group-hover:scale-105 transition-transform duration-300">
+                        <i class="fa-solid fa-map-location-dot"></i>
+                    </div>
+                    <h3 class="font-heading text-lg font-bold text-dark mb-2">Outstation Trips</h3>
+                    <p class="text-gray-600 text-xs leading-relaxed mb-6">Interstate tourism travel to Agra, Jaipur,
+                        Shimla, Manali with expert navigators.</p>
+                    <a href="#contact"
+                        class="text-xs font-bold text-primary group-hover:text-dark uppercase tracking-wider transition-colors">Book
+                        Now <i class="fa-solid fa-angle-right ml-1"></i></a>
+                </div>
+
+                <!-- Service 7 -->
+                <div
+                    class="bg-light rounded-xl p-8 border border-gray-200/60 hover:shadow-premium transition-all duration-300 group">
+                    <div
+                        class="w-12 h-12 bg-dark rounded-lg flex items-center justify-center text-primary text-xl mb-6 group-hover:scale-105 transition-transform duration-300">
+                        <i class="fa-solid fa-car"></i>
+                    </div>
+                    <h3 class="font-heading text-lg font-bold text-dark mb-2">Luxury Taxi</h3>
+                    <p class="text-gray-600 text-xs leading-relaxed mb-6">Meticulously maintained Dzire, Etios, and
+                        Innova Crysta cars for personal travel.</p>
+                    <a href="#contact"
+                        class="text-xs font-bold text-primary group-hover:text-dark uppercase tracking-wider transition-colors">Book
+                        Now <i class="fa-solid fa-angle-right ml-1"></i></a>
+                </div>
+
+                <!-- Service 8 -->
+                <div
+                    class="bg-light rounded-xl p-8 border border-gray-200/60 hover:shadow-premium transition-all duration-300 group">
+                    <div
+                        class="w-12 h-12 bg-dark rounded-lg flex items-center justify-center text-primary text-xl mb-6 group-hover:scale-105 transition-transform duration-300">
+                        <i class="fa-solid fa-bus"></i>
+                    </div>
+                    <h3 class="font-heading text-lg font-bold text-dark mb-2">Mini Bus Rental</h3>
+                    <p class="text-gray-600 text-xs leading-relaxed mb-6">27 to 40 seater large commercial coaches for
+                        pilgrimage tours, schools & groups.</p>
+                    <a href="#contact"
+                        class="text-xs font-bold text-primary group-hover:text-dark uppercase tracking-wider transition-colors">Book
+                        Now <i class="fa-solid fa-angle-right ml-1"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FLEET SHOWCASE -->
+    <section id="fleet" class="py-24 bg-dark text-white relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none"
+            style="background-image: radial-gradient(circle at top right, #F4B400 0%, transparent 40%);"></div>
+
+        <div class="container mx-auto px-6 lg:px-12 relative z-10">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div class="max-w-2xl">
+                    <span class="text-xs font-bold uppercase tracking-widest text-primary">Luxury Coaches</span>
+                    <h2 class="font-heading text-3xl md:text-4xl font-bold mt-2">Explore Our Luxury Fleet</h2>
+                    <div class="w-12 h-1 bg-primary mt-4"></div>
+                </div>
+                <!-- Navigation handles -->
+                <div class="flex gap-4 mt-6 md:mt-0">
+                    <button
+                        class="fleet-prev w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-primary hover:text-dark hover:border-primary transition-all"><i
+                            class="fa-solid fa-arrow-left text-sm"></i></button>
+                    <button
+                        class="fleet-next w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-primary hover:text-dark hover:border-primary transition-all"><i
+                            class="fa-solid fa-arrow-right text-sm"></i></button>
+                </div>
+            </div>
+
+            <!-- Swiper Slider -->
+            <div class="swiper fleetSwiper pb-12">
+                <div class="swiper-wrapper">
+
+                    <!-- Vehicle 1 -->
+                    <div class="swiper-slide">
+                        <div
+                            class="bg-charcoal rounded-xl overflow-hidden border border-white/5 hover:border-primary/20 transition-colors group">
+                            <div class="h-56 overflow-hidden relative">
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-charcoal via-transparent to-transparent z-10">
+                                </div>
+                                <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=800&q=80"
+                                    alt="Luxury Sedan"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="p-6 relative z-20">
+                                <h3 class="font-heading text-xl font-bold text-white">Luxury Sedan</h3>
+                                <p class="text-primary text-xs font-medium mt-1">Dezire / Etios / Ciaz</p>
+
+                                <div class="grid grid-cols-3 gap-2 my-6 border-t border-white/10 pt-4 text-center">
+                                    <div>
+                                        <i class="fa-solid fa-users text-gray-400 text-sm mb-1.5"></i>
+                                        <p class="text-[10px] text-gray-400">4 Seats</p>
+                                    </div>
+                                    <div class="border-l border-white/10">
+                                        <i class="fa-solid fa-snowflake text-gray-400 text-sm mb-1.5"></i>
+                                        <p class="text-[10px] text-gray-400">AC Cabin</p>
+                                    </div>
+                                    <div class="border-l border-white/10">
+                                        <i class="fa-solid fa-suitcase text-gray-400 text-sm mb-1.5"></i>
+                                        <p class="text-[10px] text-gray-400">2 Luggage</p>
+                                    </div>
+                                </div>
+                                <a href="#contact"
+                                    class="block text-center w-full bg-white/10 text-white hover:bg-primary hover:text-dark py-2.5 rounded font-semibold text-xs transition-colors">Request
+                                    Quote</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Vehicle 2 -->
+                    <div class="swiper-slide">
+                        <div
+                            class="bg-charcoal rounded-xl overflow-hidden border border-white/5 hover:border-primary/20 transition-colors group">
+                            <div class="h-56 overflow-hidden relative">
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-charcoal via-transparent to-transparent z-10">
+                                </div>
+                                <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800&q=80"
+                                    alt="Premium SUV"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="p-6 relative z-20">
+                                <h3 class="font-heading text-xl font-bold text-white">Premium SUV</h3>
+                                <p class="text-primary text-xs font-medium mt-1">Innova Crysta / Ertiga</p>
+
+                                <div class="grid grid-cols-3 gap-2 my-6 border-t border-white/10 pt-4 text-center">
+                                    <div>
+                                        <i class="fa-solid fa-users text-gray-400 text-sm mb-1.5"></i>
+                                        <p class="text-[10px] text-gray-400">6-7 Seats</p>
+                                    </div>
+                                    <div class="border-l border-white/10">
+                                        <i class="fa-solid fa-snowflake text-gray-400 text-sm mb-1.5"></i>
+                                        <p class="text-[10px] text-gray-400">Rear AC</p>
+                                    </div>
+                                    <div class="border-l border-white/10">
+                                        <i class="fa-solid fa-suitcase text-gray-400 text-sm mb-1.5"></i>
+                                        <p class="text-[10px] text-gray-400">4 Luggage</p>
+                                    </div>
+                                </div>
+                                <a href="#contact"
+                                    class="block text-center w-full bg-white/10 text-white hover:bg-primary hover:text-dark py-2.5 rounded font-semibold text-xs transition-colors">Request
+                                    Quote</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Vehicle 3 -->
+                    <div class="swiper-slide">
+                        <div
+                            class="bg-charcoal rounded-xl overflow-hidden border border-white/5 hover:border-primary/20 transition-colors group">
+                            <div class="h-56 overflow-hidden relative">
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-charcoal via-transparent to-transparent z-10">
+                                </div>
+                                <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=800&q=80"
+                                    alt="Luxury Tempo Traveller"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="p-6 relative z-20">
+                                <h3 class="font-heading text-xl font-bold text-white">Tempo Traveller</h3>
+                                <p class="text-primary text-xs font-medium mt-1">9/12/16/20/26 Seater</p>
+
+                                <div class="grid grid-cols-3 gap-2 my-6 border-t border-white/10 pt-4 text-center">
+                                    <div>
+                                        <i class="fa-solid fa-users text-gray-400 text-sm mb-1.5"></i>
+                                        <p class="text-[10px] text-gray-400">Group Size</p>
+                                    </div>
+                                    <div class="border-l border-white/10">
+                                        <i class="fa-solid fa-snowflake text-gray-400 text-sm mb-1.5"></i>
+                                        <p class="text-[10px] text-gray-400">Push-Back</p>
+                                    </div>
+                                    <div class="border-l border-white/10">
+                                        <i class="fa-solid fa-suitcase text-gray-400 text-sm mb-1.5"></i>
+                                        <p class="text-[10px] text-gray-400">Large Boot</p>
+                                    </div>
+                                </div>
+                                <a href="#contact"
+                                    class="block text-center w-full bg-white/10 text-white hover:bg-primary hover:text-dark py-2.5 rounded font-semibold text-xs transition-colors">Request
+                                    Quote</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Vehicle 4 -->
+                    <div class="swiper-slide">
+                        <div
+                            class="bg-charcoal rounded-xl overflow-hidden border border-white/5 hover:border-primary/20 transition-colors group">
+                            <div class="h-56 overflow-hidden relative">
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-charcoal via-transparent to-transparent z-10">
+                                </div>
+                                <img src="https://images.unsplash.com/photo-1549417229-aa67d3263c09?auto=format&fit=crop&w=800&q=80"
+                                    alt="Force Urbania Luxury"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="p-6 relative z-20">
+                                <h3 class="font-heading text-xl font-bold text-white">Force Urbania</h3>
+                                <p class="text-primary text-xs font-medium mt-1">Premium Mercedes Drivetrain</p>
+
+                                <div class="grid grid-cols-3 gap-2 my-6 border-t border-white/10 pt-4 text-center">
+                                    <div>
+                                        <i class="fa-solid fa-users text-gray-400 text-sm mb-1.5"></i>
+                                        <p class="text-[10px] text-gray-400">10-17 Seats</p>
+                                    </div>
+                                    <div class="border-l border-white/10">
+                                        <i class="fa-solid fa-snowflake text-gray-400 text-sm mb-1.5"></i>
+                                        <p class="text-[10px] text-gray-400">ABS / Airbag</p>
+                                    </div>
+                                    <div class="border-l border-white/10">
+                                        <i class="fa-solid fa-couch text-gray-400 text-sm mb-1.5"></i>
+                                        <p class="text-[10px] text-gray-400">Luxury Seats</p>
+                                    </div>
+                                </div>
+                                <a href="#contact"
+                                    class="block text-center w-full bg-white/10 text-white hover:bg-primary hover:text-dark py-2.5 rounded font-semibold text-xs transition-colors">Request
+                                    Quote</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination mt-8"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us / Process Grid -->
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-6 lg:px-12">
+            <div class="flex flex-col lg:flex-row gap-16 items-center">
+
+                <!-- Left: Why Choose Us -->
+                <div class="lg:w-1/2">
+                    <span class="text-xs font-bold uppercase tracking-widest text-primary">Key Credentials</span>
+                    <h2 class="font-heading text-3xl font-bold text-dark mt-2 mb-4">Why Trust Sachdeva Travel?</h2>
+                    <div class="w-12 h-1 bg-primary mb-8"></div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-10 h-10 rounded-lg bg-light border border-gray-200 flex items-center justify-center text-primary shrink-0">
+                                <i class="fa-solid fa-shield-halved"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-dark text-sm mb-1">Operating Since 2004</h4>
+                                <p class="text-xs text-gray-500 leading-relaxed">20+ years of serving premium clients in
+                                    Delhi.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-10 h-10 rounded-lg bg-light border border-gray-200 flex items-center justify-center text-primary shrink-0">
+                                <i class="fa-solid fa-id-card"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-dark text-sm mb-1">Verified Chauffeurs</h4>
+                                <p class="text-xs text-gray-500 leading-relaxed">Punctual, background-checked, and
+                                    highly polite.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-10 h-10 rounded-lg bg-light border border-gray-200 flex items-center justify-center text-primary shrink-0">
+                                <i class="fa-solid fa-location-arrow"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-dark text-sm mb-1">GPS-Tracked Fleet</h4>
+                                <p class="text-xs text-gray-500 leading-relaxed">Real-time coordinates monitoring for
+                                    safety.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-10 h-10 rounded-lg bg-light border border-gray-200 flex items-center justify-center text-primary shrink-0">
+                                <i class="fa-solid fa-sparkles"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-dark text-sm mb-1">Sanitized Fleet</h4>
+                                <p class="text-xs text-gray-500 leading-relaxed">Cars undergo vacuum sanitization before
+                                    slots.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Booking Process Timeline -->
+                <div class="lg:w-1/2 w-full bg-light p-8 rounded-2xl border border-gray-200/60">
+                    <h2 class="font-heading text-xl font-bold text-dark mb-6">Straightforward Booking Path</h2>
+
+                    <div class="relative border-l border-primary/40 ml-4 space-y-6">
+                        <div class="relative pl-6">
+                            <div class="absolute -left-[5px] top-1 w-2.5 h-2.5 rounded-full bg-primary"></div>
+                            <h4 class="font-bold text-dark text-xs uppercase tracking-wider mb-1">1. Share Details</h4>
+                            <p class="text-gray-500 text-xs leading-relaxed">Input your routes, passenger volume, and
+                                schedule times.</p>
+                        </div>
+                        <div class="relative pl-6">
+                            <div class="absolute -left-[5px] top-1 w-2.5 h-2.5 rounded-full bg-primary"></div>
+                            <h4 class="font-bold text-dark text-xs uppercase tracking-wider mb-1">2. Instant Quote</h4>
+                            <p class="text-gray-500 text-xs leading-relaxed">Get flat, transparent rates with zero
+                                hidden overheads.</p>
+                        </div>
+                        <div class="relative pl-6">
+                            <div class="absolute -left-[5px] top-1 w-2.5 h-2.5 rounded-full bg-primary"></div>
+                            <h4 class="font-bold text-dark text-xs uppercase tracking-wider mb-1">3. Confirm Ride</h4>
+                            <p class="text-gray-500 text-xs leading-relaxed">Secure your booking slot. Receive chauffeur
+                                coordinates early.</p>
+                        </div>
+                        <div class="relative pl-6">
+                            <div class="absolute -left-[5px] top-1 w-2.5 h-2.5 rounded-full bg-primary"></div>
+                            <h4 class="font-bold text-dark text-xs uppercase tracking-wider mb-1">4. Begin Trip</h4>
+                            <p class="text-gray-500 text-xs leading-relaxed">Travel with total comfort with professional
+                                assistance.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: TRAVEL STORIES -->
+    <section id="stories" class="py-24 bg-white border-t border-gray-200">
+        <div class="container mx-auto px-6 lg:px-12">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span
+                    class="text-xs font-bold uppercase tracking-widest text-primary bg-dark px-4 py-1.5 rounded-full">Explore
+                    India</span>
+                <h2 class="font-heading text-3xl md:text-4xl font-bold text-dark mt-4">Travel Stories & Travelogues</h2>
+                <div class="w-12 h-1 bg-primary mx-auto mt-4"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Story 1 -->
+                <div
+                    class="bg-light rounded-xl overflow-hidden border border-gray-200/60 group hover:shadow-premium transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-48 overflow-hidden bg-gray-200">
+                            <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=600&q=80"
+                                alt="Leh Ladakh Adventure"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <span
+                                class="absolute top-4 left-4 bg-dark/80 backdrop-blur text-primary text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded">Road
+                                Trip</span>
+                        </div>
+                        <div class="p-6">
+                            <span class="text-[10px] text-gray-400 font-semibold uppercase tracking-wider">June 15,
+                                2026</span>
+                            <h3
+                                class="font-heading text-lg font-bold text-dark mt-2 group-hover:text-primary transition-colors leading-tight">
+                                Chasing the Mountains: A Road Trip to Leh Ladakh</h3>
+                            <p class="text-gray-600 text-xs leading-relaxed mt-3">Read about how our luxury 12-seater
+                                Tempo Traveller navigated the high-altitude Khardung La pass with ease, delivering
+                                absolute comfort to a family group.</p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-2">
+                        <a href="#contact"
+                            class="text-xs font-bold text-dark group-hover:text-primary transition-colors flex items-center gap-1.5">Read
+                            Story <i class="fa-solid fa-arrow-right-long"></i></a>
+                    </div>
+                </div>
+
+                <!-- Story 2 -->
+                <div
+                    class="bg-light rounded-xl overflow-hidden border border-gray-200/60 group hover:shadow-premium transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-48 overflow-hidden bg-gray-200">
+                            <img src="https://images.unsplash.com/photo-1603262110263-fb0112e7cc33?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                alt="Jaipur Palace Tour"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <span
+                                class="absolute top-4 left-4 bg-dark/80 backdrop-blur text-primary text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded">Heritage
+                                Tour</span>
+                        </div>
+                        <div class="p-6">
+                            <span class="text-[10px] text-gray-400 font-semibold uppercase tracking-wider">May 28,
+                                2026</span>
+                            <h3
+                                class="font-heading text-lg font-bold text-dark mt-2 group-hover:text-primary transition-colors leading-tight">
+                                The Golden Triangle: Exploring Jaipur's Royal Legacy</h3>
+                            <p class="text-gray-600 text-xs leading-relaxed mt-3">A detailed log of our corporate
+                                delegates touring Jaipur's historical Amer Fort and Hawa Mahal in the comfort of our
+                                premium Force Urbania fleet.</p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-2">
+                        <a href="#contact"
+                            class="text-xs font-bold text-dark group-hover:text-primary transition-colors flex items-center gap-1.5">Read
+                            Story <i class="fa-solid fa-arrow-right-long"></i></a>
+                    </div>
+                </div>
+
+                <!-- Story 3 -->
+                <div
+                    class="bg-light rounded-xl overflow-hidden border border-gray-200/60 group hover:shadow-premium transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-48 overflow-hidden bg-gray-200">
+                            <img src="https://images.unsplash.com/photo-1571504211935-1c936b327411?auto=format&fit=crop&w=600&q=80"
+                                alt="Rishikesh Spiritual Escapade"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <span
+                                class="absolute top-4 left-4 bg-dark/80 backdrop-blur text-primary text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded">Weekend
+                                Gateway</span>
+                        </div>
+                        <div class="p-6">
+                            <span class="text-[10px] text-gray-400 font-semibold uppercase tracking-wider">April 12,
+                                2026</span>
+                            <h3
+                                class="font-heading text-lg font-bold text-dark mt-2 group-hover:text-primary transition-colors leading-tight">
+                                Weekend Ganges Run: Rishikesh Spiritual Escapade</h3>
+                            <p class="text-gray-600 text-xs leading-relaxed mt-3">Discover the serene valleys of
+                                Rishikesh. A review of our tourist groups enjoying local river rafting and evening Ganga
+                                Aarti with on-time doorstep coordinates.</p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-2">
+                        <a href="#contact"
+                            class="text-xs font-bold text-dark group-hover:text-primary transition-colors flex items-center gap-1.5">Read
+                            Story <i class="fa-solid fa-arrow-right-long"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- POPULAR DESTINATIONS -->
+    <section id="destinations" class="py-24 bg-light">
+        <div class="container mx-auto px-6 lg:px-12">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span
+                    class="text-xs font-bold uppercase tracking-widest text-primary bg-dark px-4 py-1.5 rounded-full">Outstation
+                    Spots</span>
+                <h2 class="font-heading text-3xl md:text-4xl font-bold text-dark mt-4">Popular Tourist Packages</h2>
+                <div class="w-12 h-1 bg-primary mx-auto mt-4"></div>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
+                <!-- Dest 1 -->
+                <div class="group relative rounded-xl overflow-hidden cursor-pointer aspect-[4/5]">
+                    <img src="https://images.unsplash.com/photo-1605640840605-14ac1855827b?auto=format&fit=crop&w=600&q=80"
+                        alt="Manali"
+                        class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark/95 via-dark/20 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-5 w-full">
+                        <h3 class="text-white font-heading font-bold text-lg leading-tight">Manali</h3>
+                        <p
+                            class="text-primary text-[10px] font-bold uppercase tracking-wider mt-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <i class="fa-regular fa-clock mr-1"></i> 12-14 Hours
+                        </p>
+                    </div>
+                </div>
+                <!-- Dest 2 -->
+                <div class="group relative rounded-xl overflow-hidden cursor-pointer aspect-[4/5]">
+                    <img src="https://images.unsplash.com/photo-1603262110263-fb0112e7cc33?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Jaipur"
+                        class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark/95 via-dark/20 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-5 w-full">
+                        <h3 class="text-white font-heading font-bold text-lg leading-tight">Jaipur</h3>
+                        <p
+                            class="text-primary text-[10px] font-bold uppercase tracking-wider mt-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <i class="fa-regular fa-clock mr-1"></i> 5-6 Hours
+                        </p>
+                    </div>
+                </div>
+                <!-- Dest 3 -->
+                <div class="group relative rounded-xl overflow-hidden cursor-pointer aspect-[4/5]">
+                    <img src="https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=600&q=80"
+                        alt="Agra"
+                        class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark/95 via-dark/20 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-5 w-full">
+                        <h3 class="text-white font-heading font-bold text-lg leading-tight">Agra</h3>
+                        <p
+                            class="text-primary text-[10px] font-bold uppercase tracking-wider mt-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <i class="fa-regular fa-clock mr-1"></i> 3-4 Hours
+                        </p>
+                    </div>
+                </div>
+                <!-- Dest 4 -->
+                <div class="group relative rounded-xl overflow-hidden cursor-pointer aspect-[4/5]">
+                    <img src="https://images.unsplash.com/photo-1571504211935-1c936b327411?auto=format&fit=crop&w=600&q=80"
+                        alt="Rishikesh"
+                        class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark/95 via-dark/20 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-5 w-full">
+                        <h3 class="text-white font-heading font-bold text-lg leading-tight">Rishikesh</h3>
+                        <p
+                            class="text-primary text-[10px] font-bold uppercase tracking-wider mt-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <i class="fa-regular fa-clock mr-1"></i> 5-6 Hours
+                        </p>
+                    </div>
+                </div>
+                <!-- Dest 5 -->
+                <div class="group relative rounded-xl overflow-hidden cursor-pointer aspect-[4/5]">
+                    <img src="https://images.unsplash.com/photo-1562608183-26db6389f55b?auto=format&fit=crop&w=600&q=80"
+                        alt="Shimla"
+                        class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark/95 via-dark/20 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-5 w-full">
+                        <h3 class="text-white font-heading font-bold text-lg leading-tight">Shimla</h3>
+                        <p
+                            class="text-primary text-[10px] font-bold uppercase tracking-wider mt-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <i class="fa-regular fa-clock mr-1"></i> 8-10 Hours
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section class="py-24 bg-dark text-white relative overflow-hidden" id="reviews">
+        <i class="fa-solid fa-quote-right absolute text-[20rem] text-white/5 -top-10 -right-10 pointer-events-none"></i>
+
+        <div class="container mx-auto px-6 lg:px-12">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-bold uppercase tracking-widest text-primary">Testimonials</span>
+                <h2 class="font-heading text-3xl font-bold text-white mt-2">What Our Passengers Say</h2>
+                <div class="w-12 h-1 bg-primary mx-auto mt-4"></div>
+            </div>
+
+            <div class="swiper testimonialSwiper max-w-4xl mx-auto pb-12">
+                <div class="swiper-wrapper">
+                    <!-- Quote 1 -->
+                    <div class="swiper-slide glass-dark p-8 md:p-10 rounded-2xl">
+                        <div class="flex text-primary mb-6 text-sm gap-1">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-gray-300 text-sm md:text-base italic mb-8 leading-relaxed">
+                            "Booked a Force Urbania for a family trip to Rajasthan. The vehicle was spotless, extremely
+                            comfortable, and the driver was polite and knew all the routes perfectly. Sachdeva Travel is
+                            highly recommended!"
+                        </p>
+                        <div class="flex items-center gap-4 border-t border-white/10 pt-6">
+                            <div
+                                class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-dark font-bold text-base">
+                                R</div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">Rahul Sharma</h4>
+                                <p class="text-[10px] text-gray-400 font-semibold uppercase tracking-wider">Family Tour
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quote 2 -->
+                    <div class="swiper-slide glass-dark p-8 md:p-10 rounded-2xl">
+                        <div class="flex text-primary mb-6 text-sm gap-1">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-gray-300 text-sm md:text-base italic mb-8 leading-relaxed">
+                            "We use their corporate travel services for airport transfers for our guests. Always on
+                            time, very professional, and the cars are always clean. True premium service in Delhi."
+                        </p>
+                        <div class="flex items-center gap-4 border-t border-white/10 pt-6">
+                            <div
+                                class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-dark font-bold text-base">
+                                A</div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">Ananya Gupta</h4>
+                                <p class="text-[10px] text-gray-400 font-semibold uppercase tracking-wider">Corporate
+                                    Client</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section id="faq" class="py-24 bg-white">
+        <div class="container mx-auto px-6 lg:px-12 max-w-4xl">
+            <div class="text-center mb-16">
+                <span
+                    class="text-xs font-bold uppercase tracking-widest text-primary bg-dark px-4 py-1.5 rounded-full">Help
+                    & Support</span>
+                <h2 class="font-heading text-3xl font-bold text-dark mt-4">Frequently Asked Questions</h2>
+                <div class="w-12 h-1 bg-primary mx-auto mt-4"></div>
+            </div>
+
+            <div class="space-y-4">
+
+                <!-- Q1 -->
+                <details
+                    class="group bg-light rounded-xl border border-gray-200 [&_summary::-webkit-details-marker]:hidden">
+                    <summary
+                        class="flex cursor-pointer items-center justify-between gap-1.5 p-6 text-dark font-semibold hover:text-primary transition-colors focus:outline-none">
+                        <h3 class="font-heading text-base">How do I secure my outstation booking?</h3>
+                        <span class="relative h-5 w-5 shrink-0">
+                            <i
+                                class="fa-solid fa-plus absolute inset-0 opacity-100 group-open:opacity-0 transition-opacity text-primary"></i>
+                            <i
+                                class="fa-solid fa-minus absolute inset-0 opacity-0 group-open:opacity-100 transition-opacity text-primary"></i>
+                        </span>
+                    </summary>
+                    <div class="px-6 pb-6 text-gray-600 text-xs leading-relaxed border-t border-gray-100/50 pt-4">
+                        <p>You can book by calling our 24x7 helpline, sending us a WhatsApp message, or filling out the
+                            inquiry form. We require a minimal booking advance to confirm the slot, with the balance
+                            payable during the journey.</p>
+                    </div>
+                </details>
+
+                <!-- Q2 -->
+                <details
+                    class="group bg-light rounded-xl border border-gray-200 [&_summary::-webkit-details-marker]:hidden">
+                    <summary
+                        class="flex cursor-pointer items-center justify-between gap-1.5 p-6 text-dark font-semibold hover:text-primary transition-colors focus:outline-none">
+                        <h3 class="font-heading text-base">Is airport pick-up available at midnight hours?</h3>
+                        <span class="relative h-5 w-5 shrink-0">
+                            <i
+                                class="fa-solid fa-plus absolute inset-0 opacity-100 group-open:opacity-0 transition-opacity text-primary"></i>
+                            <i
+                                class="fa-solid fa-minus absolute inset-0 opacity-0 group-open:opacity-100 transition-opacity text-primary"></i>
+                        </span>
+                    </summary>
+                    <div class="px-6 pb-6 text-gray-600 text-xs leading-relaxed border-t border-gray-100/50 pt-4">
+                        <p>Yes, we provide 24/7 premium airport transfer services from IGI Airport Delhi to any
+                            destination in Delhi NCR or outstation locations. Chauffeur details are shared 2 hours
+                            prior.</p>
+                    </div>
+                </details>
+
+                <!-- Q3 -->
+                <details
+                    class="group bg-light rounded-xl border border-gray-200 [&_summary::-webkit-details-marker]:hidden">
+                    <summary
+                        class="flex cursor-pointer items-center justify-between gap-1.5 p-6 text-dark font-semibold hover:text-primary transition-colors focus:outline-none">
+                        <h3 class="font-heading text-base">Are toll and state entry taxes included in the fare?</h3>
+                        <span class="relative h-5 w-5 shrink-0">
+                            <i
+                                class="fa-solid fa-plus absolute inset-0 opacity-100 group-open:opacity-0 transition-opacity text-primary"></i>
+                            <i
+                                class="fa-solid fa-minus absolute inset-0 opacity-0 group-open:opacity-100 transition-opacity text-primary"></i>
+                        </span>
+                    </summary>
+                    <div class="px-6 pb-6 text-gray-600 text-xs leading-relaxed border-t border-gray-100/50 pt-4">
+                        <p>Our standard outstation quotes exclude state tax, toll taxes, and parking fees, which are to
+                            be paid by the client at actuals on the road. We can also provide all-inclusive quotes upon
+                            specific requests.</p>
+                    </div>
+                </details>
+
+                <!-- Q4 -->
+                <details
+                    class="group bg-light rounded-xl border border-gray-200 [&_summary::-webkit-details-marker]:hidden">
+                    <summary
+                        class="flex cursor-pointer items-center justify-between gap-1.5 p-6 text-dark font-semibold hover:text-primary transition-colors focus:outline-none">
+                        <h3 class="font-heading text-base">Is corporate GST billing support available?</h3>
+                        <span class="relative h-5 w-5 shrink-0">
+                            <i
+                                class="fa-solid fa-plus absolute inset-0 opacity-100 group-open:opacity-0 transition-opacity text-primary"></i>
+                            <i
+                                class="fa-solid fa-minus absolute inset-0 opacity-0 group-open:opacity-100 transition-opacity text-primary"></i>
+                        </span>
+                    </summary>
+                    <div class="px-6 pb-6 text-gray-600 text-xs leading-relaxed border-t border-gray-100/50 pt-4">
+                        <p>Yes. Sachdeva Travel is a registered company. We support formal GST invoicing for corporate
+                            corporate agencies, schools, and private groups requiring detailed tax logs.</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT & BOOKING SECTION -->
+    <section id="contact" class="py-24 bg-light relative border-t border-gray-200">
+        <div class="container mx-auto px-6 lg:px-12">
+            <div class="bg-white rounded-2xl shadow-premium overflow-hidden flex flex-col lg:flex-row">
+
+                <!-- Left: Booking Form -->
+                <div class="lg:w-3/5 p-8 md:p-12">
+                    <h2 class="font-heading text-2xl font-bold text-dark mb-2">Request an Instant Quote</h2>
+                    <p class="text-xs text-gray-500 mb-8 font-medium">Fill out the details below and we will get back to
+                        you immediately.</p>
+
+                    <form class="space-y-4" onsubmit="event.preventDefault(); textAlert();">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-700 mb-1.5">Full Name</label>
+                                <input type="text" required
+                                    class="w-full px-4 py-2.5 rounded border border-gray-200 text-xs text-dark focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
+                                    placeholder="Your Name">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-700 mb-1.5">Phone Number</label>
+                                <input type="tel" required
+                                    class="w-full px-4 py-2.5 rounded border border-gray-200 text-xs text-dark focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
+                                    placeholder="+91 XXXXX XXXXX">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-700 mb-1.5">Pickup Location</label>
+                                <input type="text" required
+                                    class="w-full px-4 py-2.5 rounded border border-gray-200 text-xs text-dark focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
+                                    placeholder="Delhi Airport / Hotel / Residence">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-700 mb-1.5">Drop Destination</label>
+                                <input type="text" required
+                                    class="w-full px-4 py-2.5 rounded border border-gray-200 text-xs text-dark focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
+                                    placeholder="Drop Destination City">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-700 mb-1.5">Travel Date</label>
+                                <input type="date" required
+                                    class="w-full px-4 py-2.5 rounded border border-gray-200 text-xs text-dark focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-700 mb-1.5">Vehicle Required</label>
+                                <select required
+                                    class="w-full px-4 py-2.5 rounded border border-gray-200 text-xs text-dark focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors bg-white">
+                                    <option value="">Select Vehicle</option>
+                                    <option value="Sedan">Sedan / SUV Taxi</option>
+                                    <option value="Tempo">Tempo Traveller</option>
+                                    <option value="Urbania">Force Urbania</option>
+                                    <option value="Bus">Mini Bus</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-700 mb-1.5">Message / Special
+                                Requests</label>
+                            <textarea rows="3"
+                                class="w-full px-4 py-2.5 rounded border border-gray-200 text-xs text-dark focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
+                                placeholder="E.g., Number of passengers, baggage volume, return date..."></textarea>
+                        </div>
+                        <button type="submit"
+                            class="w-full bg-dark text-white font-heading font-semibold py-3 rounded hover:bg-primary hover:text-dark transition-all duration-300 text-xs uppercase tracking-widest mt-2 shadow-sm">
+                            Send Request
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Right: Contact Info & Map -->
+                <div
+                    class="lg:w-2/5 bg-dark text-white p-8 md:p-12 relative overflow-hidden flex flex-col justify-between">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
+
+                    <div class="space-y-6 relative z-10">
+                        <h3 class="font-heading text-xl font-bold mb-6">Contact Information</h3>
+
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-8 h-8 rounded bg-white/5 flex items-center justify-center text-primary shrink-0 text-sm">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-xs text-gray-300">Office Location</h5>
+                                <p class="text-white text-xs mt-1 leading-relaxed">Geeta Colony, New Delhi<br>Delhi
+                                    110031, India</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-8 h-8 rounded bg-white/5 flex items-center justify-center text-primary shrink-0 text-sm">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-xs text-gray-300">Phone Support</h5>
+                                <p class="text-white text-xs mt-1 leading-relaxed">+91 98765 43210<br>+91 98765 01234
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-8 h-8 rounded bg-white/5 flex items-center justify-center text-primary shrink-0 text-sm">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-xs text-gray-300">Email</h5>
+                                <p class="text-white text-xs mt-1">info@sachdevatravel.com</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Map Container -->
+                    <div
+                        class="w-full h-44 rounded overflow-hidden relative z-10 border border-white/10 opacity-80 hover:opacity-100 transition-all duration-300 mt-8">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d112028.98634860015!2d77.127599!3d28.662243!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfc5101036dfd%3A0x6b44a7f0e691cc42!2sGeeta%20Colony%2C%20New%20Delhi%2C%20Delhi!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-charcoal pt-16 pb-8 border-t border-white/10 relative">
+        <div class="container mx-auto px-6 lg:px-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+
+                <!-- Brand -->
+                <div class="space-y-4">
+                    <a href="#" class="flex items-center gap-2">
+                        <span
+                            class="font-heading font-extrabold text-lg tracking-wider text-white uppercase">Sachdeva<span
+                                class="text-primary font-normal">Travel</span></span>
+                    </a>
+                    <p class="text-gray-400 text-xs leading-relaxed">
+                        Premium transportation services in Delhi since 2004. Your journey, our absolute priority.
+                        Experience clean luxury and reliable timelines.
+                    </p>
+                    <div class="flex gap-3 pt-2">
+                        <a href="#"
+                            class="w-8 h-8 rounded bg-white/5 flex items-center justify-center text-white hover:bg-primary hover:text-dark transition-all text-xs"><i
+                                class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#"
+                            class="w-8 h-8 rounded bg-white/5 flex items-center justify-center text-white hover:bg-primary hover:text-dark transition-all text-xs"><i
+                                class="fa-brands fa-instagram"></i></a>
+                        <a href="#"
+                            class="w-8 h-8 rounded bg-white/5 flex items-center justify-center text-white hover:bg-primary hover:text-dark transition-all text-xs"><i
+                                class="fa-brands fa-x-twitter"></i></a>
+                    </div>
+                </div>
+
+                <!-- Links -->
+                <div>
+                    <h5 class="text-white font-heading font-bold text-xs uppercase tracking-wider mb-4">Quick Links</h5>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Home Page</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-primary transition-colors">Our
+                                Services</a></li>
+                        <li><a href="#fleet" class="text-gray-400 hover:text-primary transition-colors">Our Premium
+                                Fleet</a></li>
+                        <li><a href="#destinations" class="text-gray-400 hover:text-primary transition-colors">Tourist
+                                Packages</a></li>
+                        <li><a href="#stories" class="text-gray-400 hover:text-primary transition-colors">Travel
+                                Stories</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services -->
+                <div>
+                    <h5 class="text-white font-heading font-bold text-xs uppercase tracking-wider mb-4">Rental Services
+                    </h5>
+                    <ul class="space-y-2 text-xs text-gray-400">
+                        <li>Airport Transfer Drop</li>
+                        <li>Tempo Traveller Rental</li>
+                        <li>Force Urbania Charter</li>
+                        <li>Wedding Luxury Logistics</li>
+                        <li>Outstation Sightseeing</li>
+                    </ul>
+                </div>
+
+                <!-- Open Hours -->
+                <div>
+                    <h5 class="text-white font-heading font-bold text-xs uppercase tracking-wider mb-4">Business Hours
+                    </h5>
+                    <ul class="space-y-2 text-xs text-gray-400">
+                        <li class="flex justify-between"><span class="text-gray-400">Monday - Sunday</span><span
+                                class="text-primary font-medium">24 Hours Open</span></li>
+                        <li class="flex justify-between"><span class="text-gray-400">Customer Support</span><span
+                                class="text-primary font-medium">24x7 Available</span></li>
+                    </ul>
+                    <a href="https://wa.me/919876543210" target="_blank"
+                        class="mt-5 w-full inline-flex items-center justify-center gap-2 bg-[#25D366] text-white py-2.5 rounded font-medium text-xs hover:bg-[#128C7E] transition-colors">
+                        <i class="fa-brands fa-whatsapp text-sm"></i> Chat on WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <div
+                class="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500">
+                <p>&copy; 2026 Sachdeva Travel. All rights reserved.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="hover:text-primary transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-primary transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FLOATING ACTIONS -->
+    <a href="https://wa.me/919876543210?text=Hi%2C%20I%20am%20interested%20in%20booking%20luxury%20transportation%20with%20Sachdeva%20Travel."
+        target="_blank"
+        class="fixed bottom-6 left-6 z-50 bg-[#25D366] text-white w-12 h-12 rounded-full flex items-center justify-center text-2xl shadow-lg hover:scale-110 transition-transform">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <button id="scrollTop" onclick="window.scrollTo(0,0);"
+        class="fixed bottom-6 right-6 z-50 bg-dark text-white w-10 h-10 rounded-full flex items-center justify-center text-sm shadow-lg hover:bg-primary hover:text-dark transition-all opacity-0 pointer-events-none transform translate-y-10">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- Swiper Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+    <!-- Initializations -->
+    <script>
+        function textAlert() {
+            alert('Thank you for booking request! We will contact you immediately with a quote.');
+        }
+
+        // Toggle mobile drawer
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            menu.classList.toggle('hidden');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-xmark');
+        }
+
+        // Form tabs switcher logic
+        function switchTripTab(tabName) {
+            const buttons = document.querySelectorAll('.trip-tab-btn');
+            const dropField = document.getElementById('form-drop');
+            const dropLabel = document.getElementById('drop-label');
+
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-primary', 'text-dark');
+                btn.classList.add('bg-white/10', 'text-white', 'hover:bg-white/15');
+            });
+
+            const activeBtn = document.getElementById('tab-' + tabName);
+            activeBtn.classList.remove('bg-white/10', 'text-white', 'hover:bg-white/15');
+            activeBtn.classList.add('bg-primary', 'text-dark');
+
+            if (tabName === 'local') {
+                dropField.disabled = true;
+                dropField.placeholder = "Not required for local rental";
+                dropField.value = "Local Delhi tour";
+                dropLabel.textContent = "Drop Destination (Disabled)";
+            } else if (tabName === 'airport') {
+                dropField.disabled = false;
+                dropField.placeholder = "E.g., Delhi IGI Airport / Hotel";
+                dropField.value = "";
+                dropLabel.textContent = "Drop Location / Airport Terminal";
+            } else {
+                dropField.disabled = false;
+                dropField.placeholder = "E.g., Jaipur / Manali / Rishikesh";
+                dropField.value = "";
+                dropLabel.textContent = "Drop Destination";
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+
+            // Navbar state toggle on scroll
+            const navbar = document.getElementById('navbar');
+            const scrollTopBtn = document.getElementById('scrollTop');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('glass-header', 'shadow-md');
+                    navbar.classList.remove('py-4');
+                    navbar.classList.add('py-2');
+
+                    // Show ScrollTop button
+                    scrollTopBtn.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-10');
+                } else {
+                    navbar.classList.remove('glass-header', 'shadow-md');
+                    navbar.classList.remove('py-2');
+                    navbar.classList.add('py-4');
+
+                    // Hide ScrollTop button
+                    scrollTopBtn.classList.add('opacity-0', 'pointer-events-none', 'translate-y-10');
+                }
+            });
+
+            // Initialize Swiper for Hero slides (crossfade slide change)
+            const heroSwiper = new Swiper('.heroSwiper', {
+                effect: 'fade',
+                loop: true,
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                fadeEffect: {
+                    crossFade: true
+                }
+            });
+
+            // Initialize Swiper for Fleet slides (responsive layout)
+            const fleetSwiper = new Swiper('.fleetSwiper', {
+                slidesPerView: 1,
+                spaceBetween: 24,
+                loop: true,
+                pagination: {
+                    el: '.fleetSwiper .swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.fleet-next',
+                    prevEl: '.fleet-prev',
+                },
+                breakpoints: {
+                    640: {
+                        slidesPerView: 2,
+                    },
+                    1024: {
+                        slidesPerView: 3,
+                    }
+                }
+            });
+
+            // Initialize Swiper for Testimonial slides
+            const testimonialSwiper = new Swiper('.testimonialSwiper', {
+                slidesPerView: 1,
+                spaceBetween: 24,
+                loop: true,
+                autoplay: {
+                    delay: 4500,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: '.testimonialSwiper .swiper-pagination',
+                    clickable: true,
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
